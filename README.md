@@ -1,8 +1,8 @@
 # Laravel Core Package
 
-[![Version](https://poser.pugx.org/pwweb/core/v/stable.svg)](https://github.com/pwweb/localisation/releases)
-[![Downloads](https://poser.pugx.org/pwweb/core/d/total.svg)](https://github.com/pwweb/localisation)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pwweb/core/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pwweb/core/?branch=master)
+[![Version](https://poser.pugx.org/pwweb/laravel-core/v/stable.svg)](https://github.com/pwweb/localisation/releases)
+[![Downloads](https://poser.pugx.org/pwweb/laravel-core/d/total.svg)](https://github.com/pwweb/localisation)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pwweb/laravel-core/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pwweb/core/?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <!-- [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -16,7 +16,7 @@ Via Composer run the following:
 
 ``` bash
 # Install the package.
-$ composer require pwweb/core
+$ composer require pwweb/laravel-core
 
 # Publish config, migration, languages and controllers.
 $ php artisan vendor:publish --provider="PWWEB\Core\CoreServiceProvider"
@@ -53,5 +53,5 @@ Copyright &copy; pw-websolutions.com. Please see the [license file][link-licencs
 
 [link-author]: https://github.com/pwweb
 [link-contributors]: ../../contributors
-[link-issues]: https://github.com/pwweb/core/issues
+[link-issues]: https://github.com/pwweb/laravel-core/issues
 [link-licencse]: https://opensource.org/licenses/MIT
