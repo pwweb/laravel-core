@@ -12,7 +12,6 @@ namespace PWWEB\Core;
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
@@ -31,11 +30,9 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * Boostrap the services of the package.
      *
-     * @param Filesystem $filesystem laravel filesystem object for file handling
-     *
      * @return void
      */
-    public function boot(Filesystem $filesystem)
+    public function boot()
     {
         $loader = AliasLoader::getInstance();
         $loader->alias('Core', \PWWEB\Core\Facades\Core::class);
