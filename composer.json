@@ -8,10 +8,10 @@
         "homepage": "https://www.pw-websolutions.com"
     }],
     "homepage": "https://github.com/pwweb/core",
-    "keywords": ["library, laravel, core, traits"],
+    "keywords": ["library", "laravel", "core", "traits"],
     "require": {
         "php": ">=7.3.7",
-        "laravel/framework": ">=7.0.0"
+        "laravel/framework": "^7.5.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~8.0",
