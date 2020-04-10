@@ -1,5 +1,5 @@
 {
-    "name": "pwweb/core",
+    "name": "pwweb/laravel-core",
     "description": "Additional core functionalities for Laravel",
     "license": "MIT",
     "authors": [{
