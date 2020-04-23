@@ -1,7 +1,7 @@
 # Laravel Core Package
 
-[![Version](https://poser.pugx.org/pwweb/laravel-core/v/stable.svg)](https://github.com/pwweb/localisation/releases)
-[![Downloads](https://poser.pugx.org/pwweb/laravel-core/d/total.svg)](https://github.com/pwweb/localisation)
+[![Version](https://poser.pugx.org/pwweb/laravel-core/v/stable.svg)](https://github.com/pwweb/laravel-core/releases)
+[![Downloads](https://poser.pugx.org/pwweb/laravel-core/d/total.svg)](https://github.com/pwweb/laravel-core)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pwweb/laravel-core/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pwweb/core/?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <!-- [![Latest Version on Packagist][ico-version]][link-packagist]
