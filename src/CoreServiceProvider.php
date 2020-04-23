@@ -36,5 +36,18 @@ class CoreServiceProvider extends ServiceProvider
     {
         $loader = AliasLoader::getInstance();
         $loader->alias('Core', \PWWEB\Core\Facades\Core::class);
+
+        $this->registerDirectives();
+    }
+
+    /**
+     * Register Blade directives for use.
+     *
+     * @return void
+     */
+    public function registerDirectives()
+    {
+        $directives[] = new Blade\Directives\IsNull();
+        $directives[] = new Blade\Directives\IsNotNull();
     }
 }
