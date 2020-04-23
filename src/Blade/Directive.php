@@ -41,14 +41,14 @@ class Directive
         Blade::directive($this->name, [$this, 'handle']);
 
         if (true === $hasEnd) {
-            Blade::directive('end'.$this->name, [$this, 'handleEnd']);
+            Blade::directive('end' . $this->name, [$this, 'handleEnd']);
         }
     }
 
     /**
      * Default handler for handling ends, usually for if statements.
      *
-     * @param  string $expression Expression to be parsed.
+     * @param string $expression Expression to be parsed.
      *
      * @return string
      */
