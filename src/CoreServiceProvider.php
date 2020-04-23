@@ -18,6 +18,13 @@ use Illuminate\Support\ServiceProvider;
 class CoreServiceProvider extends ServiceProvider
 {
     /**
+     * Collection of blade directives.
+     *
+     * @var \PWWEB\Core\Blade\Directives[]
+     */
+    private $directives = [];
+
+    /**
      * Register services.
      *
      * @return void
@@ -47,7 +54,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function registerDirectives()
     {
-        $directives[] = new Blade\Directives\IsNull();
-        $directives[] = new Blade\Directives\IsNotNull();
+        $this->directives[] = new Blade\Directives\IsNull();
+        $this->directives[] = new Blade\Directives\IsNotNull();
     }
 }
