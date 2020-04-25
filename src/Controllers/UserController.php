@@ -20,7 +20,7 @@ use Response;
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
-*/
+ */
 class UserController extends Controller
 {
     /**
@@ -164,13 +164,13 @@ class UserController extends Controller
         if (empty($user)) {
             Flash::error('User not found');
 
-            return redirect(route('core.users.index'));
+            return redirect(route('core.models.users.index'));
         }
 
         $this->userRepository->delete($id);
 
         Flash::success('User deleted successfully.');
 
-        return redirect(route('core.users.index'));
+        return redirect(route('pWWEB.core.models.users.index'));
     }
 }

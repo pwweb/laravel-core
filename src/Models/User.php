@@ -57,7 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email' => 'string',
         'email_verified_at' => 'datetime',
         'password' => 'string',
-        'remember_token' => 'string'
+        'remember_token' => 'string',
     ];
 
     /**
@@ -67,7 +67,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public static $rules = [
         'email' => 'required',
-        'password' => 'required'
+        'password' => 'required',
     ];
 
     /**
