@@ -2,11 +2,11 @@
 
 namespace PWWEB\Core\Models;
 
-use App\Traits\Migratable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use PWWEB\Core\Traits\Migratable;
 use PWWEB\Localisation\Traits\HasAddresses;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -32,7 +32,9 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -50,7 +52,22 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $casts = [
+        'id' => 'integer',
+        'person_id' => 'integer',
+        'email' => 'string',
         'email_verified_at' => 'datetime',
+        'password' => 'string',
+        'remember_token' => 'string'
+    ];
+
+    /**
+     * Validation rules.
+     *
+     * @var array
+     */
+    public static $rules = [
+        'email' => 'required',
+        'password' => 'required'
     ];
 
     /**

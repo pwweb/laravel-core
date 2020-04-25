@@ -6,5 +6,6 @@ Route::namespace('PWWEB\Core\Controllers')
     ->group(
         function () {
             Route::resource('persons', PersonController::class);
+            Route::resource('users', UserController::class);
         }
     );
