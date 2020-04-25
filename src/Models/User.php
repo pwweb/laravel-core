@@ -4,6 +4,7 @@ namespace PWWEB\Core\Models;
 
 use App\Traits\Migratable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use PWWEB\Localisation\Traits\HasAddresses;
@@ -73,7 +74,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         parent::__construct($attributes);
 
-        $this->setTable(config('pwweb.core.table_names.persons'));
+        $this->setTable(config('pwweb.core.table_names.users'));
     }
 
     /**
@@ -81,9 +82,9 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return object
      */
-    public function person()
+    public function person(): BelongsTo
     {
-        return $this->belongsTo(Person::class);
+        return $this->belongsTo(config('pwweb.core.models.person'));
     }
 
     /**
