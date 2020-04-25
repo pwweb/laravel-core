@@ -74,7 +74,6 @@ abstract class Title extends Enum
     public static function prof(): self
     {
         return new class() extends Title {
-
             // phpcs:ignore
             public function getIndex(): int
             {

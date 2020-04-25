@@ -194,33 +194,6 @@ class Person extends Model implements HasMedia
     }
 
     /**
-     * Accessor for profile types.
-     *
-     * @return string
-     */
-    public function getDescriptionAttribute(): string
-    {
-        $description = [];
-
-        /*
-         * Removing this functionality for the time being.
-            if (null !== $this->volunteer) {
-            $description[] = __('Volunteer');
-            }
-         */
-
-        if (true === $this->user->hasRole('administrator')) {
-            return __('Administrator');
-        }
-
-        if (true === empty($description)) {
-            return __('User');
-        }
-
-        return implode(', ', $description);
-    }
-
-    /**
      * Format the title attribute based on the corresponding enum.
      *
      * @param int $value Title enum number

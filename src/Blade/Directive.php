@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Blade;
  * @method    static self multipleArgs()
  * @method    static self stripQuotes()
  */
-
 class Directive
 {
     /**
