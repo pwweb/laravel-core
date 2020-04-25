@@ -10,7 +10,7 @@ use PWWEB\Localisation\Traits\HasAddresses;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
- * App\Models\System\User Model.
+ * PWWEB\Core\Models\User Model.
  *
  * Standard User Model.
  *
@@ -25,13 +25,6 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasRoles;
     use Migratable;
     use HasAddresses;
-
-    /**
-     * Table name.
-     *
-     * @var string
-     */
-    protected $table = 'system_users';
 
     /**
      * The attributes that are mass assignable.
@@ -68,6 +61,20 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $dates = [
         'created_at', 'updated_at',
     ];
+
+    /**
+     * Constructor.
+     *
+     * @param array $attributes additional attributes for model initialisation
+     *
+     * @return void
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setTable(config('pwweb.core.table_names.persons'));
+    }
 
     /**
      * Accessor for person of the user.

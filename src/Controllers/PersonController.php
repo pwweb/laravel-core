@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use PWWEB\Core\Enums\Gender;
 use PWWEB\Core\Enums\Title;
 use PWWEB\Core\Repositories\PersonRepository;
-use PWWEB\Localisation\Requests\CreatePersonRequest;
-use PWWEB\Localisation\Requests\UpdatePersonRequest;
+use PWWEB\Core\Requests\CreatePersonRequest;
+use PWWEB\Core\Requests\UpdatePersonRequest;
 
 /**
  * PWWEB\Core\Controllers\Person Controller.

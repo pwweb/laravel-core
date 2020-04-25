@@ -3,6 +3,9 @@
 namespace PWWEB\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use PWWEB\Core\Enums\Gender;
 use PWWEB\Core\Enums\Title;
 use PWWEB\Core\Traits\Migratable;
@@ -13,14 +16,28 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 
 /**
- * App\Core\Models\Person Model.
+ * PWWEB\Core\Models\Person Model.
  *
  * Standard Person Model.
  *
+ * @package   pwweb/core
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @property \App\Models\Pwweb\Core\Models\SystemLocalisationCountry nationality
+ * @property \Illuminate\Database\Eloquent\Collection systemUsers
+ * @property integer nationality_id
+ * @property string title
+ * @property string name
+ * @property string middle_name
+ * @property string surname
+ * @property string maiden_name
+ * @property string gender
+ * @property string dob
+ * @property string display_name
+ * @property string display_middle_name
+ * @property string select_name
  */
 
 class Person extends Model implements HasMedia
@@ -28,14 +45,8 @@ class Person extends Model implements HasMedia
     use Migratable;
     use HasMediaTrait;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'middle_name', 'surname', 'maiden_name', 'gender', 'dob', 'nationality_id',
-    ];
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 
     /**
      * The attributes that are to be parsed as dates.
@@ -47,18 +58,84 @@ class Person extends Model implements HasMedia
     ];
 
     /**
-     * Table name.
+     * The attributes that are mass assignable.
      *
-     * @var string
+     * @var array
      */
-    protected $table = 'system_persons';
+    protected $fillable = [
+        'nationality_id',
+        'title',
+        'name',
+        'middle_name',
+        'surname',
+        'maiden_name',
+        'gender',
+        'dob',
+        'display_name',
+        'display_middle_name',
+        'select_name'
+    ];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'nationality_id' => 'integer',
+        'title' => 'string',
+        'name' => 'string',
+        'middle_name' => 'string',
+        'surname' => 'string',
+        'maiden_name' => 'string',
+        'gender' => 'string',
+        'dob' => 'date',
+        'display_name' => 'string',
+        'display_middle_name' => 'string',
+        'select_name' => 'string'
+    ];
+
+    /**
+     * Validation rules.
+     *
+     * @var array
+     */
+    public static $rules = [
+        'name' => 'required',
+        'surname' => 'required'
+    ];
+
+    /**
+     * Constructor.
+     *
+     * @param array $attributes additional attributes for model initialisation
+     *
+     * @return void
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setTable(config('pwweb.core.table_names.persons'));
+    }
+
+    /**
+     * Accessor for nationality.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function nationality(): BelongsTo
+    {
+        return $this->belongsTo(\App\Models\Pwweb\Core\Models\SystemLocalisationCountry::class, 'nationality_id');
+    }
 
     /**
      * Accessor for address data.
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      */
-    public function addresses()
+    public function addresses(): MorphToMany
     {
         return $this->morphToMany(
             Address::class,
@@ -70,9 +147,9 @@ class Person extends Model implements HasMedia
     /**
      * Accessor for user data.
      *
-     * @return object
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function user()
+    public function user(): HasOne
     {
         return $this->hasOne(User::class);
     }
