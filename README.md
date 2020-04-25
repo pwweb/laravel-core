@@ -30,6 +30,19 @@ $ php artisan migrate
 ### Customizing
 Not applicable at the moment.
 
+## Usage
+
+### Users and Persons
+In order to use the user and person model, rather than the default user model provided out of Laravel, the `auth.php` configuration file needs to be modified to the following:
+```php
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => \PWWEB\Core\Models\User::class,
+    ],
+],
+```
+
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.
