@@ -11,7 +11,6 @@ use PWWEB\Core\Models\Person;
  * The create request class for the Person
  * Class CreatePersonRequest
  *
- * @package   pwweb/core
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com

@@ -20,7 +20,6 @@ use PWWEB\Core\Models\User;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-
 class ProfileController extends Controller
 {
     /**
@@ -54,8 +53,8 @@ class ProfileController extends Controller
     {
         $profile = User::with('person')->findOrFail(\Auth::user()->id);
         $genders = Gender::getAll();
-        $titles  = Title::getAll();
-        $locale  = app()->getLocale();
+        $titles = Title::getAll();
+        $locale = app()->getLocale();
 
         return view('system.profile.edit', compact('profile', 'genders', 'titles'));
     }
@@ -89,13 +88,13 @@ class ProfileController extends Controller
         $validated = $request->validated();
 
         $user = User::where('id', \Auth::user()->id)->first();
-        $user->person->title       = $validated['title'];
-        $user->person->name        = $validated['name'];
+        $user->person->title = $validated['title'];
+        $user->person->name = $validated['name'];
         $user->person->middle_name = $validated['middle_name'];
-        $user->person->surname     = $validated['surname'];
+        $user->person->surname = $validated['surname'];
         $user->person->maiden_name = $validated['maiden_name'];
-        $user->person->dob         = $validated['dob'];
-        $user->person->gender      = $validated['gender'];
+        $user->person->dob = $validated['dob'];
+        $user->person->gender = $validated['gender'];
         $user->person->save();
         $user->save();
 

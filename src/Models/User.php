@@ -19,7 +19,6 @@ use Spatie\Permission\Traits\HasRoles;
  * @copyright 2020 sportly.io
  * @license   https://sportly.io/license.md Proprietary and confidential
  */
-
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;

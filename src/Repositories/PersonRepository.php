@@ -42,7 +42,7 @@ class PersonRepository extends BaseRepository
      *
      * @return array
      */
-    public function getFieldsSearchable() : array
+    public function getFieldsSearchable(): array
     {
         return $this->fieldSearchable;
     }
@@ -52,7 +52,7 @@ class PersonRepository extends BaseRepository
      *
      * @return string
      **/
-    public function model() : string
+    public function model(): string
     {
         return Person::class;
     }

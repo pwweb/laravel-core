@@ -25,7 +25,7 @@ abstract class Gender extends Enum
      *
      * @return Gender
      */
-    public static function none(): Gender
+    public static function none(): self
     {
         return new class() extends Gender {
             // phpcs:ignore
@@ -47,7 +47,7 @@ abstract class Gender extends Enum
      *
      * @return Gender
      */
-    public static function male(): Gender
+    public static function male(): self
     {
         return new class() extends Gender {
             // phpcs:ignore
@@ -69,7 +69,7 @@ abstract class Gender extends Enum
      *
      * @return Gender
      */
-    public static function female(): Gender
+    public static function female(): self
     {
         return new class() extends Gender {
             // phpcs:ignore
@@ -91,7 +91,7 @@ abstract class Gender extends Enum
      *
      * @return Gender
      */
-    public static function diverse(): Gender
+    public static function diverse(): self
     {
         return new class() extends Gender {
             // phpcs:ignore

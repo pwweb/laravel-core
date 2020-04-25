@@ -29,7 +29,7 @@ class Directive
     /**
      * Determine the name of the blade directive and register it.
      *
-     * @param boolean $hasEnd Flag to determine if a corresponding end tag is required.
+     * @param bool $hasEnd Flag to determine if a corresponding end tag is required.
      *
      * @return void
      */
@@ -41,7 +41,7 @@ class Directive
         Blade::directive($this->name, [$this, 'handle']);
 
         if (true === $hasEnd) {
-            Blade::directive('end' . $this->name, [$this, 'handleEnd']);
+            Blade::directive('end'.$this->name, [$this, 'handleEnd']);
         }
     }
 

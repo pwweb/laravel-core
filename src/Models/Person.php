@@ -20,14 +20,13 @@ use Spatie\MediaLibrary\Models\Media;
  *
  * Standard Person Model.
  *
- * @package   pwweb/core
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @property \App\Models\Pwweb\Core\Models\SystemLocalisationCountry nationality
  * @property \Illuminate\Database\Eloquent\Collection systemUsers
- * @property integer nationality_id
+ * @property int nationality_id
  * @property string title
  * @property string name
  * @property string middle_name
@@ -39,7 +38,6 @@ use Spatie\MediaLibrary\Models\Media;
  * @property string display_middle_name
  * @property string select_name
  */
-
 class Person extends Model implements HasMedia
 {
     use Migratable;
@@ -73,7 +71,7 @@ class Person extends Model implements HasMedia
         'dob',
         'display_name',
         'display_middle_name',
-        'select_name'
+        'select_name',
     ];
 
     /**
@@ -93,7 +91,7 @@ class Person extends Model implements HasMedia
         'dob' => 'date',
         'display_name' => 'string',
         'display_middle_name' => 'string',
-        'select_name' => 'string'
+        'select_name' => 'string',
     ];
 
     /**
@@ -103,7 +101,7 @@ class Person extends Model implements HasMedia
      */
     public static $rules = [
         'name' => 'required',
-        'surname' => 'required'
+        'surname' => 'required',
     ];
 
     /**
@@ -174,7 +172,7 @@ class Person extends Model implements HasMedia
      *
      * @return string
      */
-    public function getAgeAttribute()
+    public function getAgeAttribute(): Carbon
     {
         return Carbon::parse($this->dob)->age;
     }
@@ -184,7 +182,7 @@ class Person extends Model implements HasMedia
      *
      * @return string
      */
-    public function getAvatarAttribute()
+    public function getAvatarAttribute(): string
     {
         $mediaObject = $this->getMedia('avatars')->last();
 
@@ -200,7 +198,7 @@ class Person extends Model implements HasMedia
      *
      * @return string
      */
-    public function getDescriptionAttribute()
+    public function getDescriptionAttribute(): string
     {
         $description = [];
 
@@ -225,11 +223,11 @@ class Person extends Model implements HasMedia
     /**
      * Format the title attribute based on the corresponding enum.
      *
-     * @param integer $value Title enum number
+     * @param int $value Title enum number
      *
      * @return \PWWEB\Core\Enums\Title
      */
-    public function getTitleAttribute($value) : Title
+    public function getTitleAttribute($value): Title
     {
         $title = Title::make((int) $value);
 
@@ -239,11 +237,11 @@ class Person extends Model implements HasMedia
     /**
      * Format the gender attribute based on the corresponding enum.
      *
-     * @param integer $value Gender enum number
+     * @param int $value Gender enum number
      *
      * @return \PWWEB\Core\Enums\Gender
      */
-    public function getGenderAttribute($value) : Gender
+    public function getGenderAttribute($value): Gender
     {
         $gender = Gender::make((int) $value);
 
@@ -257,7 +255,7 @@ class Person extends Model implements HasMedia
      *
      * @return AddressContract
      */
-    public function getHomeAttribute($value) : ?AddressContract
+    public function getHomeAttribute($value): ?AddressContract
     {
         return $this->addresses->filter(
             function ($address, $key) {

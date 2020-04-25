@@ -16,7 +16,6 @@ use PWWEB\Core\Blade\Directive;
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @method    handle()
  */
-
 class Date extends Directive
 {
     /**
@@ -40,10 +39,10 @@ class Date extends Directive
         if (true === Str::contains($expression, ',')) {
             $expression = self::multipleArgs($expression);
 
-            $date   = $expression->get(0);
+            $date = $expression->get(0);
             $format = self::stripQuotes($expression->get(1));
         } else {
-            $date   = $expression;
+            $date = $expression;
             $format = 'd.m.Y H:i:s';
         }
 
@@ -51,7 +50,7 @@ class Date extends Directive
             '',
             [
                 "<?php if (false === is_null({$date})) : ?>",
-                "<?php echo {$date}->format('" . $format . "') ?>",
+                "<?php echo {$date}->format('".$format."') ?>",
                 '<?php endif; ?>',
             ]
         );
