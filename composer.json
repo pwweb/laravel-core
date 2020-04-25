@@ -12,7 +12,10 @@
     "require": {
         "php": ">=7.3.7",
         "laravel/framework": "^7.5.0",
-        "spatie/enum": "^2.3"
+        "laracasts/flash": "^3.0",
+        "spatie/enum": "^2.3",
+        "spatie/laravel-medialibrary": "^7.19",
+        "pwweb/localisation": "^0.2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~8.0",

@@ -37,7 +37,7 @@ abstract class Title extends Enum
             }
 
             // phpcs:ignore
-            public function getValue(): string
+            public function getValue()
             {
                 return '';
             }
@@ -59,7 +59,7 @@ abstract class Title extends Enum
             }
 
             // phpcs:ignore
-            public function getValue(): string
+            public function getValue()
             {
                 return __('Dr.');
             }
@@ -81,7 +81,7 @@ abstract class Title extends Enum
             }
 
             // phpcs:ignore
-            public function getValue(): string
+            public function getValue()
             {
                 return __('Prof.');
             }
@@ -103,7 +103,7 @@ abstract class Title extends Enum
             }
 
             // phpcs:ignore
-            public function getValue(): string
+            public function getValue()
             {
                 return __('Prof. Dr.');
             }
@@ -125,7 +125,7 @@ abstract class Title extends Enum
             }
 
             // phpcs:ignore
-            public function getValue(): string
+            public function getValue()
             {
                 return __('Eng.');
             }
@@ -147,7 +147,7 @@ abstract class Title extends Enum
             }
 
             // phpcs:ignore
-            public function getValue(): string
+            public function getValue()
             {
                 return __('Dipl.-Ing.');
             }

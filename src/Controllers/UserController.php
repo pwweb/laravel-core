@@ -5,10 +5,10 @@ namespace PWWEB\Core\Controllers;
 use App\Http\Controllers\Controller;
 use Flash;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use PWWEB\Core\Repositories\UserRepository;
 use PWWEB\Core\Requests\CreateUserRequest;
 use PWWEB\Core\Requests\UpdateUserRequest;
-use Response;
 
 /**
  * PWWEB\Core\Controllers\UserController UserController.
@@ -45,9 +45,9 @@ class UserController extends Controller
      *
      * @param Request $request
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $users = $this->userRepository->all();
 
@@ -58,9 +58,9 @@ class UserController extends Controller
     /**
      * Show the form for creating a new User.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(): View
     {
         return view('core::users.create');
     }
@@ -70,9 +70,9 @@ class UserController extends Controller
      *
      * @param CreateUserRequest $request
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(CreateUserRequest $request)
+    public function store(CreateUserRequest $request): RedirectResponse
     {
         $input = $request->all();
 
@@ -88,7 +88,7 @@ class UserController extends Controller
      *
      * @param int $id
      *
-     * @return Response
+     * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
     {
@@ -108,7 +108,7 @@ class UserController extends Controller
      *
      * @param int $id
      *
-     * @return Response
+     * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function edit($id)
     {
@@ -129,9 +129,9 @@ class UserController extends Controller
      * @param int $id
      * @param UpdateUserRequest $request
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id, UpdateUserRequest $request)
+    public function update($id, UpdateUserRequest $request): RedirectResponse
     {
         $user = $this->userRepository->find($id);
 
@@ -155,9 +155,9 @@ class UserController extends Controller
      *
      * @throws \Exception
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $user = $this->userRepository->find($id);
 

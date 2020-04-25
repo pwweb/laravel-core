@@ -3,12 +3,14 @@
 namespace PWWEB\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\System\Profile as ValidatedRequest;
-use App\Http\Requests\System\Profile\Avatar as ValidatedAvatarRequest;
-use App\Models\System\Person;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\View\View;
 use PWWEB\Core\Enums\Gender;
 use PWWEB\Core\Enums\Title;
+use PWWEB\Core\Models\Person;
 use PWWEB\Core\Models\User;
+use PWWEB\Core\Requests\Profile\UpdateAvatarRequest as ValidatedAvatarRequest;
+use PWWEB\Core\Requests\UpdateProfileRequest as ValidatedRequest;
 
 /**
  * PWWEB\Core\Controllers\Profile Controller.
@@ -35,28 +37,31 @@ class ProfileController extends Controller
     /**
      * Show the profile page for the logged in user.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
-        $profile = User::with('person')->findOrFail(\Auth::user()->id);
+        if (\Auth::user() instanceof Authenticatable) {
+            $profile = User::with('person')->findOrFail(\Auth::user()->id);
 
-        return view('system.profile.index', compact('profile'));
+            return view('system.profile.index', compact('profile'));
+        }
     }
 
     /**
      * Show the profile edit form.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\View\View
      */
-    public function edit()
+    public function edit(): View
     {
-        $profile = User::with('person')->findOrFail(\Auth::user()->id);
-        $genders = Gender::getAll();
-        $titles = Title::getAll();
-        $locale = app()->getLocale();
+        if (\Auth::user() instanceof Authenticatable) {
+            $profile = User::with('person')->findOrFail(\Auth::user()->id);
+            $genders = Gender::getAll();
+            $titles = Title::getAll();
 
-        return view('system.profile.edit', compact('profile', 'genders', 'titles'));
+            return view('system.profile.edit', compact('profile', 'genders', 'titles'));
+        }
     }
 
     /**
@@ -64,9 +69,9 @@ class ProfileController extends Controller
      *
      * @param \App\Http\Requests\ValidatedPerson $request validated data
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store($request)
+    public function store($request): RedirectResponse
     {
         $validated = $request->validated();
         if (true === $validated) {
@@ -81,9 +86,9 @@ class ProfileController extends Controller
      *
      * @param \App\Http\Requests\System\Profile $request validated changes to apply
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ValidatedRequest $request)
+    public function update(ValidatedRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
@@ -106,9 +111,9 @@ class ProfileController extends Controller
      *
      * @param \App\Http\Requests\System\Profile\Avatar $request validated changes to apply
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function updateAvatar(ValidatedAvatarRequest $request)
+    public function updateAvatar(ValidatedAvatarRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 

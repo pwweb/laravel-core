@@ -5,6 +5,7 @@ namespace PWWEB\Core\Controllers;
 use App\Http\Controllers\Controller;
 use Flash;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use PWWEB\Core\Enums\Gender;
 use PWWEB\Core\Enums\Title;
 use PWWEB\Core\Repositories\PersonRepository;
@@ -47,7 +48,7 @@ class PersonController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $persons = $this->personRepository->all();
 
@@ -60,7 +61,7 @@ class PersonController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(): View
     {
         $persons = $this->personRepository->all();
         $genders = Gender::getAll();
@@ -79,7 +80,7 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(CreatePersonRequest $request)
+    public function store(CreatePersonRequest $request): RedirectResponse
     {
         $input = $request->all();
 
@@ -144,7 +145,7 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id, UpdatePersonRequest $request)
+    public function update($id, UpdatePersonRequest $request): RedirectResponse
     {
         $person = $this->personRepository->find($id);
 

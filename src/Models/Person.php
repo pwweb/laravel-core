@@ -2,6 +2,7 @@
 
 namespace PWWEB\Core\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -11,6 +12,7 @@ use PWWEB\Core\Enums\Title;
 use PWWEB\Core\Traits\Migratable;
 use PWWEB\Localisation\Contracts\Address as AddressContract;
 use PWWEB\Localisation\Models\Address;
+use PWWEB\Localisation\Models\Country;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
@@ -125,7 +127,7 @@ class Person extends Model implements HasMedia
      **/
     public function nationality(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\Pwweb\Core\Models\SystemLocalisationCountry::class, 'nationality_id');
+        return $this->belongsTo(Country::class, 'nationality_id');
     }
 
     /**
