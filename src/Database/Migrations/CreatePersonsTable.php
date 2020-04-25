@@ -17,7 +17,6 @@ use PWWEB\Localisation\Models\Country;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-
 class CreatePersonsTable extends Migration
 {
     /**

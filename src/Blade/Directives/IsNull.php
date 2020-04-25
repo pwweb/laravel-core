@@ -16,7 +16,6 @@ use PWWEB\Core\Blade\Directive;
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @method    handle()
  */
-
 class IsNull extends Directive
 {
     /**

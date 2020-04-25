@@ -27,7 +27,7 @@ abstract class Title extends Enum
      *
      * @return Title
      */
-    public static function none(): Title
+    public static function none(): self
     {
         return new class() extends Title {
             // phpcs:ignore
@@ -49,7 +49,7 @@ abstract class Title extends Enum
      *
      * @return Title
      */
-    public static function dr(): Title
+    public static function dr(): self
     {
         return new class() extends Title {
             // phpcs:ignore
@@ -71,10 +71,9 @@ abstract class Title extends Enum
      *
      * @return Title
      */
-    public static function prof(): Title
+    public static function prof(): self
     {
         return new class() extends Title {
-
             // phpcs:ignore
             public function getIndex(): int
             {
@@ -94,7 +93,7 @@ abstract class Title extends Enum
      *
      * @return Title
      */
-    public static function profdr(): Title
+    public static function profdr(): self
     {
         return new class() extends Title {
             // phpcs:ignore
@@ -116,7 +115,7 @@ abstract class Title extends Enum
      *
      * @return Title
      */
-    public static function eng(): Title
+    public static function eng(): self
     {
         return new class() extends Title {
             // phpcs:ignore
@@ -138,7 +137,7 @@ abstract class Title extends Enum
      *
      * @return Title
      */
-    public static function dipling(): Title
+    public static function dipling(): self
     {
         return new class() extends Title {
             // phpcs:ignore

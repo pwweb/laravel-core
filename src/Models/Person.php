@@ -22,7 +22,6 @@ use Spatie\MediaLibrary\Models\Media;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-
 class Person extends Model implements HasMedia
 {
     use Migratable;
@@ -148,11 +147,11 @@ class Person extends Model implements HasMedia
     /**
      * Format the title attribute based on the corresponding enum.
      *
-     * @param integer $value Title enum number
+     * @param int $value Title enum number
      *
      * @return \PWWEB\Core\Enums\Title
      */
-    public function getTitleAttribute($value) : Title
+    public function getTitleAttribute($value): Title
     {
         $title = Title::make((int) $value);
 
@@ -162,11 +161,11 @@ class Person extends Model implements HasMedia
     /**
      * Format the gender attribute based on the corresponding enum.
      *
-     * @param integer $value Gender enum number
+     * @param int $value Gender enum number
      *
      * @return \PWWEB\Core\Enums\Gender
      */
-    public function getGenderAttribute($value) : Gender
+    public function getGenderAttribute($value): Gender
     {
         $gender = Gender::make((int) $value);
 
@@ -180,7 +179,7 @@ class Person extends Model implements HasMedia
      *
      * @return AddressContract
      */
-    public function getHomeAttribute($value) : ?AddressContract
+    public function getHomeAttribute($value): ?AddressContract
     {
         return $this->addresses->filter(
             function ($address, $key) {
