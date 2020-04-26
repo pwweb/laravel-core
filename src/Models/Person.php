@@ -172,9 +172,9 @@ class Person extends Model implements HasMedia
     /**
      * Accessor for Age.
      *
-     * @return string
+     * @return int
      */
-    public function getAgeAttribute(): Carbon
+    public function getAgeAttribute(): integer
     {
         return Carbon::parse($this->dob)->age;
     }

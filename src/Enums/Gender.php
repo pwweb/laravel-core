@@ -35,7 +35,7 @@ abstract class Gender extends Enum
             }
 
             // phpcs:ignore
-            public function getValue()
+            public function getValue(): string
             {
                 return __('');
             }
@@ -57,7 +57,7 @@ abstract class Gender extends Enum
             }
 
             // phpcs:ignore
-            public function getValue()
+            public function getValue(): string
             {
                 return __('male');
             }
@@ -79,7 +79,7 @@ abstract class Gender extends Enum
             }
 
             // phpcs:ignore
-            public function getValue()
+            public function getValue(): string
             {
                 return __('female');
             }
@@ -101,7 +101,7 @@ abstract class Gender extends Enum
             }
 
             // phpcs:ignore
-            public function getValue()
+            public function getValue(): string
             {
                 return __('diverse');
             }

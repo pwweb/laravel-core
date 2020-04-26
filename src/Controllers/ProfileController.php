@@ -4,6 +4,7 @@ namespace PWWEB\Core\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use PWWEB\Core\Enums\Gender;
 use PWWEB\Core\Enums\Title;
@@ -67,24 +68,24 @@ class ProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\ValidatedPerson $request validated data
+     * @param object $request validated data
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store($request): RedirectResponse
+    public function store($request): ?RedirectResponse
     {
         $validated = $request->validated();
         if (true === $validated) {
             // $person = new Person();
             // $person->save();
-            return redirect()->route('system.profile.index');
         }
+        return redirect()->route('system.profile.index');
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\System\Profile $request validated changes to apply
+     * @param \PWWEB\Core\Requests\UpdateProfileRequest $request validated changes to apply
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -109,7 +110,7 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\System\Profile\Avatar $request validated changes to apply
+     * @param \PWWEB\Core\Requests\Profile\UpdateAvatarRequest $request validated changes to apply
      *
      * @return \Illuminate\Http\RedirectResponse
      */
