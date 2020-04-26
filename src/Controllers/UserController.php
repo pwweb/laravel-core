@@ -4,6 +4,7 @@ namespace PWWEB\Core\Controllers;
 
 use App\Http\Controllers\Controller;
 use Flash;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use PWWEB\Core\Repositories\UserRepository;

@@ -79,6 +79,7 @@ class ProfileController extends Controller
             // $person = new Person();
             // $person->save();
         }
+
         return redirect()->route('system.profile.index');
     }
 
