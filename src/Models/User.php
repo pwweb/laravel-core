@@ -16,8 +16,9 @@ use Spatie\Permission\Traits\HasRoles;
  * Standard User Model.
  *
  * @author    Frank Pillukeit <frank@sportly.io>
- * @copyright 2020 sportly.io
- * @license   https://sportly.io/license.md Proprietary and confidential
+ * @author    Richard Browne <richard.browne@pw-websolutions.com
+ * @copyright 2020 pw-websolutions.com
+ * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
