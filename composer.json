@@ -15,6 +15,7 @@
         "laracasts/flash": "^3.0",
         "spatie/enum": "^2.3",
         "spatie/laravel-medialibrary": "^7.19",
+        "spatie/laravel-permission": "^3.11",
         "pwweb/localisation": "^0.2.0"
     },
     "require-dev": {
