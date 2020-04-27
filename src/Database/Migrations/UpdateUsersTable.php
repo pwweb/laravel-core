@@ -57,7 +57,14 @@ class UpdateUsersTable extends Migration
         Schema::table(
             $tableName,
             function (Blueprint $table) {
-                $table->string('name')->after('id')->nullable();
+                $table->renameColumn('username', 'name');
+            }
+        );
+
+        Schema::table(
+            $tableName,
+            function (Blueprint $table) {
+                $table->string('username')->nullable(false)->change();
             }
         );
 
@@ -65,8 +72,6 @@ class UpdateUsersTable extends Migration
             Schema::table(
                 $tableName,
                 function (Blueprint $table) {
-                    $table->string('username')->nullable(false)->change();
-                    $table->renameColumn('username', 'name');
                     $table->dropColumn('person_id');
                     $table->dropForeign('person_id');
                 }
