@@ -55,6 +55,11 @@ class UpdateProfileRequest extends FormRequest
         return $base;
     }
 
+    /**
+     * Method to overwrite the default messages in case validation fails.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [

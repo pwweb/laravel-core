@@ -44,7 +44,7 @@ class UserController extends Controller
     /**
      * Display a listing of the User.
      *
-     * @param Request $request
+     * @param Request $request Request for the user list / index.
      *
      * @return \Illuminate\View\View
      */
@@ -69,7 +69,7 @@ class UserController extends Controller
     /**
      * Store a newly created User in storage.
      *
-     * @param CreateUserRequest $request
+     * @param CreateUserRequest $request Request for the user creation.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -87,7 +87,7 @@ class UserController extends Controller
     /**
      * Display the specified User.
      *
-     * @param int $id
+     * @param int $id ID of the user to be displayed.
      *
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
@@ -95,7 +95,7 @@ class UserController extends Controller
     {
         $user = $this->userRepository->find($id);
 
-        if (empty($user)) {
+        if (true === empty($user)) {
             Flash::error('User not found');
 
             return redirect(route('core.users.index'));
@@ -107,7 +107,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified User.
      *
-     * @param int $id
+     * @param int $id ID of the user to be edited.
      *
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
@@ -115,7 +115,7 @@ class UserController extends Controller
     {
         $user = $this->userRepository->find($id);
 
-        if (empty($user)) {
+        if (true === empty($user)) {
             Flash::error('User not found');
 
             return redirect(route('core.users.index'));
@@ -127,8 +127,8 @@ class UserController extends Controller
     /**
      * Update the specified User in storage.
      *
-     * @param int $id
-     * @param UpdateUserRequest $request
+     * @param int               $id      ID of the user to be updated.
+     * @param UpdateUserRequest $request Request for the user update.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -136,7 +136,7 @@ class UserController extends Controller
     {
         $user = $this->userRepository->find($id);
 
-        if (empty($user)) {
+        if (true === empty($user)) {
             Flash::error('User not found');
 
             return redirect(route('core.users.index'));
@@ -152,7 +152,7 @@ class UserController extends Controller
     /**
      * Remove the specified User from storage.
      *
-     * @param int $id
+     * @param int $id ID of the user to be deleted.
      *
      * @throws \Exception
      *
@@ -162,7 +162,7 @@ class UserController extends Controller
     {
         $user = $this->userRepository->find($id);
 
-        if (empty($user)) {
+        if (true === empty($user)) {
             Flash::error('User not found');
 
             return redirect(route('core.models.users.index'));

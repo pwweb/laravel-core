@@ -2,13 +2,12 @@
 
 namespace PWWEB\Core\Repositories;
 
-use App\Repositories\BaseRepository;
 use PWWEB\Core\Models\Person;
 
 /**
  * PWWEB\Core\Repositories\PersonRepository PersonRepository.
  *
- * The repository for Address.
+ * The repository for Person.
  * Class AddressRepository
  *
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>

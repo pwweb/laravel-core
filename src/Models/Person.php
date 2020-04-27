@@ -26,19 +26,19 @@ use Spatie\MediaLibrary\Models\Media;
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @property \App\Models\Pwweb\Core\Models\SystemLocalisationCountry nationality
- * @property \Illuminate\Database\Eloquent\Collection systemUsers
- * @property int nationality_id
- * @property string title
- * @property string name
- * @property string middle_name
- * @property string surname
- * @property string maiden_name
- * @property string gender
- * @property string dob
- * @property string display_name
- * @property string display_middle_name
- * @property string select_name
+ * @property  \App\Models\Pwweb\Core\Models\SystemLocalisationCountry nationality
+ * @property  \Illuminate\Database\Eloquent\Collection systemUsers
+ * @property  int nationality_id
+ * @property  string title
+ * @property  string name
+ * @property  string middle_name
+ * @property  string surname
+ * @property  string maiden_name
+ * @property  string gender
+ * @property  string dob
+ * @property  string display_name
+ * @property  string display_middle_name
+ * @property  string select_name
  */
 class Person extends Model implements HasMedia
 {

@@ -2,7 +2,6 @@
 
 namespace PWWEB\Core\Repositories;
 
-use App\Repositories\BaseRepository;
 use PWWEB\Core\Models\User;
 
 /**
