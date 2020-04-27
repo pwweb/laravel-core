@@ -109,7 +109,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return DateTime Joined date
      */
-    public function getJoinedAttribute(): DateTime
+    public function getJoinedAttribute(): \DateTime
     {
         return $this->created_at;
     }
