@@ -50,7 +50,7 @@ class Date extends Directive
             '',
             [
                 "<?php if (false === is_null({$date})) : ?>",
-                "<?php echo {$date}->format('".$format."') ?>",
+                "<?php echo {$date}->format('" . $format . "') ?>",
                 '<?php endif; ?>',
             ]
         );
