@@ -11,7 +11,6 @@ use PWWEB\Core\Models\Menu\Item;
  * The repository for Item.
  * Class ItemRepository
  *
- * @package   pwweb/localisation
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
@@ -31,7 +30,7 @@ class ItemRepository extends BaseRepository
         'identifier',
         'title',
         'separator',
-        'class'
+        'class',
     ];
 
     /**

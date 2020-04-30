@@ -11,7 +11,6 @@ use PWWEB\Core\Models\Menu\Environment;
  * The repository for Environment.
  * Class EnvironmentRepository
  *
- * @package   pwweb/localisation
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
@@ -23,7 +22,7 @@ class EnvironmentRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'name'
+        'name',
     ];
 
     /**

@@ -15,7 +15,6 @@ use Eloquent as Model;
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @property  string name
  */
-
 class Environment extends Model
 {
     public $table = 'system_menu_environments';
@@ -23,13 +22,10 @@ class Environment extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
     protected $dates = ['deleted_at'];
 
-
-
     public $fillable = [
-        'name'
+        'name',
     ];
 
     /**
@@ -39,7 +35,7 @@ class Environment extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string'
+        'name' => 'string',
     ];
 
     /**
@@ -48,6 +44,6 @@ class Environment extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required'
+        'name' => 'required',
     ];
 }

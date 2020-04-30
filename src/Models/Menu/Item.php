@@ -9,22 +9,20 @@ use Eloquent as Model;
  *
  * Standard Item Model.
  *
- * @package   pwweb/localisation
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @property  integer system_menu_environments_id
- * @property  integer _lft
- * @property  integer _rgt
- * @property  integer parent_id
- * @property  integer level
+ * @property  int system_menu_environments_id
+ * @property  int _lft
+ * @property  int _rgt
+ * @property  int parent_id
+ * @property  int level
  * @property  string identifier
  * @property  string title
- * @property  boolean separator
+ * @property  bool separator
  * @property  string class
  */
-
 class Item extends Model
 {
     public $table = 'system_menu_items';
@@ -32,10 +30,7 @@ class Item extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
     protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'system_menu_environments_id',
@@ -46,7 +41,7 @@ class Item extends Model
         'identifier',
         'title',
         'separator',
-        'class'
+        'class',
     ];
 
     /**
@@ -64,7 +59,7 @@ class Item extends Model
         'identifier' => 'string',
         'title' => 'string',
         'separator' => 'boolean',
-        'class' => 'string'
+        'class' => 'string',
     ];
 
     /**
@@ -80,6 +75,6 @@ class Item extends Model
         'identifier' => 'required',
         'title' => 'required',
         'separator' => 'required',
-        'class' => 'required'
+        'class' => 'required',
     ];
 }
