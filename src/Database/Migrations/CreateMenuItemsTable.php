@@ -26,11 +26,11 @@ class CreateMenuItemsTable extends Migration
         Schema::create(
             Item::getTableName(),
             function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->integer('environment_id');
+                $table->id('id');
+                $table->foreignId('environment_id');
                 $table->integer('_lft');
                 $table->integer('_rgt');
-                $table->integer('parent_id')->nullable();
+                $table->foreignId('parent_id')->nullable();
                 $table->integer('level');
                 $table->string('identifier');
                 $table->string('title');

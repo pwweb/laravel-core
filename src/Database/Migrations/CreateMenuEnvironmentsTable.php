@@ -27,7 +27,7 @@ class CreateMenuEnvironmentsTable extends Migration
         Schema::create(
             Environment::getTableName(),
             function (Blueprint $table) {
-                $table->bigIncrements('id');
+                $table->id('id');
                 $table->string('name');
 
                 $table->timestamps();

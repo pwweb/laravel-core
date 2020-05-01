@@ -28,8 +28,8 @@ class CreatePersonsTable extends Migration
         Schema::create(
             Person::getTableName(),
             function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->unsignedBigInteger('nationality_id')->index()->nullable();
+                $table->id('id');
+                $table->foreignId('nationality_id')->index()->nullable();
                 $table->string('title')->nullable();
                 $table->string('name');
                 $table->string('middle_name')->nullable();

@@ -28,7 +28,7 @@ class UpdateUsersTable extends Migration
         Schema::table(
             User::getTableName(),
             function (Blueprint $table) {
-                $table->unsignedBigInteger('person_id')->after('id')->nullable();
+                $table->foreignId('person_id')->after('id')->nullable();
                 $table->string('name')->nullable()->change();
             }
         );
