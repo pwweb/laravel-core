@@ -3,6 +3,7 @@
 namespace PWWEB\Core\Models\Menu;
 
 use Eloquent as Model;
+use PWWEB\Core\Traits\Migratable;
 
 /**
  * PWWEB\Core\Models\Menu\Environment Model.
@@ -18,16 +19,16 @@ use Eloquent as Model;
 
 class Environment extends Model
 {
-    public $table = 'system_menu_environments';
+    use Migratable;
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
-    protected $dates = ['deleted_at'];
-
-
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     public $fillable = [
         'name'
     ];
@@ -50,4 +51,18 @@ class Environment extends Model
     public static $rules = [
         'name' => 'required'
     ];
+
+    /**
+     * Constructor.
+     *
+     * @param array $attributes additional attributes for model initialisation
+     *
+     * @return void
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setTable(config('pwweb.core.table_names.menu_environments'));
+    }
 }

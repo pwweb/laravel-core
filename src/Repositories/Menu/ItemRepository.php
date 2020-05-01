@@ -20,6 +20,8 @@ use PWWEB\Core\Models\Menu\Item;
 class ItemRepository extends BaseRepository
 {
     /**
+     * Fields that can be searched by.
+     *
      * @var array
      */
     protected $fieldSearchable = [
@@ -39,15 +41,17 @@ class ItemRepository extends BaseRepository
      *
      * @return array
      */
-    public function getFieldsSearchable()
+    public function getFieldsSearchable(): array
     {
         return $this->fieldSearchable;
     }
 
     /**
      * Configure the Model.
+     *
+     * @return string
      **/
-    public function model()
+    public function model(): string
     {
         return Item::class;
     }

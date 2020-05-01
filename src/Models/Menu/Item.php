@@ -3,6 +3,7 @@
 namespace PWWEB\Core\Models\Menu;
 
 use Eloquent as Model;
+use PWWEB\Core\Traits\Migratable;
 
 /**
  * PWWEB\Core\Models\Menu\Item Model.
@@ -14,7 +15,7 @@ use Eloquent as Model;
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @property  integer system_menu_environments_id
+ * @property  integer environment_id
  * @property  integer _lft
  * @property  integer _rgt
  * @property  integer parent_id
@@ -27,18 +28,18 @@ use Eloquent as Model;
 
 class Item extends Model
 {
-    public $table = 'system_menu_items';
+    use Migratable;
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
-    protected $dates = ['deleted_at'];
-
-
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     public $fillable = [
-        'system_menu_environments_id',
+        'environment_id',
         '_lft',
         '_rgt',
         'parent_id',
@@ -56,7 +57,7 @@ class Item extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'system_menu_environments_id' => 'integer',
+        'environment_id' => 'integer',
         '_lft' => 'integer',
         '_rgt' => 'integer',
         'parent_id' => 'integer',
@@ -73,7 +74,7 @@ class Item extends Model
      * @var array
      */
     public static $rules = [
-        'system_menu_environments_id' => 'required',
+        'environment_id' => 'required',
         '_lft' => 'required',
         '_rgt' => 'required',
         'level' => 'required',
@@ -82,4 +83,18 @@ class Item extends Model
         'separator' => 'required',
         'class' => 'required'
     ];
+
+    /**
+     * Constructor.
+     *
+     * @param array $attributes additional attributes for model initialisation
+     *
+     * @return void
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->setTable(config('pwweb.core.table_names.menu_items'));
+    }
 }

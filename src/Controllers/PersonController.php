@@ -26,9 +26,9 @@ use PWWEB\Core\Requests\UpdatePersonRequest;
 class PersonController extends Controller
 {
     /**
-     * Repository of persons to be used throughout the controller.
+     * Repository of Persons to be used throughout the controller.
      *
-     * @var \PWWEB\Core\Repositories\PersonRepository
+     * @var PersonRepository
      */
     private $personRepository;
 
@@ -166,13 +166,13 @@ class PersonController extends Controller
     /**
      * Remove the specified Person from storage.
      *
-     * @param int $id ID of the PersonPerson to be destroyed.
+     * @param int $id ID of the Person to be destroyed.
      *
      * @throws \Exception
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $person = $this->personRepository->find($id);
 

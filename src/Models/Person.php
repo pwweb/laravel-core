@@ -27,7 +27,7 @@ use Spatie\MediaLibrary\Models\Media;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @property  \App\Models\Pwweb\Core\Models\SystemLocalisationCountry nationality
- * @property  \Illuminate\Database\Eloquent\Collection systemUsers
+ * @property  \Illuminate\Database\Eloquent\Collection users
  * @property  int nationality_id
  * @property  string title
  * @property  string name

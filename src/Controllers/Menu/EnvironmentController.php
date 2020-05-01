@@ -4,11 +4,12 @@ namespace PWWEB\Core\Controllers\Menu;
 
 use App\Http\Controllers\Controller;
 use Flash;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use PWWEB\Core\Repositories\Menu\EnvironmentRepository;
 use PWWEB\Core\Requests\Menu\CreateEnvironmentRequest;
 use PWWEB\Core\Requests\Menu\UpdateEnvironmentRequest;
-use Response;
 
 /**
  * PWWEB\Core\Controllers\Menu\EnvironmentController EnvironmentController.
@@ -24,16 +25,16 @@ use Response;
 class EnvironmentController extends Controller
 {
     /**
-     * [private description].
+     * Repository of Environments to be used throughout the controller.
      *
      * @var EnvironmentRepository
      */
     private $environmentRepository;
 
     /**
-     * [__construct description].
+     *  Constructor for the Environment controller.
      *
-     * @param EnvironmentRepository $environmentRepo [description]
+     * @param EnvironmentRepository $environmentRepo Repository of Environments.
      */
     public function __construct(EnvironmentRepository $environmentRepo)
     {
@@ -43,11 +44,11 @@ class EnvironmentController extends Controller
     /**
      * Display a listing of the Environment.
      *
-     * @param Request $request
+     * @param Request $request Request containing the information for filtering.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $environments = $this->environmentRepository->all();
 
@@ -58,9 +59,9 @@ class EnvironmentController extends Controller
     /**
      * Show the form for creating a new Environment.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(): View
     {
         return view('core::menu.environments.create');
     }
@@ -68,11 +69,11 @@ class EnvironmentController extends Controller
     /**
      * Store a newly created Environment in storage.
      *
-     * @param CreateEnvironmentRequest $request
+     * @param CreateEnvironmentRequest $request Request containing the information to be stored.
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(CreateEnvironmentRequest $request)
+    public function store(CreateEnvironmentRequest $request): RedirectResponse
     {
         $input = $request->all();
 
@@ -86,15 +87,15 @@ class EnvironmentController extends Controller
     /**
      * Display the specified Environment.
      *
-     * @param int $id
+     * @param int $id ID of the Environment to be displayed. Used for retrieving currently held data.
      *
-     * @return Response
+     * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
     {
         $environment = $this->environmentRepository->find($id);
 
-        if (empty($environment)) {
+        if (true === empty($environment)) {
             Flash::error('Environment not found');
 
             return redirect(route('core.menu.environments.index'));
@@ -106,15 +107,15 @@ class EnvironmentController extends Controller
     /**
      * Show the form for editing the specified Environment.
      *
-     * @param int $id
+     * @param int $id ID of the Environment to be edited. Used for retrieving currently held data.
      *
-     * @return Response
+     * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function edit($id)
     {
         $environment = $this->environmentRepository->find($id);
 
-        if (empty($environment)) {
+        if (true === empty($environment)) {
             Flash::error('Environment not found');
 
             return redirect(route('core.menu.environments.index'));
@@ -126,16 +127,16 @@ class EnvironmentController extends Controller
     /**
      * Update the specified Environment in storage.
      *
-     * @param int                      $id
-     * @param UpdateEnvironmentRequest $request
+     * @param int                      $id      ID of the Environment to be updated.
+     * @param UpdateEnvironmentRequest $request Request containing the information to be updated.
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id, UpdateEnvironmentRequest $request)
+    public function update($id, UpdateEnvironmentRequest $request): RedirectResponse
     {
         $environment = $this->environmentRepository->find($id);
 
-        if (empty($environment)) {
+        if (true === empty($environment)) {
             Flash::error('Environment not found');
 
             return redirect(route('core.menu.environments.index'));
@@ -151,17 +152,17 @@ class EnvironmentController extends Controller
     /**
      * Remove the specified Environment from storage.
      *
-     * @param int $id
+     * @param int $id ID of the Environment to be destroyed.
      *
      * @throws \Exception
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $environment = $this->environmentRepository->find($id);
 
-        if (empty($environment)) {
+        if (true === empty($environment)) {
             Flash::error('Environment not found');
 
             return redirect(route('core.menu.environments.index'));

@@ -13,6 +13,18 @@ return [
          */
 
         'person' => PWWEB\Core\Models\Person::class,
+
+        /*
+         *
+         */
+
+        'menu_environment' => PWWEB\Core\Models\Menu\Environment::class,
+
+        /*
+         *
+         */
+
+        'menu_item' => PWWEB\Core\Models\Menu\Item::class,
     ],
 
     'table_names' => [
@@ -20,6 +32,10 @@ return [
         'users' => 'system_users',
 
         'persons' => 'system_persons',
+
+        'menu_environments' => 'system_menu_environments',
+
+        'menu_items' => 'system_menu_items',
     ],
 
     'column_names' => [

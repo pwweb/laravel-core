@@ -4,11 +4,12 @@ namespace PWWEB\Core\Controllers\Menu;
 
 use App\Http\Controllers\Controller;
 use Flash;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use PWWEB\Core\Repositories\Menu\ItemRepository;
 use PWWEB\Core\Requests\Menu\CreateItemRequest;
 use PWWEB\Core\Requests\Menu\UpdateItemRequest;
-use Response;
 
 /**
  * App\Http\Controllers\System\Menu\ItemController ItemController.
@@ -25,10 +26,17 @@ use Response;
 class ItemController extends Controller
 {
     /**
+     * Repository of Items to be used throughout the controller.
+     *
      * @var ItemRepository
      */
     private $itemRepository;
 
+    /**
+     *  Constructor for the Item controller.
+     *
+     * @param ItemRepository $itemRepo Repository of Items.
+     */
     public function __construct(ItemRepository $itemRepo)
     {
         $this->itemRepository = $itemRepo;
@@ -37,11 +45,11 @@ class ItemController extends Controller
     /**
      * Display a listing of the Item.
      *
-     * @param Request $request
+     * @param Request $request Request containing the information for filtering.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $items = $this->itemRepository->all();
 
@@ -52,9 +60,9 @@ class ItemController extends Controller
     /**
      * Show the form for creating a new Item.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(): View
     {
         return view('core::menu.items.create');
     }
@@ -62,11 +70,11 @@ class ItemController extends Controller
     /**
      * Store a newly created Item in storage.
      *
-     * @param CreateItemRequest $request
+     * @param CreateItemRequest $request Request containing the information to be stored.
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(CreateItemRequest $request)
+    public function store(CreateItemRequest $request): RedirectResponse
     {
         $input = $request->all();
 
@@ -80,15 +88,15 @@ class ItemController extends Controller
     /**
      * Display the specified Item.
      *
-     * @param int $id
+     * @param int $id ID of the Item to be displayed. Used for retrieving currently held data.
      *
-     * @return Response
+     * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
     {
         $item = $this->itemRepository->find($id);
 
-        if (empty($item)) {
+        if (true === empty($item)) {
             Flash::error('Item not found');
 
             return redirect(route('core.menu.items.index'));
@@ -100,15 +108,15 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified Item.
      *
-     * @param int $id
+     * @param int $id ID of the Item to be edited. Used for retrieving currently held data.
      *
-     * @return Response
+     * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function edit($id)
     {
         $item = $this->itemRepository->find($id);
 
-        if (empty($item)) {
+        if (true === empty($item)) {
             Flash::error('Item not found');
 
             return redirect(route('core.menu.items.index'));
@@ -120,16 +128,16 @@ class ItemController extends Controller
     /**
      * Update the specified Item in storage.
      *
-     * @param int               $id
-     * @param UpdateItemRequest $request
+     * @param int               $id      ID of the Item to be updated.
+     * @param UpdateItemRequest $request Request containing the information to be updated.
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id, UpdateItemRequest $request)
+    public function update($id, UpdateItemRequest $request): RedirectResponse
     {
         $item = $this->itemRepository->find($id);
 
-        if (empty($item)) {
+        if (true === empty($item)) {
             Flash::error('Item not found');
 
             return redirect(route('core.menu.items.index'));
@@ -145,17 +153,17 @@ class ItemController extends Controller
     /**
      * Remove the specified Item from storage.
      *
-     * @param int $id
+     * @param int $id ID of the Environment to be destroyed.
      *
      * @throws \Exception
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $item = $this->itemRepository->find($id);
 
-        if (empty($item)) {
+        if (true === empty($item)) {
             Flash::error('Item not found');
 
             return redirect(route('core.menu.items.index'));
