@@ -18,7 +18,6 @@ use PWWEB\Core\Models\Menu\Environment;
  */
 class CreateEnvironmentRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
