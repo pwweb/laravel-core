@@ -3,7 +3,6 @@
 namespace PWWEB\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use PWWEB\Core\Enums\Gender;
@@ -26,6 +25,13 @@ use PWWEB\Core\Requests\UpdateProfileRequest as ValidatedRequest;
 class ProfileController extends Controller
 {
     /**
+     * The currently logged in User.
+     *
+     * @var User
+     */
+    private $user = null;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -33,6 +39,10 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        if (($user = \Auth::user()) instance of User) {
+            $this->user = $user;
+        }
     }
 
     /**
@@ -42,11 +52,9 @@ class ProfileController extends Controller
      */
     public function index(): View
     {
-        if (\Auth::user() instanceof Authenticatable) {
-            $profile = User::with('person')->findOrFail(\Auth::user()->id);
+        $profile = User::with('person')->findOrFail($this->user->id);
 
-            return view('system.profile.index', compact('profile'));
-        }
+        return view('system.profile.index', compact('profile'));
     }
 
     /**
@@ -56,13 +64,11 @@ class ProfileController extends Controller
      */
     public function edit(): View
     {
-        if (\Auth::user() instanceof Authenticatable) {
-            $profile = User::with('person')->findOrFail(\Auth::user()->id);
-            $genders = Gender::getAll();
-            $titles = Title::getAll();
+        $profile = User::with('person')->findOrFail($this->user->id);
+        $genders = Gender::getAll();
+        $titles = Title::getAll();
 
-            return view('system.profile.edit', compact('profile', 'genders', 'titles'));
-        }
+        return view('system.profile.edit', compact('profile', 'genders', 'titles'));
     }
 
     /**
@@ -74,12 +80,6 @@ class ProfileController extends Controller
      */
     public function store($request): ?RedirectResponse
     {
-        $validated = $request->validated();
-        if (true === $validated) {
-            // $person = new Person();
-            // $person->save();
-        }
-
         return redirect()->route('system.profile.index');
     }
 
@@ -94,7 +94,7 @@ class ProfileController extends Controller
     {
         $validated = $request->validated();
 
-        $user = User::where('id', \Auth::user()->id)->first();
+        $user = User::where('id', $this->user->id)->first();
         $user->person->title = $validated['title'];
         $user->person->name = $validated['name'];
         $user->person->middle_name = $validated['middle_name'];
@@ -119,7 +119,7 @@ class ProfileController extends Controller
     {
         $validated = $request->validated();
 
-        $user = User::where('id', \Auth::user()->id)->first();
+        $user = User::where('id', $this->user->id)->first();
 
         if (true === $request->hasFile('avatar') && true === $request->file('avatar')->isValid()) {
             $user->person->addMediaFromRequest('avatar')->toMediaCollection('avatars');
