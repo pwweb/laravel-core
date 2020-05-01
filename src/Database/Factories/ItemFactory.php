@@ -24,7 +24,7 @@ $factory->define(
             'identifier' => $faker->word,
             'title' => $faker->word,
             'separator' => $faker->word,
-            'class' => $faker->word
+            'class' => $faker->word,
         ];
     }
 );

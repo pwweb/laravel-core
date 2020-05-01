@@ -16,7 +16,6 @@ use PWWEB\Core\Traits\Migratable;
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @property  string name
  */
-
 class Environment extends Model
 {
     use Migratable;
@@ -30,7 +29,7 @@ class Environment extends Model
      * @var array
      */
     public $fillable = [
-        'name'
+        'name',
     ];
 
     /**
@@ -40,7 +39,7 @@ class Environment extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string'
+        'name' => 'string',
     ];
 
     /**
@@ -49,7 +48,7 @@ class Environment extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required'
+        'name' => 'required',
     ];
 
     /**

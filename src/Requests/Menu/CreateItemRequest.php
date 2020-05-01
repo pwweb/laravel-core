@@ -18,7 +18,6 @@ use PWWEB\Core\Models\Menu\Item;
  */
 class CreateItemRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
