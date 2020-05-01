@@ -2,7 +2,7 @@
 
 Route::namespace('PWWEB\Core\Controllers')
     ->name('core.')
-    // ->middleware('auth')
+    ->middleware(['web', 'auth'])
     ->group(
         function () {
             Route::resource('persons', PersonController::class);
