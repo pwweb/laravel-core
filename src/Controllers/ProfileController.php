@@ -7,7 +7,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use PWWEB\Core\Enums\Gender;
 use PWWEB\Core\Enums\Title;
-use PWWEB\Core\Models\Person;
 use PWWEB\Core\Models\User;
 use PWWEB\Core\Requests\Profile\UpdateAvatarRequest as ValidatedAvatarRequest;
 use PWWEB\Core\Requests\UpdateProfileRequest as ValidatedRequest;
@@ -40,7 +39,7 @@ class ProfileController extends Controller
     {
         $this->middleware('auth');
 
-        if (($user = \Auth::user()) instance of User) {
+        if (($user = \Auth::user()) instanceof User) {
             $this->user = $user;
         }
     }
