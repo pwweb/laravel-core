@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\User\Password;
+namespace PWWEB\Core\Requests\User\Password;
 
 use Illuminate\Foundation\Http\FormRequest;
 use PWWEB\Core\Models\User\Password\History;

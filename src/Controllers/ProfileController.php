@@ -50,21 +50,23 @@ class ProfileController extends Controller
     /**
      * Show the profile page for the logged in user.
      *
-     * @return \Illuminate\View\View
+     * @return View|RedirectResponse
      */
-    public function index(): View
+    public function index()
     {
         if (($user = \Auth::user()) instanceof User) {
             $profile = User::with('person')->findOrFail($user->id);
 
             return view('system.profile.index', compact('profile'));
         }
+
+        return redirect()->back();
     }
 
     /**
      * Resend the verification email if the account has not yet been verified.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function reverify(): RedirectResponse
     {
@@ -80,7 +82,7 @@ class ProfileController extends Controller
     /**
      * Show the profile edit form.
      *
-     * @return \Illuminate\View\View
+     * @return View|RedirectResponse
      */
     public function edit(): View
     {
@@ -91,6 +93,8 @@ class ProfileController extends Controller
 
             return view('system.profile.edit', compact('profile', 'genders', 'titles'));
         }
+
+        return redirect()->back();
     }
 
     /**

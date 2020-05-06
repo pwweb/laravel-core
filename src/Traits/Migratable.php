@@ -20,8 +20,8 @@ trait Migratable
      *
      * @return string
      */
-    public static function getTableName()
+    public static function getTableName(): string
     {
-        return with(new static())->getTable();
+        return (string) with(new static())->getTable();
     }
 }

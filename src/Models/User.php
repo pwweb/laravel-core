@@ -20,6 +20,13 @@ use Spatie\Permission\Traits\HasRoles;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @property  \Pwweb\Core\Models\Person person
+ * @property  int person_id
+ * @property  string username
+ * @property  string email
+ * @property  string email_verified_at
+ * @property  string password
+ * @property  string remember_token
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
