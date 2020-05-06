@@ -38,10 +38,6 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-        if (($user = \Auth::user()) instanceof User) {
-            $this->user = $user;
-        }
     }
 
     /**
@@ -51,9 +47,27 @@ class ProfileController extends Controller
      */
     public function index(): View
     {
-        $profile = User::with('person')->findOrFail($this->user->id);
+        if (($user = \Auth::user()) instanceof User) {
+            $profile = User::with('person')->findOrFail($user->id);
 
-        return view('system.profile.index', compact('profile'));
+            return view('system.profile.index', compact('profile'));
+        }
+    }
+
+    /**
+     * Resend the verification email if the account has not yet been verified.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function reverify(): RedirectResponse
+    {
+        if (($user = \Auth::user()) instanceof User) {
+            if (false === $user->hasVerifiedEmail()) {
+                $user->sendEmailVerificationNotification();
+            }
+        }
+
+        return redirect()->route('system.profile.index');
     }
 
     /**
@@ -63,11 +77,13 @@ class ProfileController extends Controller
      */
     public function edit(): View
     {
-        $profile = User::with('person')->findOrFail($this->user->id);
-        $genders = Gender::getAll();
-        $titles = Title::getAll();
+        if (($user = \Auth::user()) instanceof User) {
+            $profile = User::with('person')->findOrFail($user->id);
+            $genders = Gender::getAll();
+            $titles = Title::getAll();
 
-        return view('system.profile.edit', compact('profile', 'genders', 'titles'));
+            return view('system.profile.edit', compact('profile', 'genders', 'titles'));
+        }
     }
 
     /**
@@ -91,18 +107,20 @@ class ProfileController extends Controller
      */
     public function update(ValidatedRequest $request): RedirectResponse
     {
-        $validated = $request->validated();
+        if (($user = \Auth::user()) instanceof User) {
+            $validated = $request->validated();
 
-        $user = User::where('id', $this->user->id)->first();
-        $user->person->title = $validated['title'];
-        $user->person->name = $validated['name'];
-        $user->person->middle_name = $validated['middle_name'];
-        $user->person->surname = $validated['surname'];
-        $user->person->maiden_name = $validated['maiden_name'];
-        $user->person->dob = $validated['dob'];
-        $user->person->gender = $validated['gender'];
-        $user->person->save();
-        $user->save();
+            $updatedUser = User::where('id', $user->id)->first();
+            $updatedUser->person->title = $validated['title'];
+            $updatedUser->person->name = $validated['name'];
+            $updatedUser->person->middle_name = $validated['middle_name'];
+            $updatedUser->person->surname = $validated['surname'];
+            $updatedUser->person->maiden_name = $validated['maiden_name'];
+            $updatedUser->person->dob = $validated['dob'];
+            $updatedUser->person->gender = $validated['gender'];
+            $updatedUser->person->save();
+            $updatedUser->save();
+        }
 
         return redirect()->route('system.profile.index');
     }
@@ -116,16 +134,18 @@ class ProfileController extends Controller
      */
     public function updateAvatar(ValidatedAvatarRequest $request): RedirectResponse
     {
-        $validated = $request->validated();
+        if (($user = \Auth::user()) instanceof User) {
+            $validated = $request->validated();
 
-        $user = User::where('id', $this->user->id)->first();
+            $updatedUser = User::where('id', $user->id)->first();
 
-        if (true === $request->hasFile('avatar') && true === $request->file('avatar')->isValid()) {
-            $user->person->addMediaFromRequest('avatar')->toMediaCollection('avatars');
+            if (true === $request->hasFile('avatar') && true === $request->file('avatar')->isValid()) {
+                $updatedUser->person->addMediaFromRequest('avatar')->toMediaCollection('avatars');
+            }
+
+            $updatedUser->person->save();
+            $updatedUser->save();
         }
-
-        $user->person->save();
-        $user->save();
 
         return redirect()->route('system.profile.index');
     }
