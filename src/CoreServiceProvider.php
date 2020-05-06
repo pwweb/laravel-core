@@ -88,7 +88,7 @@ class CoreServiceProvider extends ServiceProvider
                 ],
                 'pwweb.core.views'
             );
-        }//end if
+        }
 
         $this->loadTranslationsFrom(realpath(__DIR__.'/resources/lang'), 'pwweb');
 

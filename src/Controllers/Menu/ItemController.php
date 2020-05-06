@@ -12,7 +12,7 @@ use PWWEB\Core\Requests\Menu\CreateItemRequest;
 use PWWEB\Core\Requests\Menu\UpdateItemRequest;
 
 /**
- * App\Http\Controllers\System\Menu\ItemController ItemController.
+ * PWWEB\Core\Controllers\Menu\ItemController ItemController.
  *
  * The CRUD controller for Item
  * Class ItemController
