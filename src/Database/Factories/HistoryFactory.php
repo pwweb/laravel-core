@@ -19,7 +19,7 @@ $factory->define(
             'user_id' => $faker->word,
             'password' => $faker->word,
             'created_at' => $faker->date('Y-m-d H:i:s'),
-            'updated_at' => $faker->date('Y-m-d H:i:s')
+            'updated_at' => $faker->date('Y-m-d H:i:s'),
         ];
     }
 );

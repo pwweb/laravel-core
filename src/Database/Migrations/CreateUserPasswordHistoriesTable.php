@@ -17,7 +17,6 @@ use PWWEB\Core\Models\User\Password\History;
  */
 class CreateUserPasswordHistoriesTable extends Migration
 {
-
     /**
      * Run the migrations.
      *

@@ -36,7 +36,7 @@ class UpdatePasswordRequest extends FormRequest
     {
         $base = [
             'current'  => ['required', 'string', 'min:8'],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
 
         return $base;
