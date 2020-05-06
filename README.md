@@ -28,7 +28,20 @@ $ php artisan migrate
 ## Configuration
 
 ### Customizing
-Not applicable at the moment.
+
+#### Extending Models
+Models can be extended to include additional functionalities or add relationships to other models. When doing so, the configuration for this package needs to be exported and the class names need to be adjusted accordingly.
+
+```php
+<?php
+
+return [
+    'models' => [
+        'user' => Namespace\Of\My\User::class,
+        ...
+    ]
+];
+```
 
 ## Usage
 
@@ -41,6 +54,51 @@ In order to use the user and person model, rather than the default user model pr
         'model' => \PWWEB\Core\Models\User::class,
     ],
 ],
+```
+
+#### Using Laravel Auth
+If the default laravel authentication is used and the controllers have been published, some changes are necessary to the `RegisterController.php`.
+```php
+// Add the following lines.
+use PWWEB\Core\Models\User;
+use PWWEB\Core\Models\Person;
+
+// Change the following two functions.
+protected function validator(array $data)
+{
+    return Validator::make(
+        $data,
+        [
+            'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::getTableName()],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]
+    );
+}
+
+protected function create(array $data)
+{
+    $person = Person::create(
+        [
+            'name' => $data['name'],
+            'surname' => $data['surname'],
+        ]
+    );
+
+    $user = new User(
+        [
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]
+    );
+    $user->person()->associate($person);
+    $user->save();
+
+    $user->assignRole('user');
+
+    return $user;
+}
 ```
 
 ## Change log
