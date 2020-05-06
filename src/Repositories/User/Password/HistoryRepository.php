@@ -26,7 +26,7 @@ class HistoryRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'user_id',
-        'password'
+        'password',
     ];
 
     /**

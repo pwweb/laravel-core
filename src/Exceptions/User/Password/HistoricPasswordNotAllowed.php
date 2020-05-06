@@ -16,7 +16,6 @@ use Exception;
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @property  string message
  */
-
 class HistoricPasswordNotAllowed extends Exception
 {
     /**

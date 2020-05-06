@@ -16,7 +16,6 @@ use PWWEB\Core\Repositories\User\Password\HistoryRepository;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-
 class ResetPassword
 {
     /**
@@ -53,6 +52,7 @@ class ResetPassword
             $data['password'] = $event->user->password;
 
             $this->historyRepository->create($data);
+
             return true;
         }
 

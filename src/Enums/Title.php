@@ -44,6 +44,7 @@ abstract class Title extends Enum
                 if (true === is_array($value)) {
                     $value = (string) $value[0];
                 }
+
                 return $value;
             }
         };
@@ -71,6 +72,7 @@ abstract class Title extends Enum
                 if (true === is_array($value)) {
                     $value = (string) $value[0];
                 }
+
                 return $value;
             }
         };
@@ -98,6 +100,7 @@ abstract class Title extends Enum
                 if (true === is_array($value)) {
                     $value = (string) $value[0];
                 }
+
                 return $value;
             }
         };
@@ -125,6 +128,7 @@ abstract class Title extends Enum
                 if (true === is_array($value)) {
                     $value = (string) $value[0];
                 }
+
                 return $value;
             }
         };
@@ -152,6 +156,7 @@ abstract class Title extends Enum
                 if (true === is_array($value)) {
                     $value = (string) $value[0];
                 }
+
                 return $value;
             }
         };
@@ -179,6 +184,7 @@ abstract class Title extends Enum
                 if (true === is_array($value)) {
                     $value = (string) $value[0];
                 }
+
                 return $value;
             }
         };
