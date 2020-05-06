@@ -3,10 +3,10 @@
 namespace PWWEB\Core\Controllers\Menu;
 
 use App\Http\Controllers\Controller;
-use Flash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Laracasts\Flash;
 use PWWEB\Core\Repositories\Menu\EnvironmentRepository;
 use PWWEB\Core\Requests\Menu\CreateEnvironmentRequest;
 use PWWEB\Core\Requests\Menu\UpdateEnvironmentRequest;
