@@ -69,7 +69,8 @@ class HistoryRepository extends BaseRepository
      * Check the password to be set against the last historic passwords. The amount of passwords
      * to check against is set per configuration (password_history_num) or .env variable (PASSWORD_HISTORY_NUM).
      *
-     * @param User $user The user to be checked.
+     * @param User   $user     The user to be checked.
+     * @param string $password Password to be checked.
      *
      * @return bool
      */
