@@ -42,7 +42,8 @@ class UserController extends Controller
     /**
      * Constructor for the User controller.
      *
-     * @param UserRepository $userRepo Repository of Users.
+     * @param UserRepository   $userRepo   Repository of Users.
+     * @param PersonRepository $personRepo Repository of Persons.
      */
     public function __construct(UserRepository $userRepo, PersonRepository $personRepo)
     {

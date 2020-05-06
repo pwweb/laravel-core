@@ -3,20 +3,19 @@
 namespace App\Http\Requests\User\Password;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\User\Password\History;
+use PWWEB\Core\Models\User\Password\History;
 
 /**
- * App\Http\Requests\User\Password\CreateHistoryRequest CreateHistoryRequest
+ * PWWEB\Core\Requests\User\Password\CreateHistoryRequest CreateHistoryRequest.
  *
  * The create request class for the History
  * Class CreateHistoryRequest
  *
- * @package   pwweb/localisation
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
-*/
+ */
 class CreateHistoryRequest extends FormRequest
 {
 

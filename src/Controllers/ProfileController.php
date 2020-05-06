@@ -38,6 +38,8 @@ class ProfileController extends Controller
     /**
      * Create a new controller instance.
      *
+     * @param UserRepository $userRepo Repository of Users.
+     *
      * @return void
      */
     public function __construct(UserRepository $userRepo)

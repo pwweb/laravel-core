@@ -1,32 +1,43 @@
 <?php
 
-namespace App\Http\Controllers\User\Password;
+namespace PWWEB\Core\Controllers\User\Password;
 
-use App\Http\Requests\User\Password\CreateHistoryRequest;
-use App\Http\Requests\User\Password\UpdateHistoryRequest;
-use App\Repositories\User\Password\HistoryRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Flash;
-use Response;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+use PWWEB\Core\Repositories\User\Password\HistoryRepository;
+use PWWEB\Core\Requests\User\Password\CreateHistoryRequest;
+use PWWEB\Core\Requests\User\Password\UpdateHistoryRequest;
 
 /**
- * App\Http\Controllers\User\Password\HistoryController HistoryController
+ * PWWEB\Core\User\Password\HistoryController HistoryController.
  *
  * The CRUD controller for History
  * Class HistoryController
  *
- * @package   pwweb/localisation
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
-*/
-class HistoryController extends AppBaseController
+ */
+class HistoryController extends Controller
 {
-    /** @var  HistoryRepository */
+    /**
+     * Repository of Historic Passwords to be used throughout the controller.
+     *
+     * @var HistoryRepository
+     */
     private $historyRepository;
 
+    /**
+     * Constructor for the Historic Password controller.
+     *
+     * @param HistoryRepository $historyRepo Repository of Historic Passwords.
+     *
+     * @return void
+     */
     public function __construct(HistoryRepository $historyRepo)
     {
         $this->historyRepository = $historyRepo;
@@ -35,11 +46,11 @@ class HistoryController extends AppBaseController
     /**
      * Display a listing of the History.
      *
-     * @param Request $request
+     * @param Request $request Request containing the information for filtering.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $histories = $this->historyRepository->all();
 
@@ -50,9 +61,9 @@ class HistoryController extends AppBaseController
     /**
      * Show the form for creating a new History.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(): View
     {
         return view('user.password.histories.create');
     }
@@ -60,11 +71,11 @@ class HistoryController extends AppBaseController
     /**
      * Store a newly created History in storage.
      *
-     * @param CreateHistoryRequest $request
+     * @param CreateHistoryRequest $request Request containing the information to be stored.
      *
-     * @return Response
+     * @return RedirectResponse
      */
-    public function store(CreateHistoryRequest $request)
+    public function store(CreateHistoryRequest $request): RedirectResponse
     {
         $input = $request->all();
 
@@ -78,15 +89,15 @@ class HistoryController extends AppBaseController
     /**
      * Display the specified History.
      *
-     * @param int $id
+     * @param int $id ID of the Historic Password to be displayed. Used for retrieving currently held data.
      *
-     * @return Response
+     * @return View|RedirectResponse
      */
     public function show($id)
     {
         $history = $this->historyRepository->find($id);
 
-        if (empty($history)) {
+        if (true === empty($history)) {
             Flash::error('History not found');
 
             return redirect(route('user.password.histories.index'));
@@ -98,15 +109,15 @@ class HistoryController extends AppBaseController
     /**
      * Show the form for editing the specified History.
      *
-     * @param int $id
+     * @param int $id ID of the Historic Password to be edited. Used for retrieving currently held data.
      *
-     * @return Response
+     * @return View|RedirectResponse
      */
     public function edit($id)
     {
         $history = $this->historyRepository->find($id);
 
-        if (empty($history)) {
+        if (true === empty($history)) {
             Flash::error('History not found');
 
             return redirect(route('user.password.histories.index'));
@@ -118,51 +129,51 @@ class HistoryController extends AppBaseController
     /**
      * Update the specified History in storage.
      *
-     * @param int $id
-     * @param UpdateHistoryRequest $request
+     * @param int                  $id      ID of the Historic Password to be updated.
+     * @param UpdateHistoryRequest $request Request containing the information to be updated.
      *
-     * @return Response
+     * @return RedirectResponse
      */
-    public function update($id, UpdateHistoryRequest $request)
+    public function update($id, UpdateHistoryRequest $request): RedirectResponse
     {
         $history = $this->historyRepository->find($id);
 
-        if (empty($history)) {
+        if (true === empty($history)) {
             Flash::error('History not found');
 
-            return redirect(route('user.password.histories.index'));
+            return redirect(route('core.user.password.histories.index'));
         }
 
         $history = $this->historyRepository->update($request->all(), $id);
 
         Flash::success('History updated successfully.');
 
-        return redirect(route('user.password.histories.index'));
+        return redirect(route('core.user.password.histories.index'));
     }
 
     /**
      * Remove the specified History from storage.
      *
-     * @param int $id
+     * @param int $id ID of the Historic Password to be destroyed.
      *
      * @throws \Exception
      *
-     * @return Response
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $history = $this->historyRepository->find($id);
 
-        if (empty($history)) {
+        if (true === empty($history)) {
             Flash::error('History not found');
 
-            return redirect(route('user.password.histories.index'));
+            return redirect(route('core.user.password.histories.index'));
         }
 
         $this->historyRepository->delete($id);
 
         Flash::success('History deleted successfully.');
 
-        return redirect(route('user.password.histories.index'));
+        return redirect(route('core.user.password.histories.index'));
     }
 }

@@ -28,6 +28,8 @@ class ResetPassword
     /**
      * Create the event listener.
      *
+     * @param HistoryRepository $historyRepo Repository of Historic Passwords.
+     *
      * @return void
      */
     public function __construct(HistoryRepository $historyRepo)
@@ -38,7 +40,7 @@ class ResetPassword
     /**
      * Handle the event.
      *
-     * @param PasswordReset $event
+     * @param PasswordReset $event The password reset event to be handled.
      *
      * @return void
      */

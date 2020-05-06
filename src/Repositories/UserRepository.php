@@ -33,6 +33,14 @@ class UserRepository extends BaseRepository
         'email_verified_at',
     ];
 
+    /**
+     * User Repository constructor.
+     *
+     * @param Application       $app         Application container.
+     * @param HistoryRepository $historyRepo Repository of Historic Passwords.
+     *
+     * @return void
+     */
     public function __construct(Application $app, HistoryRepository $historyRepo)
     {
         $this->historyRepository = $historyRepo;
@@ -62,7 +70,7 @@ class UserRepository extends BaseRepository
     /**
      * [changePassword description].
      *
-     * @param int   $id [description]
+     * @param int   $id    [description]
      * @param array $input [description]
      *
      * @return bool [description]
@@ -74,13 +82,13 @@ class UserRepository extends BaseRepository
 
         // Check that the user exists.
         if (null === $user) {
-            throw new UserNotFoundException;
+            throw new UserNotFoundException();
             return false;
         }
 
         // Check the current password.
         if (false === \Hash::check($input['current'], $user->password)) {
-            throw new NotMatchingException;
+            throw new NotMatchingException();
             return false;
         }
 
@@ -91,8 +99,8 @@ class UserRepository extends BaseRepository
             $historicPasswords = $currentUser->passwordHistories()->take(config('pwweb.core.password_history_num'))->get();
 
             foreach ($historicPasswords as $historicPassword) {
-                if (\Hash::check($input['password'], $historicPassword->password)) {
-                    throw new HistoricPasswordNotAllowedException;
+                if (true === \Hash::check($input['password'], $historicPassword->password)) {
+                    throw new HistoricPasswordNotAllowedException();
                     return false;
                 }
             }

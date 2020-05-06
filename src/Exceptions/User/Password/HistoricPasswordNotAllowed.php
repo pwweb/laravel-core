@@ -14,9 +14,15 @@ use Exception;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @property  string message
  */
 
 class HistoricPasswordNotAllowed extends Exception
 {
+    /**
+     * The exception message.
+     *
+     * @var string
+     */
     protected $message = 'Your new password can not be same as any of your recent passwords. Please choose a new password.';
 }

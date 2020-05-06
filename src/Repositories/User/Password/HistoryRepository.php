@@ -15,10 +15,12 @@ use PWWEB\Core\Models\User\Password\History;
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
-*/
+ */
 class HistoryRepository extends BaseRepository
 {
     /**
+     * Fields that can be searched by.
+     *
      * @var array
      */
     protected $fieldSearchable = [
@@ -31,15 +33,17 @@ class HistoryRepository extends BaseRepository
      *
      * @return array
      */
-    public function getFieldsSearchable()
+    public function getFieldsSearchable(): array
     {
         return $this->fieldSearchable;
     }
 
     /**
      * Configure the Model.
+     *
+     * @return string
      **/
-    public function model()
+    public function model(): string
     {
         return History::class;
     }
