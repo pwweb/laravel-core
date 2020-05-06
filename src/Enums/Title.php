@@ -39,7 +39,12 @@ abstract class Title extends Enum
             // phpcs:ignore
             public function getValue(): string
             {
-                return '';
+                $value = __('');
+
+                if (true === is_array($value)) {
+                    $value = (string) $value[];
+                }
+                return $value;
             }
         };
     }
@@ -61,7 +66,12 @@ abstract class Title extends Enum
             // phpcs:ignore
             public function getValue(): string
             {
-                return __('Dr.');
+                $value = __('Dr.');
+
+                if (true === is_array($value)) {
+                    $value = (string) $value[];
+                }
+                return $value;
             }
         };
     }
@@ -83,7 +93,12 @@ abstract class Title extends Enum
             // phpcs:ignore
             public function getValue(): string
             {
-                return __('Prof.');
+                $value = __('Prof.');
+
+                if (true === is_array($value)) {
+                    $value = (string) $value[];
+                }
+                return $value;
             }
         };
     }
@@ -105,7 +120,12 @@ abstract class Title extends Enum
             // phpcs:ignore
             public function getValue(): string
             {
-                return __('Prof. Dr.');
+                $value = __('Prof. Dr.');
+
+                if (true === is_array($value)) {
+                    $value = (string) $value[];
+                }
+                return $value;
             }
         };
     }
@@ -127,7 +147,12 @@ abstract class Title extends Enum
             // phpcs:ignore
             public function getValue(): string
             {
-                return __('Eng.');
+                $value = __('Eng.');
+
+                if (true === is_array($value)) {
+                    $value = (string) $value[];
+                }
+                return $value;
             }
         };
     }
@@ -149,7 +174,12 @@ abstract class Title extends Enum
             // phpcs:ignore
             public function getValue(): string
             {
-                return __('Dipl.-Ing.');
+                $value = __('Dipl.-Ing.');
+
+                if (true === is_array($value)) {
+                    $value = (string) $value[];
+                }
+                return $value;
             }
         };
     }

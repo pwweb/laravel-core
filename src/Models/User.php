@@ -125,7 +125,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Accessor for the calculated joined date.
      *
-     * @return DateTime Joined date
+     * @return \DateTime Joined date
      */
     public function getJoinedAttribute(): \DateTime
     {

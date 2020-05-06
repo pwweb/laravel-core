@@ -37,7 +37,12 @@ abstract class Gender extends Enum
             // phpcs:ignore
             public function getValue(): string
             {
-                return __('');
+                $value = __('');
+
+                if (true === is_array($value)) {
+                    $value = (string) $value[];
+                }
+                return $value;
             }
         };
     }
@@ -59,7 +64,12 @@ abstract class Gender extends Enum
             // phpcs:ignore
             public function getValue(): string
             {
-                return __('male');
+                $value = __('male');
+
+                if (true === is_array($value)) {
+                    $value = (string) $value[];
+                }
+                return $value;
             }
         };
     }
@@ -81,7 +91,12 @@ abstract class Gender extends Enum
             // phpcs:ignore
             public function getValue(): string
             {
-                return __('female');
+                $value = __('female');
+
+                if (true === is_array($value)) {
+                    $value = (string) $value[];
+                }
+                return $value;
             }
         };
     }
@@ -103,7 +118,12 @@ abstract class Gender extends Enum
             // phpcs:ignore
             public function getValue(): string
             {
-                return __('diverse');
+                $value = __('diverse');
+
+                if (true === is_array($value)) {
+                    $value = (string) $value[];
+                }
+                return $value;
             }
         };
     }

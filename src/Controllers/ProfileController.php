@@ -84,7 +84,7 @@ class ProfileController extends Controller
      *
      * @return View|RedirectResponse
      */
-    public function edit(): View
+    public function edit()
     {
         if (($user = \Auth::user()) instanceof User) {
             $profile = User::with('person')->findOrFail($user->id);

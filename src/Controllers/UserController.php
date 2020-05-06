@@ -167,11 +167,6 @@ class UserController extends Controller
         // Obtain the request data.
         $data = $request->all();
 
-        // Create a corresponding person if the user does not have one and name and surname were provided.
-        if (null === $user->person && null !== $data['person']['name'] && null !== $data['person']['surname']) {
-            $person = $this->personRepository->create($data['person']);
-        }
-
         // Password is only to be changed if it was supplied.
         if (null === $data['password']) {
             $data['password'] = $user->password;
@@ -180,7 +175,12 @@ class UserController extends Controller
         }
 
         $user = $this->userRepository->update($data, $id);
-        $assoc = $user->person()->associate($person)->save();
+
+        // Create a corresponding person if the user does not have one and name and surname were provided.
+        if (null === $user->person && null !== $data['person']['name'] && null !== $data['person']['surname']) {
+            $person = $this->personRepository->create($data['person']);
+            $assoc = $user->person()->associate($person)->save();
+        }
 
         Flash::success('User updated successfully.');
 
