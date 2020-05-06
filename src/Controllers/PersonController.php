@@ -3,10 +3,10 @@
 namespace PWWEB\Core\Controllers;
 
 use App\Http\Controllers\Controller;
+use Flash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Laracasts\Flash;
 use PWWEB\Core\Enums\Gender;
 use PWWEB\Core\Enums\Title;
 use PWWEB\Core\Repositories\PersonRepository;
