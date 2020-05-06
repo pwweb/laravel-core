@@ -5,8 +5,7 @@ use PWWEB\Core\Controllers\Menu\ItemController;
 use PWWEB\Core\Controllers\PersonController;
 use PWWEB\Core\Controllers\UserController;
 
-Route::namespace('PWWEB\Core\Controllers')
-    ->name('core.')
+Route::name('core.')
     ->middleware(['web', 'auth'])
     ->group(
         function () {
