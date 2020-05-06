@@ -40,7 +40,7 @@ abstract class Gender extends Enum
                 $value = __('');
 
                 if (true === is_array($value)) {
-                    $value = (string) $value[];
+                    $value = (string) $value[0];
                 }
                 return $value;
             }
@@ -67,7 +67,7 @@ abstract class Gender extends Enum
                 $value = __('male');
 
                 if (true === is_array($value)) {
-                    $value = (string) $value[];
+                    $value = (string) $value[0];
                 }
                 return $value;
             }
@@ -94,7 +94,7 @@ abstract class Gender extends Enum
                 $value = __('female');
 
                 if (true === is_array($value)) {
-                    $value = (string) $value[];
+                    $value = (string) $value[0];
                 }
                 return $value;
             }
@@ -121,7 +121,7 @@ abstract class Gender extends Enum
                 $value = __('diverse');
 
                 if (true === is_array($value)) {
-                    $value = (string) $value[];
+                    $value = (string) $value[0];
                 }
                 return $value;
             }
