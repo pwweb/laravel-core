@@ -3,6 +3,7 @@
 namespace PWWEB\Core\Listeners;
 
 use Illuminate\Auth\Events\PasswordReset;
+use PWWEB\Core\Models\User;
 use PWWEB\Core\Repositories\User\Password\HistoryRepository;
 
 /**
@@ -42,14 +43,19 @@ class ResetPassword
      *
      * @param PasswordReset $event The password reset event to be handled.
      *
-     * @return void
+     * @return bool
      */
-    public function handle(PasswordReset $event)
+    public function handle(PasswordReset $event): bool
     {
-        $data = [];
-        $data['user_id'] = $event->user->id;
-        $data['password'] = $event->user->password;
+        if ($event->user instanceof User) {
+            $data = [];
+            $data['user_id'] = $event->user->id;
+            $data['password'] = $event->user->password;
 
-        $this->historyRepository->create($data);
+            $this->historyRepository->create($data);
+            return true;
+        }
+
+        return false;
     }
 }

@@ -23,6 +23,13 @@ use PWWEB\Core\Repositories\User\Password\HistoryRepository;
 class UserRepository extends BaseRepository
 {
     /**
+     * Repository of Historic Passwords to be used throughout the controller.
+     *
+     * @var HistoryRepository
+     */
+    private $historyRepository;
+
+    /**
      * Fields that can be searched by.
      *
      * @var array
@@ -90,17 +97,8 @@ class UserRepository extends BaseRepository
             throw new NotMatchingException();
         }
 
-        // Only check the password history for the same user.
-        $currentUser = \Auth::user();
-
-        if ($user->id === $currentUser->id) {
-            $historicPasswords = $currentUser->passwordHistories()->take(config('pwweb.core.password_history_num'))->get();
-
-            foreach ($historicPasswords as $historicPassword) {
-                if (true === \Hash::check($input['password'], $historicPassword->password)) {
-                    throw new HistoricPasswordNotAllowedException();
-                }
-            }
+        if (true === $this->historyRepository->isHistoricPassword($user, $input['password'])) {
+            throw new HistoricPasswordNotAllowedException();
         }
 
         // Hash the password.

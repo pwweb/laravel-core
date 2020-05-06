@@ -3,6 +3,7 @@
 namespace PWWEB\Core\Repositories\User\Password;
 
 use App\Repositories\BaseRepository;
+use PWWEB\Core\Models\User;
 use PWWEB\Core\Models\User\Password\History;
 
 /**
@@ -46,5 +47,48 @@ class HistoryRepository extends BaseRepository
     public function model(): string
     {
         return History::class;
+    }
+
+    /**
+     * Retrieve the historic passwords for a given user.
+     *
+     * @param int   $id      The ID of the user to retrieve historic passwords for.
+     * @param array $columns [optional] The columns to return, defaults to * (all columns).
+     *
+     * @return History
+     */
+    public function findByUserId(int $id, array $columns = ['*']): History
+    {
+        $query = $this->model->newQuery();
+        $query->where('user_id', $id);
+
+        return $query->find($id, $columns);
+    }
+
+    /**
+     * Check the password to be set against the last historic passwords. The amount of passwords
+     * to check against is set per configuration (password_history_num) or .env variable (PASSWORD_HISTORY_NUM).
+     *
+     * @param User $user The user to be checked.
+     *
+     * @return bool
+     */
+    public function isHistoricPassword(User $user, string $password): bool
+    {
+        // Only check the password history for the same user.
+        $currentUser = \Auth::user();
+
+        if ($user->id === $currentUser->id) {
+            $historicPasswords = $this->findByUserId($user->id);
+            $historicPasswords = $historicPasswords->take(config('pwweb.core.password_history_num'))->get();
+
+            foreach ($historicPasswords as $historicPassword) {
+                if (true === \Hash::check($password, $historicPassword->password)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

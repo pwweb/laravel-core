@@ -1,5 +1,10 @@
 <?php
 
+use PWWEB\Core\Controllers\EnvironmentController;
+use PWWEB\Core\Controllers\ItemController;
+use PWWEB\Core\Controllers\PersonController;
+use PWWEB\Core\Controllers\UserController;
+
 Route::namespace('PWWEB\Core\Controllers')
     ->name('core.')
     ->middleware(['web', 'auth'])
