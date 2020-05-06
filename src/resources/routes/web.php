@@ -11,8 +11,7 @@ Route::name('core.')
         function () {
             Route::resource('persons', PersonController::class);
             Route::resource('users', UserController::class);
-            Route::namespace('Menu')
-                ->prefix('menu')
+            Route::prefix('menu')
                 ->name('menu.')
                 ->group(
                     function () {
