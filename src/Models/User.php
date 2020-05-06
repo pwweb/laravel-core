@@ -4,6 +4,7 @@ namespace PWWEB\Core\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use PWWEB\Core\Traits\Migratable;
@@ -68,7 +69,6 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public static $rules = [
         'email' => 'required',
-        'password' => 'required',
     ];
 
     /**
@@ -97,11 +97,21 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Accessor for person of the user.
      *
-     * @return object
+     * @return BelongsTo
      */
     public function person(): BelongsTo
     {
         return $this->belongsTo(config('pwweb.core.models.person'));
+    }
+
+    /**
+     * Accessor for previously used passwords.
+     *
+     * @return HasMany
+     */
+    public function passwordHistories(): HasMany
+    {
+        return $this->hasMany(config('pwweb.core.models.user_password_history'));
     }
 
     /**

@@ -3,12 +3,17 @@
 namespace PWWEB\Core\Controllers;
 
 use App\Http\Controllers\Controller;
+use Flash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use PWWEB\Core\Enums\Gender;
 use PWWEB\Core\Enums\Title;
+use PWWEB\Core\Exceptions\User\Password\HistoricPasswordNotAllowed;
+use PWWEB\Core\Exceptions\User\Password\NotMatching;
 use PWWEB\Core\Models\User;
+use PWWEB\Core\Repositories\UserRepository;
 use PWWEB\Core\Requests\Profile\UpdateAvatarRequest as ValidatedAvatarRequest;
+use PWWEB\Core\Requests\Profile\UpdatePasswordRequest as ValidatedPasswordRequest;
 use PWWEB\Core\Requests\UpdateProfileRequest as ValidatedRequest;
 
 /**
@@ -24,20 +29,20 @@ use PWWEB\Core\Requests\UpdateProfileRequest as ValidatedRequest;
 class ProfileController extends Controller
 {
     /**
-     * The currently logged in User.
+     * Repository of users to be used throughout the controller.
      *
-     * @var User
+     * @var UserRepository
      */
-    private $user = null;
+    private $userRepository;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserRepository $userRepo)
     {
-        $this->middleware('auth');
+        $this->userRepository = $userRepo;
     }
 
     /**
@@ -87,6 +92,16 @@ class ProfileController extends Controller
     }
 
     /**
+     * Show the password change form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function password(): View
+    {
+        return view('system.profile.password');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param object $request validated data
@@ -120,6 +135,34 @@ class ProfileController extends Controller
             $updatedUser->person->gender = $validated['gender'];
             $updatedUser->person->save();
             $updatedUser->save();
+        }
+
+        return redirect()->route('system.profile.index');
+    }
+
+    /**
+     * Update the password for the user.
+     *
+     * @param ValidatedPasswordRequest $request Validated changes to apply
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updatePassword(ValidatedPasswordRequest $request): RedirectResponse
+    {
+        if (($user = \Auth::user()) instanceof User) {
+            $validated = $request->validated();
+
+            try {
+                $this->userRepository->changePassword($user->id, $validated);
+
+                Flash::success('New password set.');
+            } catch (NotMatching $e) {
+                Flash::error($e->getMessage());
+                return redirect()->route('system.profile.password');
+            } catch (HistoricPasswordNotAllowed $e) {
+                Flash::error($e->getMessage());
+                return redirect()->route('system.profile.password');
+            }
         }
 
         return redirect()->route('system.profile.index');

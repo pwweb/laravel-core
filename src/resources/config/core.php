@@ -1,12 +1,20 @@
 <?php
 
 return [
+    'password_history_num' => env('PASSWORD_HISTORY_NUM', 3),
+
     'models' => [
         /*
          *
          */
 
         'user' => PWWEB\Core\Models\User::class,
+
+        /*
+         *
+         */
+
+        'user_password_history' => PWWEB\Core\Models\User\Password\History::class,
 
         /*
          *
@@ -30,6 +38,8 @@ return [
     'table_names' => [
 
         'users' => 'system_users',
+
+        'user_password_histories' => 'system_users_passwords',
 
         'persons' => 'system_persons',
 

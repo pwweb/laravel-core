@@ -2,7 +2,7 @@
     <table class="table table-striped" id="users-table">
         <thead>
             <tr>
-                <th>@lang("pwweb::core.Person ID")</th>
+                <th>@lang("pwweb::core.Name")</th>
                 <th>@lang("pwweb::core.Email")</th>
                 <th>@lang("pwweb::core.Email verified at")</th>
                 <th colspan="3">@lang("pwweb::core.Action")</th>
@@ -11,7 +11,7 @@
         <tbody>
         @foreach($users as $user)
             <tr>
-                <td>{{ $user->person_id }}</td>
+                <td>@isnotnull($user->person){{ $user->person->display_name }}@endisnotnull</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->email_verified_at }}</td>
                 <td>

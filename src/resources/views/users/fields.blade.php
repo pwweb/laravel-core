@@ -1,3 +1,15 @@
+<!-- Email Name -->
+<div class="form-group col-sm-6">
+    {!! Form::label('name', Lang::get('pwweb::core.Name')) !!}
+    {!! Form::text('person[name]', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Email Surname -->
+<div class="form-group col-sm-6">
+    {!! Form::label('surname', Lang::get('pwweb::core.Surname')) !!}
+    {!! Form::text('person[surname]', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Email Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('email', Lang::get('pwweb::core.Email')) !!}

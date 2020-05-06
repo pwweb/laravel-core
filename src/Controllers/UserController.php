@@ -7,6 +7,7 @@ use Flash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use PWWEB\Core\Repositories\PersonRepository;
 use PWWEB\Core\Repositories\UserRepository;
 use PWWEB\Core\Requests\CreateUserRequest;
 use PWWEB\Core\Requests\UpdateUserRequest;
@@ -27,18 +28,26 @@ class UserController extends Controller
     /**
      * Repository of users to be used throughout the controller.
      *
-     * @var \PWWEB\Core\Repositories\UserRepository
+     * @var UserRepository
      */
     private $userRepository;
+
+    /**
+     * Repository of persons to be used throughout the controller.
+     *
+     * @var PersonRepository
+     */
+    private $personRepository;
 
     /**
      * Constructor for the User controller.
      *
      * @param UserRepository $userRepo Repository of Users.
      */
-    public function __construct(UserRepository $userRepo)
+    public function __construct(UserRepository $userRepo, PersonRepository $personRepo)
     {
         $this->userRepository = $userRepo;
+        $this->personRepository = $personRepo;
     }
 
     /**
@@ -77,7 +86,19 @@ class UserController extends Controller
     {
         $input = $request->all();
 
+        \DB::beginTransaction();
+        // First the person needs to be created.
+        $person = $this->personRepository->create($input['person']);
+
+        // Then the user is created.
         $user = $this->userRepository->create($input);
+
+        // Lastly the person is assigned to the user.
+        $assoc = $user->person()->associate($person)->save();
+
+        \DB::commit();
+
+        $user->sendEmailVerificationNotification();
 
         Flash::success('User saved successfully.');
 
@@ -142,7 +163,23 @@ class UserController extends Controller
             return redirect(route('core.users.index'));
         }
 
-        $user = $this->userRepository->update($request->all(), $id);
+        // Obtain the request data.
+        $data = $request->all();
+
+        // Create a corresponding person if the user does not have one and name and surname were provided.
+        if (null === $user->person && null !== $data['person']['name'] && null !== $data['person']['surname']) {
+            $person = $this->personRepository->create($data['person']);
+        }
+
+        // Password is only to be changed if it was supplied.
+        if (null === $data['password']) {
+            $data['password'] = $user->password;
+        } else {
+            $data['password'] = \Hash::make($data['password']);
+        }
+
+        $user = $this->userRepository->update($data, $id);
+        $assoc = $user->person()->associate($person)->save();
 
         Flash::success('User updated successfully.');
 
@@ -165,13 +202,13 @@ class UserController extends Controller
         if (true === empty($user)) {
             Flash::error('User not found');
 
-            return redirect(route('core.models.users.index'));
+            return redirect(route('core.users.index'));
         }
 
         $this->userRepository->delete($id);
 
         Flash::success('User deleted successfully.');
 
-        return redirect(route('pWWEB.core.models.users.index'));
+        return redirect(route('core.users.index'));
     }
 }

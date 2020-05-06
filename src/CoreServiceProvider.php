@@ -2,6 +2,11 @@
 
 namespace PWWEB\Core;
 
+use Carbon\Carbon;
+use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\ServiceProvider;
+
 /**
  * PWWEB\Core.
  *
@@ -12,10 +17,6 @@ namespace PWWEB\Core;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-
-use Carbon\Carbon;
-use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\ServiceProvider;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -44,6 +45,12 @@ class CoreServiceProvider extends ServiceProvider
         // Register views.
         $this->loadViewsFrom(__DIR__.'/resources/views', 'core');
 
+        // Register listeners.
+        Event::listen(
+            'Illuminate\Auth\Events\PasswordReset',
+            \PWWEB\Core\Listeners\ResetPassword::class,
+        );
+
         Carbon::setToStringFormat('Y-m-d');
     }
 
@@ -68,9 +75,12 @@ class CoreServiceProvider extends ServiceProvider
 
             $this->publishes(
                 [
+                    __DIR__.'/Database/Migrations/CreateMenuEnvironmentsTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_menu_environments_table.php",
+                    __DIR__.'/Database/Migrations/CreateMenuItemsTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_menu_items_table.php",
                     __DIR__.'/Database/Migrations/CreateUsersTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_users_table.php",
                     __DIR__.'/Database/Migrations/CreatePersonsTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_persons_table.php",
                     __DIR__.'/Database/Migrations/UpdateUsersTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_update_users_table.php",
+                    __DIR__.'/Database/Migrations/CreateUserPasswordHistoriesTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_user_password_histories_table.php",
                 ],
                 'pwweb.core.migrations'
             );
