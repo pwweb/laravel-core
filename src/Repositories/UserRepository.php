@@ -83,12 +83,14 @@ class UserRepository extends BaseRepository
         // Check that the user exists.
         if (null === $user) {
             throw new UserNotFoundException();
+
             return false;
         }
 
         // Check the current password.
         if (false === \Hash::check($input['current'], $user->password)) {
             throw new NotMatchingException();
+
             return false;
         }
 
@@ -101,6 +103,7 @@ class UserRepository extends BaseRepository
             foreach ($historicPasswords as $historicPassword) {
                 if (true === \Hash::check($input['password'], $historicPassword->password)) {
                     throw new HistoricPasswordNotAllowedException();
+
                     return false;
                 }
             }

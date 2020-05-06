@@ -18,7 +18,6 @@ use PWWEB\Core\Traits\Migratable;
  * @property  int user_id
  * @property  string password
  */
-
 class History extends Model
 {
     use Migratable;
@@ -30,7 +29,7 @@ class History extends Model
      */
     public $fillable = [
         'user_id',
-        'password'
+        'password',
     ];
 
     /**
@@ -40,7 +39,7 @@ class History extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'password' => 'string'
+        'password' => 'string',
     ];
 
     /**
@@ -50,7 +49,7 @@ class History extends Model
      */
     public static $rules = [
         'user_id' => 'required',
-        'password' => 'required'
+        'password' => 'required',
     ];
 
     /**

@@ -160,9 +160,11 @@ class ProfileController extends Controller
                 Flash::success('New password set.');
             } catch (NotMatching $e) {
                 Flash::error($e->getMessage());
+
                 return redirect()->route('system.profile.password');
             } catch (HistoricPasswordNotAllowed $e) {
                 Flash::error($e->getMessage());
+
                 return redirect()->route('system.profile.password');
             }
         }
