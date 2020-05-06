@@ -1,7 +1,7 @@
 <?php
 
-use PWWEB\Core\Controllers\EnvironmentController;
-use PWWEB\Core\Controllers\ItemController;
+use PWWEB\Core\Controllers\Menu\EnvironmentController;
+use PWWEB\Core\Controllers\Menu\ItemController;
 use PWWEB\Core\Controllers\PersonController;
 use PWWEB\Core\Controllers\UserController;
 
