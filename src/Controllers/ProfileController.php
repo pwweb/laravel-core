@@ -15,6 +15,11 @@ use PWWEB\Core\Repositories\UserRepository;
 use PWWEB\Core\Requests\Profile\UpdateAvatarRequest as ValidatedAvatarRequest;
 use PWWEB\Core\Requests\Profile\UpdatePasswordRequest as ValidatedPasswordRequest;
 use PWWEB\Core\Requests\UpdateProfileRequest as ValidatedRequest;
+use PWWEB\Localisation\Repositories\Address\TypeRepository;
+use PWWEB\Localisation\Repositories\AddressRepository;
+use PWWEB\Localisation\Repositories\CountryRepository;
+use PWWEB\Localisation\Requests\CreateAddressRequest;
+use PWWEB\Localisation\Requests\UpdateAddressRequest;
 
 /**
  * PWWEB\Core\Controllers\Profile Controller.
@@ -29,22 +34,53 @@ use PWWEB\Core\Requests\UpdateProfileRequest as ValidatedRequest;
 class ProfileController extends Controller
 {
     /**
-     * Repository of users to be used throughout the controller.
+     * Repository of Users to be used throughout the controller.
      *
      * @var UserRepository
      */
     private $userRepository;
 
     /**
+     * Repository of Addresses to be used throughout the controller.
+     *
+     * @var AddressRepository
+     */
+    private $addressRepository;
+
+    /**
+     * Repository of Countries to be used throughout the controller.
+     *
+     * @var CountryRepository
+     */
+    private $countryRepository;
+
+    /**
+     * Repository of Address Types to be used throughout the controller.
+     *
+     * @var TypeRepository
+     */
+    private $typeRepository;
+
+    /**
      * Create a new controller instance.
      *
-     * @param UserRepository $userRepo Repository of Users.
+     * @param UserRepository    $userRepo    Repository of Users.
+     * @param AddressRepository $addressRepo Repository of Addresses.
+     * @param CountryRepository $countryRepo Repository of Countries.
+     * @param TypeRepository    $typeRepo    Repository of Address Types.
      *
      * @return void
      */
-    public function __construct(UserRepository $userRepo)
-    {
+    public function __construct(
+        UserRepository $userRepo,
+        AddressRepository $addressRepo,
+        CountryRepository $countryRepo,
+        TypeRepository $typeRepo
+    ) {
         $this->userRepository = $userRepo;
+        $this->addressRepository = $addressRepo;
+        $this->countryRepository = $countryRepo;
+        $this->typeRepository = $typeRepo;
     }
 
     /**
@@ -199,5 +235,66 @@ class ProfileController extends Controller
         }
 
         return redirect()->route('system.profile.index');
+    }
+
+    /**
+     * Display the create view for addresses.
+     *
+     * @return View
+     */
+    public function createAddress(): View
+    {
+        $countries = $this->countryRepository->all();
+        $types = $this->typeRepository->all();
+
+        return view('core::profile.address.create')
+            ->with('types', $types)
+            ->with('countries', $countries);
+    }
+
+    /**
+     * Store and assign a newly created Address.
+     *
+     * @param CreateAddressRequest $request Request containing the information to be stored.
+     *
+     * @return RedirectResponse
+     */
+    public function storeAddress(CreateAddressRequest $request): RedirectResponse
+    {
+        if (($user = \Auth::user()) instanceof User) {
+            $input = $request->all();
+
+            $address = $this->addressRepository->create($input);
+            $user->person->assignAddress($address);
+
+            Flash::success('Address saved successfully');
+        }
+
+        return redirect(route('system.profile.edit'));
+    }
+
+    /**
+     * Update the specified Address in storage.
+     *
+     * @param int                  $id      ID of the Address to be updated.
+     * @param UpdateAddressRequest $request Request containing the information to be updated.
+     *
+     * @return RedirectResponse
+     */
+    public function update($id, UpdateAddressRequest $request)
+    {
+        $address = $this->addressRepository->find($id);
+
+        if (true === empty($address)) {
+            Flash::error('Address not found');
+
+            return redirect(route('system.profile.edit'));
+        }
+
+        $address = $this->addressRepository->update($request->all(), $id);
+
+        Flash::success('Address updated successfully.');
+
+        return redirect(route('system.profile.edit'));
     }
 }

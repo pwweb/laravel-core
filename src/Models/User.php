@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use PWWEB\Core\Traits\Migratable;
-use PWWEB\Localisation\Traits\HasAddresses;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -34,7 +33,6 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use HasRoles;
     use Migratable;
-    use HasAddresses;
 
     /**
      * The attributes that are mass assignable.

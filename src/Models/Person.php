@@ -13,6 +13,7 @@ use PWWEB\Core\Traits\Migratable;
 use PWWEB\Localisation\Contracts\Address as AddressContract;
 use PWWEB\Localisation\Models\Address;
 use PWWEB\Localisation\Models\Country;
+use PWWEB\Localisation\Traits\HasAddresses;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
@@ -44,6 +45,7 @@ class Person extends Model implements HasMedia
 {
     use Migratable;
     use HasMediaTrait;
+    use HasAddresses;
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';

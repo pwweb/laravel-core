@@ -40,7 +40,7 @@ class Directive
         Blade::directive($this->name, [$this, 'handle']);
 
         if (true === $hasEnd) {
-            Blade::directive('end'.$this->name, [$this, 'handleEnd']);
+            Blade::directive('end' . $this->name, [$this, 'handleEnd']);
         }
     }
 

@@ -37,7 +37,7 @@ Route::namespace('\PWWEB\Core\Controllers')
             Route::patch('/updatePassword', 'ProfileController@updatePassword')->name('profile.password.update');
             Route::patch('/avatar', 'ProfileController@updateAvatar')->name('profile.update.avatar');
             Route::get('/address/show/{address}', '\PWWEB\Localisation\Controllers\AddressController@show')->name('profile.address.show');
-            Route::get('/address/create', '\PWWEB\Localisation\Controllers\AddressController@create')->name('profile.address.create');
-            Route::post('/address/store', '\PWWEB\Localisation\Controllers\AddressController@store')->name('profile.address.store');
+            Route::get('/address/create', 'ProfileController@createAddress')->name('profile.address.create');
+            Route::post('/address/store', 'ProfileController@storeAddress')->name('profile.address.store');
         }
     );
