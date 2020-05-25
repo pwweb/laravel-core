@@ -37,7 +37,7 @@ class UpdateProfileRequest extends FormRequest
     {
         $id = '';
         if (true === isset($this->user->id)) {
-            $id = ',email,' . $this->user->id;
+            $id = ',email,'.$this->user->id;
         }
 
         $base = [
