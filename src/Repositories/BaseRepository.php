@@ -78,6 +78,21 @@ abstract class BaseRepository
     }
 
     /**
+     * Order by for scaffold.
+     *
+     * @param string $column Column to order by.
+     * @param string $dir    Direction to order.
+     *
+     * @return Model
+     */
+    public function orderBy($column, $dir = 'ASC')
+    {
+        $this->model = $this->model->orderBy($column, $dir);
+
+        return $this;
+    }
+
+    /**
      * Paginate records for scaffold.
      *
      * @param int   $perPage Items per page.
