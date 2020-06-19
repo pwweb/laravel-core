@@ -281,7 +281,7 @@ class ProfileController extends Controller
      *
      * @return RedirectResponse
      */
-    public function update($id, UpdateAddressRequest $request)
+    public function updateAddress($id, UpdateAddressRequest $request)
     {
         $address = $this->addressRepository->find($id);
 
