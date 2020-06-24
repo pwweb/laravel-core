@@ -37,7 +37,7 @@ class CreateMenuItemsTable extends Migration
                 $table->boolean('separator');
                 $table->string('class');
 
-                $table->timestamps();
+                $table->timestampsTz();
             }
         );
     }

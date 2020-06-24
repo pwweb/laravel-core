@@ -57,7 +57,7 @@ class HistoryRepository extends BaseRepository
      *
      * @return History
      */
-    public function findByUserId(int $id, array $columns = ['*']): History
+    public function findByUserId(int $id, array $columns = ['*']): ?History
     {
         $query = $this->model->newQuery();
         $query->where('user_id', $id);
@@ -78,15 +78,21 @@ class HistoryRepository extends BaseRepository
     {
         // Only check the password history for the same user.
         $currentUser = \Auth::user();
+        $historicPasswords = null;
 
         if ($user->id === $currentUser->id) {
             $historicPasswords = $this->findByUserId($user->id);
-            $historicPasswords = $historicPasswords->take(config('pwweb.core.password_history_num'))->get();
+        }
 
-            foreach ($historicPasswords as $historicPassword) {
-                if (true === \Hash::check($password, $historicPassword->password)) {
-                    return true;
-                }
+        if (null === $historicPasswords) {
+            return false;
+        }
+
+        $historicPasswords = $historicPasswords->take(config('pwweb.core.password_history_num'))->get();
+
+        foreach ($historicPasswords as $historicPassword) {
+            if (true === \Hash::check($password, $historicPassword->password)) {
+                return true;
             }
         }
 

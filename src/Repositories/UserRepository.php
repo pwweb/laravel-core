@@ -75,12 +75,12 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * [changePassword description].
+     * Changes the password for a user.
      *
-     * @param int   $id    [description]
-     * @param array $input [description]
+     * @param int   $id    User ID to change the password for.
+     * @param array $input Request information for password change, including old, new and repeat password.
      *
-     * @return bool [description]
+     * @return bool
      */
     public function changePassword(int $id, array $input): bool
     {

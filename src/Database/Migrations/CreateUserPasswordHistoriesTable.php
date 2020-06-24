@@ -30,7 +30,7 @@ class CreateUserPasswordHistoriesTable extends Migration
                 $table->bigIncrements('id');
                 $table->unsignedBigInteger('user_id')->index();
                 $table->string('password');
-                $table->timestamps();
+                $table->timestampsTz();
             }
         );
     }

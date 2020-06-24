@@ -45,7 +45,7 @@ class CreatePersonsTable extends Migration
 
                 // Add foreign keys.
                 $table->foreign('nationality_id')->references('id')->on(Country::getTableName());
-                $table->timestamps();
+                $table->timestampsTz();
             }
         );
     }
