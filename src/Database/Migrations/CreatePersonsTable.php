@@ -28,7 +28,7 @@ class CreatePersonsTable extends Migration
         Schema::create(
             Person::getTableName(),
             function (Blueprint $table) {
-                $table->id('id');
+                $table->bigIncrements('id');
                 $table->foreignId('nationality_id')->index()->nullable();
                 $table->string('title')->nullable();
                 $table->string('name');
