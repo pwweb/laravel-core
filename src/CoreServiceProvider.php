@@ -54,7 +54,7 @@ class CoreServiceProvider extends ServiceProvider
 
         // Register helpers.
         foreach (glob(__DIR__.'/Helpers/*.php') as $file) {
-            require_once($file);
+            require_once $file;
         }
     }
 
