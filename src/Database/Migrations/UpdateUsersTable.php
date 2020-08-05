@@ -29,7 +29,7 @@ class UpdateUsersTable extends Migration
             User::getTableName(),
             function (Blueprint $table) {
                 $table->foreignId('person_id')->after('id')->nullable();
-                $table->string('name')->nullable()->change();
+                // $table->string('name')->nullable()->change();
             }
         );
 
@@ -37,7 +37,7 @@ class UpdateUsersTable extends Migration
             User::getTableName(),
             function (Blueprint $table) {
                 if (true === Schema::hasColumn(User::getTableName(), 'name')) {
-                    $table->renameColumn('name', 'username');
+                    // $table->renameColumn('name', 'username');
                 }
 
                 $table->foreign('person_id')->references('id')->on(Person::getTableName());
