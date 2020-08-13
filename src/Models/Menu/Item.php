@@ -3,6 +3,7 @@
 namespace PWWEB\Core\Models\Menu;
 
 use Eloquent as Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use PWWEB\Core\Traits\Migratable;
 
 /**
@@ -94,5 +95,15 @@ class Item extends Model
         parent::__construct($attributes);
 
         $this->setTable(config('pwweb.core.table_names.menu_items'));
+    }
+
+    /**
+     * Accessor for person of the user.
+     *
+     * @return BelongsTo
+     */
+    public function environment(): BelongsTo
+    {
+        return $this->belongsTo(config('pwweb.core.models.menu_environment'));
     }
 }
