@@ -71,7 +71,7 @@ class UserRepository extends BaseRepository
      **/
     public function model(): string
     {
-        return User::class;
+        return config('pwweb.core.models.user');
     }
 
     /**
@@ -114,5 +114,20 @@ class UserRepository extends BaseRepository
         }
 
         return true;
+    }
+
+    /**
+     * Find user record for given ID.
+     *
+     * @param string $username  The username of the record to be retrieved.
+     * @param array  $columns   Column names to retrieve.
+     *
+     * @return User
+     */
+    public function findByUsername(string $username, array $columns = ['*']): ?User
+    {
+        $query = $this->model->newQuery();
+
+        return $query->where('username', $username)->get($columns)->first();
     }
 }

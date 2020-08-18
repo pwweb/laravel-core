@@ -91,12 +91,30 @@ class ProfileController extends Controller
     public function index()
     {
         if (($user = \Auth::user()) instanceof User) {
-            $profile = User::with('person')->findOrFail($user->id);
+            $profile = $this->userRepository->find($user->id);
 
             return view('system.profile.index', compact('profile'));
         }
 
         return redirect()->back();
+    }
+
+    public function show($user)
+    {
+        if (true === is_numeric($user)) {
+            $person = $this->userRepository->find($user);
+        } else {
+            $person = $this->userRepository->findByUsername($user);
+        }
+
+        if (true === empty($person)) {
+            Flash::error('Person not found');
+
+            return redirect(route('system.profile.public'));
+        }
+
+        return view('system.profile.public')
+            ->with('profile', $person);
     }
 
     /**
@@ -128,6 +146,26 @@ class ProfileController extends Controller
             $titles = Title::getAll();
 
             return view('system.profile.edit', compact('profile', 'genders', 'titles'));
+        }
+
+        return redirect()->back();
+    }
+
+    /**
+     * Show the profile edit form.
+     *
+     * @return RedirectResponse
+     */
+    public function befriend($recipient)
+    {
+        if (true === is_numeric($recipient)) {
+            $recipient = $this->userRepository->find($recipient);
+        } else {
+            $recipient = $this->userRepository->findByUsername($recipient);
+        }
+
+        if (($user = \Auth::user()) instanceof User && $recipient instanceof User) {
+            $user->befriend($recipient);
         }
 
         return redirect()->back();

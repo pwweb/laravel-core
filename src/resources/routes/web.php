@@ -29,6 +29,7 @@ Route::namespace('\PWWEB\Core\Controllers')
     ->group(
         function () {
             Route::get('/', 'ProfileController@index')->name('profile.index');
+            Route::get('/{user}', 'ProfileController@show')->name('profile.show');
             Route::get('/edit', 'ProfileController@edit')->name('profile.edit');
             Route::get('/reverify', 'ProfileController@reverify')->name('profile.reverify');
             Route::get('/password', 'ProfileController@password')->name('profile.password');

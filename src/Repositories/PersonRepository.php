@@ -53,6 +53,6 @@ class PersonRepository extends BaseRepository
      **/
     public function model(): string
     {
-        return Person::class;
+        return config('pwweb.core.models.person');
     }
 }
