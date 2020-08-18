@@ -1,25 +1,13 @@
 <!-- System Menu Environments Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('system_menu_environments_id', 'System Menu Environments Id:') !!}
-    {!! Form::number('system_menu_environments_id', null, ['class' => 'form-control']) !!}
-</div>
-
-<!--  Lft Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('_lft', ' Lft:') !!}
-    {!! Form::number('_lft', null, ['class' => 'form-control']) !!}
-</div>
-
-<!--  Rgt Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('_rgt', ' Rgt:') !!}
-    {!! Form::number('_rgt', null, ['class' => 'form-control']) !!}
+    {!! Form::label('environment_id', 'Environments:') !!}
+    {!! Form::select('environment_id', $environments->pluck('name', 'id'), null, ['class' => 'custom-select', 'placeholder' => 'Please select...']) !!}
 </div>
 
 <!-- Parent Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('parent_id', 'Parent Id:') !!}
-    {!! Form::number('parent_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('parent_id', 'Parent:') !!}
+    {!! Form::select('parent_id', $nodes->pluck('name', 'id'), null, ['class' => 'custom-select', 'placeholder' => 'Please select...']) !!}
 </div>
 
 <!-- Level Field -->
@@ -36,8 +24,8 @@
 
 <!-- Title Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('title', 'Title:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+    {!! Form::label('name', 'Name:') !!}
+    {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Separator Field -->
@@ -59,5 +47,5 @@
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('system.menu.items.index') }}" class="btn btn-secondary">Cancel</a>
+    <a href="{{ route('core.menu.items.index') }}" class="btn btn-secondary">Cancel</a>
 </div>

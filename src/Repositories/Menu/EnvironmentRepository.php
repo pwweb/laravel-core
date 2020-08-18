@@ -46,4 +46,21 @@ class EnvironmentRepository extends BaseRepository
     {
         return Environment::class;
     }
+
+    /**
+     * [findBySlug description].
+     * @param string $slug [description]
+     * @param array  $columns [description]
+     *
+     * @return Environment [description]
+     */
+    public function findBySlug(string $slug, array $columns = ['*']): ?Environment
+    {
+        $query = $this->model->newQuery();
+
+        return $query
+            ->select(['id'])
+            ->where('name', $slug)
+            ->first();
+    }
 }

@@ -4,6 +4,7 @@ namespace PWWEB\Core\Models\Menu;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Kalnoy\Nestedset\NodeTrait;
 use PWWEB\Core\Traits\Migratable;
 
 /**
@@ -28,6 +29,7 @@ use PWWEB\Core\Traits\Migratable;
 class Item extends Model
 {
     use Migratable;
+    use NodeTrait;
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -44,7 +46,7 @@ class Item extends Model
         'parent_id',
         'level',
         'identifier',
-        'title',
+        'name',
         'separator',
         'class',
     ];
@@ -62,7 +64,7 @@ class Item extends Model
         'parent_id' => 'integer',
         'level' => 'integer',
         'identifier' => 'string',
-        'title' => 'string',
+        'name' => 'string',
         'separator' => 'boolean',
         'class' => 'string',
     ];
@@ -73,12 +75,11 @@ class Item extends Model
      * @var array
      */
     public static $rules = [
-        'environment_id' => 'required',
-        '_lft' => 'required',
-        '_rgt' => 'required',
+        'environment_id' => 'integer|required',
+        'parent_id' => 'integer',
         'level' => 'required',
         'identifier' => 'required',
-        'title' => 'required',
+        'name' => 'required',
         'separator' => 'required',
         'class' => 'required',
     ];

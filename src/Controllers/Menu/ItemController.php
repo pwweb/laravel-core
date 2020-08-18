@@ -7,6 +7,7 @@ use Flash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use PWWEB\Core\Repositories\Menu\EnvironmentRepository;
 use PWWEB\Core\Repositories\Menu\ItemRepository;
 use PWWEB\Core\Requests\Menu\CreateItemRequest;
 use PWWEB\Core\Requests\Menu\UpdateItemRequest;
@@ -32,13 +33,21 @@ class ItemController extends Controller
     private $itemRepository;
 
     /**
+     * Repository of Menu Environments to be used throughout the controller.
+     *
+     * @var EnvironmentRepository
+     */
+    private $environmentRepository;
+
+    /**
      *  Constructor for the Item controller.
      *
      * @param ItemRepository $itemRepo Repository of Items.
      */
-    public function __construct(ItemRepository $itemRepo)
+    public function __construct(ItemRepository $itemRepo, EnvironmentRepository $envRepo)
     {
         $this->itemRepository = $itemRepo;
+        $this->environmentRepository = $envRepo;
     }
 
     /**
@@ -63,7 +72,9 @@ class ItemController extends Controller
      */
     public function create(): View
     {
-        return view('core::menu.items.create');
+        return view('core::menu.items.create')
+            ->with('environments', $this->environmentRepository->all())
+            ->with('nodes', $this->itemRepository->all());
     }
 
     /**
@@ -121,7 +132,11 @@ class ItemController extends Controller
             return redirect(route('core.menu.items.index'));
         }
 
-        return view('core::menu.items.edit')->with('item', $item);
+        return view('core::menu.items.edit')
+            ->with('item', $item)
+            ->with('environments', $this->environmentRepository->all())
+            ->with('nodes', $this->itemRepository->all());
+        ;
     }
 
     /**

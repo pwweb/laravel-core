@@ -28,16 +28,17 @@ class CreateMenuItemsTable extends Migration
             function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->foreignId('environment_id');
-                $table->integer('_lft');
-                $table->integer('_rgt');
+                $table->unsignedInteger('_lft');
+                $table->unsignedInteger('_rgt');
                 $table->foreignId('parent_id')->nullable();
                 $table->integer('level');
                 $table->string('identifier');
-                $table->string('title');
+                $table->string('name');
                 $table->boolean('separator');
                 $table->string('class');
 
                 $table->timestampsTz();
+                $table->nestedSet();
             }
         );
     }

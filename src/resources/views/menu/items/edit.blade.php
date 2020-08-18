@@ -3,7 +3,7 @@
 @section('content')
     <ol class="breadcrumb">
           <li class="breadcrumb-item">
-             <a href="{!! route('system.menu.items.index') !!}">@lang("pwweb::core.Menu items")</a>
+             <a href="{!! route('core.menu.items.index') !!}">@lang("pwweb::core.Menu items")</a>
           </li>
           <li class="breadcrumb-item active">@lang("pwweb::core.edit")</li>
         </ol>

@@ -119,8 +119,9 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function registerDirectives()
     {
-        $this->directives[] = new Blade\Directives\Date();
-        $this->directives[] = new Blade\Directives\IsNull();
-        $this->directives[] = new Blade\Directives\IsNotNull();
+        $this->directives[] = \App::make(Blade\Directives\Date::class);
+        $this->directives[] = \App::make(Blade\Directives\IsNull::class);
+        $this->directives[] = \App::make(Blade\Directives\IsNotNull::class);
+        $this->directives[] = \App::make(Blade\Directives\Menu::class);
     }
 }
