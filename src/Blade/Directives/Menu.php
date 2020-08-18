@@ -145,6 +145,7 @@ class Menu extends Directive
                 }
             }
         }
+
         return $output;
     }
 }

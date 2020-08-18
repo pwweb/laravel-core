@@ -60,7 +60,7 @@ class ItemRepository extends BaseRepository
      * Retrieve a Node and it's descendants.
      *
      * @param string  $rootNode  The root node identifier.
-     * @param integer $maxLevels The max levels to descend.
+     * @param int $maxLevels The max levels to descend.
      *
      * @return model MenuItems
      */
@@ -79,7 +79,7 @@ class ItemRepository extends BaseRepository
      * Retrive a specific node within the tree.
      *
      * @param string  $node Node identifier
-     * @param integer $env  Environment ID
+     * @param int $env  Environment ID
      *
      * @return model Node
      */
@@ -94,7 +94,6 @@ class ItemRepository extends BaseRepository
         $node = $query->where('identifier', '=', $node)
             ->where('environment_id', '=', $environmentId)
             ->get();
-
 
         if (1 !== count($node)) {
             return null;
