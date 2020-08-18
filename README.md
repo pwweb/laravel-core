@@ -101,6 +101,23 @@ protected function create(array $data)
 }
 ```
 
+### Blade Directives
+
+#### @date
+The date directive allows for the display and formatting of dates using ```Carbon\Carbon```. In case no date is supplied (i.e. ```null```), no error is thrown and an empty string returned.
+If no format is supplied, the default format from configuration is used.
+
+```php
+@date(Carbon\Carbon $date, string $format)
+```
+
+#### @menu
+The menu directive allows for the display of a menu based on the environment and root node provided.
+
+```php
+@menu(string $environmentSlug, string $rootNodeSlug)
+```
+
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.

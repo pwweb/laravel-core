@@ -43,7 +43,7 @@ class Date extends Directive
             $format = self::stripQuotes($expression->get(1));
         } else {
             $date = $expression;
-            $format = 'd.m.Y H:i:s';
+            $format = config('pwweb.core.date_format');
         }
 
         return implode(

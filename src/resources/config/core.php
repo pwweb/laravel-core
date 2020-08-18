@@ -3,6 +3,8 @@
 return [
     'password_history_num' => env('PASSWORD_HISTORY_NUM', 3),
 
+    'date_format' => 'd.m.Y H:i:s',
+
     'models' => [
         /*
          *
