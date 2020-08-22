@@ -8,7 +8,7 @@
                 <th>@lang("pwweb::core.Parent ID")</th>
                 <th>@lang("pwweb::core.Level")</th>
                 <th>@lang("pwweb::core.Identifier")</th>
-                <th>@lang("pwweb::core.Title")</th>
+                <th>@lang("pwweb::core.Name")</th>
                 <th>@lang("pwweb::core.Separator")</th>
                 <th>@lang("pwweb::core.Class")</th>
                 <th colspan="3">@lang("pwweb::core.Actions")</th>
@@ -23,7 +23,7 @@
                 <td>{{ $item->parent_id }}</td>
                 <td>{{ $item->level }}</td>
                 <td>{{ $item->identifier }}</td>
-                <td>{{ $item->title }}</td>
+                <td>{{ $item->name }}</td>
                 <td>{{ $item->separator }}</td>
                 <td>{{ $item->class }}</td>
                 <td>
