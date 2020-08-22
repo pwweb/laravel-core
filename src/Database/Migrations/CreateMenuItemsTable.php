@@ -35,7 +35,7 @@ class CreateMenuItemsTable extends Migration
                 $table->string('identifier');
                 $table->string('name');
                 $table->boolean('separator');
-                $table->string('class');
+                $table->string('class')->nullable();
 
                 $table->timestampsTz();
                 $table->nestedSet();

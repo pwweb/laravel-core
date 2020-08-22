@@ -76,12 +76,12 @@ class Item extends Model
      */
     public static $rules = [
         'environment_id' => 'integer|required',
-        'parent_id' => 'integer',
+        'parent_id' => 'integer|nullable',
         'level' => 'required',
         'identifier' => 'required',
         'name' => 'required',
         'separator' => 'required',
-        'class' => 'required',
+        'class' => 'string|nullable',
     ];
 
     /**
