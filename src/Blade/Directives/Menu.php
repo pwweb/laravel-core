@@ -51,7 +51,7 @@ class Menu extends Directive
      *
      * @return string
      */
-    public function handle($expression)
+    public function handle(string $expression): string
     {
         $environment = 'Frontend';
         $node = 'root';
@@ -83,20 +83,23 @@ class Menu extends Directive
             $environmentId = $environment->id;
         }
 
-        $items = $this->itemRepository->retrieve($environmentId, $node, $depth);
+        try {
+            $items = $this->itemRepository->retrieve($environmentId, $node, $depth);
+        } catch (\Exception $e) {
+            return '';
+        }
 
         return $this->render($items);
-
-        return implode(
-            '',
-            [
-                "<?php if (false === is_null({$date})) : ?>",
-                "<?php echo {$date}->format('".$format."') ?>",
-                '<?php endif; ?>',
-            ]
-        );
     }
 
+    /**
+     * Renders the menu according to bootstrap markup.
+     *
+     * @param QueueableCollection $items Menu items to be displayed.
+     * @param string              $path  Parent path identifier.
+     *
+     * @return string
+     */
     public function render(QueueableCollection $items, string $path = ''): string
     {
         if ('' !== $path) {
@@ -115,15 +118,15 @@ class Menu extends Directive
                 if (true === isset($item->children) && true === is_iterable($item->children) && true === isset($item->children[0]->identifier)) {
                     $parent = $path.$item->identifier;
 
-                    $output .= '<li class="nav-item nav-dropdown">';
-                    $output .= '<a href="#" title="'.$item->identifier.'" class="nav-link nav-dropdown-toggle">';
+                    $output .= '<li class="nav-item dropdown">';
+                    $output .= '<a href="#" title="'.$item->identifier.'" class="nav-link dropdown-toggle" id="nav-dropdown-'.$item->identifier.'" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 
                     if ('' !== $item->class) {
                         $output .= '<span class="'.$item->class.'"></span>';
                     }
 
                     $output .= $item->name.'</a>';
-                    $output .= '<ul class="nav-dropdown-items">';
+                    $output .= '<ul class="dropdown-menu" aria-labelledby="nav-dropdown-'.$item->identifier.'">';
                     $output .= $this->render($item->children, $parent);
                     $output .= '</ul>';
                     $output .= '</li>';
