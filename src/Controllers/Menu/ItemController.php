@@ -136,7 +136,6 @@ class ItemController extends Controller
             ->with('item', $item)
             ->with('environments', $this->environmentRepository->all())
             ->with('nodes', $this->itemRepository->all());
-        ;
     }
 
     /**
