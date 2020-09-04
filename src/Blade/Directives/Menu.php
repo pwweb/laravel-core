@@ -40,7 +40,7 @@ class Menu extends Directive
         $this->itemRepository = $itemRepo;
         $this->environmentRepository = $envRepo;
 
-        // Set to false, to not generate a @enddate directive.
+        // Set to false, to not generate a @endmenu directive.
         parent::__construct(false);
     }
 

@@ -99,7 +99,14 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
-    public function show($user)
+    /**
+     * Show a person's profile page.
+     *
+     * @param string|int $user The user ID or username.
+     *
+     * @return View
+     */
+    public function show($user): View
     {
         if (true === is_numeric($user)) {
             $person = $this->userRepository->find($user);

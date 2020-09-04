@@ -39,7 +39,11 @@ class CoreServiceProvider extends ServiceProvider
         );
 
         // Register controllers.
-        $this->app->make('PWWEB\Localisation\Controllers\IndexController');
+        $this->app->make(\PWWEB\Core\Controllers\PersonController::class);
+        $this->app->make(\PWWEB\Core\Controllers\ProfileController::class);
+        $this->app->make(\PWWEB\Core\Controllers\UserController::class);
+        $this->app->make(\PWWEB\Core\Controllers\Menu\EnvironmentController::class);
+        $this->app->make(\PWWEB\Core\Controllers\Menu\ItemController::class);
 
         // Register views.
         $this->loadViewsFrom(__DIR__.'/resources/views', 'core');
@@ -56,6 +60,11 @@ class CoreServiceProvider extends ServiceProvider
         foreach (glob(__DIR__.'/Helpers/*.php') as $file) {
             require_once $file;
         }
+
+        parent::register();
+
+        $this->app->bind(Contracts\Colour::class, Colour::class);
+        $this->app->bind(Contracts\Colour\Converter::class, ColorConverter::class);
     }
 
     /**
@@ -110,6 +119,14 @@ class CoreServiceProvider extends ServiceProvider
         $loader->alias('Core', \PWWEB\Core\Facades\Core::class);
 
         $this->registerDirectives();
+    }
+
+    public function provides(): array
+    {
+        return [
+            Contracts\Colour::class,
+            Contracts\Colour\Converter::class,
+        ];
     }
 
     /**
