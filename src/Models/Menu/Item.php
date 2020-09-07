@@ -85,16 +85,6 @@ class Item extends Model
     ];
 
     /**
-     * Accessor for environment data.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function environment(): BelongsTo
-    {
-        return $this->belongsTo(Environment::class, 'environmnet_id', 'id');
-    }
-
-    /**
      * Constructor.
      *
      * @param array $attributes additional attributes for model initialisation
