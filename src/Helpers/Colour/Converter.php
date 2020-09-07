@@ -44,7 +44,7 @@ class Converter implements ColorConverterContract
      */
     public function fromHexToHsv(string $hex): array
     {
-        list($red, $green, $blue) = $this->fromHexToRgb($hex);
+        [$red, $green, $blue] = $this->fromHexToRgb($hex);
 
         return $this->fromRgbToHsv($red, $green, $blue);
     }
@@ -76,7 +76,7 @@ class Converter implements ColorConverterContract
      */
     public function fromHsvToHex(float $hue, float $saturation, float $value): string
     {
-        list($red, $green, $blue) = $this->fromHsvToRgb($hue, $saturation, $value);
+        [$red, $green, $blue] = $this->fromHsvToRgb($hue, $saturation, $value);
 
         return $this->fromRgbToHex($red, $green, $blue);
     }
