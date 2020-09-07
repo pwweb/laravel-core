@@ -41,20 +41,20 @@ trait IsHsvConvertible
      */
     public function fromRgbToHsv(int $red, int $green, int $blue): array
     {
-        $red        = $red   / 255;
-        $green      = $green / 255;
-        $blue       = $blue  / 255;
-        $maxRGB     = max($red, $green, $blue);
-        $minRGB     = min($red, $green, $blue);
+        $red = $red / 255;
+        $green = $green / 255;
+        $blue = $blue / 255;
+        $maxRGB = max($red, $green, $blue);
+        $minRGB = min($red, $green, $blue);
 
-        $hue        = 0;
+        $hue = 0;
         $saturation = 0;
-        $value      = 100 * $maxRGB;
-        $chroma     = $maxRGB - $minRGB;
+        $value = 100 * $maxRGB;
+        $chroma = $maxRGB - $minRGB;
 
         if (0 != $chroma) {
             $saturation = 100 * ($chroma / $maxRGB);
-            $hue        = $this->recalculateHue($red, $green, $blue, $minRGB, $chroma) * 60;
+            $hue = $this->recalculateHue($red, $green, $blue, $minRGB, $chroma) * 60;
         }
 
         return array_map(function ($value) {
@@ -92,7 +92,7 @@ trait IsHsvConvertible
         // Lightness: 0.0 - 1.0.
         $lightness = $this->sanitizeHsvValue($value, 0, 100) / 100.0;
         // Chroma:    0.0 - 1.0.
-        $chroma    = $lightness * ($this->sanitizeHsvValue($saturation, 0, 100) / 100.0);
+        $chroma = $lightness * ($this->sanitizeHsvValue($saturation, 0, 100) / 100.0);
 
         return array_map(function ($color) use ($lightness, $chroma) {
             return (int) round(($color + ($lightness - $chroma)) * 255);
@@ -138,7 +138,7 @@ trait IsHsvConvertible
         $hPrime = $this->sanitizeHsvValue($hue, 0, 360) / 60.0;
         $xPrime = $this->calculateXPrime($hPrime, $chroma);
         $colors = $this->getColorsRange($chroma, $xPrime);
-        $index  = (int) floor($hPrime);
+        $index = (int) floor($hPrime);
 
         return array_key_exists($index, $colors)
             ? $colors[$index]
