@@ -25,7 +25,7 @@ class ItemRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'system_menu_environments_id',
+        'environments_id',
         '_lft',
         '_rgt',
         'parent_id',

@@ -20,13 +20,13 @@
                           <div class="card-body">
                               {!! Form::model($item, ['route' => ['core.menu.items.update', $item->id], 'method' => 'patch']) !!}
 
-                              @include('core::menu.items.fields')
+                        @include('core::menu.items.fields')
 
-                              {!! Form::close() !!}
-                            </div>
-                        </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
-         </div>
+            </div>
+        </div>
     </div>
+</div>
 @endsection

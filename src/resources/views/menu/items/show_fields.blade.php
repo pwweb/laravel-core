@@ -1,7 +1,7 @@
 <!-- System Menu Environments Id Field -->
 <div class="form-group">
-    {!! Form::label('system_menu_environments_id', 'System Menu Environments Id:') !!}
-    <p>{{ $item->system_menu_environments_id }}</p>
+    {!! Form::label('environment_id', 'System Menu Environments Id:') !!}
+    <p>{{ $item->environment_id }}</p>
 </div>
 
 <!--  Lft Field -->
@@ -51,4 +51,3 @@
     {!! Form::label('class', 'Class:') !!}
     <p>{{ $item->class }}</p>
 </div>
-

@@ -3,7 +3,7 @@
 @section('content')
      <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ route('system.menu.environments.index') }}">@lang("pwweb::core.Environments")</a>
+                <a href="{{ route('core.menu.environments.index') }}">@lang("pwweb::core.Environments")</a>
             </li>
             <li class="breadcrumb-item active">@lang("pwweb::core.detail")</li>
      </ol>
