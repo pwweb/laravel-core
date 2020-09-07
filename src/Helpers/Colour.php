@@ -201,7 +201,7 @@ class Colour implements ColorContract
     {
         self::checkHex($color);
 
-        list($red, $green, $blue) = ColorConverter::hexToRgb($color);
+        [$red, $green, $blue] = ColorConverter::hexToRgb($color);
 
         return new self($red, $green, $blue);
     }
@@ -240,9 +240,9 @@ class Colour implements ColorContract
     public function isBright(float $contrast = 150.0): bool
     {
         return $contrast < sqrt(
-            (pow($this->red, 2)   * .299) +
+            (pow($this->red, 2) * .299) +
             (pow($this->green, 2) * .587) +
-            (pow($this->blue, 2)  * .114)
+            (pow($this->blue, 2) * .114)
         );
     }
 
