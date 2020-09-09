@@ -14,6 +14,7 @@ use PWWEB\Localisation\Contracts\Address as AddressContract;
 use PWWEB\Localisation\Models\Address;
 use PWWEB\Localisation\Models\Country;
 use PWWEB\Localisation\Traits\HasAddresses;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
@@ -153,7 +154,7 @@ class Person extends Model implements HasMedia
      */
     public function user(): HasOne
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(config('pwweb.core.models.user'));
     }
 
     /**
@@ -168,6 +169,10 @@ class Person extends Model implements HasMedia
         $this->addMediaConversion('thumb')
             ->width(368)
             ->height(232)
+            ->sharpen(10);
+
+        $this->addMediaConversion('passport')
+            ->crop(Manipulations::CROP_CENTER, 205, 256)
             ->sharpen(10);
     }
 
