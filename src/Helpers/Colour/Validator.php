@@ -1,6 +1,6 @@
 <?php
 
-namespace PWWEB\Core\Helper\Colour;
+namespace PWWEB\Core\Helpers\Colour;
 
 use PWWEB\Core\Contracts\Colour\Validator as ColorValidatorContract;
 
