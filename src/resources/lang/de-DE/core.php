@@ -34,4 +34,6 @@ return [
     'Save person'         => 'Person speichern',
     'Surname'             => 'Nachname',
     'Title'               => 'Titel',
+    'true'                => 'Wahr',
+    'false'               => 'Falsch',
 ];

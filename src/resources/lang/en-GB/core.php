@@ -40,4 +40,6 @@ return [
     'Surname'             => 'Surname',
     'Title'               => 'Title',
     'Users'               => 'Users',
+    'true'                => 'True',
+    'false'               => 'False',
 ];
