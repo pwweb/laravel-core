@@ -10,7 +10,7 @@
     "homepage": "https://github.com/pwweb/core",
     "keywords": ["library", "laravel", "core", "traits"],
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.4",
         "laravel/framework": "^8.0",
         "laravel/socialite": "^5.0",
         "laracasts/flash": "^3.0",
