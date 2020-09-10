@@ -48,11 +48,12 @@ class EnvironmentRepository extends BaseRepository
     }
 
     /**
-     * [findBySlug description].
-     * @param string $slug [description]
-     * @param array  $columns [description]
+     * Find the environment by slug.
      *
-     * @return Environment [description]
+     * @param string $slug    Slug of the environment.
+     * @param array  $columns Columns / fields to be returned for the environment.
+     *
+     * @return Environment
      */
     public function findBySlug(string $slug, array $columns = ['*']): ?Environment
     {

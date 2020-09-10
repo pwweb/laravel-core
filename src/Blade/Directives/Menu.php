@@ -22,18 +22,24 @@ use PWWEB\Core\Repositories\Menu\ItemRepository;
 class Menu extends Directive
 {
     /**
-     * [private description].
+     * Repository of Environments to be used throughout the controller.
+     *
      * @var EnvironmentRepository
      */
     private $environmentRepository;
+
     /**
-     * [private description].
+     * Repository of Items to be used throughout the controller.
+     *
      * @var ItemRepository
      */
     private $itemRepository;
 
     /**
      * Constructor for the Date Directive.
+     *
+     * @param ItemRepository        $itemRepo Repository of Items.
+     * @param EnvironmentRepository $envRepo  Repository of Environments.
      */
     public function __construct(ItemRepository $itemRepo, EnvironmentRepository $envRepo)
     {
@@ -47,7 +53,7 @@ class Menu extends Directive
     /**
      * Handle the functionality for the blade directive.
      *
-     * @param string $expression List of expressions
+     * @param string $expression List of expressions.
      *
      * @return string
      */
@@ -145,9 +151,9 @@ class Menu extends Directive
 
                     $output .= $item->name.'</a>';
                     $output .= '</li>';
-                }
-            }
-        }
+                }//end if
+            }//end if
+        }//end foreach
 
         return $output;
     }

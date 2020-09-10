@@ -59,8 +59,9 @@ class ItemRepository extends BaseRepository
     /**
      * Retrieve a Node and it's descendants.
      *
-     * @param string  $rootNode  The root node identifier.
-     * @param int $maxLevels The max levels to descend.
+     * @param int    $environmentId Environment ID
+     * @param string $rootNode      The root node identifier.
+     * @param int    $maxLevels     The max levels to descend.
      *
      * @return Collection MenuItems
      */
@@ -82,8 +83,8 @@ class ItemRepository extends BaseRepository
     /**
      * Retrive a specific node within the tree.
      *
-     * @param string  $node Node identifier
-     * @param int $env  Environment ID
+     * @param string $node          Node identifier
+     * @param int    $environmentId Environment ID
      *
      * @return model Node
      */
@@ -106,6 +107,13 @@ class ItemRepository extends BaseRepository
         return $node->first();
     }
 
+    /**
+     * Create menu item record.
+     *
+     * @param array $input Values for new record creation.
+     *
+     * @return Item
+     */
     public function create($input)
     {
         $node = $this->model->newInstance();

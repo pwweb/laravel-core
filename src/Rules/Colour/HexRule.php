@@ -17,11 +17,15 @@ use PWWEB\Core\Rules\AbstractRule;
 class HexRule extends AbstractRule
 {
     /**
+     * Rule key
+     *
      * @var string
      */
     protected $key = 'hex';
 
     /**
+     * Rule pattern
+     *
      * @var string
      */
     protected $pattern = '/^#(?:[0-9a-fA-F]{3}){1,2}$/';

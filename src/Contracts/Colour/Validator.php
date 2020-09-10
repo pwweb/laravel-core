@@ -17,16 +17,16 @@ interface Validator
     /**
      * Check if the color is valid HEX Color.
      *
-     * @param string $hex
+     * @param string $value HEX colour value.
      *
      * @return bool
      */
-    public static function validateHex(string $hex): bool;
+    public static function validateHex(string $value): bool;
 
     /**
      * Check if the color is valid RGB Color.
      *
-     * @param string $value
+     * @param string $value RGB colour value.
      *
      * @return bool
      */
@@ -35,7 +35,7 @@ interface Validator
     /**
      * Check if the color is valid RGBA Color.
      *
-     * @param string $value
+     * @param string $value RGBA colour value.
      *
      * @return bool
      */
@@ -44,7 +44,7 @@ interface Validator
     /**
      * Check if the color is valid HSL Color.
      *
-     * @param string $value
+     * @param string $value HSL colour value.
      *
      * @return bool
      */
@@ -53,7 +53,7 @@ interface Validator
     /**
      * Check if the color is valid HSLA Color.
      *
-     * @param string $value
+     * @param string $value HSLA colour value.
      *
      * @return bool
      */

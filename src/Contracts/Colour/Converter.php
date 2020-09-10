@@ -17,18 +17,18 @@ interface Converter
     /**
      * Convert a HEX color to an RGB array (alias).
      *
-     * @see fromHexToRgb
-     *
-     * @param string $hex
+     * @param string $hex Hex value of the colour.
      *
      * @return array
+     *
+     * @see fromHexToRgb
      */
     public static function hexToRgb(string $hex): array;
 
     /**
      * Convert a HEX color to an RGB array.
      *
-     * @param string $hex
+     * @param string $hex Hex value of the colour.
      *
      * @return array
      */
@@ -37,22 +37,22 @@ interface Converter
     /**
      * Convert RGB values to a HEX color (alias).
      *
-     * @see fromRgbToHex
-     *
-     * @param int $red
-     * @param int $green
-     * @param int $blue
+     * @param int $red   Red value for the colour.
+     * @param int $green Green value for the colour.
+     * @param int $blue  Blue value for the colour.
      *
      * @return string
+     *
+     * @see fromRgbToHex
      */
     public static function rgbToHex(int $red, int $green, int $blue): string;
 
     /**
      * Convert RGB values to a HEX color.
      *
-     * @param int $red
-     * @param int $green
-     * @param int $blue
+     * @param int $red   Red value for the colour.
+     * @param int $green Green value for the colour.
+     * @param int $blue  Blue value for the colour.
      *
      * @return string
      */
@@ -61,22 +61,22 @@ interface Converter
     /**
      * Convert an RGB color to an HSV array (alias).
      *
-     * @see fromRgbToHsv
-     *
-     * @param int $red
-     * @param int $green
-     * @param int $blue
+     * @param int $red   Red value for the colour.
+     * @param int $green Green value for the colour.
+     * @param int $blue  Blue value for the colour.
      *
      * @return array
+     *
+     * @see fromRgbToHsv
      */
     public static function rgbToHsv(int $red, int $green, int $blue): array;
 
     /**
      * Convert an RGB color to an HSV array.
      *
-     * @param int $red
-     * @param int $green
-     * @param int $blue
+     * @param int $red   Red value for the colour.
+     * @param int $green Green value for the colour.
+     * @param int $blue  Blue value for the colour.
      *
      * @return array
      */
@@ -85,22 +85,22 @@ interface Converter
     /**
      * Convert an HSV color to an RGB array (alias).
      *
-     * @see fromHsvToRgb
-     *
-     * @param float $hue
-     * @param float $saturation
-     * @param float $value
+     * @param float $hue        Hue of the colour.
+     * @param float $saturation Saturation of the colour.
+     * @param float $value      Colour value.
      *
      * @return array
+     *
+     * @see fromHsvToRgb
      */
     public static function hsvToRgb(float $hue, float $saturation, float $value): array;
 
     /**
      * Convert an HSV color to an RGB array.
      *
-     * @param float $hue
-     * @param float $saturation
-     * @param float $value
+     * @param float $hue        Hue of the colour.
+     * @param float $saturation Saturation of the colour.
+     * @param float $value      Colour value.
      *
      * @return array
      */
@@ -109,18 +109,18 @@ interface Converter
     /**
      * Convert a HEX color to an HSV array (alias).
      *
-     * @see fromHexToHsv
-     *
-     * @param string $hex
+     * @param string $hex Hex value of the colour.
      *
      * @return array
+     *
+     * @see fromHexToHsv
      */
     public static function hexToHsv(string $hex): array;
 
     /**
      * Convert a HEX color to an HSV array.
      *
-     * @param string $hex
+     * @param string $hex Hex value of the colour.
      *
      * @return array
      */
@@ -129,22 +129,22 @@ interface Converter
     /**
      * Convert an HSV to HEX color (alias).
      *
-     * @see fromHsvToHex
-     *
-     * @param float $hue
-     * @param float $saturation
-     * @param float $value
+     * @param float $hue        Hue of the colour.
+     * @param float $saturation Saturation of the colour.
+     * @param float $value      Colour value.
      *
      * @return string
+     *
+     * @see fromHsvToHex
      */
     public static function hsvToHex(float $hue, float $saturation, float $value): string;
 
     /**
      * Convert an HSV to HEX color.
      *
-     * @param float $hue
-     * @param float $saturation
-     * @param float $value
+     * @param float $hue        Hue of the colour.
+     * @param float $saturation Saturation of the colour.
+     * @param float $value      Colour value.
      *
      * @return string
      */

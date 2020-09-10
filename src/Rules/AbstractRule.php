@@ -17,22 +17,26 @@ use Illuminate\Contracts\Validation\Rule;
 abstract class AbstractRule implements Rule
 {
     /**
+     * Rule key
+     *
      * @var string
      */
     protected $key = '';
 
     /**
+     * Rule pattern
+     *
      * @var string
      *
-     * @link  http://stackoverflow.com/questions/12385500/regex-pattern-for-rgb-rgba-hsl-hsla-color-coding
+     * @link http://stackoverflow.com/questions/12385500/regex-pattern-for-rgb-rgba-hsl-hsla-color-coding
      */
     protected $pattern = '';
 
     /**
      * Determine if the validation rule passes.
      *
-     * @param string $attribute
-     * @param mixed  $value
+     * @param string $attribute Attribute.
+     * @param mixed  $value     Value to be tested.
      *
      * @return bool
      */
@@ -54,8 +58,8 @@ abstract class AbstractRule implements Rule
     /**
      * Check if match all.
      *
-     * @param string $pattern
-     * @param string $value
+     * @param string $pattern Pattern for the check.
+     * @param string $value   Value to be tested.
      *
      * @return bool
      */

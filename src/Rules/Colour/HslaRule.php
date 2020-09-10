@@ -17,11 +17,15 @@ use PWWEB\Core\Rules\AbstractRule;
 class HslaRule extends AbstractRule
 {
     /**
+     * Rule key
+     *
      * @var string
      */
     protected $key = 'hsla';
 
     /**
+     * Rule pattern
+     *
      * @var string
      */
     protected $pattern = '/^hsla\(\s*(0|[1-9]\d?|[12]\d\d|3[0-5]\d)\s*,\s*((0|[1-9]\d?|100)%)\s*,\s*((0|[1-9]\d?|100)%)\s*\,\s*((0.[1-9])|[01])\s*\)$/';

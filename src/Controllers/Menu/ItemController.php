@@ -42,7 +42,8 @@ class ItemController extends Controller
     /**
      *  Constructor for the Item controller.
      *
-     * @param ItemRepository $itemRepo Repository of Items.
+     * @param ItemRepository        $itemRepo Repository of Items.
+     * @param EnvironmentRepository $envRepo  Repository of Environments.
      */
     public function __construct(ItemRepository $itemRepo, EnvironmentRepository $envRepo)
     {

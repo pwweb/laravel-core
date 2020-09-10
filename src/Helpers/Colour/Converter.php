@@ -2,7 +2,7 @@
 
 namespace PWWEB\Core\Helpers\Colour;
 
-use PWWEB\Core\Contracts\Colour\Converter as ColorConverterContract;
+use PWWEB\Core\Contracts\Colour\Converter as ColourConverterContract;
 use PWWEB\Core\Traits\Colour\IsHexConvertible;
 use PWWEB\Core\Traits\Colour\IsHsvConvertible;
 
@@ -16,19 +16,19 @@ use PWWEB\Core\Traits\Colour\IsHsvConvertible;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class Converter implements ColorConverterContract
+class Converter implements ColourConverterContract
 {
     use IsHexConvertible;
     use IsHsvConvertible;
 
     /**
-     * Convert a HEX color to an HSV array (alias).
+     * Convert a HEX colour to an HSV array (alias).
      *
-     * @see fromHexToHsv
-     *
-     * @param string $hex
+     * @param string $hex Hex value of the colour.
      *
      * @return array
+     *
+     * @see fromHexToHsv
      */
     public static function hexToHsv(string $hex): array
     {
@@ -36,9 +36,9 @@ class Converter implements ColorConverterContract
     }
 
     /**
-     * Convert a HEX color to an HSV array.
+     * Convert a HEX colour to an HSV array.
      *
-     * @param string $hex
+     * @param string $hex Hex value of the colour.
      *
      * @return array
      */
@@ -50,15 +50,15 @@ class Converter implements ColorConverterContract
     }
 
     /**
-     * Convert an HSV to HEX color (alias).
+     * Convert an HSV to HEX colour (alias).
      *
-     * @see fromHsvToHex
-     *
-     * @param float $hue
-     * @param float $saturation
-     * @param float $value
+     * @param float $hue        Hue of the colour.
+     * @param float $saturation Saturation of the colour.
+     * @param float $value      Colour value.
      *
      * @return string
+     *
+     * @see fromHsvToHex
      */
     public static function hsvToHex(float $hue, float $saturation, float $value): string
     {
@@ -66,11 +66,11 @@ class Converter implements ColorConverterContract
     }
 
     /**
-     * Convert an HSV to HEX color.
+     * Convert an HSV to HEX colour.
      *
-     * @param float $hue
-     * @param float $saturation
-     * @param float $value
+     * @param float $hue        Hue of the colour.
+     * @param float $saturation Saturation of the colour.
+     * @param float $value      Colour value.
      *
      * @return string
      */

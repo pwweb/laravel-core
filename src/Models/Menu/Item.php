@@ -84,6 +84,11 @@ class Item extends Model
         'class' => 'string|nullable',
     ];
 
+    /**
+     * Force deleting of nodes on tree updates.
+     *
+     * @var bool
+     */
     private $forceDeleting = false;
 
     /**

@@ -58,7 +58,7 @@ class CoreServiceProvider extends ServiceProvider
 
         // Register helpers.
         foreach (glob(__DIR__.'/Helpers/*.php') as $file) {
-            require_once $file;
+            include_once $file;
         }
 
         parent::register();
@@ -121,6 +121,11 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerDirectives();
     }
 
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
     public function provides(): array
     {
         return [

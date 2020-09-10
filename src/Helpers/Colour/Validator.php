@@ -2,7 +2,7 @@
 
 namespace PWWEB\Core\Helpers\Colour;
 
-use PWWEB\Core\Contracts\Colour\Validator as ColorValidatorContract;
+use PWWEB\Core\Contracts\Colour\Validator as ColourValidatorContract;
 
 /**
  * PWWEB\Core\Helpers\Colours\Validator Class.
@@ -14,7 +14,7 @@ use PWWEB\Core\Contracts\Colour\Validator as ColorValidatorContract;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class Validator implements ColorValidatorContract
+class Validator implements ColourValidatorContract
 {
     const PATTERN_HEX = '/^#(?:[0-9a-fA-F]{3}){1,2}$/';
     const PATTERN_RGB = '/^rgb\(\s*(0|[1-9]\d?|1\d\d?|2[0-4]\d|25[0-5])\s*,\s*(0|[1-9]\d?|1\d\d?|2[0-4]\d|25[0-5])\s*,\s*(0|[1-9]\d?|1\d\d?|2[0-4]\d|25[0-5])\s*\)$/';
@@ -23,9 +23,9 @@ class Validator implements ColorValidatorContract
     const PATTERN_HSLA = '/^hsla\(\s*(0|[1-9]\d?|[12]\d\d|3[0-5]\d)\s*,\s*((0|[1-9]\d?|100)%)\s*,\s*((0|[1-9]\d?|100)%)\s*\,\s*((0.[1-9])|[01])\s*\)$/';
 
     /**
-     * Check if the color is valid HEX Color.
+     * Check if the colour is valid HEX Colour.
      *
-     * @param string $value
+     * @param string $value HEX colour value.
      *
      * @return bool
      */
@@ -35,9 +35,9 @@ class Validator implements ColorValidatorContract
     }
 
     /**
-     * Check if the color is valid RGB Color.
+     * Check if the colour is valid RGB Colour.
      *
-     * @param string $value
+     * @param string $value RGB colour value.
      *
      * @return bool
      */
@@ -47,9 +47,9 @@ class Validator implements ColorValidatorContract
     }
 
     /**
-     * Check if the color is valid RGBA Color.
+     * Check if the colour is valid RGBA Colour.
      *
-     * @param string $value
+     * @param string $value RGBA colour value.
      *
      * @return bool
      */
@@ -59,9 +59,9 @@ class Validator implements ColorValidatorContract
     }
 
     /**
-     * Check if the color is valid HSL Color.
+     * Check if the colour is valid HSL Colour.
      *
-     * @param string $value
+     * @param string $value HSL colour value.
      *
      * @return bool
      */
@@ -71,9 +71,9 @@ class Validator implements ColorValidatorContract
     }
 
     /**
-     * Check if the color is valid HSLA Color.
+     * Check if the colour is valid HSLA Colour.
      *
-     * @param string $value
+     * @param string $value HSLA colour value.
      *
      * @return bool
      */

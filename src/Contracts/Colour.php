@@ -17,9 +17,9 @@ interface Colour
     /**
      * Set the RGB values.
      *
-     * @param int $red
-     * @param int $green
-     * @param int $blue
+     * @param int $red   Red value for the colour.
+     * @param int $green Green value for the colour.
+     * @param int $blue  Blue value for the colour.
      *
      * @return self
      */
@@ -28,10 +28,10 @@ interface Colour
     /**
      * Set the RGBA values.
      *
-     * @param int   $red
-     * @param int   $green
-     * @param int   $blue
-     * @param float $alpha
+     * @param int   $red   Red value for the colour.
+     * @param int   $green Green value for the colour.
+     * @param int   $blue  Blue value for the colour.
+     * @param float $alpha Alpha value for the colour.
      *
      * @return self
      */
@@ -47,7 +47,7 @@ interface Colour
     /**
      * Set the red value.
      *
-     * @param  int  $red
+     * @param int $red Red value for the colour.
      *
      * @return self
      */
@@ -63,7 +63,7 @@ interface Colour
     /**
      * Set the green value.
      *
-     * @param  int  $green
+     * @param int $green Green value for the colour.
      *
      * @return self
      */
@@ -79,7 +79,7 @@ interface Colour
     /**
      * Set the blue value.
      *
-     * @param  int  $blue
+     * @param int $blue Blue value for the colour.
      *
      * @return self
      */
@@ -88,14 +88,14 @@ interface Colour
     /**
      * Get the alpha value.
      *
-     * @return float|int
+     * @return float
      */
     public function alpha(): float;
 
     /**
      * Set the alpha value.
      *
-     * @param float $alpha
+     * @param float $alpha Alpha value for the colour.
      *
      * @return self
      */
@@ -104,16 +104,16 @@ interface Colour
     /**
      * Make a Color instance.
      *
-     * @param string $color
+     * @param string $colour Raw value of the colour.
      *
      * @return self
      */
-    public static function make(string $color);
+    public static function make(string $colour);
 
     /**
      * Convert to hex color.
      *
-     * @param bool $uppercase
+     * @param bool $uppercase Flag for transformation to uppercase.
      *
      * @return string
      */
@@ -122,7 +122,7 @@ interface Colour
     /**
      * Check if the color is bright.
      *
-     * @param float $contrast
+     * @param float $contrast Contrast value of the colour.
      *
      * @return bool
      */
@@ -131,7 +131,7 @@ interface Colour
     /**
      * Check if the color is dark.
      *
-     * @param float $contrast
+     * @param float $contrast Contrast value of the colour.
      *
      * @return bool
      */
@@ -140,7 +140,7 @@ interface Colour
     /**
      * Check if the color is valid.
      *
-     * @param string $hex
+     * @param string $hex HEX value of the colour.
      *
      * @return bool
      */

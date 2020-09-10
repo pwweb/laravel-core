@@ -17,11 +17,15 @@ use PWWEB\Core\Rules\AbstractRule;
 class RgbaRule extends AbstractRule
 {
     /**
+     * Rule key
+     *
      * @var string
      */
     protected $key = 'rgba';
 
     /**
+     * Rule pattern
+     *
      * @var string
      */
     protected $pattern = '/^rgba\(\s*(0|[1-9]\d?|1\d\d?|2[0-4]\d|25[0-5])\s*,\s*(0|[1-9]\d?|1\d\d?|2[0-4]\d|25[0-5])\s*,\s*(0|[1-9]\d?|1\d\d?|2[0-4]\d|25[0-5])\s*,\s*((0.[1-9])|[01])\s*\)$/';

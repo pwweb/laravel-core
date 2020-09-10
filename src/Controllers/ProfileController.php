@@ -161,6 +161,8 @@ class ProfileController extends Controller
     /**
      * Show the profile edit form.
      *
+     * @param int|string|User $recipient Recipient of friend request.
+     *
      * @return RedirectResponse
      */
     public function befriend($recipient)

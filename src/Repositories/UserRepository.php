@@ -119,8 +119,8 @@ class UserRepository extends BaseRepository
     /**
      * Find user record for given ID.
      *
-     * @param string $username  The username of the record to be retrieved.
-     * @param array  $columns   Column names to retrieve.
+     * @param string $username The username of the record to be retrieved.
+     * @param array  $columns  Column names to retrieve.
      *
      * @return User
      */

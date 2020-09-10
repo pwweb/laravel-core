@@ -50,13 +50,14 @@ class Colour implements ColourContract
     /**
      * Colour constructor.
      *
-     * @param int   $red
-     * @param int   $green
-     * @param int   $blue
+     * @param int   $red   Red value for the colour.
+     * @param int   $green Green value for the colour.
+     * @param int   $blue  Blue value for the colour.
+     * @param float $alpha Alpha value for the colour.
      *
-     * @param float
+     * @return void
      */
-    public function __construct(int $red = 0, int $green = 0, int $blue = 0, float $alpha = 1.0)
+    public function __construct(int $red = 0, int $green = 0, int $blue = 0, float $alpha = 1.0): void
     {
         $this->setRgba($red, $green, $blue, $alpha);
     }
@@ -64,14 +65,14 @@ class Colour implements ColourContract
     /**
      * Set the RGBA values.
      *
-     * @param int   $red
-     * @param int   $green
-     * @param int   $blue
-     * @param float $alpha
+     * @param int   $red   Red value for the colour.
+     * @param int   $green Green value for the colour.
+     * @param int   $blue  Blue value for the colour.
+     * @param float $alpha Alpha value for the colour.
      *
      * @return self
      */
-    public function setRgba(int $red, int $green, int $blue, float $alpha)
+    public function setRgba(int $red, int $green, int $blue, float $alpha): Colour
     {
         return $this->setRgb($red, $green, $blue)
             ->setAlpha($alpha);
@@ -80,9 +81,9 @@ class Colour implements ColourContract
     /**
      * Set the RGB values.
      *
-     * @param int $red
-     * @param int $green
-     * @param int $blue
+     * @param int $red   Red value for the colour.
+     * @param int $green Green value for the colour.
+     * @param int $blue  Blue value for the colour.
      *
      * @return self
      */
@@ -104,7 +105,7 @@ class Colour implements ColourContract
     /**
      * Set the red value.
      *
-     * @param  int  $red
+     * @param int $red Red value for the colour.
      *
      * @return self
      */
@@ -129,7 +130,7 @@ class Colour implements ColourContract
     /**
      * Set the green value.
      *
-     * @param  int  $green
+     * @param int $green Green value for the colour.
      *
      * @return self
      */
@@ -154,7 +155,7 @@ class Colour implements ColourContract
     /**
      * Set the blue value.
      *
-     * @param  int  $blue
+     * @param int $blue Blue value for the colour.
      *
      * @return self
      */
@@ -179,7 +180,7 @@ class Colour implements ColourContract
     /**
      * Set the alpha value.
      *
-     * @param  float|int  $alpha
+     * @param float $alpha Alpha value for the colour.
      *
      * @return self
      */
@@ -194,7 +195,7 @@ class Colour implements ColourContract
     /**
      * Make a Colour instance.
      *
-     * @param string $colour
+     * @param string $colour Raw value of the colour.
      *
      * @return self
      */
@@ -210,7 +211,7 @@ class Colour implements ColourContract
     /**
      * Convert to hex colour.
      *
-     * @param bool $uppercase
+     * @param bool $uppercase Flag for transformation to uppercase.
      *
      * @return string
      */
@@ -218,7 +219,11 @@ class Colour implements ColourContract
     {
         $hex = ColourConverter::rgbToHex($this->red, $this->green, $this->blue);
 
-        return $uppercase ? strtoupper($hex) : strtolower($hex);
+        if (true === $uppercase) {
+            return strtoupper($hex);
+        }
+
+        return strtolower($hex);
     }
 
     /**
@@ -234,23 +239,21 @@ class Colour implements ColourContract
     /**
      * Check if the colour is bright.
      *
-     * @param float $contrast
+     * @param float $contrast Contrast value of the colour.
      *
      * @return bool
      */
     public function isBright(float $contrast = 150.0): bool
     {
         return $contrast < sqrt(
-            (pow($this->red, 2) * .299) +
-            (pow($this->green, 2) * .587) +
-            (pow($this->blue, 2) * .114)
+            (pow($this->red, 2) * .299) + (pow($this->green, 2) * .587) + (pow($this->blue, 2) * .114)
         );
     }
 
     /**
      * Check if the colour is dark.
      *
-     * @param float $contrast
+     * @param float $contrast Contrast value of the colour.
      *
      * @return bool
      */
@@ -262,7 +265,7 @@ class Colour implements ColourContract
     /**
      * Check if the colour is valid.
      *
-     * @param string $hex
+     * @param string $hex HEX value of the colour.
      *
      * @return bool
      */
@@ -274,7 +277,9 @@ class Colour implements ColourContract
     /**
      * Check the colour.
      *
-     * @param string $value
+     * @param string $value Value of the colour.
+     *
+     * @return void
      *
      * @throws \PWWEB\Core\Exceptions\ColourException
      */
@@ -288,8 +293,10 @@ class Colour implements ColourContract
     /**
      * Set colour value.
      *
-     * @param string $name
-     * @param int    $value
+     * @param string $name  Colour aspect, e.g. red, green or blue.
+     * @param int    $value Value of the colour aspect.
+     *
+     * @return void
      *
      * @throws \PWWEB\Core\Exceptions\ColourException
      */
@@ -305,7 +312,9 @@ class Colour implements ColourContract
     /**
      * Check the alpha value.
      *
-     * @param float $alpha
+     * @param float $alpha Alpha value of the colour.
+     *
+     * @return void
      *
      * @throws \PWWEB\Core\Exceptions\ColourException
      */
