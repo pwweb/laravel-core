@@ -90,7 +90,11 @@ class ItemController extends Controller
 
         $item = $this->itemRepository->create($input);
 
-        Flash::success('Item saved successfully.');
+        if (false === empty($item)) {
+            Flash::success('Menu item saved successfully.');
+        } else {
+            Flash::error('Menu item could not be saved.');
+        }
 
         return redirect(route('core.menu.items.index'));
     }
@@ -158,7 +162,11 @@ class ItemController extends Controller
 
         $item = $this->itemRepository->update($request->all(), $id);
 
-        Flash::success('Item updated successfully.');
+        if (false === empty($item)) {
+            Flash::success('Menu item updated successfully.');
+        } else {
+            Flash::error('Menu item could not be updated.');
+        }
 
         return redirect(route('core.menu.items.index'));
     }

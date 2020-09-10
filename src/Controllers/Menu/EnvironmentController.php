@@ -79,7 +79,11 @@ class EnvironmentController extends Controller
 
         $environment = $this->environmentRepository->create($input);
 
-        Flash::success('Environment saved successfully.');
+        if (false === empty($environment)) {
+            Flash::success('Environment saved successfully.');
+        } else {
+            Flash::error('Environment could not be saved.');
+        }
 
         return redirect(route('core.menu.environments.index'));
     }
@@ -144,7 +148,11 @@ class EnvironmentController extends Controller
 
         $environment = $this->environmentRepository->update($request->all(), $id);
 
-        Flash::success('Environment updated successfully.');
+        if (false === empty($environment)) {
+            Flash::success('Environment updated successfully.');
+        } else {
+            Flash::error('Environment could not be updated.');
+        }
 
         return redirect(route('core.menu.environments.index'));
     }

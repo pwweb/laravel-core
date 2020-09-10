@@ -104,9 +104,9 @@ class ProfileController extends Controller
      *
      * @param string|int $user The user ID or username.
      *
-     * @return View
+     * @return View|RedirectResponse
      */
-    public function show($user): View
+    public function show($user)
     {
         if (true === is_numeric($user)) {
             $person = $this->userRepository->find($user);
@@ -338,7 +338,11 @@ class ProfileController extends Controller
 
         $address = $this->addressRepository->update($request->all(), $id);
 
-        Flash::success('Address updated successfully.');
+        if (false === empty($address)) {
+            Flash::success('Address updated successfully.');
+        } else {
+            Flash::error('Address could not be updated.');
+        }
 
         return redirect(route('system.profile.edit'));
     }

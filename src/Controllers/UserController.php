@@ -101,7 +101,11 @@ class UserController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        Flash::success('User saved successfully.');
+        if (false === empty($assoc)) {
+            Flash::success('User saved successfully.');
+        } else {
+            Flash::error('User could not be saved.');
+        }
 
         return redirect(route('core.users.index'));
     }

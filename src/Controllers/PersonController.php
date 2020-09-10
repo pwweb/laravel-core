@@ -87,7 +87,11 @@ class PersonController extends Controller
 
         $person = $this->personRepository->create($input);
 
-        Flash::success('Person saved successfully.');
+        if (false === empty($item)) {
+            Flash::success('Person saved successfully.');
+        } else {
+            Flash::error('Person could not be saved.');
+        }
 
         return redirect(route('core.persons.index'));
     }
@@ -158,7 +162,11 @@ class PersonController extends Controller
 
         $person = $this->personRepository->update($request->all(), $id);
 
-        Flash::success('Person updated successfully.');
+        if (false === empty($item)) {
+            Flash::success('Person updated successfully.');
+        } else {
+            Flash::error('Person could not be updated.');
+        }
 
         return redirect(route('core.persons.index'));
     }

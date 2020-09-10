@@ -81,7 +81,11 @@ class HistoryController extends Controller
 
         $history = $this->historyRepository->create($input);
 
-        Flash::success('History saved successfully.');
+        if (false === empty($history)) {
+            Flash::success('History saved successfully.');
+        } else {
+            Flash::error('History could not be saved.');
+        }
 
         return redirect(route('user.password.histories.index'));
     }
@@ -146,7 +150,11 @@ class HistoryController extends Controller
 
         $history = $this->historyRepository->update($request->all(), $id);
 
-        Flash::success('History updated successfully.');
+        if (false === empty($history)) {
+            Flash::success('History updated successfully.');
+        } else {
+            Flash::error('History could not be updated.');
+        }
 
         return redirect(route('core.user.password.histories.index'));
     }
