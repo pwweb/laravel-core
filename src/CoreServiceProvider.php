@@ -64,7 +64,7 @@ class CoreServiceProvider extends ServiceProvider
         parent::register();
 
         $this->app->bind(Contracts\Colour::class, Helpers\Colour::class);
-        $this->app->bind(Contracts\Colour\Converter::class, Helpers\ColorConverter::class);
+        $this->app->bind(Contracts\Colour\Converter::class, Helpers\Colour\Converter::class);
     }
 
     /**

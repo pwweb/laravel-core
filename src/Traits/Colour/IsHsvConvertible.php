@@ -165,13 +165,13 @@ trait IsHsvConvertible
     /**
      * Sanitize HSV value.
      *
-     * @param int $value
-     * @param int $min
-     * @param int $max
+     * @param float $value
+     * @param float $min
+     * @param float $max
      *
      * @return int
      */
-    protected function sanitizeHsvValue(int $value, int $min, int $max): int
+    protected function sanitizeHsvValue(float $value, float $min, float $max): int
     {
         if ($value < $min) {
             return $min;

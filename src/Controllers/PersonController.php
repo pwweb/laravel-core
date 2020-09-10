@@ -87,7 +87,7 @@ class PersonController extends Controller
 
         $person = $this->personRepository->create($input);
 
-        if (false === empty($item)) {
+        if (false === empty($person)) {
             Flash::success('Person saved successfully.');
         } else {
             Flash::error('Person could not be saved.');
@@ -162,7 +162,7 @@ class PersonController extends Controller
 
         $person = $this->personRepository->update($request->all(), $id);
 
-        if (false === empty($item)) {
+        if (false === empty($person)) {
             Flash::success('Person updated successfully.');
         } else {
             Flash::error('Person could not be updated.');

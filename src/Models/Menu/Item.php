@@ -2,7 +2,7 @@
 
 namespace PWWEB\Core\Models\Menu;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Kalnoy\Nestedset\NodeTrait;
 use PWWEB\Core\Traits\Migratable;
@@ -83,6 +83,8 @@ class Item extends Model
         'separator' => 'required',
         'class' => 'string|nullable',
     ];
+
+    private $forceDeleting = false;
 
     /**
      * Constructor.

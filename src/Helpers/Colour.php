@@ -2,9 +2,10 @@
 
 namespace PWWEB\Core\Helpers;
 
-use PWWEB\Core\Contracts\Colour as ColorContract;
+use PWWEB\Core\Contracts\Colour as ColourContract;
 use PWWEB\Core\Exceptions\Colour\Exception as ColourException;
-use PWWEB\Core\Helpers\Colour\Converter as ColorConverter;
+use PWWEB\Core\Helpers\Colour\Converter as ColourConverter;
+use PWWEB\Core\Helpers\Colour\Validator as ColourValidator;
 
 /**
  * PWWEB\Core\Helpers\Colours Class.
@@ -16,7 +17,7 @@ use PWWEB\Core\Helpers\Colour\Converter as ColorConverter;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class Colour implements ColorContract
+class Colour implements ColourContract
 {
     /**
      * Red value.
@@ -47,7 +48,7 @@ class Colour implements ColorContract
     protected $alpha = 1.0;
 
     /**
-     * Color constructor.
+     * Colour constructor.
      *
      * @param int   $red
      * @param int   $green
@@ -109,7 +110,7 @@ class Colour implements ColorContract
      */
     public function setRed(int $red)
     {
-        $this->checkColorValue('red', $red);
+        $this->checkColourValue('red', $red);
         $this->red = $red;
 
         return $this;
@@ -134,7 +135,7 @@ class Colour implements ColorContract
      */
     public function setGreen(int $green)
     {
-        $this->checkColorValue('green', $green);
+        $this->checkColourValue('green', $green);
         $this->green = $green;
 
         return $this;
@@ -159,7 +160,7 @@ class Colour implements ColorContract
      */
     public function setBlue(int $blue)
     {
-        $this->checkColorValue('blue', $blue);
+        $this->checkColourValue('blue', $blue);
         $this->blue = $blue;
 
         return $this;
@@ -191,23 +192,23 @@ class Colour implements ColorContract
     }
 
     /**
-     * Make a Color instance.
+     * Make a Colour instance.
      *
-     * @param string $color
+     * @param string $colour
      *
      * @return self
      */
-    public static function make(string $color)
+    public static function make(string $colour)
     {
-        self::checkHex($color);
+        self::checkHex($colour);
 
-        [$red, $green, $blue] = ColorConverter::hexToRgb($color);
+        [$red, $green, $blue] = ColourConverter::hexToRgb($colour);
 
         return new self($red, $green, $blue);
     }
 
     /**
-     * Convert to hex color.
+     * Convert to hex colour.
      *
      * @param bool $uppercase
      *
@@ -215,7 +216,7 @@ class Colour implements ColorContract
      */
     public function toHex(bool $uppercase = true): string
     {
-        $hex = ColorConverter::rgbToHex($this->red, $this->green, $this->blue);
+        $hex = ColourConverter::rgbToHex($this->red, $this->green, $this->blue);
 
         return $uppercase ? strtoupper($hex) : strtolower($hex);
     }
@@ -231,7 +232,7 @@ class Colour implements ColorContract
     }
 
     /**
-     * Check if the color is bright.
+     * Check if the colour is bright.
      *
      * @param float $contrast
      *
@@ -247,7 +248,7 @@ class Colour implements ColorContract
     }
 
     /**
-     * Check if the color is dark.
+     * Check if the colour is dark.
      *
      * @param float $contrast
      *
@@ -259,7 +260,7 @@ class Colour implements ColorContract
     }
 
     /**
-     * Check if the color is valid.
+     * Check if the colour is valid.
      *
      * @param string $hex
      *
@@ -267,11 +268,11 @@ class Colour implements ColorContract
      */
     public static function isValidHex(string $hex): bool
     {
-        return ColorValidator::validateHex($hex);
+        return ColourValidator::validateHex($hex);
     }
 
     /**
-     * Check the color.
+     * Check the colour.
      *
      * @param string $value
      *
@@ -280,24 +281,20 @@ class Colour implements ColorContract
     private static function checkHex(string $value): void
     {
         if (false === self::isValidHex($value)) {
-            throw new ColourException("Invalid HEX Color [$value].");
+            throw new ColourException("Invalid HEX Colour [$value].");
         }
     }
 
     /**
-     * Set color value.
+     * Set colour value.
      *
      * @param string $name
      * @param int    $value
      *
      * @throws \PWWEB\Core\Exceptions\ColourException
      */
-    private function checkColorValue(string $name, int $value): void
+    private function checkColourValue(string $name, int $value): void
     {
-        if (false === is_int($value)) {
-            throw new ColourException("The $name value must be an integer.");
-        }
-
         if ($value < 0 || $value > 255) {
             throw new ColourException(
                 "The $name value must be between 0 and 255, [$value] is given."
@@ -314,10 +311,6 @@ class Colour implements ColorContract
      */
     public function checkAlphaValue(float &$alpha): void
     {
-        if (false === is_numeric($alpha)) {
-            throw new ColourException('The alpha value must be a float or an integer.');
-        }
-
         $alpha = (float) $alpha;
 
         if ($alpha < 0 || $alpha > 1) {
@@ -327,68 +320,3 @@ class Colour implements ColorContract
         }
     }
 }
-// if (false === function_exists('hexToRgb')) {
-//     function hexToRgb($hex)
-//     {
-//         if ('#' === $hex[0]) {
-//             $hex = substr($hex, 1);
-//         }
-//
-//         if (3 === strlen($hex)) {
-//             $hex = $hex[0].$hex[0].$hex[1].$hex[1].$hex[2].$hex[2];
-//         }
-//
-//         $r = hexdec($hex[0].$hex[1]);
-//         $g = hexdec($hex[2].$hex[3]);
-//         $b = hexdec($hex[4].$hex[5]);
-//
-//         return $b + ($g << 0x8) + ($r << 0x10);
-//     }
-// }
-//
-// if (false === function_exists('rgbToHsl')) {
-//     function rgbToHsl($rgb)
-//     {
-//         $r = 0xFF & ($rgb >> 0x10);
-//         $g = 0xFF & ($rgb >> 0x8);
-//         $b = 0xFF & $rgb;
-//
-//         $r = ((float) $r) / 255.0;
-//         $g = ((float) $g) / 255.0;
-//         $b = ((float) $b) / 255.0;
-//
-//         $maxC = max($r, $g, $b);
-//         $minC = min($r, $g, $b);
-//
-//         $l = ($maxC + $minC) / 2.0;
-//
-//         if ($maxC === $minC) {
-//             $h = 0;
-//             $s = 0;
-//         } else {
-//             if ($l < 0.5) {
-//                 $s = ($maxC - $minC) / ($maxC + $minC);
-//             } else {
-//                 $s = ($maxC - $minC) / (2.0 - $maxC - $minC);
-//             }
-//
-//             if ($r === $maxC) {
-//                 $h = ($g - $b) / ($maxC - $minC);
-//             }
-//             if ($g === $maxC) {
-//                 $h = 2.0 + ($b - $r) / ($maxC - $minC);
-//             }
-//             if ($b === $maxC) {
-//                 $h = 4.0 + ($r - $g) / ($maxC - $minC);
-//             }
-//
-//             $h = $h / 6.0;
-//         }
-//
-//         $h = (int) round(255.0 * $h);
-//         $s = (int) round(255.0 * $s);
-//         $l = (int) round(255.0 * $l);
-//
-//         return (object) ['hue' => $h, 'saturation' => $s, 'luminance' => $l];
-//     }
-// }

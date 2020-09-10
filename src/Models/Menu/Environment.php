@@ -2,7 +2,7 @@
 
 namespace PWWEB\Core\Models\Menu;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use PWWEB\Core\Traits\Migratable;
 
 /**

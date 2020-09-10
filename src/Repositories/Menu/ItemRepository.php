@@ -62,13 +62,13 @@ class ItemRepository extends BaseRepository
      * @param string  $rootNode  The root node identifier.
      * @param int $maxLevels The max levels to descend.
      *
-     * @return model MenuItems
+     * @return Collection MenuItems
      */
     public function retrieve(int $environmentId = 1, string $rootNode = 'root', int $maxLevels = 10): Collection
     {
         $rootNode = $this->retrieveNode($rootNode, $environmentId);
 
-        if (false === $rootNode) {
+        if (null === $rootNode) {
             return false;
         }
 

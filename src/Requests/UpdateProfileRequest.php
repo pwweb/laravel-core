@@ -41,6 +41,7 @@ class UpdateProfileRequest extends FormRequest
         }
 
         $base = [
+            'id'          => 'id',
             'title'       => 'integer',
             'name'        => 'string|max:255|required',
             'middle_name' => 'string|max:255|nullable',

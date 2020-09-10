@@ -44,9 +44,9 @@ abstract class AbstractRule implements Rule
     /**
      * Get the validation error message.
      *
-     * @return string
+     * @return array
      */
-    public function message(): string
+    public function message(): array
     {
         return trans("color::validation.{$this->key}.invalid");
     }

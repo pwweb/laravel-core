@@ -41,6 +41,7 @@ use Spatie\MediaLibrary\Models\Media;
  * @property  string display_name
  * @property  string display_middle_name
  * @property  string select_name
+ * @property  MorphToMany addresses
  */
 class Person extends Model implements HasMedia
 {
@@ -181,7 +182,7 @@ class Person extends Model implements HasMedia
      *
      * @return int
      */
-    public function getAgeAttribute(): integer
+    public function getAgeAttribute(): int
     {
         return Carbon::parse($this->dob)->age;
     }
