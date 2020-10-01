@@ -14,7 +14,7 @@ use PWWEB\Localisation\Contracts\Address as AddressContract;
 use PWWEB\Localisation\Models\Address;
 use PWWEB\Localisation\Traits\HasAddresses;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 
