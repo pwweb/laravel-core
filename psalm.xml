@@ -14,6 +14,33 @@
         </ignoreFiles>
     </projectFiles>
 
+    <issueHandlers>
+        <UndefinedClass>
+            <errorLevel type="suppress">
+                <referencedClass name="App\Http\Controllers\Controller"/>
+                <directory name="src"/>
+
+            </errorLevel>
+        </UndefinedClass>
+        <UndefinedClass>
+            <errorLevel type="suppress">
+                <referencedClass name="App\Repositories\BaseRepository"/>
+                <directory name="src"/>
+            </errorLevel>
+        </UndefinedClass>
+        <UndefinedClass>
+            <errorLevel type="suppress">
+                <referencedClass name="Spatie\MediaLibrary\HasMedia\HasMedia"/>
+                <directory name="src"/>
+            </errorLevel>
+        </UndefinedClass>
+        <MissingDependency>
+            <errorLevel type="suppress">
+                <directory name="src"/>
+            </errorLevel>
+        </MissingDependency>
+    </issueHandlers>
+
     <plugins>
         <pluginClass class="Psalm\LaravelPlugin\Plugin"/>
     </plugins>
