@@ -4,7 +4,7 @@ $excluded_folders = [
     'node_modules',
     'storage',
     'vendor',
-    'src/Database'
+    'src/Database',
 ];
 
 $finder = PhpCsFixer\Finder::create()
@@ -51,6 +51,7 @@ return PhpCsFixer\Config::create()
         'no_whitespace_in_blank_line' => true,
         'no_trailing_whitespace_in_comment' => true,
         'no_unused_imports' => true,
+        'no_unneeded_control_parentheses' => true,
         'not_operator_with_successor_space' => true,
         'ordered_imports' => true,
         'phpdoc_summary' => true,
