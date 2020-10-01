@@ -85,7 +85,7 @@ class UserRepository extends BaseRepository
     public function changePassword(int $id, array $input): bool
     {
         // Get the user for the ID.
-        $user = $this->find($id);
+        $user = $this->find($id)->first();
 
         // Check that the user exists.
         if (null === $user) {

@@ -21,7 +21,7 @@ abstract class Boolean extends Enum
     /**
      * False Boolean.
      *
-     * @return bool
+     * @return Boolean
      */
     public static function false(): self
     {
@@ -38,10 +38,10 @@ abstract class Boolean extends Enum
                 $value = __('pwweb::core.false');
 
                 if (true === is_array($value)) {
-                    $value = (string) $value[0];
+                    $value = $value[0];
                 }
 
-                return $value;
+                return (string) $value;
             }
         };
     }
@@ -49,7 +49,7 @@ abstract class Boolean extends Enum
     /**
      * True Boolean.
      *
-     * @return bool
+     * @return Boolean
      */
     public static function true(): self
     {
@@ -66,10 +66,10 @@ abstract class Boolean extends Enum
                 $value = __('pwweb::core.true');
 
                 if (true === is_array($value)) {
-                    $value = (string) $value[0];
+                    $value = $value[0];
                 }
 
-                return $value;
+                return (string) $value;
             }
         };
     }

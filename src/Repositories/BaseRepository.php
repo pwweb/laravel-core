@@ -89,7 +89,7 @@ abstract class BaseRepository
     {
         $this->model = $this->model->orderBy($column, $dir);
 
-        return $this;
+        return $this->model;
     }
 
     /**

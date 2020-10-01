@@ -45,6 +45,18 @@ class Directive
     }
 
     /**
+     * Handle the functionality for the blade directive.
+     *
+     * @param string $expression List of expressions.
+     *
+     * @return string
+     */
+    public function handle(string $expression): string
+    {
+        return '';
+    }
+
+    /**
      * Default handler for handling ends, usually for if statements.
      *
      * @param string $expression Expression to be parsed.

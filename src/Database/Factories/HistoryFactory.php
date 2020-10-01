@@ -31,10 +31,10 @@ class HistoryFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $faker->word,
-            'password' => $faker->word,
-            'created_at' => $faker->date('Y-m-d H:i:s'),
-            'updated_at' => $faker->date('Y-m-d H:i:s'),
+            'user_id' => $this->faker->word,
+            'password' => $this->faker->word,
+            'created_at' => $this->faker->date('Y-m-d H:i:s'),
+            'updated_at' => $this->faker->date('Y-m-d H:i:s'),
         ];
     }
 }

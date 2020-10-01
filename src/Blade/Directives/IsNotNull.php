@@ -25,7 +25,7 @@ class IsNotNull extends Directive
      *
      * @return string
      */
-    public function handle(string $expression)
+    public function handle(string $expression): string
     {
         if (true === Str::contains($expression, ',')) {
             $expression = self::multipleArgs($expression);

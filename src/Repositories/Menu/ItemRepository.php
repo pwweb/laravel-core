@@ -90,7 +90,7 @@ class ItemRepository extends BaseRepository
      */
     public function retrieveNode(string $node = '', int $environmentId = 1): ?Item
     {
-        if ('' === $node || null === $environmentId) {
+        if ('' === $node || $environmentId <= 0) {
             return null;
         }
 

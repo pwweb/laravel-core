@@ -3,10 +3,10 @@
 namespace PWWEB\Core\Controllers\User\Password;
 
 use App\Http\Controllers\Controller;
-use Flash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Laracasts\Flash\Flash;
 use PWWEB\Core\Repositories\User\Password\HistoryRepository;
 use PWWEB\Core\Requests\User\Password\CreateHistoryRequest;
 use PWWEB\Core\Requests\User\Password\UpdateHistoryRequest;
