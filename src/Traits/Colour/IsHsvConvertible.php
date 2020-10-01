@@ -108,15 +108,15 @@ trait IsHsvConvertible
     /**
      * Recalculate the Hue.
      *
-     * @param int   $red    Red value for the colour.
-     * @param int   $green  Green value for the colour.
-     * @param int   $blue   Blue value for the colour.
+     * @param float $red    Red value for the colour.
+     * @param float $green  Green value for the colour.
+     * @param float $blue   Blue value for the colour.
      * @param float $minRGB Minimum RGB.
      * @param float $chroma Chroma of the colour.
      *
      * @return float
      */
-    protected function recalculateHue(int $red, int $green, int $blue, float $minRGB, float $chroma): float
+    protected function recalculateHue(float $red, float $green, float $blue, float $minRGB, float $chroma): float
     {
         switch ($minRGB) {
             case $red:
@@ -177,9 +177,9 @@ trait IsHsvConvertible
      * @param float $min   Minimum.
      * @param float $max   Maximum.
      *
-     * @return int
+     * @return float
      */
-    protected function sanitizeHsvValue(float $value, float $min, float $max): int
+    protected function sanitizeHsvValue(float $value, float $min, float $max): float
     {
         if ($value < $min) {
             return $min;

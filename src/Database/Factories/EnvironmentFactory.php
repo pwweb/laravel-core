@@ -31,9 +31,9 @@ class EnvironmentFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $faker->word,
-            'created_at' => $faker->date('Y-m-d H:i:s'),
-            'updated_at' => $faker->date('Y-m-d H:i:s'),
+            'name' => $this->faker->word,
+            'created_at' => $this->faker->date('Y-m-d H:i:s'),
+            'updated_at' => $this->faker->date('Y-m-d H:i:s'),
         ];
     }
 }

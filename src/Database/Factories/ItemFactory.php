@@ -31,15 +31,15 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            'system_menu_environments_id' => $faker->randomDigitNotNull,
-            '_lft' => $faker->randomDigitNotNull,
-            '_rgt' => $faker->randomDigitNotNull,
-            'parent_id' => $faker->randomDigitNotNull,
-            'level' => $faker->randomDigitNotNull,
-            'identifier' => $faker->word,
-            'title' => $faker->word,
-            'separator' => $faker->word,
-            'class' => $faker->word,
+            'system_menu_environments_id' => $this->faker->randomDigitNotNull,
+            '_lft' => $this->faker->randomDigitNotNull,
+            '_rgt' => $this->faker->randomDigitNotNull,
+            'parent_id' => $this->faker->randomDigitNotNull,
+            'level' => $this->faker->randomDigitNotNull,
+            'identifier' => $this->faker->word,
+            'title' => $this->faker->word,
+            'separator' => $this->faker->word,
+            'class' => $this->faker->word,
         ];
     }
 }

@@ -22,7 +22,7 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * Collection of blade directives.
      *
-     * @var \PWWEB\Core\Blade\Directives[]
+     * @var array
      */
     private $directives = [];
 

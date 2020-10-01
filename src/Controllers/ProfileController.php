@@ -3,9 +3,9 @@
 namespace PWWEB\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use Flash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Laracasts\Flash\Flash;
 use PWWEB\Core\Enums\Gender;
 use PWWEB\Core\Enums\Title;
 use PWWEB\Core\Exceptions\User\Password\HistoricPasswordNotAllowed;
@@ -109,7 +109,7 @@ class ProfileController extends Controller
     public function show($user)
     {
         if (true === is_numeric($user)) {
-            $person = $this->userRepository->find($user);
+            $person = $this->userRepository->find((int) $user);
         } else {
             $person = $this->userRepository->findByUsername($user);
         }
@@ -168,9 +168,9 @@ class ProfileController extends Controller
     public function befriend($recipient)
     {
         if (true === is_numeric($recipient)) {
-            $recipient = $this->userRepository->find($recipient);
+            $recipient = $this->userRepository->find((int) $recipient);
         } else {
-            $recipient = $this->userRepository->findByUsername($recipient);
+            $recipient = $this->userRepository->findByUsername((string) $recipient);
         }
 
         if (($user = \Auth::user()) instanceof User && $recipient instanceof User) {
@@ -269,7 +269,7 @@ class ProfileController extends Controller
     public function updateAvatar(ValidatedAvatarRequest $request): RedirectResponse
     {
         if (($user = \Auth::user()) instanceof User) {
-            $validated = $request->validated();
+            $request->validated();
 
             $updatedUser = User::where('id', $user->id)->first();
 

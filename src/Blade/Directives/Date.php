@@ -34,7 +34,7 @@ class Date extends Directive
      *
      * @return string
      */
-    public function handle($expression)
+    public function handle(string $expression): string
     {
         if (true === Str::contains($expression, ',')) {
             $expression = self::multipleArgs($expression);

@@ -40,7 +40,7 @@ abstract class AbstractRule implements Rule
      *
      * @return bool
      */
-    public function passes(string $attribute, $value): bool
+    public function passes($attribute, $value): bool
     {
         return $this->matchAll($this->pattern, $value);
     }
@@ -48,9 +48,9 @@ abstract class AbstractRule implements Rule
     /**
      * Get the validation error message.
      *
-     * @return array
+     * @return string
      */
-    public function message(): array
+    public function message(): string
     {
         return trans("color::validation.{$this->key}.invalid");
     }

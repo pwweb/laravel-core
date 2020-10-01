@@ -42,10 +42,10 @@ abstract class Title extends Enum
                 $value = __('');
 
                 if (true === is_array($value)) {
-                    $value = (string) $value[0];
+                    $value = $value[0];
                 }
 
-                return $value;
+                return (string) $value;
             }
         };
     }
@@ -70,10 +70,10 @@ abstract class Title extends Enum
                 $value = __('Dr.');
 
                 if (true === is_array($value)) {
-                    $value = (string) $value[0];
+                    $value = $value[0];
                 }
 
-                return $value;
+                return (string) $value;
             }
         };
     }
@@ -98,10 +98,10 @@ abstract class Title extends Enum
                 $value = __('Prof.');
 
                 if (true === is_array($value)) {
-                    $value = (string) $value[0];
+                    $value = $value[0];
                 }
 
-                return $value;
+                return (string) $value;
             }
         };
     }
@@ -126,10 +126,10 @@ abstract class Title extends Enum
                 $value = __('Prof. Dr.');
 
                 if (true === is_array($value)) {
-                    $value = (string) $value[0];
+                    $value = $value[0];
                 }
 
-                return $value;
+                return (string) $value;
             }
         };
     }
@@ -154,10 +154,10 @@ abstract class Title extends Enum
                 $value = __('Eng.');
 
                 if (true === is_array($value)) {
-                    $value = (string) $value[0];
+                    $value = $value[0];
                 }
 
-                return $value;
+                return (string) $value;
             }
         };
     }
@@ -182,10 +182,10 @@ abstract class Title extends Enum
                 $value = __('Dipl.-Ing.');
 
                 if (true === is_array($value)) {
-                    $value = (string) $value[0];
+                    $value = $value[0];
                 }
 
-                return $value;
+                return (string) $value;
             }
         };
     }
