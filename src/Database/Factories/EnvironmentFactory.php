@@ -1,6 +1,8 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace PWWEB\Core\Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
 use PWWEB\Core\Models\Menu\Environment;
 
 /**
@@ -12,13 +14,26 @@ use PWWEB\Core\Models\Menu\Environment;
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @var       \Illuminate\Database\Eloquent\Factory $factory
  */
-$factory->define(
-    Environment::class,
-    function (Faker $faker) {
+class EnvironmentFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Environment::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
         return [
             'name' => $faker->word,
             'created_at' => $faker->date('Y-m-d H:i:s'),
             'updated_at' => $faker->date('Y-m-d H:i:s'),
         ];
     }
-);
+}

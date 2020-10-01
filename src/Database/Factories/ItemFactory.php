@@ -1,6 +1,8 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace PWWEB\Core\Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
 use PWWEB\Core\Models\Menu\Item;
 
 /**
@@ -12,9 +14,22 @@ use PWWEB\Core\Models\Menu\Item;
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @var       \Illuminate\Database\Eloquent\Factory $factory
  */
-$factory->define(
-    Item::class,
-    function (Faker $faker) {
+class ItemFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Item::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
         return [
             'system_menu_environments_id' => $faker->randomDigitNotNull,
             '_lft' => $faker->randomDigitNotNull,
@@ -27,4 +42,4 @@ $factory->define(
             'class' => $faker->word,
         ];
     }
-);
+}
