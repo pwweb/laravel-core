@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Blade;
  * @method    static self multipleArgs()
  * @method    static self stripQuotes()
  */
-class Directive
+abstract class Directive
 {
     /**
      * Name of the directive.
@@ -51,10 +51,7 @@ class Directive
      *
      * @return string
      */
-    public function handle(string $expression): string
-    {
-        return '';
-    }
+    abstract protected function handle(string $expression): string;
 
     /**
      * Default handler for handling ends, usually for if statements.
