@@ -19,7 +19,6 @@
             <errorLevel type="suppress">
                 <referencedClass name="App\Http\Controllers\Controller"/>
                 <directory name="src"/>
-
             </errorLevel>
         </UndefinedClass>
         <UndefinedClass>
@@ -39,6 +38,11 @@
                 <directory name="src"/>
             </errorLevel>
         </MissingDependency>
+        <MethodSignatureMismatch>
+            <errorLevel type="suppress">
+                <directory name="src/Blade/Directives"/>
+            </errorLevel>
+        </MethodSignatureMismatch>
     </issueHandlers>
 
     <plugins>
