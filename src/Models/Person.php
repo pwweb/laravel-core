@@ -15,7 +15,7 @@ use PWWEB\Localisation\Models\Address;
 use PWWEB\Localisation\Traits\HasAddresses;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\Models\Media;
 
 /**
@@ -45,7 +45,7 @@ use Spatie\MediaLibrary\Models\Media;
 class Person extends Model implements HasMedia
 {
     use Migratable;
-    use HasMediaTrait;
+    use InteractsWithMedia;
     use HasAddresses;
 
     const CREATED_AT = 'created_at';
