@@ -18,7 +18,7 @@
         "spatie/laravel-enum": "^1.6",
         "spatie/laravel-medialibrary": "^8.0",
         "spatie/laravel-permission": "^3.16",
-        "pwweb/localisation": "~0.2.0",
+        "pwweb/localisation": "*@dev",
         "kalnoy/nestedset": "^5.0"
     },
     "require-dev": {
