@@ -3,7 +3,6 @@
 namespace PWWEB\Core\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use PWWEB\Core\Models\User as UserModel;
 
 /**
  * PWWEB\Core\Requests\UpdateProfileRequest UpdateProfileRequest.
@@ -49,8 +48,8 @@ class UpdateProfileRequest extends FormRequest
             'maiden_name' => 'string|max:255|nullable',
             'dob'         => 'date',
             'gender'      => 'integer',
-            // 'nationality' => 'integer|min:1',
-            // 'email'       => 'required|string|email|max:255|unique:'.UserModel::getTableName().$id,
+            'nationality' => 'integer|min:1',
+            'email'       => 'required|string|email|max:255|unique:'.config('pwweb.core.table_names.users').$id,
         ];
 
         return $base;

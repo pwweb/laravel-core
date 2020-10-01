@@ -281,7 +281,7 @@ class Colour implements ColourContract
      *
      * @return void
      *
-     * @throws \PWWEB\Core\Exceptions\ColourException
+     * @throws \PWWEB\Core\Exceptions\Colour\Exception
      */
     private static function checkHex(string $value): void
     {
@@ -298,7 +298,7 @@ class Colour implements ColourContract
      *
      * @return void
      *
-     * @throws \PWWEB\Core\Exceptions\ColourException
+     * @throws \PWWEB\Core\Exceptions\Colour\Exception
      */
     private function checkColourValue(string $name, int $value): void
     {
@@ -316,7 +316,7 @@ class Colour implements ColourContract
      *
      * @return void
      *
-     * @throws \PWWEB\Core\Exceptions\ColourException
+     * @throws \PWWEB\Core\Exceptions\Colour\Exception
      */
     public function checkAlphaValue(float &$alpha): void
     {

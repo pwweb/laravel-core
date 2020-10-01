@@ -65,12 +65,12 @@ class ItemRepository extends BaseRepository
      *
      * @return Collection MenuItems
      */
-    public function retrieve(int $environmentId = 1, string $rootNode = 'root', int $maxLevels = 10): Collection
+    public function retrieve(int $environmentId = 1, string $rootNode = 'root', int $maxLevels = 10): ?Collection
     {
         $rootNode = $this->retrieveNode($rootNode, $environmentId);
 
         if (null === $rootNode) {
-            return false;
+            return null;
         }
 
         return $this->model
@@ -86,7 +86,7 @@ class ItemRepository extends BaseRepository
      * @param string $node          Node identifier
      * @param int    $environmentId Environment ID
      *
-     * @return model Node
+     * @return Item
      */
     public function retrieveNode(string $node = '', int $environmentId = 1): ?Item
     {
