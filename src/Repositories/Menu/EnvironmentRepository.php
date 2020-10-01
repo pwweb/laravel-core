@@ -44,7 +44,7 @@ class EnvironmentRepository extends BaseRepository
      **/
     public function model(): string
     {
-        return Environment::class;
+        return config('pwweb.core.models.menu_environment');
     }
 
     /**

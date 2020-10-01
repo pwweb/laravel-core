@@ -12,7 +12,6 @@ use PWWEB\Core\Enums\Title;
 use PWWEB\Core\Traits\Migratable;
 use PWWEB\Localisation\Contracts\Address as AddressContract;
 use PWWEB\Localisation\Models\Address;
-use PWWEB\Localisation\Models\Country;
 use PWWEB\Localisation\Traits\HasAddresses;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -131,7 +130,7 @@ class Person extends Model implements HasMedia
      **/
     public function nationality(): BelongsTo
     {
-        return $this->belongsTo(Country::class, 'nationality_id');
+        return $this->belongsTo(config('pwweb.localisation.models.country'), 'nationality_id');
     }
 
     /**
@@ -142,7 +141,7 @@ class Person extends Model implements HasMedia
     public function addresses(): MorphToMany
     {
         return $this->morphToMany(
-            Address::class,
+            config('pwweb.localisation.models.address'),
             'model',
             config('pwweb.localisation.table_names.model_has_address')
         );

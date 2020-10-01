@@ -57,7 +57,7 @@ class Colour implements ColourContract
      *
      * @return void
      */
-    public function __construct(int $red = 0, int $green = 0, int $blue = 0, float $alpha = 1.0): void
+    public function __construct(int $red = 0, int $green = 0, int $blue = 0, float $alpha = 1.0)
     {
         $this->setRgba($red, $green, $blue, $alpha);
     }

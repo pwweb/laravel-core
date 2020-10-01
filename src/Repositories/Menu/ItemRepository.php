@@ -53,7 +53,7 @@ class ItemRepository extends BaseRepository
      **/
     public function model(): string
     {
-        return Item::class;
+        return config('pwweb.core.models.menu_item');
     }
 
     /**

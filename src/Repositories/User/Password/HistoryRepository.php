@@ -46,7 +46,7 @@ class HistoryRepository extends BaseRepository
      **/
     public function model(): string
     {
-        return History::class;
+        return config('pwweb.core.models.user_password_history');
     }
 
     /**
