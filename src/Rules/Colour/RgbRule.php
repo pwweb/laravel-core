@@ -17,14 +17,14 @@ use PWWEB\Core\Rules\AbstractRule;
 class RgbRule extends AbstractRule
 {
     /**
-     * Rule key
+     * Rule key.
      *
      * @var string
      */
     protected $key = 'rgb';
 
     /**
-     * Rule pattern
+     * Rule pattern.
      *
      * @var string
      */

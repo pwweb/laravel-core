@@ -17,14 +17,14 @@ use Illuminate\Contracts\Validation\Rule;
 abstract class AbstractRule implements Rule
 {
     /**
-     * Rule key
+     * Rule key.
      *
      * @var string
      */
     protected $key = '';
 
     /**
-     * Rule pattern
+     * Rule pattern.
      *
      * @var string
      *
