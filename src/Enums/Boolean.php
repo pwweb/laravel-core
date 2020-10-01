@@ -21,7 +21,7 @@ abstract class Boolean extends Enum
     /**
      * False Boolean.
      *
-     * @return Boolean
+     * @return bool
      */
     public static function false(): self
     {
@@ -49,7 +49,7 @@ abstract class Boolean extends Enum
     /**
      * True Boolean.
      *
-     * @return Boolean
+     * @return bool
      */
     public static function true(): self
     {
