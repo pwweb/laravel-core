@@ -17,14 +17,14 @@ use PWWEB\Core\Rules\AbstractRule;
 class HexRule extends AbstractRule
 {
     /**
-     * Rule key
+     * Rule key.
      *
      * @var string
      */
     protected $key = 'hex';
 
     /**
-     * Rule pattern
+     * Rule pattern.
      *
      * @var string
      */

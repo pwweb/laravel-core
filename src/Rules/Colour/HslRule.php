@@ -17,14 +17,14 @@ use PWWEB\Core\Rules\AbstractRule;
 class HslRule extends AbstractRule
 {
     /**
-     * Rule key
+     * Rule key.
      *
      * @var string
      */
     protected $key = 'hsl';
 
     /**
-     * Rule pattern
+     * Rule pattern.
      *
      * @var string
      */
