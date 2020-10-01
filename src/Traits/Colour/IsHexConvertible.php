@@ -42,19 +42,19 @@ trait IsHexConvertible
         return array_map(
             'hexdec',
             true === (6 === strlen($value)) ? [
-            substr($value, 0, 2),
-            // Red.
-            substr($value, 2, 2),
-            // Green.
-            substr($value, 4, 2),
-            // Blue.
+                substr($value, 0, 2),
+                // Red.
+                substr($value, 2, 2),
+                // Green.
+                substr($value, 4, 2),
+                // Blue.
             ] : [
-            str_repeat(substr($value, 0, 1), 2),
-            // Red.
-            str_repeat(substr($value, 1, 1), 2),
-            // Green.
-            str_repeat(substr($value, 2, 1), 2),
-            // Blue.
+                str_repeat(substr($value, 0, 1), 2),
+                // Red.
+                str_repeat(substr($value, 1, 1), 2),
+                // Green.
+                str_repeat(substr($value, 2, 1), 2),
+                // Blue.
             ]
         );
     }
