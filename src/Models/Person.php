@@ -160,11 +160,11 @@ class Person extends Model implements HasMedia
     /**
      * Register additional media conversions.
      *
-     * @param \Spatie\MediaLibrary\Models\Media $media Media object
+     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media $media Media object
      *
      * @return void
      */
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
             ->width(368)
