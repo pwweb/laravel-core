@@ -122,7 +122,7 @@ class ItemRepository extends BaseRepository
     /**
      * Retrive the breadcrumbs for a given node.
      *
-     * @param String $node The node to start at.
+     * @param string $node The node to start at.
      *
      * @return array Crumbs
      */
