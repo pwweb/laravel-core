@@ -16,7 +16,7 @@ use PWWEB\Localisation\Traits\HasAddresses;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
  * PWWEB\Core\Models\Person Model.
