@@ -6,7 +6,7 @@ use PWWEB\Core\Controllers\PersonController;
 use PWWEB\Core\Controllers\UserController;
 
 Route::name('core.')
-    ->middleware(['web', 'auth'])
+    ->middleware(['web', 'auth', 'localisation'])
     ->group(
         function () {
             Route::resource('persons', PersonController::class);
@@ -25,7 +25,7 @@ Route::name('core.')
 Route::namespace('\PWWEB\Core\Controllers')
     ->name('system.')
     ->prefix('profile')
-    ->middleware(['web', 'auth'])
+    ->middleware(['web', 'auth', 'localisation'])
     ->group(
         function () {
             Route::get('/', 'ProfileController@index')->name('profile.index');
