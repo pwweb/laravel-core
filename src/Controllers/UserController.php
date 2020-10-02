@@ -184,9 +184,15 @@ class UserController extends Controller
         if (null === $user->person && null !== $data['person']['name'] && null !== $data['person']['surname']) {
             $person = $this->personRepository->create($data['person']);
             $assoc = $user->person()->associate($person)->save();
+        } else {
+            $person = $this->personRepository->update($data['person'], $user->person->id);
         }
 
-        Flash::success('User updated successfully.');
+        if (true === isset($assoc) && false === $assoc) {
+            Flash::warning('User partially updated.');
+        } else {
+            Flash::success('User updated successfully.');
+        }
 
         return redirect(route('core.users.index'));
     }
