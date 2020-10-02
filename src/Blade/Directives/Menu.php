@@ -123,10 +123,9 @@ class Menu extends Directive
                 $output .= $this->renderSeparator($item, $path);
             } else {
                 dd($item->children);
-                if (
-                    true === isset($item->children) &&
-                    true === is_iterable($item->children) &&
-                    true === isset($item->children->first()->identifier)
+                if (true === isset($item->children)
+                    && true === is_iterable($item->children)
+                    && true === isset($item->children->first()->identifier)
                 ) {
                     $output .= $this->renderDropdownItem($item, $path);
                 } else {
@@ -142,6 +141,7 @@ class Menu extends Directive
      * Render separator menu item.
      *
      * @param Item   $item   Menu item (separator) to display.
+     * @param string $path   Base path for the menu item.
      * @param string $output (Optional) Output previously rendered.
      *
      * @return string
@@ -156,6 +156,15 @@ class Menu extends Directive
         return $output;
     }
 
+    /**
+     * Render dropdown menu item.
+     *
+     * @param Item   $item   Menu item (separator) to display.
+     * @param string $path   Base path for the menu item.
+     * @param string $output (Optional) Output previously rendered.
+     *
+     * @return string
+     */
     private function renderDropdownItem(Item $item, string $path, string $output = ''): string
     {
         $parent = $path.$item->identifier;
@@ -176,6 +185,15 @@ class Menu extends Directive
         return $output;
     }
 
+    /**
+     * Render standard menu item.
+     *
+     * @param Item   $item   Menu item (separator) to display.
+     * @param string $path   Base path for the menu item.
+     * @param string $output (Optional) Output previously rendered.
+     *
+     * @return string
+     */
     private function renderMenuItem(Item $item, string $path, string $output = ''): string
     {
         $output .= '<li class="nav-item">';
