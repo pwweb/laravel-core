@@ -5,6 +5,7 @@ namespace PWWEB\Core\Blade\Directives;
 use Illuminate\Contracts\Queue\QueueableCollection;
 use Illuminate\Support\Str;
 use PWWEB\Core\Blade\Directive;
+use PWWEB\Core\Models\Menu\Item;
 use PWWEB\Core\Repositories\Menu\EnvironmentRepository;
 use PWWEB\Core\Repositories\Menu\ItemRepository;
 
@@ -119,44 +120,78 @@ class Menu extends Directive
 
         foreach ($items as $item) {
             if (1 === $item->seperator) {
-                if (true === isset($item->children) && true === is_iterable($item->children)) {
-                    $output .= '<li class="nav-title">'.$item->name.'</li>';
-                    $output .= $this->render($item->children, $path.$item->identifier);
-                }
+                $output .= $this->renderSeparator($item, $path);
             } else {
-                if (true === isset($item->children) && true === is_iterable($item->children) && true === isset($item->children[0]->identifier)) {
-                    $parent = $path.$item->identifier;
-
-                    $output .= '<li class="nav-item dropdown">';
-                    $output .= '<a href="#" title="'.$item->identifier.'" class="nav-link dropdown-toggle" id="nav-dropdown-'.$item->identifier.'" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-
-                    if ('' !== $item->class) {
-                        $output .= '<span class="'.$item->class.'"></span>';
-                    }
-
-                    $output .= $item->name.'</a>';
-                    $output .= '<ul class="dropdown-menu" aria-labelledby="nav-dropdown-'.$item->identifier.'">';
-                    $output .= $this->render($item->children, $parent);
-                    $output .= '</ul>';
-                    $output .= '</li>';
+                dd($item->children);
+                if (
+                    true === isset($item->children) &&
+                    true === is_iterable($item->children) &&
+                    true === isset($item->children->first()->identifier)
+                ) {
+                    $output .= $this->renderDropdownItem($item, $path);
                 } else {
-                    $output .= '<li class="nav-item">';
+                    $output .= $this->renderMenuItem($item, $path);
+                }
+            }
+        }
 
-                    if (true === \Route::has($path.$item->identifier.'.index')) {
-                        $output .= '<a href="{{ route("'.$path.$item->identifier.'.index") }}" title="'.$item->identifier.'" class="nav-link">';
-                    } else {
-                        $output .= '<a href="#" title="'.$item->identifier.'" class="nav-link">';
-                    }
+        return $output;
+    }
 
-                    if ('' !== $item->class) {
-                        $output .= '<span class="'.$item->class.'"></span>';
-                    }
+    /**
+     * Render separator menu item.
+     *
+     * @param Item   $item   Menu item (separator) to display.
+     * @param string $output (Optional) Output previously rendered.
+     *
+     * @return string
+     */
+    private function renderSeparator(Item $item, string $path, string $output = ''): string
+    {
+        if (true === isset($item->children) && true === is_iterable($item->children)) {
+            $output .= '<li class="nav-title">'.$item->name.'</li>';
+            $output .= $this->render($item->children, $path.$item->identifier);
+        }
 
-                    $output .= $item->name.'</a>';
-                    $output .= '</li>';
-                }//end if
-            }//end if
-        }//end foreach
+        return $output;
+    }
+
+    private function renderDropdownItem(Item $item, string $path, string $output = ''): string
+    {
+        $parent = $path.$item->identifier;
+
+        $output .= '<li class="nav-item dropdown">';
+        $output .= '<a href="#" title="'.$item->identifier.'" class="nav-link dropdown-toggle" id="nav-dropdown-'.$item->identifier.'" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+
+        if ('' !== $item->class) {
+            $output .= '<span class="'.$item->class.'"></span>';
+        }
+
+        $output .= $item->name.'</a>';
+        $output .= '<ul class="dropdown-menu" aria-labelledby="nav-dropdown-'.$item->identifier.'">';
+        $output .= $this->render($item->children, $parent);
+        $output .= '</ul>';
+        $output .= '</li>';
+
+        return $output;
+    }
+
+    private function renderMenuItem(Item $item, string $path, string $output = ''): string
+    {
+        $output .= '<li class="nav-item">';
+
+        if (true === \Route::has($path.$item->identifier.'.index')) {
+            $output .= '<a href="{{ route("'.$path.$item->identifier.'.index") }}" title="'.$item->identifier.'" class="nav-link">';
+        } else {
+            $output .= '<a href="#" title="'.$item->identifier.'" class="nav-link">';
+        }
+
+        if ('' !== $item->class) {
+            $output .= '<span class="'.$item->class.'"></span>';
+        }
+
+        $output .= $item->name.'</a>';
+        $output .= '</li>';
 
         return $output;
     }
