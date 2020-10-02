@@ -38,13 +38,6 @@ class CoreServiceProvider extends ServiceProvider
             'pwweb.core'
         );
 
-        // Register controllers.
-        $this->app->make(\PWWEB\Core\Controllers\PersonController::class);
-        $this->app->make(\PWWEB\Core\Controllers\ProfileController::class);
-        $this->app->make(\PWWEB\Core\Controllers\UserController::class);
-        $this->app->make(\PWWEB\Core\Controllers\Menu\EnvironmentController::class);
-        $this->app->make(\PWWEB\Core\Controllers\Menu\ItemController::class);
-
         // Register views.
         $this->loadViewsFrom(__DIR__.'/resources/views', 'core');
 
