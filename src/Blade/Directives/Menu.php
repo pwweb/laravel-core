@@ -59,7 +59,6 @@ class Menu extends Directive
      */
     public function handle(string $expression): string
     {
-        $environment = 'Frontend';
         $node = 'root';
         $depth = 10;
 
@@ -79,6 +78,10 @@ class Menu extends Directive
         }
 
         $environment = self::stripQuotes($environment);
+
+        if ('' === $environment) {
+            $environment = 'Frontend';
+        }
 
         // Obtain the environment ID.
         $environment = $this->environmentRepository->findBySlug($environment);
