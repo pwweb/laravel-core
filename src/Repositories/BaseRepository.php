@@ -178,7 +178,7 @@ abstract class BaseRepository
      * @param int   $id      The ID of the record to be retrieved.
      * @param array $columns Column names to retrieve.
      *
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|Model|null
+     * @return mixed
      */
     public function find($id, $columns = ['*'])
     {
@@ -193,7 +193,7 @@ abstract class BaseRepository
      * @param array $input Values for the update of the record.
      * @param int   $id    The ID of the record to be retrieved.
      *
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|Model
+     * @return mixed
      */
     public function update($input, $id)
     {

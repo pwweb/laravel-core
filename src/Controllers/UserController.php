@@ -185,7 +185,7 @@ class UserController extends Controller
             $person = $this->personRepository->create($data['person']);
             $assoc = $user->person()->associate($person)->save();
         } else {
-            $person = $this->personRepository->update($data['person'], $user->person->id);
+            $this->personRepository->update($data['person'], $user->person->id);
         }
 
         if (true === isset($assoc) && false === $assoc) {
