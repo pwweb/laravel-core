@@ -73,11 +73,7 @@ class ItemRepository extends BaseRepository
             return null;
         }
 
-        return $this->model
-            ->where('environment_id', $environmentId)
-            ->whereDescendantOf($rootNode)
-            ->get()
-            ->toTree();
+        return $rootNode->descendants->toTree();
     }
 
     /**
