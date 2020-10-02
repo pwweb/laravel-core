@@ -122,4 +122,28 @@ class ItemRepository extends BaseRepository
 
         return $node;
     }
+
+    /**
+     * Retrive the breadcrumbs for a given node.
+     *
+     * @param String $node The node to start at.
+     *
+     * @return array Crumbs
+     */
+    public function retrieveBreadcrumbs(string $node = '', int $environmentId = 1)
+    {
+        if ('' === $node || $environmentId <= 0) {
+            return null;
+        }
+
+        $node = ltrim($node, '/');
+        $node = $this->retrieveNode($node, $environmentId);
+        if (false === $node) {
+            return null;
+        }
+
+        $crumbs = $this->model->defaultOrder()->ancestorsAndSelf($node->id);
+
+        return $crumbs;
+    }
 }
