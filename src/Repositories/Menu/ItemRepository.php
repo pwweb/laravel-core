@@ -134,7 +134,7 @@ class ItemRepository extends BaseRepository
 
         $node = ltrim($node, '/');
         $node = $this->retrieveNode($node, $environmentId);
-        if (false === $node) {
+        if (null === $node) {
             return null;
         }
 
