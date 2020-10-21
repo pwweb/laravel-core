@@ -3,6 +3,7 @@
 namespace PWWEB\Core\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -28,7 +29,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property  string password
  * @property  string remember_token
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference
 {
     use Notifiable;
     use HasRoles;
@@ -76,6 +77,16 @@ class User extends Authenticatable implements MustVerifyEmail
     public static $rules = [
         'email' => 'required',
     ];
+
+    /**
+     * Get the user's preferred locale.
+     *
+     * @return string
+     */
+    public function preferredLocale()
+    {
+        return $this->locale;
+    }
 
     /**
      * The attributes that should be cast to Carbon dates.

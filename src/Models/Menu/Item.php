@@ -46,7 +46,7 @@ class Item extends Model
         'parent_id',
         'level',
         'identifier',
-        'name',
+        'title',
         'separator',
         'class',
     ];
@@ -64,7 +64,7 @@ class Item extends Model
         'parent_id' => 'integer',
         'level' => 'integer',
         'identifier' => 'string',
-        'name' => 'string',
+        'title' => 'string',
         'separator' => 'boolean',
         'class' => 'string',
     ];
@@ -79,7 +79,7 @@ class Item extends Model
         'parent_id' => 'integer|nullable',
         'level' => 'required',
         'identifier' => 'required',
-        'name' => 'required',
+        'title' => 'required',
         'separator' => 'required',
         'class' => 'string|nullable',
     ];
