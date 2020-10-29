@@ -34,7 +34,7 @@ class CreateMenuItemsTable extends Migration
                 $table->foreignId('parent_id')->nullable();
                 $table->integer('level');
                 $table->string('identifier');
-                $table->string('name');
+                $table->string('title');
                 $table->boolean('separator');
                 $table->string('class')->nullable();
 
