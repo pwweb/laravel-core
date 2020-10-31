@@ -65,7 +65,7 @@ class MenuSeeder extends Seeder
 
         $model = new (config('pwweb.core.models.menu'))();
 
-        foreach ($menus as $id => $menu) {
+        foreach ($menus as $menu) {
             $model->create($menu);
         }
     }

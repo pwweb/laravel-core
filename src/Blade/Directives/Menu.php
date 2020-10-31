@@ -5,7 +5,7 @@ namespace PWWEB\Core\Blade\Directives;
 use Illuminate\Contracts\Queue\QueueableCollection;
 use Illuminate\Support\Str;
 use PWWEB\Core\Blade\Directive;
-use PWWEB\Core\Models\Menu;
+use PWWEB\Core\Models\Menu as MenuModel;
 use PWWEB\Core\Repositories\MenuRepository;
 
 /**
@@ -50,7 +50,6 @@ class Menu extends Directive
      */
     public function handle(string $expression): string
     {
-        $node = 'frontend';
         $depth = 10;
 
         if (true === Str::contains($expression, ',')) {
@@ -118,13 +117,13 @@ class Menu extends Directive
     /**
      * Render separator menu menu.
      *
-     * @param Menu   $menu   Menu menu (separator) to display.
+     * @param MenuModel   $menu   Menu menu (separator) to display.
      * @param string $path   Base path for the menu menu.
      * @param string $output (Optional) Output previously rendered.
      *
      * @return string
      */
-    private function renderSeparator(Menu $menu, string $path, string $output = ''): string
+    private function renderSeparator(MenuModel $menu, string $path, string $output = ''): string
     {
         if (true === isset($menu->children) && true === is_iterable($menu->children)) {
             $output .= '<li class="nav-title">'.$menu->name.'</li>';
@@ -137,13 +136,13 @@ class Menu extends Directive
     /**
      * Render dropdown menu menu.
      *
-     * @param Menu   $menu   Menu menu (separator) to display.
+     * @param MenuModel   $menu   Menu menu (separator) to display.
      * @param string $path   Base path for the menu menu.
      * @param string $output (Optional) Output previously rendered.
      *
      * @return string
      */
-    private function renderDropdownMenu(Menu $menu, string $path, string $output = ''): string
+    private function renderDropdownMenu(MenuModel $menu, string $path, string $output = ''): string
     {
         $parent = $path.$menu->identifier;
 
@@ -166,13 +165,13 @@ class Menu extends Directive
     /**
      * Render standard menu menu.
      *
-     * @param Menu   $menu   Menu menu (separator) to display.
+     * @param MenuModel   $menu   Menu menu (separator) to display.
      * @param string $path   Base path for the menu menu.
      * @param string $output (Optional) Output previously rendered.
      *
      * @return string
      */
-    private function renderMenuMenu(Menu $menu, string $path, string $output = ''): string
+    private function renderMenuMenu(MenuModel $menu, string $path, string $output = ''): string
     {
         $output .= '<li class="nav-menu">';
 
