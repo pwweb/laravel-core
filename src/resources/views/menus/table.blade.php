@@ -27,10 +27,10 @@
                 <td>{{ $item->separator }}</td>
                 <td>{{ $item->class }}</td>
                 <td>
-                    {!! Form::open(['route' => ['core.menu.items.destroy', $item->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => ['core.menus.destroy', $item->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('core.menu.items.show', [$item->id]) }}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
-                        <a href="{{ route('core.menu.items.edit', [$item->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
+                        <a href="{{ route('core.menus.show', [$item->id]) }}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
+                        <a href="{{ route('core.menus.edit', [$item->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
                         {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}

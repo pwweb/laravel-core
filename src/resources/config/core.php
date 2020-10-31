@@ -28,13 +28,7 @@ return [
          *
          */
 
-        'menu_environment' => PWWEB\Core\Models\Menu\Environment::class,
-
-        /*
-         *
-         */
-
-        'menu_item' => PWWEB\Core\Models\Menu\Item::class,
+        'menu' => PWWEB\Core\Models\Menu::class,
     ],
 
     'table_names' => [
@@ -45,9 +39,7 @@ return [
 
         'persons' => 'system_persons',
 
-        'menu_environments' => 'system_menu_environments',
-
-        'menu_items' => 'system_menu_items',
+        'menus' => 'system_menus',
     ],
 
     'column_names' => [

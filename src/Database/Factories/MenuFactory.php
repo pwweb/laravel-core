@@ -3,10 +3,10 @@
 namespace PWWEB\Core\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use PWWEB\Core\Models\Menu\Item;
+use PWWEB\Core\Models\Menu;
 
 /**
- * The database factory for Item.
+ * The database factory for Menu.
  *
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
@@ -14,14 +14,14 @@ use PWWEB\Core\Models\Menu\Item;
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  * @var       \Illuminate\Database\Eloquent\Factory $factory
  */
-class ItemFactory extends Factory
+class MenuFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Item::class;
+    protected $model = Menu::class;
 
     /**
      * Define the model's default state.
@@ -31,13 +31,12 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            'system_menu_environments_id' => $this->faker->randomDigitNotNull,
             '_lft' => $this->faker->randomDigitNotNull,
             '_rgt' => $this->faker->randomDigitNotNull,
             'parent_id' => $this->faker->randomDigitNotNull,
-            'level' => $this->faker->randomDigitNotNull,
-            'identifier' => $this->faker->word,
+            'route' => $this->faker->word,
             'title' => $this->faker->word,
+            'visible' => true,
             'separator' => $this->faker->word,
             'class' => $this->faker->word,
         ];

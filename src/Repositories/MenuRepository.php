@@ -4,20 +4,20 @@ namespace PWWEB\Core\Repositories\Menu;
 
 use App\Repositories\BaseRepository;
 use Kalnoy\Nestedset\Collection;
-use PWWEB\Core\Models\Menu\Item;
+use PWWEB\Core\Models\Menu;
 
 /**
- * PWWEB\Core\Repositories\Menu\ItemRepository ItemRepository.
+ * PWWEB\Core\Repositories\MenuRepository MenuRepository.
  *
- * The repository for Item.
- * Class ItemRepository
+ * The repository for Menu.
+ * Class MenuRepository
  *
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class ItemRepository extends BaseRepository
+class MenuRepository extends BaseRepository
 {
     /**
      * Fields that can be searched by.
@@ -25,14 +25,13 @@ class ItemRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'environments_id',
         '_lft',
         '_rgt',
         'parent_id',
-        'level',
-        'identifier',
+        'route',
         'title',
         'separator',
+        'visible',
         'class',
     ];
 
@@ -63,11 +62,11 @@ class ItemRepository extends BaseRepository
      * @param string $rootNode      The root node identifier.
      * @param int    $maxLevels     The max levels to descend.
      *
-     * @return Collection MenuItems
+     * @return Collection Menus
      */
-    public function retrieve(int $environmentId = 1, string $rootNode = 'root', int $maxLevels = 10): ?Collection
+    public function retrieve(string $rootNode = 'frontend', int $maxLevels = 10): ?Collection
     {
-        $rootNode = $this->retrieveNode($rootNode, $environmentId);
+        $rootNode = $this->retrieveNode($rootNode);
 
         if (null === $rootNode) {
             return null;
@@ -82,18 +81,17 @@ class ItemRepository extends BaseRepository
      * @param string $node          Node identifier
      * @param int    $environmentId Environment ID
      *
-     * @return Item
+     * @return Menu
      */
-    public function retrieveNode(string $node = '', int $environmentId = 1): ?Item
+    public function retrieveNode(string $node = ''): ?Menu
     {
-        if ('' === $node || $environmentId <= 0) {
+        if ('' === $node) {
             return null;
         }
 
         $query = $this->model->newQuery();
 
-        $node = $query->where('identifier', '=', $node)
-            ->where('environment_id', '=', $environmentId)
+        $node = $query->where('route', '=', $node)
             ->get();
 
         if (1 !== count($node)) {
@@ -108,7 +106,7 @@ class ItemRepository extends BaseRepository
      *
      * @param array $input Values for new record creation.
      *
-     * @return Item
+     * @return Menu
      */
     public function create($input)
     {
@@ -126,14 +124,14 @@ class ItemRepository extends BaseRepository
      *
      * @return array Crumbs
      */
-    public function retrieveBreadcrumbs(string $node = '', int $environmentId = 1)
+    public function retrieveBreadcrumbs(string $node = '')
     {
-        if ('' === $node || $environmentId <= 0) {
+        if ('' === $node) {
             return null;
         }
 
         $node = ltrim($node, '/');
-        $node = $this->retrieveNode($node, $environmentId);
+        $node = $this->retrieveNode($node);
         if (null === $node) {
             return null;
         }

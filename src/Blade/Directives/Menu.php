@@ -5,9 +5,8 @@ namespace PWWEB\Core\Blade\Directives;
 use Illuminate\Contracts\Queue\QueueableCollection;
 use Illuminate\Support\Str;
 use PWWEB\Core\Blade\Directive;
-use PWWEB\Core\Models\Menu\Item;
-use PWWEB\Core\Repositories\Menu\EnvironmentRepository;
-use PWWEB\Core\Repositories\Menu\ItemRepository;
+use PWWEB\Core\Models\Menu;
+use PWWEB\Core\Repositories\MenuRepository;
 
 /**
  * PWWEB\Core\Blade\Directive Menu.
@@ -23,29 +22,20 @@ use PWWEB\Core\Repositories\Menu\ItemRepository;
 class Menu extends Directive
 {
     /**
-     * Repository of Environments to be used throughout the controller.
+     * Repository of Menus to be used throughout the controller.
      *
-     * @var EnvironmentRepository
+     * @var MenuRepository
      */
-    private $environmentRepository;
-
-    /**
-     * Repository of Items to be used throughout the controller.
-     *
-     * @var ItemRepository
-     */
-    private $itemRepository;
+    private $menuRepository;
 
     /**
      * Constructor for the Date Directive.
      *
-     * @param ItemRepository        $itemRepo Repository of Items.
-     * @param EnvironmentRepository $envRepo  Repository of Environments.
+     * @param MenuRepository        $menuRepo Repository of Menus.
      */
-    public function __construct(ItemRepository $itemRepo, EnvironmentRepository $envRepo)
+    public function __construct(MenuRepository $menuRepo)
     {
-        $this->itemRepository = $itemRepo;
-        $this->environmentRepository = $envRepo;
+        $this->menuRepository = $menuRepo;
 
         // Set to false, to not generate a @endmenu directive.
         parent::__construct(false);
@@ -60,57 +50,45 @@ class Menu extends Directive
      */
     public function handle(string $expression): string
     {
-        $node = 'root';
+        $node = 'frontend';
         $depth = 10;
 
         if (true === Str::contains($expression, ',')) {
             $expression = self::multipleArgs($expression);
 
-            $environment = $expression->get(0);
+            $node = $expression->get(0);
 
             if (null !== $expression->get(1)) {
-                $node = self::stripQuotes($expression->get(1));
-            }
-            if (null !== $expression->get(2)) {
-                $depth = $expression->get(2);
+                $depth = $expression->get(1);
             }
         } else {
-            $environment = $expression;
+            $node = $expression;
         }
 
-        $environment = self::stripQuotes($environment);
+        $node = self::stripQuotes($node);
 
-        if ('' === $environment) {
-            $environment = 'Frontend';
-        }
-
-        // Obtain the environment ID.
-        $environment = $this->environmentRepository->findBySlug($environment);
-
-        if (null === $environment) {
-            $environmentId = 1;
-        } else {
-            $environmentId = $environment->id;
+        if ('' === $node) {
+            $node = 'frontend';
         }
 
         try {
-            $items = $this->itemRepository->retrieve($environmentId, $node, $depth);
+            $menus = $this->menuRepository->retrieve($node, $depth);
         } catch (\Exception $e) {
             return '';
         }
 
-        return $this->render($items);
+        return $this->render($menus);
     }
 
     /**
      * Renders the menu according to bootstrap markup.
      *
-     * @param QueueableCollection $items Menu items to be displayed.
+     * @param QueueableCollection $menus Menu menus to be displayed.
      * @param string              $path  Parent path identifier.
      *
      * @return string
      */
-    public function render(QueueableCollection $items, string $path = ''): string
+    public function render(QueueableCollection $menus, string $path = ''): string
     {
         if ('' !== $path) {
             $path = $path.'.';
@@ -118,18 +96,18 @@ class Menu extends Directive
 
         $output = '';
 
-        foreach ($items as $item) {
-            if (1 === $item->seperator) {
-                $output .= $this->renderSeparator($item, $path);
+        foreach ($menus as $menu) {
+            if (1 === $menu->seperator) {
+                $output .= $this->renderSeparator($menu, $path);
             } else {
-                dd($item->children);
-                if (true === isset($item->children)
-                    && true === is_iterable($item->children)
-                    && true === isset($item->children->first()->identifier)
+                dd($menu->children);
+                if (true === isset($menu->children)
+                    && true === is_iterable($menu->children)
+                    && true === isset($menu->children->first()->identifier)
                 ) {
-                    $output .= $this->renderDropdownItem($item, $path);
+                    $output .= $this->renderDropdownMenu($menu, $path);
                 } else {
-                    $output .= $this->renderMenuItem($item, $path);
+                    $output .= $this->renderMenuMenu($menu, $path);
                 }
             }
         }
@@ -138,47 +116,47 @@ class Menu extends Directive
     }
 
     /**
-     * Render separator menu item.
+     * Render separator menu menu.
      *
-     * @param Item   $item   Menu item (separator) to display.
-     * @param string $path   Base path for the menu item.
+     * @param Menu   $menu   Menu menu (separator) to display.
+     * @param string $path   Base path for the menu menu.
      * @param string $output (Optional) Output previously rendered.
      *
      * @return string
      */
-    private function renderSeparator(Item $item, string $path, string $output = ''): string
+    private function renderSeparator(Menu $menu, string $path, string $output = ''): string
     {
-        if (true === isset($item->children) && true === is_iterable($item->children)) {
-            $output .= '<li class="nav-title">'.$item->name.'</li>';
-            $output .= $this->render($item->children, $path.$item->identifier);
+        if (true === isset($menu->children) && true === is_iterable($menu->children)) {
+            $output .= '<li class="nav-title">'.$menu->name.'</li>';
+            $output .= $this->render($menu->children, $path.$menu->identifier);
         }
 
         return $output;
     }
 
     /**
-     * Render dropdown menu item.
+     * Render dropdown menu menu.
      *
-     * @param Item   $item   Menu item (separator) to display.
-     * @param string $path   Base path for the menu item.
+     * @param Menu   $menu   Menu menu (separator) to display.
+     * @param string $path   Base path for the menu menu.
      * @param string $output (Optional) Output previously rendered.
      *
      * @return string
      */
-    private function renderDropdownItem(Item $item, string $path, string $output = ''): string
+    private function renderDropdownMenu(Menu $menu, string $path, string $output = ''): string
     {
-        $parent = $path.$item->identifier;
+        $parent = $path.$menu->identifier;
 
-        $output .= '<li class="nav-item dropdown">';
-        $output .= '<a href="#" title="'.$item->identifier.'" class="nav-link dropdown-toggle" id="nav-dropdown-'.$item->identifier.'" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+        $output .= '<li class="nav-menu dropdown">';
+        $output .= '<a href="#" title="'.$menu->identifier.'" class="nav-link dropdown-toggle" id="nav-dropdown-'.$menu->identifier.'" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 
-        if ('' !== $item->class) {
-            $output .= '<span class="'.$item->class.'"></span>';
+        if ('' !== $menu->class) {
+            $output .= '<span class="'.$menu->class.'"></span>';
         }
 
-        $output .= $item->name.'</a>';
-        $output .= '<ul class="dropdown-menu" aria-labelledby="nav-dropdown-'.$item->identifier.'">';
-        $output .= $this->render($item->children, $parent);
+        $output .= $menu->name.'</a>';
+        $output .= '<ul class="dropdown-menu" aria-labelledby="nav-dropdown-'.$menu->identifier.'">';
+        $output .= $this->render($menu->children, $parent);
         $output .= '</ul>';
         $output .= '</li>';
 
@@ -186,29 +164,29 @@ class Menu extends Directive
     }
 
     /**
-     * Render standard menu item.
+     * Render standard menu menu.
      *
-     * @param Item   $item   Menu item (separator) to display.
-     * @param string $path   Base path for the menu item.
+     * @param Menu   $menu   Menu menu (separator) to display.
+     * @param string $path   Base path for the menu menu.
      * @param string $output (Optional) Output previously rendered.
      *
      * @return string
      */
-    private function renderMenuItem(Item $item, string $path, string $output = ''): string
+    private function renderMenuMenu(Menu $menu, string $path, string $output = ''): string
     {
-        $output .= '<li class="nav-item">';
+        $output .= '<li class="nav-menu">';
 
-        if (true === \Route::has($path.$item->identifier.'.index')) {
-            $output .= '<a href="{{ route("'.$path.$item->identifier.'.index") }}" title="'.$item->identifier.'" class="nav-link">';
+        if (true === \Route::has($path.$menu->identifier.'.index')) {
+            $output .= '<a href="{{ route("'.$path.$menu->identifier.'.index") }}" title="'.$menu->identifier.'" class="nav-link">';
         } else {
-            $output .= '<a href="#" title="'.$item->identifier.'" class="nav-link">';
+            $output .= '<a href="#" title="'.$menu->identifier.'" class="nav-link">';
         }
 
-        if ('' !== $item->class) {
-            $output .= '<span class="'.$item->class.'"></span>';
+        if ('' !== $menu->class) {
+            $output .= '<span class="'.$menu->class.'"></span>';
         }
 
-        $output .= $item->name.'</a>';
+        $output .= $menu->name.'</a>';
         $output .= '</li>';
 
         return $output;

@@ -3,7 +3,7 @@
 @section('content')
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-         <a href="{!! route('core.menu.items.index') !!}">@lang("pwweb::core.Menu items")</a>
+         <a href="{!! route('core.menus.index') !!}">@lang("pwweb::core.Menu items")</a>
       </li>
       <li class="breadcrumb-item active">@lang("pwweb::core.create")</li>
     </ol>
@@ -18,7 +18,7 @@
                                 <strong>@lang("pwweb::core.Create menu item")</strong>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['route' => 'core.menu.items.store']) !!}
+                                {!! Form::open(['route' => 'core.menus.store']) !!}
 
                                    @include('core::menu.items.fields')
 

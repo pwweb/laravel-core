@@ -13,7 +13,7 @@
                          <div class="card-header">
                              <i class="fa fa-align-justify"></i>
                              @lang("pwweb::core.Menu items")
-                             <a class="pull-right" href="{{ route('core.menu.items.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
+                             <a class="pull-right" href="{{ route('core.menus.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
                          </div>
                          <div class="card-body">
                              @include('core::menu.items.table')

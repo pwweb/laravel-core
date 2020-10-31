@@ -1,25 +1,13 @@
-<!-- System Menu Environments Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('environment_id', __('pwweb::core.Environments').':') !!}
-    {!! Form::select('environment_id', $environments->pluck('name', 'id'), null, ['class' => 'custom-select', 'placeholder' => 'Please select...']) !!}
-</div>
-
 <!-- Parent Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('parent_id', __('pwweb::core.Parent ID').':') !!}
     {!! Form::select('parent_id', $nodes->pluck('name', 'id'), null, ['class' => 'custom-select', 'placeholder' => 'Please select...']) !!}
 </div>
 
-<!-- Level Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('level', __('pwweb::core.Level').':') !!}
-    {!! Form::number('level', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Identifier Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('identifier', __('pwweb::core.Identifier').':') !!}
-    {!! Form::text('identifier', null, ['class' => 'form-control']) !!}
+    {!! Form::label('route', __('pwweb::core.Route').':') !!}
+    {!! Form::text('route', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Title Field -->
@@ -37,6 +25,15 @@
     </label>
 </div>
 
+<!-- Visible Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('visible', __('pwweb::core.Visible').':') !!}
+    <label class="checkbox-inline">
+        {!! Form::hidden('visible', 0) !!}
+        {!! Form::checkbox('visible', '1', true) !!}
+    </label>
+</div>
+
 <!-- Class Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('class', __('pwweb::core.Class').':') !!}
@@ -46,5 +43,5 @@
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit(__('pwweb::core.Save'), ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('core.menu.items.index') }}" class="btn btn-secondary">{{__('pwweb::core.Cancel')}}</a>
+    <a href="{{ route('core.menus.index') }}" class="btn btn-secondary">{{__('pwweb::core.Cancel')}}</a>
 </div>

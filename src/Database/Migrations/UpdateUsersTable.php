@@ -29,6 +29,7 @@ class UpdateUsersTable extends Migration
             User::getTableName(),
             function (Blueprint $table) {
                 $table->foreignId('person_id')->after('id')->nullable();
+                $table->string('locale')->default(config('app.locale', 'en-GB'));
                 // $table->string('name')->nullable()->change();
             }
         );

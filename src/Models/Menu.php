@@ -1,6 +1,6 @@
 <?php
 
-namespace PWWEB\Core\Models\Menu;
+namespace PWWEB\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -8,9 +8,9 @@ use Kalnoy\Nestedset\NodeTrait;
 use PWWEB\Core\Traits\Migratable;
 
 /**
- * PWWEB\Core\Models\Menu\Item Model.
+ * PWWEB\Core\Models\Menu Model.
  *
- * Standard Item Model.
+ * Standard Menu Model.
  *
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
@@ -21,12 +21,13 @@ use PWWEB\Core\Traits\Migratable;
  * @property  int _rgt
  * @property  int parent_id
  * @property  int level
- * @property  string identifier
+ * @property  string route
  * @property  string title
  * @property  bool separator
+ * @property  bool visible
  * @property  string class
  */
-class Item extends Model
+class Menu extends Model
 {
     use Migratable;
     use NodeTrait;
@@ -45,9 +46,10 @@ class Item extends Model
         '_rgt',
         'parent_id',
         'level',
-        'identifier',
+        'route',
         'title',
         'separator',
+        'visible',
         'class',
     ];
 
@@ -58,14 +60,13 @@ class Item extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'environment_id' => 'integer',
         '_lft' => 'integer',
         '_rgt' => 'integer',
         'parent_id' => 'integer',
-        'level' => 'integer',
-        'identifier' => 'string',
+        'route' => 'string',
         'title' => 'string',
         'separator' => 'boolean',
+        'visible' => 'boolean',
         'class' => 'string',
     ];
 
@@ -75,10 +76,8 @@ class Item extends Model
      * @var array
      */
     public static $rules = [
-        'environment_id' => 'integer|required',
         'parent_id' => 'integer|nullable',
-        'level' => 'required',
-        'identifier' => 'required',
+        'route' => 'required',
         'title' => 'required',
         'separator' => 'required',
         'class' => 'string|nullable',
@@ -100,7 +99,7 @@ class Item extends Model
      */
     public function __construct(array $attributes = [])
     {
-        $this->setTable(config('pwweb.core.table_names.menu_items'));
+        $this->setTable(config('pwweb.core.table_names.menus'));
         parent::__construct($attributes);
     }
 

@@ -1,22 +1,22 @@
 <?php
 
-namespace PWWEB\Core\Requests\Menu;
+namespace PWWEB\Core\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use PWWEB\Core\Models\Menu\Environment;
+use PWWEB\Core\Models\Menu;
 
 /**
- * PWWEB\Core\Requests\Menu\CreateEnvironmentRequest CreateEnvironmentRequest.
+ * PWWEB\Core\Requests\CreateMenuRequest CreateMenuRequest.
  *
- * The create request class for the Environment
- * Class CreateEnvironmentRequest
+ * The create request class for the Menu
+ * Class CreateMenuRequest
  *
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class CreateEnvironmentRequest extends FormRequest
+class CreateMenuRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,6 +35,6 @@ class CreateEnvironmentRequest extends FormRequest
      */
     public function rules()
     {
-        return Environment::$rules;
+        return Menu::$rules;
     }
 }

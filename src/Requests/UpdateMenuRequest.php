@@ -1,22 +1,22 @@
 <?php
 
-namespace PWWEB\Core\Requests\Menu;
+namespace PWWEB\Core\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use PWWEB\Core\Models\Menu\Item;
+use PWWEB\Core\Models\Menu;
 
 /**
- * PWWEB\Core\Requests\Menu\UpdateItemRequest UpdateItemRequest.
+ * PWWEB\Core\Requests\UpdateMenuRequest UpdateMenuRequest.
  *
- * The update request class for the Item
- * Class UpdateItemRequest
+ * The update request class for the Menu
+ * Class UpdateMenuRequest
  *
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class UpdateItemRequest extends FormRequest
+class UpdateMenuRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,6 +35,6 @@ class UpdateItemRequest extends FormRequest
      */
     public function rules()
     {
-        return Item::$rules;
+        return Menu::$rules;
     }
 }

@@ -81,8 +81,7 @@ class CoreServiceProvider extends ServiceProvider
 
             $this->publishes(
                 [
-                    __DIR__.'/Database/Migrations/CreateMenuEnvironmentsTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_menu_environments_table.php",
-                    __DIR__.'/Database/Migrations/CreateMenuItemsTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_menu_items_table.php",
+                    __DIR__.'/Database/Migrations/CreateMenusTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_menus_table.php",
                     __DIR__.'/Database/Migrations/CreateUsersTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_users_table.php",
                     __DIR__.'/Database/Migrations/CreatePersonsTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_persons_table.php",
                     __DIR__.'/Database/Migrations/UpdateUsersTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_update_users_table.php",

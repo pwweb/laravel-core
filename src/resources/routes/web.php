@@ -1,7 +1,6 @@
 <?php
 
-use PWWEB\Core\Controllers\Menu\EnvironmentController;
-use PWWEB\Core\Controllers\Menu\ItemController;
+use PWWEB\Core\Controllers\MenuController;
 use PWWEB\Core\Controllers\PersonController;
 use PWWEB\Core\Controllers\UserController;
 
@@ -11,14 +10,7 @@ Route::name('core.')
         function () {
             Route::resource('persons', PersonController::class);
             Route::resource('users', UserController::class);
-            Route::prefix('menu')
-                ->name('menu.')
-                ->group(
-                    function () {
-                        Route::resource('environments', EnvironmentController::class);
-                        Route::resource('items', ItemController::class);
-                    }
-                );
+            Route::resource('menus', MenuController::class);
         }
     );
 

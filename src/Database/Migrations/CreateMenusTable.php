@@ -3,10 +3,10 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use PWWEB\Core\Models\Menu\Item;
+use PWWEB\Core\Models\Menu;
 
 /**
- * CreateMenuItemsTable Migration.
+ * CreateMenusTable Migration.
  *
  * Standard migration for the Menu Item Model.
  *
@@ -15,7 +15,7 @@ use PWWEB\Core\Models\Menu\Item;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class CreateMenuItemsTable extends Migration
+class CreateMenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -25,19 +25,17 @@ class CreateMenuItemsTable extends Migration
     public function up()
     {
         Schema::create(
-            Item::getTableName(),
+            Menu::getTableName(),
             function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->foreignId('environment_id');
                 $table->unsignedInteger('_lft');
                 $table->unsignedInteger('_rgt');
                 $table->foreignId('parent_id')->nullable();
-                $table->integer('level');
-                $table->string('identifier');
+                $table->string('route');
                 $table->string('title');
                 $table->boolean('separator');
                 $table->string('class')->nullable();
-
+                $table->boolean('visible')->default(true);
                 $table->timestampsTz();
                 $table->nestedSet();
             }
@@ -51,6 +49,6 @@ class CreateMenuItemsTable extends Migration
      */
     public function down()
     {
-        Schema::drop(Item::getTableName());
+        Schema::drop(Menu::getTableName());
     }
 }
