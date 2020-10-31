@@ -61,9 +61,8 @@ class History extends Model
      */
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->setTable(config('pwweb.core.table_names.user_password_histories'));
+        parent::__construct($attributes);
     }
 
     /**

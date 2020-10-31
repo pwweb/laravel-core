@@ -106,9 +106,8 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
      */
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->setTable(config('pwweb.core.table_names.users'));
+        parent::__construct($attributes);
     }
 
     /**

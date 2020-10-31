@@ -100,9 +100,8 @@ class Item extends Model
      */
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->setTable(config('pwweb.core.table_names.menu_items'));
+        parent::__construct($attributes);
     }
 
     /**

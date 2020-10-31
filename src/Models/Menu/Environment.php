@@ -61,8 +61,7 @@ class Environment extends Model
      */
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->setTable(config('pwweb.core.table_names.menu_environments'));
+        parent::__construct($attributes);
     }
 }

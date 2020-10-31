@@ -118,9 +118,8 @@ class Person extends Model implements HasMedia
      */
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->setTable(config('pwweb.core.table_names.persons'));
+        parent::__construct($attributes);
     }
 
     /**
