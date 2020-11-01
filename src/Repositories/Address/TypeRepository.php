@@ -2,8 +2,8 @@
 
 namespace PWWEB\Core\Repositories\Address;
 
-use PWWEB\Core\Repositories\BaseRepository;
 use PWWEB\Core\Models\Address\Type;
+use PWWEB\Core\Repositories\BaseRepository;
 
 /**
  * PWWEB\Core\Repositories\Address\TypeRepository TypeRepository.

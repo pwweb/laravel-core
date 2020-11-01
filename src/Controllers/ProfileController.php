@@ -11,15 +11,15 @@ use PWWEB\Core\Enums\Title;
 use PWWEB\Core\Exceptions\User\Password\HistoricPasswordNotAllowed;
 use PWWEB\Core\Exceptions\User\Password\NotMatching;
 use PWWEB\Core\Models\User;
-use PWWEB\Core\Repositories\UserRepository;
-use PWWEB\Core\Requests\Profile\UpdateAvatarRequest as ValidatedAvatarRequest;
-use PWWEB\Core\Requests\Profile\UpdatePasswordRequest as ValidatedPasswordRequest;
-use PWWEB\Core\Requests\UpdateProfileRequest as ValidatedRequest;
 use PWWEB\Core\Repositories\Address\TypeRepository;
 use PWWEB\Core\Repositories\AddressRepository;
 use PWWEB\Core\Repositories\CountryRepository;
+use PWWEB\Core\Repositories\UserRepository;
 use PWWEB\Core\Requests\CreateAddressRequest;
+use PWWEB\Core\Requests\Profile\UpdateAvatarRequest as ValidatedAvatarRequest;
+use PWWEB\Core\Requests\Profile\UpdatePasswordRequest as ValidatedPasswordRequest;
 use PWWEB\Core\Requests\UpdateAddressRequest;
+use PWWEB\Core\Requests\UpdateProfileRequest as ValidatedRequest;
 
 /**
  * PWWEB\Core\Controllers\Profile Controller.
