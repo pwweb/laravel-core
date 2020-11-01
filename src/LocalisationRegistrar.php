@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PWWEB\Localisation.
+ * PWWEB\Core.
  *
  * Localisation Registrar.
  *
@@ -10,7 +10,7 @@
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-namespace PWWEB\Localisation;
+namespace PWWEB\Core;
 
 use Illuminate\Cache\CacheManager;
 use Illuminate\Contracts\Cache\Repository;

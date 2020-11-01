@@ -53,17 +53,6 @@ return [
         'country' => PWWEB\Core\Models\Country::class,
 
         /*
-         * When using the "HasPermissions" trait from this package, we need to know which
-         * Eloquent model should be used to retrieve your permissions. Of course, it
-         * is often just the "Country" model but you may use whatever you like.
-         *
-         * The model you want to use as a Country model needs to implement the
-         * `PWWEB\Core\Contracts\Country` contract.
-         */
-
-        'country' => PWWEB\Core\Models\Country::class,
-
-        /*
          * When using the "HasRoles" trait from this package, we need to know which
          * Eloquent model should be used to retrieve your roles. Of course, it
          * is often just the "Language" model but you may use whatever you like.

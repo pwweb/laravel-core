@@ -129,7 +129,7 @@ class CoreServiceProvider extends ServiceProvider
 
         $loader = AliasLoader::getInstance();
         $loader->alias('Core', \PWWEB\Core\Facades\Core::class);
-        $loader->alias('Localisation', \PWWEB\Localisation\Facades\Localisation::class);
+        $loader->alias('Localisation', \PWWEB\Core\Facades\Localisation::class);
 
         $this->app->singleton(
             LocalisationRegistrar::class,
@@ -139,11 +139,11 @@ class CoreServiceProvider extends ServiceProvider
         );
 
         // Bind an instance of the language repository to the container.
-        $languageRepo = new \PWWEB\Localisation\Repositories\LanguageRepository($this->app);
-        $this->app->instance(\PWWEB\Localisation\Repositories\LanguageRepository::class, $languageRepo);
+        $languageRepo = new \PWWEB\Core\Repositories\LanguageRepository($this->app);
+        $this->app->instance(\PWWEB\Core\Repositories\LanguageRepository::class, $languageRepo);
 
         // Register the local middleware with the application.
-        $router->middlewareGroup('localisation', [\PWWEB\Localisation\Middleware\Locale::class]);
+        $router->middlewareGroup('localisation', [\PWWEB\Core\Middleware\Locale::class]);
 
         $this->registerDirectives();
     }
@@ -181,7 +181,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected function registerModelBindings()
     {
-        $config = config('pwweb.localisation.models');
+        $config = config('pwweb.core.models');
 
         if (false === $config) {
             return;

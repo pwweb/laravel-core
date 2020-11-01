@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PWWEB\Localisation.
+ * PWWEB\Core.
  *
  * Localisation Master Class.
  *
@@ -10,7 +10,7 @@
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-namespace PWWEB\Localisation;
+namespace PWWEB\Core;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Collection;

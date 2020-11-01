@@ -60,8 +60,8 @@ class CreateLocalisationTables extends Migration
                 $table->char('iso', 3);
                 $table->integer('numeric_code');
                 $table->char('entity_code', 5);
-                $table->boolean('active', true);
-                $table->boolean('standard', false);
+                $table->boolean('active')->default(true);
+                $table->boolean('standard')->default(false);
                 $table->timestampsTz();
             }
         );
@@ -78,9 +78,9 @@ class CreateLocalisationTables extends Migration
                 $table->string('name');
                 $table->char('locale', 5);
                 $table->char('abbreviation', 10);
-                $table->boolean('installed', 1);
-                $table->boolean('active', 1);
-                $table->boolean('standard', 0);
+                $table->boolean('installed')->default(1);
+                $table->boolean('active')->default(1);
+                $table->boolean('standard')->default(0);
                 $table->timestampsTz();
             }
         );
