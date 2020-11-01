@@ -1,6 +1,6 @@
 <?php
 
-namespace PWWEB\Core\Repositories\Menu;
+namespace PWWEB\Core\Repositories;
 
 use App\Repositories\BaseRepository;
 use Kalnoy\Nestedset\Collection;
