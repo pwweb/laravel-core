@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use PWWEB\Core\Models\Person;
 use PWWEB\Core\Models\Country;
+use PWWEB\Core\Models\Person;
 
 /**
  * CreatePersonsTable Migration.

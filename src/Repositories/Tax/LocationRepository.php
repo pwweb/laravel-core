@@ -2,8 +2,8 @@
 
 namespace PWWEB\Core\Repositories\Tax;
 
-use PWWEB\Core\Repositories\BaseRepository;
 use PWWEB\Core\Models\Tax\Location;
+use PWWEB\Core\Repositories\BaseRepository;
 
 /**
  * PWWEB\Core\Repositories\Tax\LocationRepository LocationRepository.

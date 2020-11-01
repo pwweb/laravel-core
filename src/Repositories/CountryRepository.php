@@ -2,7 +2,6 @@
 
 namespace PWWEB\Core\Repositories;
 
-use PWWEB\Core\Repositories\BaseRepository;
 use PWWEB\Core\Models\Country;
 
 /**
