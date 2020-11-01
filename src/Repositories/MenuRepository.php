@@ -52,7 +52,7 @@ class MenuRepository extends BaseRepository
      **/
     public function model(): string
     {
-        return config('pwweb.core.models.menu_item');
+        return config('pwweb.core.models.menu');
     }
 
     /**
