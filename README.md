@@ -172,7 +172,7 @@ The localisation package provides a language switcher that can easily be added t
 The package provides a `graphql.schema` file for use within your parent project. This can be included in your primary `schema` file as follows:
 
 ```graphql
-#import ../vendor/pwweb/core/graphql/schema.graphql
+#import ../vendor/pwweb/laravel-core/graphql/schema.graphql
 ```
 
 **Note:** don't forget to update the vendor path should yours be in a different location, relative to your primary schema file.
