@@ -3,7 +3,6 @@
 namespace PWWEB\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Kalnoy\Nestedset\NodeTrait;
 use PWWEB\Core\Traits\Migratable;
 
@@ -16,11 +15,9 @@ use PWWEB\Core\Traits\Migratable;
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @property  int environment_id
  * @property  int _lft
  * @property  int _rgt
  * @property  int parent_id
- * @property  int level
  * @property  string route
  * @property  string title
  * @property  bool separator
@@ -41,11 +38,9 @@ class Menu extends Model
      * @var array
      */
     public $fillable = [
-        'environment_id',
         '_lft',
         '_rgt',
         'parent_id',
-        'level',
         'route',
         'title',
         'separator',
@@ -101,15 +96,5 @@ class Menu extends Model
     {
         $this->setTable(config('pwweb.core.table_names.menus'));
         parent::__construct($attributes);
-    }
-
-    /**
-     * Accessor for person of the user.
-     *
-     * @return BelongsTo
-     */
-    public function environment(): BelongsTo
-    {
-        return $this->belongsTo(config('pwweb.core.models.menu_environment'));
     }
 }
