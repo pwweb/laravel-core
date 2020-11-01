@@ -64,8 +64,6 @@ Route::namespace('\PWWEB\Core\Controllers')
         }
     );
 
-
-
 Route::namespace('PWWEB\Core\Controllers')
     ->prefix('localisation')
     ->middleware(['web'])
