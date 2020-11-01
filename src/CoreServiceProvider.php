@@ -4,6 +4,7 @@ namespace PWWEB\Core;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 
