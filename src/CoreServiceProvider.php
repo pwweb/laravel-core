@@ -38,6 +38,9 @@ class CoreServiceProvider extends ServiceProvider
             'pwweb.core'
         );
 
+        // Register controllers.
+        $this->app->make('PWWEB\Core\Controllers\IndexController');
+
         // Register views.
         $this->loadViewsFrom(__DIR__.'/resources/views', 'core');
 
@@ -63,9 +66,12 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * Boostrap the services of the package.
      *
+     * @param LocalisationRegistrar $localisationLoader the localisation registrar
+     * @param Filesystem            $filesystem         laravel filesystem object for file handling
+     *
      * @return void
      */
-    public function boot()
+    public function boot(LocalisationRegistrar $localisationLoader, Filesystem $filesystem, Router $router)
     {
         $this->loadRoutesFrom(__DIR__.'/resources/routes/web.php');
 
@@ -82,6 +88,7 @@ class CoreServiceProvider extends ServiceProvider
             $this->publishes(
                 [
                     __DIR__.'/Database/Migrations/CreateMenusTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_menus_table.php",
+                    __DIR__.'/Database/Migrations/CreateLocalisationTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_localisation_tables.php",
                     __DIR__.'/Database/Migrations/CreateUsersTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_users_table.php",
                     __DIR__.'/Database/Migrations/CreatePersonsTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_persons_table.php",
                     __DIR__.'/Database/Migrations/UpdateUsersTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_update_users_table.php",
@@ -105,10 +112,38 @@ class CoreServiceProvider extends ServiceProvider
             );
         }//end if
 
+        $this->commands(
+            [
+                Commands\CacheReset::class,
+            ]
+        );
+
         $this->loadTranslationsFrom(realpath(__DIR__.'/resources/lang'), 'pwweb');
+
+        $this->registerModelBindings();
+
+        $localisationLoader->clearClassLanguages();
+        $localisationLoader->registerLanguages();
+
+        $this->app->bind('localisation', \PWWEB\Core\Localisation::class);
 
         $loader = AliasLoader::getInstance();
         $loader->alias('Core', \PWWEB\Core\Facades\Core::class);
+        $loader->alias('Localisation', \PWWEB\Localisation\Facades\Localisation::class);
+
+        $this->app->singleton(
+            LocalisationRegistrar::class,
+            function ($app) use ($localisationLoader) {
+                return $localisationLoader;
+            }
+        );
+
+        // Bind an instance of the language repository to the container.
+        $languageRepo = new \PWWEB\Localisation\Repositories\LanguageRepository($this->app);
+        $this->app->instance(\PWWEB\Localisation\Repositories\LanguageRepository::class, $languageRepo);
+
+        // Register the local middleware with the application.
+        $router->middlewareGroup('localisation', [\PWWEB\Localisation\Middleware\Locale::class]);
 
         $this->registerDirectives();
     }
@@ -137,5 +172,25 @@ class CoreServiceProvider extends ServiceProvider
         $this->directives[] = \App::make(Blade\Directives\IsNull::class);
         $this->directives[] = \App::make(Blade\Directives\IsNotNull::class);
         $this->directives[] = \App::make(Blade\Directives\Menu::class);
+    }
+
+    /**
+     * Registers model bindings.
+     *
+     * @return void
+     */
+    protected function registerModelBindings()
+    {
+        $config = config('pwweb.localisation.models');
+
+        if (false === $config) {
+            return;
+        }
+
+        $this->app->bind(AddressContract::class, $config['address']);
+        $this->app->bind(AddressTypeContract::class, $config['address_type']);
+        $this->app->bind(CountryContract::class, $config['country']);
+        $this->app->bind(CurrencyContract::class, $config['currency']);
+        $this->app->bind(LanguageContract::class, $config['language']);
     }
 }

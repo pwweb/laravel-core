@@ -1,0 +1,240 @@
+<?php
+
+/**
+ * CreateLocalisationTables Migration.
+ *
+ * Standard migration for the Localisation Models.
+ *
+ * @author    Frank Pillukeit <clients@pw-websolutions.com>
+ * @author    Richard Browne <richard.browne@pw-websolutions.com>
+ * @copyright 2020 pw-websolutions.com
+ * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use PWWEB\Core\Database\Seeders\Address\TypeSeeder as AddressTypeSeeder;
+use PWWEB\Core\Database\Seeders\CountrySeeder;
+use PWWEB\Core\Database\Seeders\CurrencySeeder;
+use PWWEB\Core\Database\Seeders\LanguageSeeder;
+use PWWEB\Core\Database\Seeders\Tax\LocationSeeder;
+use PWWEB\Core\Database\Seeders\Tax\RateSeeder;
+
+class CreateLocalisationTables extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        $tableNames = config('pwweb.core.table_names');
+        $columnNames = config('pwweb.core.column_names');
+
+        Schema::create(
+            $tableNames['countries'],
+            function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->string('name');
+                $table->string('iso', 2)->unique();
+                $table->string('ioc', 3)->unique()->nullable();
+                $table->tinyInteger('active');
+                $table->timestampsTz();
+
+                $table->index(['name', 'iso']);
+                $table->index(['name', 'ioc']);
+            }
+        );
+
+        Artisan::call('db:seed', [
+            '--force' => true,
+            '--class' => CountrySeeder::class,
+        ]);
+
+        Schema::create(
+            $tableNames['currencies'],
+            function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->string('name');
+                $table->char('iso', 3);
+                $table->integer('numeric_code');
+                $table->char('entity_code', 5);
+                $table->boolean('active', true);
+                $table->boolean('standard', false);
+                $table->timestampsTz();
+            }
+        );
+
+        Artisan::call('db:seed', [
+            '--force' => true,
+            '--class' => CurrencySeeder::class,
+        ]);
+
+        Schema::create(
+            $tableNames['languages'],
+            function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->string('name');
+                $table->char('locale', 5);
+                $table->char('abbreviation', 10);
+                $table->boolean('installed', 1);
+                $table->boolean('active', 1);
+                $table->boolean('standard', 0);
+                $table->timestampsTz();
+            }
+        );
+
+        Artisan::call('db:seed', [
+            '--force' => true,
+            '--class' => LanguageSeeder::class,
+        ]);
+
+        Schema::create(
+            $tableNames['country_has_language'],
+            function (Blueprint $table) use ($tableNames) {
+                $table->unsignedBigInteger('country_id');
+                $table->unsignedBigInteger('language_id');
+
+                $table->foreign('country_id')
+                    ->references('id')
+                    ->on($tableNames['countries'])
+                    ->onDelete('cascade');
+
+                $table->foreign('language_id')
+                    ->references('id')
+                    ->on($tableNames['languages'])
+                    ->onDelete('cascade');
+
+                $table->primary(['country_id', 'language_id'], 'country_has_language_country_id_language_id_primary');
+            }
+        );
+
+        Schema::create(
+            $tableNames['address_types'],
+            function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->string('name');
+                $table->tinyInteger('global')->default(0);
+                $table->softDeletesTz();
+                $table->timestampsTz();
+            }
+        );
+
+        Artisan::call('db:seed', [
+            '--force' => true,
+            '--class' => AddressTypeSeeder::class,
+        ]);
+
+        Schema::create(
+            $tableNames['addresses'],
+            function (Blueprint $table) use ($tableNames) {
+                $table->bigIncrements('id');
+                $table->unsignedBigInteger('country_id');
+                $table->unsignedBigInteger('type_id');
+                $table->string('street', 60)->nullable();
+                $table->string('street2', 60)->nullable();
+                $table->string('city', 60)->nullable();
+                $table->string('state', 60)->nullable();
+                $table->string('postcode', 10)->nullable();
+                $table->float('lat', 10, 6)->nullable();
+                $table->float('lng', 10, 6)->nullable();
+                $table->boolean('primary');
+                $table->softDeletesTz();
+                $table->timestampsTz();
+
+                // Add foreign keys
+                $table->foreign('country_id')->references('id')->on($tableNames['countries']);
+                $table->foreign('type_id')->references('id')->on($tableNames['address_types']);
+            }
+        );
+
+        Schema::create(
+            $tableNames['model_has_address'],
+            function (Blueprint $table) use ($tableNames, $columnNames) {
+                $table->unsignedBigInteger('address_id');
+
+                $table->string('model_type');
+                $table->unsignedBigInteger($columnNames['model_morph_key']);
+                $table->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_address_model_id_model_type_index');
+
+                $table->foreign('address_id')
+                ->references('id')
+                ->on($tableNames['addresses'])
+                ->onDelete('cascade');
+
+                $table->primary(
+                    ['address_id', $columnNames['model_morph_key'], 'model_type'],
+                    'model_has_address_address_model_type_primary'
+                );
+            }
+        );
+
+        Schema::create(
+            $tableNames['tax']['rates'],
+            function (Blueprint $table) {
+                $table->id('id');
+                $table->decimal('rate', 8, 4);
+                $table->string('name', 40);
+                $table->boolean('compound')->default(false);
+                $table->boolean('shipping')->default(true);
+                $table->unsignedTinyInteger('type')->default(1);
+                $table->timestamps();
+                $table->softDeletes();
+            }
+        );
+
+        Artisan::call('db:seed', [
+            '--force' => true,
+            '--class' => RateSeeder::class,
+        ]);
+
+        Schema::create(
+            $tableNames['tax']['locations'],
+            function (Blueprint $table) use ($tableNames) {
+                $table->id('id');
+                $table->foreignId('country_id');
+                $table->foreignId('tax_rate_id');
+                $table->string('state')->default('*');
+                $table->string('city')->default('*');
+                $table->string('zip')->default('*');
+                $table->unsignedTinyInteger('order')->default(1);
+                $table->boolean('active')->default(true);
+                $table->timestamps();
+                $table->softDeletes();
+
+                $table->foreign('country_id')->references('id')->on($tableNames['countries']);
+                $table->foreign('tax_rate_id')->references('id')->on($tableNames['tax']['rates']);
+            }
+        );
+
+        Artisan::call('db:seed', [
+            '--force' => true,
+            '--class' => LocationSeeder::class,
+        ]);
+
+        app('cache')
+            ->store('default' != config('pwweb.core.cache.store') ? config('pwweb.core.cache.store') : null)
+            ->forget(config('pwweb.core.cache.key'));
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        $tableNames = config('pwweb.core.table_names');
+
+        Schema::dropIfExists($tableNames['country_has_language']);
+        Schema::dropIfExists($tableNames['model_has_address']);
+        Schema::dropIfExists($tableNames['addresses']);
+        Schema::dropIfExists($tableNames['languages']);
+        Schema::dropIfExists($tableNames['tax']['rates']);
+        Schema::dropIfExists($tableNames['tax']['locations']);
+        Schema::dropIfExists($tableNames['currencies']);
+        Schema::dropIfExists($tableNames['address_types']);
+        Schema::dropIfExists($tableNames['countries']);
+    }
+}

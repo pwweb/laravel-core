@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use PWWEB\Core\Enums\Gender;
 use PWWEB\Core\Enums\Title;
 use PWWEB\Core\Traits\Migratable;
-use PWWEB\Localisation\Contracts\Address as AddressContract;
-use PWWEB\Localisation\Models\Address;
-use PWWEB\Localisation\Traits\HasAddresses;
+use PWWEB\Core\Contracts\Address as AddressContract;
+use PWWEB\Core\Models\Address;
+use PWWEB\Core\Traits\HasAddresses;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -27,7 +27,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @property  \PWWEB\Localisation\Models\Country nationality
+ * @property  \PWWEB\Core\Models\Country nationality
  * @property  \Illuminate\Database\Eloquent\Collection users
  * @property  int nationality_id
  * @property  string title
@@ -129,7 +129,7 @@ class Person extends Model implements HasMedia
      **/
     public function nationality(): BelongsTo
     {
-        return $this->belongsTo(config('pwweb.localisation.models.country'), 'nationality_id');
+        return $this->belongsTo(config('pwweb.core.models.country'), 'nationality_id');
     }
 
     /**
@@ -140,9 +140,9 @@ class Person extends Model implements HasMedia
     public function addresses(): MorphToMany
     {
         return $this->morphToMany(
-            config('pwweb.localisation.models.address'),
+            config('pwweb.core.models.address'),
             'model',
-            config('pwweb.localisation.table_names.model_has_address')
+            config('pwweb.core.table_names.model_has_address')
         );
     }
 

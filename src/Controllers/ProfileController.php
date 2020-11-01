@@ -15,11 +15,11 @@ use PWWEB\Core\Repositories\UserRepository;
 use PWWEB\Core\Requests\Profile\UpdateAvatarRequest as ValidatedAvatarRequest;
 use PWWEB\Core\Requests\Profile\UpdatePasswordRequest as ValidatedPasswordRequest;
 use PWWEB\Core\Requests\UpdateProfileRequest as ValidatedRequest;
-use PWWEB\Localisation\Repositories\Address\TypeRepository;
-use PWWEB\Localisation\Repositories\AddressRepository;
-use PWWEB\Localisation\Repositories\CountryRepository;
-use PWWEB\Localisation\Requests\CreateAddressRequest;
-use PWWEB\Localisation\Requests\UpdateAddressRequest;
+use PWWEB\Core\Repositories\Address\TypeRepository;
+use PWWEB\Core\Repositories\AddressRepository;
+use PWWEB\Core\Repositories\CountryRepository;
+use PWWEB\Core\Requests\CreateAddressRequest;
+use PWWEB\Core\Requests\UpdateAddressRequest;
 
 /**
  * PWWEB\Core\Controllers\Profile Controller.

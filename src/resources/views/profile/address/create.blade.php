@@ -3,9 +3,9 @@
 @section('content')
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-         <a href="{!! route('localisation.addresses.index') !!}">@lang("pwweb::localisation.Addresses")</a>
+         <a href="{!! route('core.addresses.index') !!}">@lang("pwweb::core.Addresses")</a>
       </li>
-      <li class="breadcrumb-item active">@lang("pwweb::localisation.create")</li>
+      <li class="breadcrumb-item active">@lang("pwweb::core.create")</li>
     </ol>
      <div class="container-fluid">
           <div class="animated fadeIn">
@@ -15,12 +15,12 @@
                         <div class="card">
                             <div class="card-header">
                                 <i class="fa fa-plus-square-o fa-lg"></i>
-                                <strong>@lang("pwweb::localisation.Create address")</strong>
+                                <strong>@lang("pwweb::core.Create address")</strong>
                             </div>
                             <div class="card-body">
                                 {!! Form::open(['route' => 'system.profile.address.store']) !!}
 
-                                   @include('localisation::addresses.fields')
+                                   @include('core::addresses.fields')
 
                                 {!! Form::close() !!}
                             </div>

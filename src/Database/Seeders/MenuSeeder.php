@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PWWEB\Localisation\Database\Seeders\Menu Seeder.
+ * PWWEB\Core\Database\Seeders\Menu Seeder.
  *
  * Standard seeder for the Menu Model.
  *
@@ -10,7 +10,7 @@
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-namespace PWWEB\Localisation\Database\Seeders;
+namespace PWWEB\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
