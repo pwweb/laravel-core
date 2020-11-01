@@ -2,6 +2,7 @@
 
 namespace PWWEB\Core\Database\Factories\Address;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use PWWEB\Core\Models\Address\Type;
 
  /**
