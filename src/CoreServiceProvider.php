@@ -66,12 +66,12 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * Boostrap the services of the package.
      *
-     * @param LocalisationRegistrar $localisationLoader the localisation registrar
-     * @param Filesystem            $filesystem         laravel filesystem object for file handling
+     * @param LocalisationRegistrar $localisation Loader the localisation registrar
+     * @param Route                 $router       laravel router object for file handling
      *
      * @return void
      */
-    public function boot(LocalisationRegistrar $localisationLoader, Filesystem $filesystem, Router $router)
+    public function boot(LocalisationRegistrar $localisationLoader, Router $router)
     {
         $this->loadRoutesFrom(__DIR__.'/resources/routes/web.php');
 
