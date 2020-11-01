@@ -13,7 +13,6 @@
 namespace PWWEB\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class MenuSeeder extends Seeder
 {
@@ -63,7 +62,9 @@ class MenuSeeder extends Seeder
             ],
         ];
 
-        $model = new (config('pwweb.core.models.menu'))();
+        $model = config('pwweb.core.models.menu');
+
+        $model = new $model;
 
         foreach ($menus as $menu) {
             $model->create($menu);
