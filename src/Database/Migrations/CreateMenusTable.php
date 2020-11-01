@@ -28,9 +28,6 @@ class CreateMenusTable extends Migration
             Menu::getTableName(),
             function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->unsignedInteger('_lft');
-                $table->unsignedInteger('_rgt');
-                $table->foreignId('parent_id')->nullable();
                 $table->string('route');
                 $table->string('title');
                 $table->boolean('separator');
