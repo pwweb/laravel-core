@@ -20,7 +20,7 @@
                           <div class="card-body">
                               {!! Form::model($item, ['route' => ['core.menus.update', $item->id], 'method' => 'patch']) !!}
 
-                        @include('core::menu.items.fields')
+                        @include('core::menus.fields')
 
                         {!! Form::close() !!}
                     </div>

@@ -16,7 +16,7 @@
                              <a class="pull-right" href="{{ route('core.menus.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
                          </div>
                          <div class="card-body">
-                             @include('core::menu.items.table')
+                             @include('core::menus.table')
                               <div class="pull-right mr-3">
 
                               </div>

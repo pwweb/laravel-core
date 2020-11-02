@@ -20,7 +20,7 @@
                             <div class="card-body">
                                 {!! Form::open(['route' => 'core.menus.store']) !!}
 
-                                   @include('core::menu.items.fields')
+                                   @include('core::menus.fields')
 
                                 {!! Form::close() !!}
                             </div>

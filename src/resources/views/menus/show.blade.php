@@ -22,7 +22,7 @@
                                 @lang("pwweb::core.back")</a>
                     </div>
                     <div class="card-body">
-                        @include('core::menu.items.show_fields')
+                        @include('core::menus.show_fields')
                     </div>
                 </div>
             </div>
