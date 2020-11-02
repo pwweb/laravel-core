@@ -83,7 +83,7 @@ class Menu extends Directive
      * Renders the menu according to bootstrap markup.
      *
      * @param QueueableCollection $menus Menu menus to be displayed.
-     * @param string              $path  Parent path identifier.
+     * @param string              $path  Parent path route.
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class Menu extends Directive
                 dd($menu->children);
                 if (true === isset($menu->children)
                     && true === is_iterable($menu->children)
-                    && true === isset($menu->children->first()->identifier)
+                    && true === isset($menu->children->first()->route)
                 ) {
                     $output .= $this->renderDropdownMenu($menu, $path);
                 } else {
@@ -127,7 +127,7 @@ class Menu extends Directive
     {
         if (true === isset($menu->children) && true === is_iterable($menu->children)) {
             $output .= '<li class="nav-title">'.$menu->name.'</li>';
-            $output .= $this->render($menu->children, $path.$menu->identifier);
+            $output .= $this->render($menu->children, $path.$menu->route);
         }
 
         return $output;
@@ -144,17 +144,17 @@ class Menu extends Directive
      */
     private function renderDropdownMenu(MenuModel $menu, string $path, string $output = ''): string
     {
-        $parent = $path.$menu->identifier;
+        $parent = $path.$menu->route;
 
         $output .= '<li class="nav-menu dropdown">';
-        $output .= '<a href="#" title="'.$menu->identifier.'" class="nav-link dropdown-toggle" id="nav-dropdown-'.$menu->identifier.'" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+        $output .= '<a href="#" title="'.$menu->route.'" class="nav-link dropdown-toggle" id="nav-dropdown-'.$menu->route.'" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 
         if ('' !== $menu->class) {
             $output .= '<span class="'.$menu->class.'"></span>';
         }
 
         $output .= $menu->name.'</a>';
-        $output .= '<ul class="dropdown-menu" aria-labelledby="nav-dropdown-'.$menu->identifier.'">';
+        $output .= '<ul class="dropdown-menu" aria-labelledby="nav-dropdown-'.$menu->route.'">';
         $output .= $this->render($menu->children, $parent);
         $output .= '</ul>';
         $output .= '</li>';
@@ -175,10 +175,10 @@ class Menu extends Directive
     {
         $output .= '<li class="nav-menu">';
 
-        if (true === \Route::has($path.$menu->identifier.'.index')) {
-            $output .= '<a href="{{ route("'.$path.$menu->identifier.'.index") }}" title="'.$menu->identifier.'" class="nav-link">';
+        if (true === \Route::has($path.$menu->route.'.index')) {
+            $output .= '<a href="{{ route("'.$path.$menu->route.'.index") }}" title="'.$menu->route.'" class="nav-link">';
         } else {
-            $output .= '<a href="#" title="'.$menu->identifier.'" class="nav-link">';
+            $output .= '<a href="#" title="'.$menu->route.'" class="nav-link">';
         }
 
         if ('' !== $menu->class) {
