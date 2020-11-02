@@ -136,7 +136,7 @@ class MenuRepository extends BaseRepository
             return null;
         }
 
-        $crumbs = $this->model->defaultOrder()->ancestorsAndSelf($node->id);
+        $crumbs = $this->model->defaultOrder()->hasParent()->ancestorsAndSelf($node->id);
 
         return $crumbs;
     }
