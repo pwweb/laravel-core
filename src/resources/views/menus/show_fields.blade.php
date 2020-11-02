@@ -34,6 +34,12 @@
     <p>{{ $item->separator }}</p>
 </div>
 
+<!-- Visible Field -->
+<div class="form-group">
+    {!! Form::label('visible'__('pwweb::core.Visible').':') !!}
+    <p>{{ $item->visible }}</p>
+</div>
+
 <!-- Class Field -->
 <div class="form-group">
     {!! Form::label('class'__('pwweb::core.Class').':') !!}
