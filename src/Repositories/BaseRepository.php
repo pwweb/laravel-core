@@ -5,37 +5,37 @@ namespace PWWEB\Core\Repositories;
 use Illuminate\Container\Container as Application;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * PWWEB\Core\Repositories\BaseRepository BaseRepository.
- *
- * The base repository all future repositories.
- * Class BaseRepository
- *
- * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
- * @author    Richard Browne <richard.browne@pw-websolutions.com>
- * @copyright 2020 pw-websolutions.com
- * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- */
+ /**
+  * PWWEB\Core\Repositories\BaseRepository BaseRepository.
+  *
+  * The base repository all future repositories.
+  * Class BaseRepository
+  *
+  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
+  * @author    Richard Browne <richard.browne@pw-websolutions.com>
+  * @copyright 2020 pw-websolutions.com
+  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+  */
  abstract class BaseRepository
  {
      /**
       * The model instance.
       *
-      * @var Model $model
+      * @var Model
       */
      protected $model;
 
      /**
       * Application instance.
       *
-      * @var Application $app
+      * @var Application
       */
      protected $app;
 
      /**
       * Order deatils.
       *
-      * @var array $orderBy
+      * @var array
       */
      protected $orderBy = [];
 
@@ -62,7 +62,7 @@ use Illuminate\Database\Eloquent\Model;
      /**
       * Configure the Model.
       *
-      * @return String
+      * @return string
       */
      abstract public function model();
 
