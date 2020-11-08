@@ -96,7 +96,6 @@ type CorePerson @node(model: "PWWEB\\Core\\Models\\Person") {
 
 type CoreUser @node(model: "PWWEB\\Core\\Models\\User") {
     id: ID! @globalId
-    person_id: Integer
     email: String!
     email_verified_at: DateTime
     password: String!
@@ -405,6 +404,195 @@ input UpsertCoreLanguageInput {
     active: Boolean
     standard: Boolean
     countries: UpsertCoreCountryBelongsToMany
+}
+
+input CreateCoreCurrencyInput {
+    name: String!
+    iso: String!
+    numeric_code: Integer!
+    entity_code: String!
+    active: Boolean!
+    standard: Boolean!
+    exchange_rates: CreateCoreExchangeRatesHasMany
+}
+
+input UpdateCoreCurrencyInput {
+    id: ID!
+    name: String
+    iso: String
+    numeric_code: Integer
+    entity_code: String
+    active: Boolean
+    standard: Boolean
+    exchange_rates: UpdateCoreExchangeRatesHasMany
+}
+
+input UpsertCoreCurrencyInput {
+    id: ID!
+    name: String
+    iso: String
+    numeric_code: Integer
+    entity_code: String
+    active: Boolean
+    standard: Boolean
+    exchange_rates: UpsertCoreExchangeRatesHasMany
+}
+
+input CreateCoreMenuInput {
+    _lft: Integer
+    _rgt: Integer
+    parent_id: Integer
+    route: String!
+    title: String!
+    separator: Boolean!
+    visible: Boolean!
+    class: String!
+}
+
+input UpdateCoreMenuInput {
+    id: ID!
+    _lft: Integer
+    _rgt: Integer
+    parent_id: Integer
+    route: String
+    title: String
+    separator: Boolean
+    visible: Boolean
+    class: String
+}
+
+input UpsertCoreMenuInput {
+    id: ID!
+    _lft: Integer
+    _rgt: Integer
+    parent_id: Integer
+    route: String
+    title: String
+    separator: Boolean
+    visible: Boolean
+    class: String
+}
+
+input CreateCorePersonInput {
+    nationality: CreateCoreCountryBelongsTo
+    title: String
+    name: String!
+    middle_name: String
+    surname: String!
+    maiden_name: String
+    gender: String
+    dob: Date
+    user: CreateCoreUserHasOne
+    addresses: CreateCoreAddressMorphToMany
+}
+
+input UpdateCorePersonInput {
+    id: ID!
+    nationality: UpdateCoreCountryBelongsTo
+    title: String
+    name: String
+    middle_name: String
+    surname: String
+    maiden_name: String
+    gender: String
+    dob: Date
+    user: UpdateCoreUserHasOne
+    addresses: UpdateCoreAddressMorphToMany
+}
+
+input UpsertCorePersonInput {
+    id: ID!
+    nationality: UpsertCoreCountryBelongsTo
+    title: String
+    name: String
+    middle_name: String
+    surname: String
+    maiden_name: String
+    gender: String
+    dob: Date
+    user: UpsertCoreUserHasOne
+    addresses: UpsertCoreAddressMorphToMany
+}
+
+input CreateCoreUserInput {
+    email: String!
+    email_verified_at: DateTime
+    password: String!
+    person: CreateCorePersonBelongsTo
+}
+
+input UpdateCoreUserInput {
+    id: ID!
+    email: String
+    email_verified_at: DateTime
+    password: String
+    person: UpdateCorePersonBelongsTo
+}
+
+input UpsertCoreUserInput {
+    id: ID!
+    email: String
+    email_verified_at: DateTime
+    password: String
+    person: UpsertCorePersonBelongsTo
+}
+
+input CreateCoreTaxLocationInput {
+    country: CreateCoreCountryBelongsTo
+    rate: CreateCoreTaxRateBelongsTo
+    state: String
+    city: String
+    zip: String
+    order: Integer!
+}
+
+input UpdateCoreTaxLocationInput {
+    id: ID!
+    country: UpdateCoreCountryBelongsTo
+    rate: UpdateCoreTaxRateBelongsTo
+    state: String
+    city: String
+    zip: String
+    order: Integer
+}
+
+input UpsertCoreTaxLocationInput {
+    id: ID!
+    country: UpsertCoreCountryBelongsTo
+    rate: UpsertCoreTaxRateBelongsTo
+    state: String
+    city: String
+    zip: String
+    order: Integer
+}
+
+input CreateCoreTaxRateInput {
+    rate: Float!
+    name: String!
+    country: CreateCoreCountryHasMany
+    compound: Boolean
+    shipping: Boolean
+    type: Integer!
+}
+
+input UpdateCoreTaxRateInput {
+    id: ID!
+    rate: Float
+    name: String
+    country: UpdateCoreCountryHasMany
+    compound: Boolean
+    shipping: Boolean
+    type: Integer
+}
+
+input UpsertCoreTaxRateInput {
+    id: ID!
+    rate: Float
+    name: String
+    country: UpsertCoreCountryHasMany
+    compound: Boolean
+    shipping: Boolean
+    type: Integer
 }
 
 input CreateCoreAddressHasMany {
