@@ -82,4 +82,14 @@ class Currency extends Model implements CurrencyContract
         $this->setTable(config('pwweb.core.table_names.currencies'));
         parent::__construct($attributes);
     }
+
+    /**
+     * Accessor for ExchangeRate data.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function exchangeRate(): HasMany
+    {
+        return $this->hasMany(config('pwweb.core.models.exchange_rate'));
+    }
 }

@@ -5,6 +5,8 @@ return [
 
     'date_format' => 'd.m.Y H:i:s',
 
+    'base_currency' => 'GBP',
+
     'models' => [
         /*
          *
@@ -75,6 +77,17 @@ return [
         'currency' => PWWEB\Core\Models\Currency::class,
 
         /*
+         * When using the "HasRoles" trait from this package, we need to know which
+         * Eloquent model should be used to retrieve your roles. Of course, it
+         * is often just the "Currency" model but you may use whatever you like.
+         *
+         * The model you want to use as a Currency model needs to implement the
+         * `PWWEB\Core\Contracts\Currency` contract.
+         */
+
+        'exchange_rate' => PWWEB\Core\Models\ExchangeRate::class,
+
+        /*
          * The model you want to use as for the Tax models.
          */
 
@@ -115,6 +128,8 @@ return [
         'languages' => 'system_localisation_languages',
 
         'currencies' => 'system_localisation_currencies',
+
+        'exchange_rates' => 'system_localisation_exchange_rates',
 
         'country_has_language' => 'system_localisation_country_languages',
 

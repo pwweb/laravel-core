@@ -52,20 +52,20 @@ type CoreCurrency @node(model: "PWWEB\\Core\\Models\\Currency") {
     id: ID! @globalId
     name: String!
     iso: String!
-    numeric_code: Integer!
+    numeric_code: Int!
     entity_code: String!
     active: Boolean!
     standard: Boolean!
-    exchange_rates: [CoreExchangeRates!]! @hasMany
+    exchange_rates: [CoreExchangeRate!]! @hasMany
     created_at: DateTime!
     updated_at: DateTime!
 }
 
 type CoreMenu @node(model: "PWWEB\\Core\\Models\\Menu") {
     id: ID! @globalId
-    _lft: Integer
-    _rgt: Integer
-    parent_id: Integer
+    _lft: Int
+    _rgt: Int
+    parent_id: Int
     route: String!
     title: String!
     separator: Boolean!
@@ -111,7 +111,7 @@ type CoreTaxLocation @node(model: "PWWEB\\Core\\Models\\Tax\\Location") {
     state: String
     city: String
     zip: String
-    order: Integer!
+    order: Int!
     created_at: DateTime!
     updated_at: DateTime!
 }
@@ -123,9 +123,18 @@ type CoreTaxRate @node(model: "PWWEB\\Core\\Models\\Tax\\Rate") {
     country: [CoreCountry!]! @hasMany
     compound: Boolean
     shipping: Boolean
-    type: Integer!
+    type: Int!
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type CoreExchangeRate @node(model: "PWWEB\\Core\\Models\\ExchangeRate") {
+    id: ID! @globalId
+    rate: Float!
+    currency_id: CoreCurrency! @belongsTo
+    created_at: DateTime!
+    updated_at: DateTime!
+    deleted_at: DateTime
 }
 
 
@@ -159,6 +168,9 @@ extend type Query {
 
     coreTaxRates: [CoreTaxRate!]! @paginate(defaultCount: 10 model: "PWWEB\\Core\\Models\\Tax\\Rate")
     coreTaxRate(id: ID @eq): CoreTaxRate @find
+
+    coreExchangeRates: [CoreExchangeRate!]! @paginate(defaultCount: 10 model: "PWWEB\\Core\\Models\\ExchangeRate")
+    coreExchangeRate(id: ID @eq): CoreExchangeRate @find
 }
 
 
@@ -282,6 +294,18 @@ extend type Mutation {
     deleteCoreTaxRate(
         id: ID! @rules(apply: ["required"])
     ): CoreTaxRate @delete(model: "PWWEB\\Core\\Models\\Tax\\Rate")
+
+    createCoreExchangeRate(
+        input: CreateCoreExchangeRateInput! @spread
+    ): CoreExchangeRate @create(model: "PWWEB\\Core\\Models\\ExchangeRate")
+
+    updateCoreExchangeRate(
+        input: UpdateCoreExchangeRateInput! @spread
+    ): CoreExchangeRate @update(model: "PWWEB\\Core\\Models\\ExchangeRate")
+
+    deleteCoreExchangeRate(
+        id: ID! @rules(apply: ["required"])
+    ): CoreExchangeRate @delete(model: "PWWEB\\Core\\Models\\ExchangeRate")
 }
 
 input CreateCoreAddressInput {
@@ -409,39 +433,39 @@ input UpsertCoreLanguageInput {
 input CreateCoreCurrencyInput {
     name: String!
     iso: String!
-    numeric_code: Integer!
+    numeric_code: Int!
     entity_code: String!
     active: Boolean!
     standard: Boolean!
-    exchange_rates: CreateCoreExchangeRatesHasMany
+    exchange_rates: CreateCoreExchangeRateHasMany
 }
 
 input UpdateCoreCurrencyInput {
     id: ID!
     name: String
     iso: String
-    numeric_code: Integer
+    numeric_code: Int
     entity_code: String
     active: Boolean
     standard: Boolean
-    exchange_rates: UpdateCoreExchangeRatesHasMany
+    exchange_rates: UpdateCoreExchangeRateHasMany
 }
 
 input UpsertCoreCurrencyInput {
     id: ID!
     name: String
     iso: String
-    numeric_code: Integer
+    numeric_code: Int
     entity_code: String
     active: Boolean
     standard: Boolean
-    exchange_rates: UpsertCoreExchangeRatesHasMany
+    exchange_rates: UpsertCoreExchangeRateHasMany
 }
 
 input CreateCoreMenuInput {
-    _lft: Integer
-    _rgt: Integer
-    parent_id: Integer
+    _lft: Int
+    _rgt: Int
+    parent_id: Int
     route: String!
     title: String!
     separator: Boolean!
@@ -451,9 +475,9 @@ input CreateCoreMenuInput {
 
 input UpdateCoreMenuInput {
     id: ID!
-    _lft: Integer
-    _rgt: Integer
-    parent_id: Integer
+    _lft: Int
+    _rgt: Int
+    parent_id: Int
     route: String
     title: String
     separator: Boolean
@@ -463,9 +487,9 @@ input UpdateCoreMenuInput {
 
 input UpsertCoreMenuInput {
     id: ID!
-    _lft: Integer
-    _rgt: Integer
-    parent_id: Integer
+    _lft: Int
+    _rgt: Int
+    parent_id: Int
     route: String
     title: String
     separator: Boolean
@@ -483,7 +507,7 @@ input CreateCorePersonInput {
     gender: String
     dob: Date
     user: CreateCoreUserHasOne
-    addresses: CreateCoreAddressMorphToMany
+    addresses: CreateCoreAddressMorphMany
 }
 
 input UpdateCorePersonInput {
@@ -497,7 +521,7 @@ input UpdateCorePersonInput {
     gender: String
     dob: Date
     user: UpdateCoreUserHasOne
-    addresses: UpdateCoreAddressMorphToMany
+    addresses: UpdateCoreAddressMorphMany
 }
 
 input UpsertCorePersonInput {
@@ -511,7 +535,7 @@ input UpsertCorePersonInput {
     gender: String
     dob: Date
     user: UpsertCoreUserHasOne
-    addresses: UpsertCoreAddressMorphToMany
+    addresses: UpsertCoreAddressMorphMany
 }
 
 input CreateCoreUserInput {
@@ -543,7 +567,7 @@ input CreateCoreTaxLocationInput {
     state: String
     city: String
     zip: String
-    order: Integer!
+    order: Int!
 }
 
 input UpdateCoreTaxLocationInput {
@@ -553,7 +577,7 @@ input UpdateCoreTaxLocationInput {
     state: String
     city: String
     zip: String
-    order: Integer
+    order: Int
 }
 
 input UpsertCoreTaxLocationInput {
@@ -563,7 +587,7 @@ input UpsertCoreTaxLocationInput {
     state: String
     city: String
     zip: String
-    order: Integer
+    order: Int
 }
 
 input CreateCoreTaxRateInput {
@@ -572,7 +596,7 @@ input CreateCoreTaxRateInput {
     country: CreateCoreCountryHasMany
     compound: Boolean
     shipping: Boolean
-    type: Integer!
+    type: Int!
 }
 
 input UpdateCoreTaxRateInput {
@@ -582,7 +606,7 @@ input UpdateCoreTaxRateInput {
     country: UpdateCoreCountryHasMany
     compound: Boolean
     shipping: Boolean
-    type: Integer
+    type: Int
 }
 
 input UpsertCoreTaxRateInput {
@@ -592,7 +616,7 @@ input UpsertCoreTaxRateInput {
     country: UpsertCoreCountryHasMany
     compound: Boolean
     shipping: Boolean
-    type: Integer
+    type: Int
 }
 
 input CreateCoreAddressHasMany {
@@ -737,4 +761,168 @@ input UpsertCoreAddressTypeBelongsTo {
     upsert: UpsertCoreAddressTypeInput
     disconnect: Boolean
     delete: Boolean
+}
+
+input CreateCoreExchangeRateInput {
+    rate: Float!
+    currency_id: CreateCoreCurrencyBelongsTo
+}
+
+input UpdateCoreExchangeRateInput {
+    id: ID!
+    rate: Float
+    currency_id: UpdateCoreCurrencyBelongsTo
+}
+
+input UpsertCoreExchangeRateInput {
+    id: ID!
+    rate: Float
+    currency_id: UpsertCoreCurrencyBelongsTo
+}
+
+input CreateCoreExchangeRateHasMany {
+    create: [CreateCoreExchangeRateInput!]!
+}
+
+input UpdateCoreExchangeRateHasMany {
+    create: [CreateCoreExchangeRateInput!]
+    update: [UpdateCoreExchangeRateInput!]
+    upsert: [UpsertCoreExchangeRateInput!]
+    delete: [ID!]
+}
+
+input UpsertCoreExchangeRateHasMany {
+    create: [CreateCoreExchangeRateInput!]
+    update: [UpdateCoreExchangeRateInput!]
+    upsert: [UpsertCoreExchangeRateInput!]
+    delete: [ID!]
+}
+
+input CreateCoreCurrencyBelongsTo {
+    connect: ID
+    create: CreateCoreCurrencyInput
+    update: UpdateCoreCurrencyInput
+    upsert: UpsertCoreCurrencyInput
+}
+
+input UpdateCoreCurrencyBelongsTo {
+    connect: ID
+    create: CreateCoreCurrencyInput
+    update: UpdateCoreCurrencyInput
+    upsert: UpsertCoreCurrencyInput
+    disconnect: Boolean
+    delete: Boolean
+}
+
+input UpsertCoreCurrencyBelongsTo {
+    connect: ID
+    create: CreateCoreCurrencyInput
+    update: UpdateCoreCurrencyInput
+    upsert: UpsertCoreCurrencyInput
+    disconnect: Boolean
+    delete: Boolean
+}
+
+input CreateCoreUserHasOne {
+    create: CreateCoreUserInput!
+}
+
+input UpdateCoreUserHasOne {
+    create: CreateCoreUserInput!
+    update: UpdateCoreUserInput!
+    upsert: UpsertCoreUserInput!
+    delete: ID!
+}
+
+input UpsertCoreUserHasOne {
+    create: CreateCoreUserInput!
+    update: UpdateCoreUserInput!
+    upsert: UpsertCoreUserInput!
+    delete: ID!
+}
+
+input CreateCoreAddressMorphMany {
+    create: [CreateCoreAddressInput!]!
+}
+
+input UpdateCoreAddressMorphMany {
+    create: [CreateCoreAddressInput!]
+    update: [UpdateCoreAddressInput!]
+    upsert: [UpsertCoreAddressInput!]
+    delete: [ID!]
+}
+
+input UpsertCoreAddressMorphMany {
+    create: [CreateCoreAddressInput!]
+    update: [UpdateCoreAddressInput!]
+    upsert: [UpsertCoreAddressInput!]
+    delete: [ID!]
+}
+
+input CreateCorePersonBelongsTo {
+    connect: ID
+    create: CreateCorePersonInput
+    update: UpdateCorePersonInput
+    upsert: UpsertCorePersonInput
+}
+
+input UpdateCorePersonBelongsTo {
+    connect: ID
+    create: CreateCorePersonInput
+    update: UpdateCorePersonInput
+    upsert: UpsertCorePersonInput
+    disconnect: Boolean
+    delete: Boolean
+}
+
+input UpsertCorePersonBelongsTo {
+    connect: ID
+    create: CreateCorePersonInput
+    update: UpdateCorePersonInput
+    upsert: UpsertCorePersonInput
+    disconnect: Boolean
+    delete: Boolean
+}
+
+input CreateCoreTaxRateBelongsTo {
+    connect: ID
+    create: CreateCoreTaxRateInput
+    update: UpdateCoreTaxRateInput
+    upsert: UpsertCoreTaxRateInput
+}
+
+input UpdateCoreTaxRateBelongsTo {
+    connect: ID
+    create: CreateCoreTaxRateInput
+    update: UpdateCoreTaxRateInput
+    upsert: UpsertCoreTaxRateInput
+    disconnect: Boolean
+    delete: Boolean
+}
+
+input UpsertCoreTaxRateBelongsTo {
+    connect: ID
+    create: CreateCoreTaxRateInput
+    update: UpdateCoreTaxRateInput
+    upsert: UpsertCoreTaxRateInput
+    disconnect: Boolean
+    delete: Boolean
+}
+
+input CreateCoreCountryHasMany {
+    create: [CreateCoreCountryInput!]!
+}
+
+input UpdateCoreCountryHasMany {
+    create: [CreateCoreCountryInput!]
+    update: [UpdateCoreCountryInput!]
+    upsert: [UpsertCoreCountryInput!]
+    delete: [ID!]
+}
+
+input UpsertCoreCountryHasMany {
+    create: [CreateCoreCountryInput!]
+    update: [UpdateCoreCountryInput!]
+    upsert: [UpsertCoreCountryInput!]
+    delete: [ID!]
 }

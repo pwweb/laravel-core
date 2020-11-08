@@ -192,6 +192,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->app->bind(AddressTypeContract::class, $config['address_type']);
         $this->app->bind(CountryContract::class, $config['country']);
         $this->app->bind(CurrencyContract::class, $config['currency']);
+        $this->app->bind(ExchangeRateContract::class, $config['exchange_rate']);
         $this->app->bind(LanguageContract::class, $config['language']);
     }
 }

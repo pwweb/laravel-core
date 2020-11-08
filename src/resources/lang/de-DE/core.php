@@ -362,4 +362,17 @@ return [
             'not_found' => 'Ort nicht gefunden',
         ],
     ],
+
+    // Exchange Rates
+    'exchange_rate' => [
+        'singular' => 'Exchange Rate',
+        'plural' => 'Exchange Rates',
+        'fields' => [
+            'id' => 'Id',
+            'curency_id' => 'Curency Id',
+            'rate' => 'Rate',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+        ],
+    ],
 ];
