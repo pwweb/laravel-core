@@ -369,7 +369,7 @@ return [
         'plural' => 'Exchange Rates',
         'fields' => [
             'id' => 'Id',
-            'curency_id' => 'Curency Id',
+            'currency_id' => 'Currency Id',
             'rate' => 'Rate',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',

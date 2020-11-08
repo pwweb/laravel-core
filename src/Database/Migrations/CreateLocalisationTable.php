@@ -70,10 +70,10 @@ class CreateLocalisationTables extends Migration
             $tableNames['exchange_rates'],
             function (Blueprint $table) use ($tableNames, $columnNames) {
                 $table->id('id');
-                $table->foreignId('curency_id');
+                $table->foreignId('currency_id');
                 $table->decimal('rate', 9, 4);
                 $table->timestamps();
-                $table->foreign('curency_id')
+                $table->foreign('currency_id')
                     ->references('id')
                     ->on($tableNames['currencies']);
             }

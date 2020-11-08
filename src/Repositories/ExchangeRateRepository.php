@@ -23,7 +23,7 @@ class ExchangeRateRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'curency_id',
+        'currency_id',
         'rate',
     ];
 

@@ -3,6 +3,7 @@
 namespace PWWEB\Core\Models;
 
 use Eloquent as Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use PWWEB\Core\Contracts\Currency as CurrencyContract;
 use PWWEB\Core\Traits\Migratable;
 
