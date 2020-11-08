@@ -20,6 +20,7 @@ Route::name('core.')
             Route::resource('menus', MenuController::class);
             Route::resource('countries', CountryController::class);
             Route::resource('currencies', CurrencyController::class);
+            // Route::resource('exchangerates', ExchangeRateController::class);
             Route::resource('languages', LanguageController::class);
             Route::resource('addresses', AddressController::class);
             Route::namespace('Address')

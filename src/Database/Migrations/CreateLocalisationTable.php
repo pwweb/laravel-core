@@ -66,6 +66,19 @@ class CreateLocalisationTables extends Migration
             }
         );
 
+        Schema::create(
+            $tableNames['exchange_rates'],
+            function (Blueprint $table) {
+                $table->id('id');
+                $table->foreignId('curency_id');
+                $table->decimal('rate', 9, 4);
+                $table->timestamps();
+                $table->foreign('curency_id')
+                    ->references('id')
+                    ->on($tableNames['currencies']);
+            }
+        );
+
         Artisan::call('db:seed', [
             '--force' => true,
             '--class' => CurrencySeeder::class,
@@ -234,6 +247,7 @@ class CreateLocalisationTables extends Migration
         Schema::dropIfExists($tableNames['tax']['rates']);
         Schema::dropIfExists($tableNames['tax']['locations']);
         Schema::dropIfExists($tableNames['currencies']);
+        Schema::dropIfExists($tableNames['exchange_rates']);
         Schema::dropIfExists($tableNames['address_types']);
         Schema::dropIfExists($tableNames['countries']);
     }
