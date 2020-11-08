@@ -211,6 +211,78 @@ extend type Mutation {
     deleteCoreLanguage(
         id: ID! @rules(apply: ["required"])
     ): CoreLanguage @delete(model: "PWWEB\\Core\\Models\\Language")
+
+    createCoreCurrency(
+        input: CreateCoreCurrencyInput! @spread
+    ): CoreCurrency @create(model: "PWWEB\\Core\\Models\\Currency")
+
+    updateCoreCurrency(
+        input: UpdateCoreCurrencyInput! @spread
+    ): CoreCurrency @update(model: "PWWEB\\Core\\Models\\Currency")
+
+    deleteCoreCurrency(
+        id: ID! @rules(apply: ["required"])
+    ): CoreCurrency @delete(model: "PWWEB\\Core\\Models\\Currency")
+
+    createCoreMenu(
+        input: CreateCoreMenuInput! @spread
+    ): CoreMenu @create(model: "PWWEB\\Core\\Models\\Menu")
+
+    updateCoreMenu(
+        input: UpdateCoreMenuInput! @spread
+    ): CoreMenu @update(model: "PWWEB\\Core\\Models\\Menu")
+
+    deleteCoreMenu(
+        id: ID! @rules(apply: ["required"])
+    ): CoreMenu @delete(model: "PWWEB\\Core\\Models\\Menu")
+
+    createCorePerson(
+        input: CreateCorePersonInput! @spread
+    ): CorePerson @create(model: "PWWEB\\Core\\Models\\Person")
+
+    updateCorePerson(
+        input: UpdateCorePersonInput! @spread
+    ): CorePerson @update(model: "PWWEB\\Core\\Models\\Person")
+
+    deleteCorePerson(
+        id: ID! @rules(apply: ["required"])
+    ): CorePerson @delete(model: "PWWEB\\Core\\Models\\Person")
+
+    createCoreUser(
+        input: CreateCoreUserInput! @spread
+    ): CoreUser @create(model: "PWWEB\\Core\\Models\\User")
+
+    updateCoreUser(
+        input: UpdateCoreUserInput! @spread
+    ): CoreUser @update(model: "PWWEB\\Core\\Models\\User")
+
+    deleteCoreUser(
+        id: ID! @rules(apply: ["required"])
+    ): CoreUser @delete(model: "PWWEB\\Core\\Models\\User")
+
+    createCoreTaxLocation(
+        input: CreateCoreTaxLocationInput! @spread
+    ): CoreTaxLocation @create(model: "PWWEB\\Core\\Models\\Tax\\Location")
+
+    updateCoreTaxLocation(
+        input: UpdateCoreTaxLocationInput! @spread
+    ): CoreTaxLocation @update(model: "PWWEB\\Core\\Models\\Tax\\Location")
+
+    deleteCoreTaxLocation(
+        id: ID! @rules(apply: ["required"])
+    ): CoreTaxLocation @delete(model: "PWWEB\\Core\\Models\\Tax\\Location")
+
+    createCoreTaxRate(
+        input: CreateCoreTaxRateInput! @spread
+    ): CoreTaxRate @create(model: "PWWEB\\Core\\Models\\Tax\\Rate")
+
+    updateCoreTaxRate(
+        input: UpdateCoreTaxRateInput! @spread
+    ): CoreTaxRate @update(model: "PWWEB\\Core\\Models\\Tax\\Rate")
+
+    deleteCoreTaxRate(
+        id: ID! @rules(apply: ["required"])
+    ): CoreTaxRate @delete(model: "PWWEB\\Core\\Models\\Tax\\Rate")
 }
 
 input CreateCoreAddressInput {
