@@ -142,6 +142,24 @@ extend type Query {
 
     coreLanguages: [CoreLanguage!]! @paginate(defaultCount: 10 model: "PWWEB\\Core\\Models\\Language")
     coreLanguage(id: ID @eq): CoreLanguage @find
+
+    coreCurrencies: [CoreCurrency!]! @paginate(defaultCount: 10 model: "PWWEB\\Core\\Models\\Currency")
+    coreCurrency(id: ID @eq): CoreCurrency @find
+
+    coreMenus: [CoreMenu!]! @paginate(defaultCount: 10 model: "PWWEB\\Core\\Models\\Menu")
+    coreMenu(id: ID @eq): CoreMenu @find
+
+    corePersons: [CorePerson!]! @paginate(defaultCount: 10 model: "PWWEB\\Core\\Models\\Person")
+    corePerson(id: ID @eq): CorePerson @find
+
+    coreUsers: [CoreUser!]! @paginate(defaultCount: 10 model: "PWWEB\\Core\\Models\\User")
+    coreUser(id: ID @eq): CoreUser @find
+
+    coreTaxLocations: [CoreTaxLocation!]! @paginate(defaultCount: 10 model: "PWWEB\\Core\\Models\\Tax\\Location")
+    coreTaxLocation(id: ID @eq): CoreLanguage @find
+
+    coreTaxRates: [CoreTaxRate!]! @paginate(defaultCount: 10 model: "PWWEB\\Core\\Models\\Tax\\Rate")
+    coreTaxRate(id: ID @eq): CoreTaxRate @find
 }
 
 
