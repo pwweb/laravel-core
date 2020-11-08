@@ -33,6 +33,7 @@ class ExchangeRate extends Model implements ExchangeRateContract
     public $fillable = [
         'currency_id',
         'rate',
+        'date',
     ];
 
     /**
@@ -45,6 +46,15 @@ class ExchangeRate extends Model implements ExchangeRateContract
     ];
 
     /**
+     * The attributes that are to be parsed as dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'date',
+    ];
+
+    /**
      * Validation rules.
      *
      * @var string[]
@@ -52,6 +62,7 @@ class ExchangeRate extends Model implements ExchangeRateContract
     public static $rules = [
         'currency_id' => 'required',
         'rate' => 'required',
+        'date' => 'required',
     ];
 
     /**
