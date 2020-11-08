@@ -18,7 +18,6 @@ use PWWEB\Core\Traits\Migratable;
  * @property \PWWEB\Core\Models\Currency $curency
  * @property float $rate
  */
-
 class ExchangeRate extends Model implements ExchangeRateContract
 {
     use Migratable;
