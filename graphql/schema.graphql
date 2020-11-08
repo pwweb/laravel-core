@@ -406,17 +406,17 @@ input UpsertCoreAddressTypeBelongsTo {
 
 input CreateCoreExchangeRateInput {
     rate: Float!
-    # currency_id: CreateCoreCurrencyBelongsTo
+    currency_id: CreateCoreCurrencyBelongsTo
 }
 
 input UpdateCoreExchangeRateInput {
     id: ID!
     rate: Float
-    # currency_id: UpdateCoreCurrencyBelongsTo
+    currency_id: UpdateCoreCurrencyBelongsTo
 }
 
 input UpsertCoreExchangeRateInput {
     id: ID!
     rate: Float
-    # currency_id: UpsertCoreCurrencyBelongsTo
+    currency_id: UpsertCoreCurrencyBelongsTo
 }
