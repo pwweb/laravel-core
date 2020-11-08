@@ -367,8 +367,7 @@ return [
     'exchange_rate' => [
         'singular' => 'Exchange Rate',
         'plural' => 'Exchange Rates',
-        'fields' =>
-        [
+        'fields' => [
             'id' => 'Id',
             'curency_id' => 'Curency Id',
             'rate' => 'Rate',
