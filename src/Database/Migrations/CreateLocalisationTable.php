@@ -72,10 +72,12 @@ class CreateLocalisationTables extends Migration
                 $table->id('id');
                 $table->foreignId('currency_id');
                 $table->decimal('rate', 9, 4);
+                $table->date('date');
                 $table->timestamps();
                 $table->foreign('currency_id')
                     ->references('id')
                     ->on($tableNames['currencies']);
+                $table->unique(['currency_id', 'date']);
             }
         );
 

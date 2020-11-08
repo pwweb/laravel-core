@@ -34,6 +34,7 @@ use PWWEB\Core\Models\ExchangeRate;
          return [
              'currency_id' => $this->faker->randomDigitNotNull,
              'rate' => $this->faker->float,
+             'date' => $this->fake->date('Y-m-d'),
              'created_at' => $this->faker->date('Y-m-d H:i:s'),
              'updated_at' => $this->faker->date('Y-m-d H:i:s'),
          ];

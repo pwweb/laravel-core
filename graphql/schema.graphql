@@ -131,6 +131,7 @@ type CoreTaxRate @node(model: "PWWEB\\Core\\Models\\Tax\\Rate") {
 type CoreExchangeRate @node(model: "PWWEB\\Core\\Models\\ExchangeRate") {
     id: ID! @globalId
     rate: Float!
+    date: Date!
     currency_id: CoreCurrency! @belongsTo
     created_at: DateTime!
     updated_at: DateTime!
@@ -765,18 +766,21 @@ input UpsertCoreAddressTypeBelongsTo {
 
 input CreateCoreExchangeRateInput {
     rate: Float!
+    date: Date!
     currency_id: CreateCoreCurrencyBelongsTo
 }
 
 input UpdateCoreExchangeRateInput {
     id: ID!
     rate: Float
+    date: Date
     currency_id: UpdateCoreCurrencyBelongsTo
 }
 
 input UpsertCoreExchangeRateInput {
     id: ID!
     rate: Float
+    date: Date
     currency_id: UpsertCoreCurrencyBelongsTo
 }
 
