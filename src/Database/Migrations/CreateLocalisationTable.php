@@ -68,7 +68,7 @@ class CreateLocalisationTables extends Migration
 
         Schema::create(
             $tableNames['exchange_rates'],
-            function (Blueprint $table) use ($tableNames, $columnNames) {
+            function (Blueprint $table) use ($tableNames) {
                 $table->id('id');
                 $table->foreignId('currency_id');
                 $table->decimal('rate', 9, 4);
