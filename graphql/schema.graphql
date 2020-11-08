@@ -926,3 +926,53 @@ input UpsertCoreCountryHasMany {
     upsert: [UpsertCoreCountryInput!]
     delete: [ID!]
 }
+
+input CreateCoreAddressBelongsTo {
+    connect: ID
+    create: CreateCoreAddressInput
+    update: UpdateCoreAddressInput
+    upsert: UpsertCoreAddressInput
+}
+
+input UpdateCoreAddressBelongsTo {
+    connect: ID
+    create: CreateCoreAddressInput
+    update: UpdateCoreAddressInput
+    upsert: UpsertCoreAddressInput
+    disconnect: Boolean
+    delete: Boolean
+}
+
+input UpsertCoreAddressBelongsTo {
+    connect: ID
+    create: CreateCoreAddressInput
+    update: UpdateCoreAddressInput
+    upsert: UpsertCoreAddressInput
+    disconnect: Boolean
+    delete: Boolean
+}
+
+input CreateCoreUserBelongsTo {
+    connect: ID
+    create: CreateCoreUserInput
+    update: UpdateCoreUserInput
+    upsert: UpsertCoreUserInput
+}
+
+input UpdateCoreUserBelongsTo {
+    connect: ID
+    create: CreateCoreUserInput
+    update: UpdateCoreUserInput
+    upsert: UpsertCoreUserInput
+    disconnect: Boolean
+    delete: Boolean
+}
+
+input UpsertCoreUserBelongsTo {
+    connect: ID
+    create: CreateCoreUserInput
+    update: UpdateCoreUserInput
+    upsert: UpsertCoreUserInput
+    disconnect: Boolean
+    delete: Boolean
+}
