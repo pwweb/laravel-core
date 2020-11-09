@@ -5,8 +5,8 @@
                 <div class="d-flex d-lg-inline-block justify-content-between justify-content-lg-end align-items-center align-items-lg-start">
                     <!-- Breadcrumb -->
                     <ol class="breadcrumb breadcrumb-white breadcrumb-no-gutter mb-0">
-                        <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('root')}}">{{ __('Home') }}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ __('Edit profile') }}</li>
+                        <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('home')}}">{{ __('pwweb::core.Home') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ __('pwweb::core.Edit profile') }}</li>
                     </ol>
                     <!-- End Breadcrumb -->
                     <!-- Breadcrumb Nav Toggle Button -->
@@ -30,7 +30,7 @@
                         </span>
                     </div>
                     <div class="media-body">
-                        <h1 class="h3 text-white font-weight-medium mb-1">Howdy, {{ Auth::user()->person->name }}!</h1>
+                        <h1 class="h3 text-white font-weight-medium mb-1">{{ __('Howdy', ['name' => Auth::user()->person->name]) }}!</h1>
                         <span class="d-block text-white">{{ Auth::user()->email }}</span>
                     </div>
                 </div>
@@ -51,73 +51,73 @@
                                         General
                                     </a>
 
-                  <ul id="generalDropdownMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" style="min-width: 230px; display: none;" aria-labelledby="generalDropdown">
-                    <li><a class="nav-link" href="/home">Dashboard</a></li>
-                    <li><a class="nav-link" href="profile.html">Profile</a></li>
-                    <li><a class="nav-link" href="my-tasks.html">My tasks</a></li>
-                    <li><a class="nav-link" href="projects.html">Projects</a></li>
-                    <li><a class="nav-link" href="members.html">Members</a></li>
-                  </ul>
-                </li>
-                <!-- General -->
+                                    <ul id="generalDropdownMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" style="min-width: 230px; display: none;" aria-labelledby="generalDropdown">
+                                        <li><a class="nav-link" href="/home">Dashboard</a></li>
+                                        <li><a class="nav-link" href="profile.html">Profile</a></li>
+                                        <li><a class="nav-link" href="my-tasks.html">My tasks</a></li>
+                                        <li><a class="nav-link" href="projects.html">Projects</a></li>
+                                        <li><a class="nav-link" href="members.html">Members</a></li>
+                                    </ul>
+                                </li>
+                                <!-- General -->
 
-                <!-- Account Settings -->
-                <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
-                  <a id="accountSettingsDropdown" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="accountSettingsDropdownMenu">
-                    Account settings
-                  </a>
+                                <!-- Account Settings -->
+                                <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
+                                    <a id="accountSettingsDropdown" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="accountSettingsDropdownMenu">
+                                        Account settings
+                                    </a>
 
-                  <ul id="accountSettingsDropdownMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" style="min-width: 230px; display: none;" aria-labelledby="accountSettingsDropdown">
-                    <li><a class="nav-link u-header__sub-menu-nav-link" href="edit-profile.html">Edit profile</a></li>
-                    <li><a class="nav-link u-header__sub-menu-nav-link" href="change-password.html">Change password</a></li>
-                    <li><a class="nav-link u-header__sub-menu-nav-link" href="notifications.html">Notifications</a></li>
-                  </ul>
-                </li>
-                <!-- Account Settings -->
+                                    <ul id="accountSettingsDropdownMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" style="min-width: 230px; display: none;" aria-labelledby="accountSettingsDropdown">
+                                        <li><a class="nav-link u-header__sub-menu-nav-link" href="edit-profile.html">Edit profile</a></li>
+                                        <li><a class="nav-link u-header__sub-menu-nav-link" href="change-password.html">Change password</a></li>
+                                        <li><a class="nav-link u-header__sub-menu-nav-link" href="notifications.html">Notifications</a></li>
+                                    </ul>
+                                </li>
+                                <!-- Account Settings -->
 
-                <!-- Billing -->
-                <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
-                  <a id="billingDropdown" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="billingDropdownMenu">
-                    Billing
-                  </a>
+                                <!-- Billing -->
+                                <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
+                                    <a id="billingDropdown" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="billingDropdownMenu">
+                                        Billing
+                                    </a>
 
-                  <ul id="billingDropdownMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer animated fadeOut" style="min-width: 230px; display: none;" aria-labelledby="billingDropdown">
-                    <li><a class="nav-link u-header__sub-menu-nav-link" href="activity.html">Activity</a></li>
-                    <li><a class="nav-link u-header__sub-menu-nav-link" href="payment-methods.html">Payment methods</a></li>
-                  </ul>
-                </li>
-                <!-- Billing -->
+                                    <ul id="billingDropdownMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer animated fadeOut" style="min-width: 230px; display: none;" aria-labelledby="billingDropdown">
+                                        <li><a class="nav-link u-header__sub-menu-nav-link" href="activity.html">Activity</a></li>
+                                        <li><a class="nav-link u-header__sub-menu-nav-link" href="payment-methods.html">Payment methods</a></li>
+                                    </ul>
+                                </li>
+                                <!-- Billing -->
 
-                <!-- Accessibility -->
-                <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
-                  <a id="accessibilityDropdown" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="accessibilityDropdownMenu">
-                    Accessibility
-                  </a>
+                                <!-- Accessibility -->
+                                <li class="nav-item hs-has-sub-menu u-header__nav-item" data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
+                                    <a id="accessibilityDropdown" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="accessibilityDropdownMenu">
+                                        Accessibility
+                                    </a>
 
-                  <ul id="accessibilityDropdownMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer animated fadeOut" style="min-width: 230px; display: none;" aria-labelledby="accessibilityDropdown">
-                    <li><a class="nav-link u-header__sub-menu-nav-link" href="invite-friends.html">Invite friends</a></li>
-                    <li><a class="nav-link u-header__sub-menu-nav-link" href="api-token.html">API Token</a></li>
-                  </ul>
-                </li>
-                <!-- Accessibility -->
+                                    <ul id="accessibilityDropdownMenu" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer animated fadeOut" style="min-width: 230px; display: none;" aria-labelledby="accessibilityDropdown">
+                                        <li><a class="nav-link u-header__sub-menu-nav-link" href="invite-friends.html">Invite friends</a></li>
+                                        <li><a class="nav-link u-header__sub-menu-nav-link" href="api-token.html">API Token</a></li>
+                                    </ul>
+                                </li>
+                                <!-- Accessibility -->
 
-                <!-- Others -->
-                <li class="nav-item u-header__nav-item">
-                  <a class="nav-link u-header__nav-link" href="plans.html">Plans</a>
-                </li>
-                <!-- Others -->
-              </ul>
+                                <!-- Others -->
+                                <li class="nav-item u-header__nav-item">
+                                    <a class="nav-link u-header__nav-link" href="plans.html">Plans</a>
+                                </li>
+                                <!-- Others -->
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
             </div>
-          </nav>
-        </div>
-      </div>
-      <!-- End Navbar -->
+            <!-- End Navbar -->
 
-      <div class="ml-lg-auto">
-        <!-- Button -->
-        <a class="btn btn-sm btn-soft-white transition-3d-hover" href="{{ route('system.profile.index') }}">{{ __('View My Profile') }}</a>
-        <!-- End Button -->
-      </div>
-    </div>
+            <div class="ml-lg-auto">
+                <!-- Button -->
+                <a class="btn btn-sm btn-soft-white transition-3d-hover" href="{{ route('system.profile.index') }}">{{ __('pwweb::core.Hiew My Profile') }}</a>
+                <!-- End Button -->
+            </div>
+        </div>
     </div>
 </div>

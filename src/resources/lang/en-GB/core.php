@@ -103,6 +103,27 @@ return [
     'Street 2'            => 'Street 2',
     'Type'                => 'Label',
     'work'                => 'Work',
+    'Hey' => 'Hey, I am :name',
+    'pro' => 'Pro',
+    'Joined in' => 'Joined in',
+    'Location' => 'Location',
+    'Birthday' => 'Birthday',
+    'Contacts' => 'Contacts',
+    'Profile' => 'Profile',
+    'Edit Profile' => 'Edit Profile',
+    'Delete' => 'Delete',
+    'Upload New Picture' => 'Upload New Picture',
+    'Save Changes' => 'Save Changes',
+    'Howdy' => 'Howdy, :name',
+    'Home' => 'Home',
+    'Current Password' => 'Current Password',
+    'Enter your current password' => 'Enter your current password',
+    'New Password' => 'New Password',
+    'Enter your new password' => 'Enter your new password',
+    'Confirm Password' => 'Confirm Password',
+    'Confirm your new password' => 'Confirm your new password',
+
+
 
     // Countries.
     'Afghanistan'                                  => 'Afghanistan',

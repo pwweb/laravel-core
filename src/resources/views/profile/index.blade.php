@@ -9,7 +9,7 @@
                 <div class="mb-3 mb-sm-0">
                     <!-- Breadcrumb -->
                     <ol class="breadcrumb breadcrumb-white breadcrumb-no-gutter mb-0">
-                        <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('home') }}">{{ __('Home') }}</a></li>
+                        <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('home') }}">{{ __('pwweb::core.Home') }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ __('pwweb::core.Profile') }}</li>
                     </ol>
                     <!-- End Breadcrumb -->
@@ -17,7 +17,7 @@
                 <!-- Edit Profile -->
                 <a class="btn btn-sm btn-soft-white transition-3d-hover" href="{{ route('system.profile.edit') }}">
                     <span class="fas fa-user-cog small mr-2"></span>
-                    {{ __('Edit profile') }}
+                    {{ __('pwweb::core.Edit profile') }}
                 </a>
                 <!-- End Edit Profile -->
             </div>
