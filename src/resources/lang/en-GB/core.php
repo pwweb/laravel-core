@@ -110,7 +110,7 @@ return [
     'Birthday' => 'Birthday',
     'Contacts' => 'Contacts',
     'Profile' => 'Profile',
-    'Edit Profile' => 'Edit Profile',
+    'Edit profile' => 'Edit Profile',
     'Delete' => 'Delete',
     'Upload New Picture' => 'Upload New Picture',
     'Save Changes' => 'Save Changes',
@@ -122,6 +122,7 @@ return [
     'Enter your new password' => 'Enter your new password',
     'Confirm Password' => 'Confirm Password',
     'Confirm your new password' => 'Confirm your new password',
+    'Displayed on your public profile, notifications, and other places' => 'Displayed on your public profile, notifications, and other places',
 
 
 

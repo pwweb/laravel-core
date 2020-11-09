@@ -67,7 +67,7 @@
                             <input type="text" class="form-control @error('email') is-invalid @enderror" name="name" value="{{ old('name') ? old('name') : $profile->person->name }}"
                             placeholder="{{ __('pwweb::core.Enter your name') }}"
                             aria-label="{{ __('pwweb::core.Enter your name') }}" required="" aria-describedby="nameLabel" data-msg="Please enter your name." data-error-class="u-has-error" data-success-class="u-has-success">
-                            <small class="form-text text-muted">{{ __('pwweb::core.Displayed on your public profile, notifications and other places.') }}</small>
+                            <small class="form-text text-muted">{{ __('pwweb::core.Displayed on your public profile, notifications and other places') }}.</small>
                             @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -135,7 +135,7 @@
                 <div class="col-sm-6 mb-6">
                     <div class="js-form-message">
                         <label id="dobLabel" class="form-label">
-                            {{ __('pwweb::core.DoB') }}
+                            {{ __('pwweb::core.Dob') }}
                             <span class="text-danger">*</span>
                         </label>
                         <div class="form-group">
