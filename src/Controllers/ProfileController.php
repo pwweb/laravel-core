@@ -148,7 +148,7 @@ class ProfileController extends Controller
     public function edit()
     {
         if (($user = \Auth::user()) instanceof User) {
-            $profile = User::with('person')->findOrFail($user->id);
+            $profile = $this->userRepository->find($user->id);
             $genders = Gender::getAll();
             $titles = Title::getAll();
 
