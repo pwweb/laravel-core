@@ -93,7 +93,7 @@ class ProfileController extends Controller
         if (($user = \Auth::user()) instanceof User) {
             $profile = $this->userRepository->find($user->id);
 
-            return view('system.profile.index', compact('profile'));
+            return view('core::profile.index', compact('profile'));
         }
 
         return redirect()->back();
@@ -117,10 +117,10 @@ class ProfileController extends Controller
         if (true === empty($person)) {
             Flash::error('Person not found');
 
-            return redirect(route('system.profile.public'));
+            return redirect(route('core::profile.public'));
         }
 
-        return view('system.profile.public')
+        return view('core::profile.public')
             ->with('profile', $person);
     }
 
@@ -137,7 +137,7 @@ class ProfileController extends Controller
             }
         }
 
-        return redirect()->route('system.profile.index');
+        return redirect()->route('core::profile.index');
     }
 
     /**
@@ -152,7 +152,7 @@ class ProfileController extends Controller
             $genders = Gender::getAll();
             $titles = Title::getAll();
 
-            return view('system.profile.edit', compact('profile', 'genders', 'titles'));
+            return view('core::profile.edit', compact('profile', 'genders', 'titles'));
         }
 
         return redirect()->back();
@@ -187,7 +187,7 @@ class ProfileController extends Controller
      */
     public function password(): View
     {
-        return view('system.profile.password');
+        return view('core::profile.password');
     }
 
     /**
@@ -199,7 +199,7 @@ class ProfileController extends Controller
      */
     public function store($request): ?RedirectResponse
     {
-        return redirect()->route('system.profile.index');
+        return redirect()->route('core::profile.index');
     }
 
     /**
@@ -226,7 +226,7 @@ class ProfileController extends Controller
             $updatedUser->save();
         }
 
-        return redirect()->route('system.profile.index');
+        return redirect()->route('core::profile.index');
     }
 
     /**
@@ -248,15 +248,15 @@ class ProfileController extends Controller
             } catch (NotMatching $e) {
                 Flash::error($e->getMessage());
 
-                return redirect()->route('system.profile.password');
+                return redirect()->route('core::profile.password');
             } catch (HistoricPasswordNotAllowed $e) {
                 Flash::error($e->getMessage());
 
-                return redirect()->route('system.profile.password');
+                return redirect()->route('core::profile.password');
             }
         }
 
-        return redirect()->route('system.profile.index');
+        return redirect()->route('core::profile.index');
     }
 
     /**
@@ -281,7 +281,7 @@ class ProfileController extends Controller
             $updatedUser->save();
         }
 
-        return redirect()->route('system.profile.index');
+        return redirect()->route('core::profile.index');
     }
 
     /**
@@ -317,7 +317,7 @@ class ProfileController extends Controller
             Flash::success('Address saved successfully');
         }
 
-        return redirect(route('system.profile.edit'));
+        return redirect(route('core::profile.edit'));
     }
 
     /**
@@ -335,7 +335,7 @@ class ProfileController extends Controller
         if (true === empty($address)) {
             Flash::error('Address not found');
 
-            return redirect(route('system.profile.edit'));
+            return redirect(route('core::profile.edit'));
         }
 
         $address = $this->addressRepository->update($request->all(), $id);
@@ -346,6 +346,6 @@ class ProfileController extends Controller
             Flash::error('Address could not be updated.');
         }
 
-        return redirect(route('system.profile.edit'));
+        return redirect(route('core::profile.edit'));
     }
 }
