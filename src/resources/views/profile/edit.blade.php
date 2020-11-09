@@ -212,14 +212,14 @@
                             <!-- Location -->
                             <div class="u-ver-divider u-ver-divider--none-md pr-4 mb-3 mb-md-0 mr-4">
                                 <small class="fas fa-edit text-secondary align-middle mr-1"></small>
-                                <span class="align-middle"><a href="{{ route('addresses.edit', [$address->id]) }}">{{ __('pwweb::core.Edit address') }}</a></span>
+                                <span class="align-middle"><a href="{{ route('core.addresses.update', [$address->id]) }}">{{ __('pwweb::core.Edit address') }}</a></span>
                             </div>
                             <!-- End Location -->
 
                             <!-- Posted -->
                             <div class="u-ver-divider u-ver-divider--none-md pr-4 mb-3 mb-md-0 mr-4">
                                 <small class="fas fa-trash text-secondary align-middle mr-1"></small>
-                                <span class="align-middle"><a href="{{ route('addresses.edit', [$address->id]) }}">{{ __('pwweb::core.Delete address') }}</a></span>
+                                <span class="align-middle"><a href="{{ route('core.addresses.destroy', [$address->id]) }}">{{ __('pwweb::core.Delete address') }}</a></span>
                             </div>
                             <!-- End Posted -->
 
