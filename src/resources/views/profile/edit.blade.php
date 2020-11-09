@@ -171,6 +171,25 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-6 mb-6">
+                    <div class="js-form-message">
+                        <label id="dobLabel" class="form-label">
+                            {{ __('pwweb::core.Email') }}
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" value="{{ old('email') ? old('email') : ($profile->email) }}" placeholder="" aria-label="" required="" aria-describedby="emailLabel" data-msg="Please enter your email."
+                                data-error-class="u-has-error" data-success-class="u-has-success">
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Buttons -->
             <button type="submit" class="btn btn-sm btn-primary transition-3d-hover mr-1">{{ __('pwweb::core.Save Changes') }}</button>
             <button type="submit" class="btn btn-sm btn-soft-secondary transition-3d-hover">{{ __('pwweb::core.Cancel') }}</button>
