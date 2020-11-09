@@ -117,7 +117,7 @@ class ProfileController extends Controller
         if (true === empty($person)) {
             Flash::error('Person not found');
 
-            return redirect(route('core::profile.public'));
+            return redirect(route('system.profile.public'));
         }
 
         return view('core::profile.public')
@@ -137,7 +137,7 @@ class ProfileController extends Controller
             }
         }
 
-        return redirect()->route('core::profile.index');
+        return redirect()->route('system.profile.index');
     }
 
     /**
@@ -199,7 +199,7 @@ class ProfileController extends Controller
      */
     public function store($request): ?RedirectResponse
     {
-        return redirect()->route('core::profile.index');
+        return redirect()->route('system.profile.index');
     }
 
     /**
@@ -226,7 +226,7 @@ class ProfileController extends Controller
             $updatedUser->save();
         }
 
-        return redirect()->route('core::profile.index');
+        return redirect()->route('system.profile.index');
     }
 
     /**
@@ -248,15 +248,15 @@ class ProfileController extends Controller
             } catch (NotMatching $e) {
                 Flash::error($e->getMessage());
 
-                return redirect()->route('core::profile.password');
+                return redirect()->route('system.profile.password');
             } catch (HistoricPasswordNotAllowed $e) {
                 Flash::error($e->getMessage());
 
-                return redirect()->route('core::profile.password');
+                return redirect()->route('system.profile.password');
             }
         }
 
-        return redirect()->route('core::profile.index');
+        return redirect()->route('system.profile.index');
     }
 
     /**
@@ -281,7 +281,7 @@ class ProfileController extends Controller
             $updatedUser->save();
         }
 
-        return redirect()->route('core::profile.index');
+        return redirect()->route('system.profile.index');
     }
 
     /**
@@ -317,7 +317,7 @@ class ProfileController extends Controller
             Flash::success('Address saved successfully');
         }
 
-        return redirect(route('core::profile.edit'));
+        return redirect(route('system.profile.edit'));
     }
 
     /**
@@ -335,7 +335,7 @@ class ProfileController extends Controller
         if (true === empty($address)) {
             Flash::error('Address not found');
 
-            return redirect(route('core::profile.edit'));
+            return redirect(route('system.profile.edit'));
         }
 
         $address = $this->addressRepository->update($request->all(), $id);
@@ -346,6 +346,6 @@ class ProfileController extends Controller
             Flash::error('Address could not be updated.');
         }
 
-        return redirect(route('core::profile.edit'));
+        return redirect(route('system.profile.edit'));
     }
 }
