@@ -14,6 +14,7 @@ use PWWEB\Core\Models\User;
 use PWWEB\Core\Repositories\Address\TypeRepository;
 use PWWEB\Core\Repositories\AddressRepository;
 use PWWEB\Core\Repositories\CountryRepository;
+use PWWEB\Core\Repositories\PersonRepository;
 use PWWEB\Core\Repositories\UserRepository;
 use PWWEB\Core\Requests\CreateAddressRequest;
 use PWWEB\Core\Requests\Profile\UpdateAvatarRequest as ValidatedAvatarRequest;
@@ -41,6 +42,13 @@ class ProfileController extends Controller
     private $userRepository;
 
     /**
+     * Repository of Persons to be used throughout the controller.
+     *
+     * @var PersonRepository
+     */
+    private $personRepository;
+
+    /**
      * Repository of Addresses to be used throughout the controller.
      *
      * @var AddressRepository
@@ -65,6 +73,7 @@ class ProfileController extends Controller
      * Create a new controller instance.
      *
      * @param UserRepository    $userRepo    Repository of Users.
+     * @param PersonRepository  $personRepo  Repository of Persons.
      * @param AddressRepository $addressRepo Repository of Addresses.
      * @param CountryRepository $countryRepo Repository of Countries.
      * @param TypeRepository    $typeRepo    Repository of Address Types.
@@ -73,11 +82,13 @@ class ProfileController extends Controller
      */
     public function __construct(
         UserRepository $userRepo,
+        PersonRepository $personRepo,
         AddressRepository $addressRepo,
         CountryRepository $countryRepo,
         TypeRepository $typeRepo
     ) {
         $this->userRepository = $userRepo;
+        $this->personRepository = $personRepo;
         $this->addressRepository = $addressRepo;
         $this->countryRepository = $countryRepo;
         $this->typeRepository = $typeRepo;
@@ -214,16 +225,7 @@ class ProfileController extends Controller
         if (($user = \Auth::user()) instanceof User) {
             $validated = $request->validated();
 
-            $updatedUser = User::where('id', $user->id)->first();
-            $updatedUser->person->title = $validated['title'];
-            $updatedUser->person->name = $validated['name'];
-            $updatedUser->person->middle_name = $validated['middle_name'];
-            $updatedUser->person->surname = $validated['surname'];
-            $updatedUser->person->maiden_name = $validated['maiden_name'];
-            $updatedUser->person->dob = $validated['dob'];
-            $updatedUser->person->gender = $validated['gender'];
-            $updatedUser->person->save();
-            $updatedUser->save();
+            $profile = $this->personRepository->update($validated, $user->id);
         }
 
         return redirect()->route('system.profile.index');
