@@ -55,6 +55,7 @@ Route::namespace('\PWWEB\Core\Controllers')
             Route::get('/edit', 'ProfileController@edit')->name('profile.edit');
             Route::get('/reverify', 'ProfileController@reverify')->name('profile.reverify');
             Route::get('/password', 'ProfileController@password')->name('profile.password');
+            Route::get('/befried', 'ProfileController@befriend')->name('profile.befriend');
             Route::post('/store', 'ProfileController@store')->name('profile.store');
             Route::patch('/update', 'ProfileController@update')->name('profile.update');
             Route::patch('/updatePassword', 'ProfileController@updatePassword')->name('profile.password.update');
