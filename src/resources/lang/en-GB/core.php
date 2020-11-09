@@ -123,8 +123,6 @@ return [
     'Confirm Password' => 'Confirm Password',
     'Confirm your new password' => 'Confirm your new password',
 
-
-
     // Countries.
     'Afghanistan'                                  => 'Afghanistan',
     'Albania'                                      => 'Albania',
