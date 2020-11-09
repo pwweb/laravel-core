@@ -73,6 +73,13 @@ return [
 ];
 ```
 
+### 3rd Party Dependencies
+
+This package relies on a few other packages. You should review their documentation as well:
+
+-   [`spatie/laravel-medialibrary`](https://spatie.be/docs/laravel-medialibrary/v9/introduction)
+-   [`spatie/laravel-permission`](https://spatie.be/docs/laravel-permission/v3/introduction)
+
 ## Usage
 
 ### Users and Persons
@@ -198,6 +205,22 @@ The menu directive allows for the display of a menu based on the environment and
 <?php
 @menu(string $environmentSlug, string $rootNodeSlug)
 ```
+
+### Exchange Rates
+
+The package has an `exchange_rates` table that can be used to hold the historic exchange rates. To automatically update the table, a Queueable Job has been provided. This can be used with Laravel's [Task Scheduling](https://laravel.com/docs/8.x/scheduling) to update on a regular basis.
+
+```php
+<?php
+use PWWEB\Core\Jobs\UpdateExchangeRates;
+//...
+$schedule->job(new UpdateExchangeRates, 'target_queue')->timezone('Europe/Paris')->dailyAt('16:30');
+//...
+```
+
+**N.B.:** The rates are taken from the European Central Bank and they update their rates daily at about 16:00 CET. Therefore you should ensure that the task is run shortly after to get the latest rates.
+
+If you want to see the original content of the file you can find it [here](src/Jobs/UpdateExchangeRates.php).
 
 ## FAQs
 
