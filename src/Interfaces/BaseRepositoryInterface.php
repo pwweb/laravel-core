@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Model;
   */
  interface BaseRepositoryInterface
  {
-
      /**
       * Contructor.
       *
