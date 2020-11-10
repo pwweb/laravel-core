@@ -7,8 +7,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Laracasts\Flash\Flash;
-use PWWEB\Core\Repositories\PersonRepository;
-use PWWEB\Core\Repositories\UserRepository;
+use PWWEB\Core\Interfaces\PersonRepositoryInterface;
+use PWWEB\Core\Interfaces\UserRepositoryInterface;
 use PWWEB\Core\Requests\CreateUserRequest;
 use PWWEB\Core\Requests\UpdateUserRequest;
 
@@ -28,24 +28,24 @@ class UserController extends Controller
     /**
      * Repository of users to be used throughout the controller.
      *
-     * @var UserRepository
+     * @var UserRepositoryInterface
      */
     private $userRepository;
 
     /**
      * Repository of persons to be used throughout the controller.
      *
-     * @var PersonRepository
+     * @var PersonRepositoryInterface
      */
     private $personRepository;
 
     /**
      * Constructor for the User controller.
      *
-     * @param UserRepository   $userRepo   Repository of Users.
-     * @param PersonRepository $personRepo Repository of Persons.
+     * @param UserRepositoryInterface   $userRepo   Repository of Users.
+     * @param PersonRepositoryInterface $personRepo Repository of Persons.
      */
-    public function __construct(UserRepository $userRepo, PersonRepository $personRepo)
+    public function __construct(UserRepositoryInterface $userRepo, PersonRepositoryInterface $personRepo)
     {
         $this->userRepository = $userRepo;
         $this->personRepository = $personRepo;

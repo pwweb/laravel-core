@@ -2,6 +2,7 @@
 
 namespace PWWEB\Core\Repositories;
 
+use PWWEB\Core\Interfaces\AddressRepositoryInterface;
 use PWWEB\Core\Models\Address;
 
 /**
@@ -15,7 +16,7 @@ use PWWEB\Core\Models\Address;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class AddressRepository extends BaseRepository
+class AddressRepository extends BaseRepository implements AddressRepositoryInterface
 {
     /**
      * Fields that can be searched by.

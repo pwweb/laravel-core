@@ -5,7 +5,7 @@ namespace PWWEB\Core\Middleware;
 use Closure;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
-use PWWEB\Core\Repositories\LanguageRepository;
+use PWWEB\Core\Interfaces\LanguageRepositoryInterface;
 
 class Locale
 {
@@ -19,16 +19,16 @@ class Locale
     /**
      * Repository of languages to be used throughout the controller.
      *
-     * @var \PWWEB\Core\Repositories\LanguageRepository
+     * @var \PWWEB\Core\Interfaces\LanguageRepositoryInterface
      */
     private $languageRepository;
 
     /**
      * Constructor for the middleware ensuring dependencies are injected.
      *
-     * @param \PWWEB\Core\Repositories\LanguageRepository $languageRepo Repository of Languages
+     * @param \PWWEB\Core\Interfaces\LanguageRepositoryInterface $languageRepo Repository of Languages
      */
-    public function __construct(LanguageRepository $languageRepo)
+    public function __construct(LanguageRepositoryInterface $languageRepo)
     {
         $this->languageRepository = $languageRepo;
     }

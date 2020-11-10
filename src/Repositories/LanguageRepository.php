@@ -4,6 +4,7 @@ namespace PWWEB\Core\Repositories;
 
 use PWWEB\Core\Contracts\Language as LanguageContract;
 use PWWEB\Core\Exceptions\LanguageDoesNotExist;
+use PWWEB\Core\Interfaces\LanguageRepositoryInterface;
 use PWWEB\Core\Models\Language;
 
 /**
@@ -17,7 +18,7 @@ use PWWEB\Core\Models\Language;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class LanguageRepository extends BaseRepository
+class LanguageRepository extends BaseRepository implements LanguageRepositoryInterface
 {
     /**
      * Fields that can be searched by.

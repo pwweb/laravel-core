@@ -5,7 +5,7 @@ namespace PWWEB\Core\Controllers;
 use App\Http\Controllers\Controller;
 use Flash;
 use Illuminate\Http\Request;
-use PWWEB\Core\Repositories\CountryRepository;
+use PWWEB\Core\Interfaces\CountryRepositoryInterface;
 use PWWEB\Core\Requests\CreateCountryRequest;
 use PWWEB\Core\Requests\UpdateCountryRequest;
 
@@ -25,16 +25,16 @@ class CountryController extends Controller
     /**
      * Repository of Countries to be used throughout the controller.
      *
-     * @var CountryRepository
+     * @var CountryRepositoryInterface
      */
     private $countryRepository;
 
     /**
      * Constructor for the Country controller.
      *
-     * @param CountryRepository $countryRepo Repository of Countries.
+     * @param CountryRepositoryInterface $countryRepo Repository of Countries.
      */
-    public function __construct(CountryRepository $countryRepo)
+    public function __construct(CountryRepositoryInterface $countryRepo)
     {
         $this->countryRepository = $countryRepo;
     }

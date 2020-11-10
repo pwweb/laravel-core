@@ -7,7 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Laracasts\Flash\Flash;
-use PWWEB\Core\Repositories\User\Password\HistoryRepository;
+use PWWEB\Core\Interfaces\User\Password\HistoryRepositoryInterface;
 use PWWEB\Core\Requests\User\Password\CreateHistoryRequest;
 use PWWEB\Core\Requests\User\Password\UpdateHistoryRequest;
 
@@ -27,18 +27,18 @@ class HistoryController extends Controller
     /**
      * Repository of Historic Passwords to be used throughout the controller.
      *
-     * @var HistoryRepository
+     * @var HistoryRepositoryInterface
      */
     private $historyRepository;
 
     /**
      * Constructor for the Historic Password controller.
      *
-     * @param HistoryRepository $historyRepo Repository of Historic Passwords.
+     * @param HistoryRepositoryInterface $historyRepo Repository of Historic Passwords.
      *
      * @return void
      */
-    public function __construct(HistoryRepository $historyRepo)
+    public function __construct(HistoryRepositoryInterface $historyRepo)
     {
         $this->historyRepository = $historyRepo;
     }

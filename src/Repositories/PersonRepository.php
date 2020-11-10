@@ -2,6 +2,7 @@
 
 namespace PWWEB\Core\Repositories;
 
+use PWWEB\Core\Interfaces\PersonRepositoryInterface;
 use PWWEB\Core\Models\Person;
 
 /**
@@ -15,7 +16,7 @@ use PWWEB\Core\Models\Person;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class PersonRepository extends BaseRepository
+class PersonRepository extends BaseRepository implements PersonRepositoryInterface
 {
     /**
      * Fields that can be searched by.

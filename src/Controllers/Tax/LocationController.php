@@ -5,9 +5,9 @@ namespace PWWEB\Core\Controllers\Tax;
 use App\Http\Controllers\Controller;
 use Flash;
 use Illuminate\Http\Request;
-use PWWEB\Core\Repositories\CountryRepository;
-use PWWEB\Core\Repositories\Tax\LocationRepository;
-use PWWEB\Core\Repositories\Tax\RateRepository;
+use PWWEB\Core\Interfaces\CountryRepositoryInterface;
+use PWWEB\Core\Interfaces\Tax\LocationRepositoryInterface;
+use PWWEB\Core\Interfaces\Tax\RateRepositoryInterface;
 use PWWEB\Core\Requests\Tax\CreateLocationRequest;
 use PWWEB\Core\Requests\Tax\UpdateLocationRequest;
 use Response;
@@ -28,32 +28,32 @@ class LocationController extends Controller
     /**
      * Repository of locations to be used throughout the controller.
      *
-     * @var \PWWEB\Core\Repositories\Tax\LocationRepository
+     * @var \PWWEB\Core\Interfaces\Tax\LocationRepositoryInterface
      */
     private $locationRepository;
 
     /**
      * Repository of rates to be used throughout the controller.
      *
-     * @var \PWWEB\Core\Repositories\Tax\RateRepository
+     * @var \PWWEB\Core\Interfaces\Tax\RateRepositoryInterface
      */
     private $rateRepository;
 
     /**
      * Repository of addresses to be used throughout the controller.
      *
-     * @var \PWWEB\Core\Repositories\CountryRepository
+     * @var \PWWEB\Core\Interfaces\CountryRepositoryInterface
      */
     private $countryRepository;
 
     /**
      * Constructor for the Location controller.
      *
-     * @param LocationRepository $locationRepo Repository of Locations.
-     * @param CountryRepository  $countryRepo  Repository of Countries.
-     * @param RateRepository     $rateRepo     Repository of Rates.
+     * @param LocationRepositoryInterface $locationRepo Repository of Locations.
+     * @param CountryRepositoryInterface  $countryRepo  Repository of Countries.
+     * @param RateRepositoryInterface     $rateRepo     Repository of Rates.
      */
-    public function __construct(LocationRepository $locationRepo, CountryRepository $countryRepo, RateRepository $rateRepo)
+    public function __construct(LocationRepositoryInterface $locationRepo, CountryRepositoryInterface $countryRepo, RateRepositoryInterface $rateRepo)
     {
         $this->locationRepository = $locationRepo;
         $this->rateRepository = $rateRepo;

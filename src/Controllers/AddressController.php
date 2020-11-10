@@ -5,9 +5,9 @@ namespace PWWEB\Core\Controllers;
 use App\Http\Controllers\Controller;
 use Flash;
 use Illuminate\Http\Request;
-use PWWEB\Core\Repositories\Address\TypeRepository;
-use PWWEB\Core\Repositories\AddressRepository;
-use PWWEB\Core\Repositories\CountryRepository;
+use PWWEB\Core\Interfaces\Address\TypeRepositoryInterface;
+use PWWEB\Core\Interfaces\AddressRepositoryInterface;
+use PWWEB\Core\Interfaces\CountryRepositoryInterface;
 use PWWEB\Core\Requests\CreateAddressRequest;
 use PWWEB\Core\Requests\UpdateAddressRequest;
 
@@ -27,32 +27,32 @@ class AddressController extends Controller
     /**
      * Repository of addresses to be used throughout the controller.
      *
-     * @var \PWWEB\Core\Repositories\AddressRepository
+     * @var \PWWEB\Core\Interfaces\AddressRepositoryInterface
      */
     private $addressRepository;
 
     /**
      * Repository of addresses to be used throughout the controller.
      *
-     * @var \PWWEB\Core\Repositories\CountryRepository
+     * @var \PWWEB\Core\Interfaces\CountryRepositoryInterface
      */
     private $countryRepository;
 
     /**
      * Repository of address types to be used throughout the controller.
      *
-     * @var \PWWEB\Core\Repositories\Address\TypeRepository
+     * @var \PWWEB\Core\Interfaces\Address\TypeRepositoryInterface
      */
     private $typeRepository;
 
     /**
      * Constructor for the Address controller.
      *
-     * @param AddressRepository $addressRepo Repository of Addresses.
-     * @param CountryRepository $countryRepo Repository of Countries.
-     * @param TypeRepository    $typeRepo    Repository of Address types.
+     * @param AddressRepositoryInterface $addressRepo Repository of Addresses.
+     * @param CountryRepositoryInterface $countryRepo Repository of Countries.
+     * @param TypeRepositoryInterface    $typeRepo    Repository of Address types.
      */
-    public function __construct(AddressRepository $addressRepo, CountryRepository $countryRepo, TypeRepository $typeRepo)
+    public function __construct(AddressRepositoryInterface $addressRepo, CountryRepositoryInterface $countryRepo, TypeRepositoryInterface $typeRepo)
     {
         $this->addressRepository = $addressRepo;
         $this->countryRepository = $countryRepo;

@@ -4,6 +4,7 @@ namespace PWWEB\Core\Repositories;
 
 use App\Repositories\BaseRepository;
 use Kalnoy\Nestedset\Collection;
+use PWWEB\Core\Interfaces\MenuRepositoryInterface;
 use PWWEB\Core\Models\Menu;
 
 /**
@@ -17,7 +18,7 @@ use PWWEB\Core\Models\Menu;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class MenuRepository extends BaseRepository
+class MenuRepository extends BaseRepository implements MenuRepositoryInterface
 {
     /**
      * Fields that can be searched by.

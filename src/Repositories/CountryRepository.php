@@ -2,6 +2,7 @@
 
 namespace PWWEB\Core\Repositories;
 
+use PWWEB\Core\Interfaces\CountryRepositoryInterface;
 use PWWEB\Core\Models\Country;
 
 /**
@@ -15,7 +16,7 @@ use PWWEB\Core\Models\Country;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class CountryRepository extends BaseRepository
+class CountryRepository extends BaseRepository implements CountryRepositoryInterface
 {
     /**
      * Fields that can be searched by.

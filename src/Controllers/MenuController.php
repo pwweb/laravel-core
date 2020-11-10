@@ -7,7 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Laracasts\Flash\Flash;
-use PWWEB\Core\Repositories\MenuRepository;
+use PWWEB\Core\Interfaces\MenuRepositoryInterface;
 use PWWEB\Core\Requests\CreateMenuRequest;
 use PWWEB\Core\Requests\UpdateMenuRequest;
 
@@ -27,16 +27,16 @@ class MenuController extends Controller
     /**
      * Repository of Menus to be used throughout the controller.
      *
-     * @var MenuRepository
+     * @var MenuRepositoryInterface
      */
     private $menuRepository;
 
     /**
      *  Constructor for the Menu controller.
      *
-     * @param MenuRepository        $menuRepo Repository of Menus.
+     * @param MenuRepositoryInterface        $menuRepo Repository of Menus.
      */
-    public function __construct(MenuRepository $menuRepo)
+    public function __construct(MenuRepositoryInterface $menuRepo)
     {
         $this->menuRepository = $menuRepo;
     }

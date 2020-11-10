@@ -5,7 +5,7 @@ namespace PWWEB\Core\Controllers;
 use App\Http\Controllers\Controller;
 use Flash;
 use Illuminate\Http\Request;
-use PWWEB\Core\Repositories\CurrencyRepository;
+use PWWEB\Core\Interfaces\CurrencyRepositoryInterface;
 use PWWEB\Core\Requests\CreateCurrencyRequest;
 use PWWEB\Core\Requests\UpdateCurrencyRequest;
 
@@ -25,16 +25,16 @@ class CurrencyController extends Controller
     /**
      * Repository of Currencies to be used throughout the controller.
      *
-     * @var CurrencyRepository
+     * @var CurrencyRepositoryInterface
      */
     private $currencyRepository;
 
     /**
      * Constructor for the Currency controller.
      *
-     * @param CurrencyRepository $currencyRepo Repository of Currencies.
+     * @param CurrencyRepositoryInterface $currencyRepo Repository of Currencies.
      */
-    public function __construct(CurrencyRepository $currencyRepo)
+    public function __construct(CurrencyRepositoryInterface $currencyRepo)
     {
         $this->currencyRepository = $currencyRepo;
     }

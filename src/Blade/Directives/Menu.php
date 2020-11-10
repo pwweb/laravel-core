@@ -5,8 +5,8 @@ namespace PWWEB\Core\Blade\Directives;
 use Illuminate\Contracts\Queue\QueueableCollection;
 use Illuminate\Support\Str;
 use PWWEB\Core\Blade\Directive;
+use PWWEB\Core\Interfaces\MenuRepositoryInterface;
 use PWWEB\Core\Models\Menu as MenuModel;
-use PWWEB\Core\Repositories\MenuRepository;
 
 /**
  * PWWEB\Core\Blade\Directive Menu.
@@ -24,16 +24,16 @@ class Menu extends Directive
     /**
      * Repository of Menus to be used throughout the controller.
      *
-     * @var MenuRepository
+     * @var MenuRepositoryInterface
      */
     private $menuRepository;
 
     /**
      * Constructor for the Date Directive.
      *
-     * @param MenuRepository        $menuRepo Repository of Menus.
+     * @param MenuRepositoryInterface        $menuRepo Repository of Menus.
      */
-    public function __construct(MenuRepository $menuRepo)
+    public function __construct(MenuRepositoryInterface $menuRepo)
     {
         $this->menuRepository = $menuRepo;
 

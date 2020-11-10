@@ -9,7 +9,7 @@ use Illuminate\View\View;
 use Laracasts\Flash\Flash;
 use PWWEB\Core\Enums\Gender;
 use PWWEB\Core\Enums\Title;
-use PWWEB\Core\Repositories\PersonRepository;
+use PWWEB\Core\Interfaces\PersonRepositoryInterface;
 use PWWEB\Core\Requests\CreatePersonRequest;
 use PWWEB\Core\Requests\UpdatePersonRequest;
 
@@ -28,16 +28,16 @@ class PersonController extends Controller
     /**
      * Repository of Persons to be used throughout the controller.
      *
-     * @var PersonRepository
+     * @var PersonRepositoryInterface
      */
     private $personRepository;
 
     /**
      * Constructor for the Person controller.
      *
-     * @param PersonRepository $personRepository Repository of Persons.
+     * @param PersonRepositoryInterface $personRepository Repository of Persons.
      */
-    public function __construct(PersonRepository $personRepository)
+    public function __construct(PersonRepositoryInterface $personRepository)
     {
         $this->personRepository = $personRepository;
     }

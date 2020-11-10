@@ -2,6 +2,7 @@
 
 namespace PWWEB\Core\Repositories;
 
+use PWWEB\Core\Interfaces\ExchangeRateRepositoryInterface;
 use PWWEB\Core\Models\ExchangeRate;
 
 /**
@@ -15,7 +16,7 @@ use PWWEB\Core\Models\ExchangeRate;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class ExchangeRateRepository extends BaseRepository
+class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepositoryInterface
 {
     /**
      * Fields that can be searched by.

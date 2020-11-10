@@ -2,6 +2,7 @@
 
 namespace PWWEB\Core\Repositories\Tax;
 
+use PWWEB\Core\Interfaces\Tax\RateRepositoryInterface;
 use PWWEB\Core\Models\Tax\Rate;
 use PWWEB\Core\Repositories\BaseRepository;
 
@@ -16,7 +17,7 @@ use PWWEB\Core\Repositories\BaseRepository;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class RateRepository extends BaseRepository
+class RateRepository extends BaseRepository implements RateRepositoryInterface
 {
     /**
      * Fields that can be searched by.

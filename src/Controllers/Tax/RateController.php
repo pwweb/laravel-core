@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Flash;
 use Illuminate\Http\Request;
 use PWWEB\Core\Enums\Tax\Type;
-use PWWEB\Core\Repositories\Tax\RateRepository;
+use PWWEB\Core\Interfaces\Tax\RateRepositoryInterface;
 use PWWEB\Core\Requests\Tax\CreateRateRequest;
 use PWWEB\Core\Requests\Tax\UpdateRateRequest;
 
@@ -26,16 +26,16 @@ class RateController extends Controller
     /**
      * Repository of rates to be used throughout the controller.
      *
-     * @var \PWWEB\Core\Repositories\Tax\RateRepository
+     * @var \PWWEB\Core\Interfaces\Tax\RateRepositoryInterface
      */
     private $rateRepository;
 
     /**
      * Constructor for the Rate controller.
      *
-     * @param RateRepository $rateRepo Repository of Rates.
+     * @param RateRepositoryInterface $rateRepo Repository of Rates.
      */
-    public function __construct(RateRepository $rateRepo)
+    public function __construct(RateRepositoryInterface $rateRepo)
     {
         $this->rateRepository = $rateRepo;
     }

@@ -6,6 +6,7 @@ use Illuminate\Container\Container as Application;
 use PWWEB\Core\Exceptions\User\NotFound as UserNotFoundException;
 use PWWEB\Core\Exceptions\User\Password\HistoricPasswordNotAllowed as HistoricPasswordNotAllowedException;
 use PWWEB\Core\Exceptions\User\Password\NotMatching as NotMatchingException;
+use PWWEB\Core\Interfaces\UserRepositoryInterface;
 use PWWEB\Core\Models\User;
 use PWWEB\Core\Repositories\User\Password\HistoryRepository;
 
@@ -20,7 +21,7 @@ use PWWEB\Core\Repositories\User\Password\HistoryRepository;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class UserRepository extends BaseRepository
+class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
     /**
      * Repository of Historic Passwords to be used throughout the controller.

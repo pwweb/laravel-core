@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Flash;
 use Illuminate\Http\Request;
 use PWWEB\Core\Middleware\Locale;
-use PWWEB\Core\Repositories\LanguageRepository;
+use PWWEB\Core\Interfaces\LanguageRepositoryInterface;
 use PWWEB\Core\Requests\CreateLanguageRequest;
 use PWWEB\Core\Requests\UpdateLanguageRequest;
 
@@ -26,16 +26,16 @@ class LanguageController extends Controller
     /**
      * Repository of Languages to be used throughout the controller.
      *
-     * @var \PWWEB\Core\Repositories\LanguageRepository
+     * @var \PWWEB\Core\Interfaces\LanguageRepositoryInterface
      */
     private $languageRepository;
 
     /**
      * Constructor for the Language controller.
      *
-     * @param \PWWEB\Core\Repositories\LanguageRepository $languageRepo Repository of Languages
+     * @param \PWWEB\Core\Interfaces\LanguageRepositoryInterface $languageRepo Repository of Languages
      */
-    public function __construct(LanguageRepository $languageRepo)
+    public function __construct(LanguageRepositoryInterface $languageRepo)
     {
         $this->languageRepository = $languageRepo;
     }

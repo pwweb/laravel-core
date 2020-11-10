@@ -2,6 +2,7 @@
 
 namespace PWWEB\Core\Repositories\Tax;
 
+use PWWEB\Core\Interfaces\Tax\LocationRepositoryInterface;
 use PWWEB\Core\Models\Tax\Location;
 use PWWEB\Core\Repositories\BaseRepository;
 
@@ -16,7 +17,7 @@ use PWWEB\Core\Repositories\BaseRepository;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class LocationRepository extends BaseRepository
+class LocationRepository extends BaseRepository implements LocationRepositoryInterface
 {
     /**
      * Fields that can be searched by.

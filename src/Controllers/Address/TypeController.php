@@ -7,7 +7,7 @@ use Flash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use PWWEB\Core\Repositories\Address\TypeRepository;
+use PWWEB\Core\Interfaces\Address\TypeRepositoryInterface;
 use PWWEB\Core\Requests\Address\CreateTypeRequest;
 use PWWEB\Core\Requests\Address\UpdateTypeRequest;
 
@@ -27,16 +27,16 @@ class TypeController extends Controller
     /**
      * Repository of Address types to be used throughout the controller.
      *
-     * @var TypeRepository
+     * @var TypeRepositoryInterface
      */
     private $typeRepository;
 
     /**
      * Constructor for the Address type controller.
      *
-     * @param \PWWEB\Core\Repositories\Address\TypeRepository $typeRepo Repository of Address types
+     * @param \PWWEB\Core\Interfaces\Address\TypeRepositoryInterface $typeRepo Repository of Address types
      */
-    public function __construct(TypeRepository $typeRepo)
+    public function __construct(TypeRepositoryInterface $typeRepo)
     {
         $this->typeRepository = $typeRepo;
     }

@@ -3,6 +3,7 @@
 namespace PWWEB\Core\Repositories\User\Password;
 
 use App\Repositories\BaseRepository;
+use PWWEB\Core\Interfaces\User\Password\HistoryRepositoryInterface;
 use PWWEB\Core\Models\User;
 use PWWEB\Core\Models\User\Password\History;
 
@@ -17,7 +18,7 @@ use PWWEB\Core\Models\User\Password\History;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class HistoryRepository extends BaseRepository
+class HistoryRepository extends BaseRepository implements HistoryRepositoryInterface
 {
     /**
      * Fields that can be searched by.

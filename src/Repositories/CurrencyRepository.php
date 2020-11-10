@@ -2,6 +2,7 @@
 
 namespace PWWEB\Core\Repositories;
 
+use PWWEB\Core\Interfaces\CurrencyRepositoryInterface;
 use PWWEB\Core\Models\Currency;
 
 /**
@@ -15,7 +16,7 @@ use PWWEB\Core\Models\Currency;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-class CurrencyRepository extends BaseRepository
+class CurrencyRepository extends BaseRepository implements CurrencyRepositoryInterface
 {
     /**
      * Fields that can be searched by.

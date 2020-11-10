@@ -11,11 +11,11 @@ use PWWEB\Core\Enums\Title;
 use PWWEB\Core\Exceptions\User\Password\HistoricPasswordNotAllowed;
 use PWWEB\Core\Exceptions\User\Password\NotMatching;
 use PWWEB\Core\Models\User;
-use PWWEB\Core\Repositories\Address\TypeRepository;
-use PWWEB\Core\Repositories\AddressRepository;
-use PWWEB\Core\Repositories\CountryRepository;
-use PWWEB\Core\Repositories\PersonRepository;
-use PWWEB\Core\Repositories\UserRepository;
+use PWWEB\Core\Interfaces\Address\TypeRepositoryInterface;
+use PWWEB\Core\Interfaces\AddressRepositoryInterface;
+use PWWEB\Core\Interfaces\CountryRepositoryInterface;
+use PWWEB\Core\Interfaces\PersonRepositoryInterface;
+use PWWEB\Core\Interfaces\UserRepositoryInterface;
 use PWWEB\Core\Requests\CreateAddressRequest;
 use PWWEB\Core\Requests\Profile\UpdateAvatarRequest as ValidatedAvatarRequest;
 use PWWEB\Core\Requests\Profile\UpdatePasswordRequest as ValidatedPasswordRequest;
@@ -37,55 +37,55 @@ class ProfileController extends Controller
     /**
      * Repository of Users to be used throughout the controller.
      *
-     * @var UserRepository
+     * @var UserRepositoryInterface
      */
     private $userRepository;
 
     /**
      * Repository of Persons to be used throughout the controller.
      *
-     * @var PersonRepository
+     * @var PersonRepositoryInterface
      */
     private $personRepository;
 
     /**
      * Repository of Addresses to be used throughout the controller.
      *
-     * @var AddressRepository
+     * @var AddressRepositoryInterface
      */
     private $addressRepository;
 
     /**
      * Repository of Countries to be used throughout the controller.
      *
-     * @var CountryRepository
+     * @var CountryRepositoryInterface
      */
     private $countryRepository;
 
     /**
      * Repository of Address Types to be used throughout the controller.
      *
-     * @var TypeRepository
+     * @var TypeRepositoryInterface
      */
     private $typeRepository;
 
     /**
      * Create a new controller instance.
      *
-     * @param UserRepository    $userRepo    Repository of Users.
-     * @param PersonRepository  $personRepo  Repository of Persons.
-     * @param AddressRepository $addressRepo Repository of Addresses.
-     * @param CountryRepository $countryRepo Repository of Countries.
-     * @param TypeRepository    $typeRepo    Repository of Address Types.
+     * @param UserRepositoryInterface    $userRepo    Repository of Users.
+     * @param PersonRepositoryInterface  $personRepo  Repository of Persons.
+     * @param AddressRepositoryInterface $addressRepo Repository of Addresses.
+     * @param CountryRepositoryInterface $countryRepo Repository of Countries.
+     * @param TypeRepositoryInterface    $typeRepo    Repository of Address Types.
      *
      * @return void
      */
     public function __construct(
-        UserRepository $userRepo,
-        PersonRepository $personRepo,
-        AddressRepository $addressRepo,
-        CountryRepository $countryRepo,
-        TypeRepository $typeRepo
+        UserRepositoryInterface $userRepo,
+        PersonRepositoryInterface $personRepo,
+        AddressRepositoryInterface $addressRepo,
+        CountryRepositoryInterface $countryRepo,
+        TypeRepositoryInterface $typeRepo
     ) {
         $this->userRepository = $userRepo;
         $this->personRepository = $personRepo;

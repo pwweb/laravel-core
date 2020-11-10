@@ -3,8 +3,8 @@
 namespace PWWEB\Core\Listeners;
 
 use Illuminate\Auth\Events\PasswordReset;
+use PWWEB\Core\Interfaces\User\Password\HistoryRepositoryInterface;
 use PWWEB\Core\Models\User;
-use PWWEB\Core\Repositories\User\Password\HistoryRepository;
 
 /**
  * PWWEB\Core\Listeners\ResetPassword Listener.
@@ -21,18 +21,18 @@ class ResetPassword
     /**
      * Repository of Password Histories to be used throughout the Listener.
      *
-     * @var HistoryRepository
+     * @var HistoryRepositoryInterface
      */
     private $historyRepository;
 
     /**
      * Create the event listener.
      *
-     * @param HistoryRepository $historyRepo Repository of Historic Passwords.
+     * @param HistoryRepositoryInterface $historyRepo Repository of Historic Passwords.
      *
      * @return void
      */
-    public function __construct(HistoryRepository $historyRepo)
+    public function __construct(HistoryRepositoryInterface $historyRepo)
     {
         $this->historyRepository = $historyRepo;
     }

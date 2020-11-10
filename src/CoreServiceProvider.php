@@ -2,6 +2,32 @@
 
 namespace PWWEB\Core;
 
+use App\Interfaces\Address\TypeRepositoryInterface;
+use App\Interfaces\AddressRepositoryInterface;
+use App\Interfaces\BaseRepositoryInterface;
+use App\Interfaces\CountryRepositoryInterface;
+use App\Interfaces\CurrencyRepositoryInterface;
+use App\Interfaces\ExchangeRateRepositoryInterface;
+use App\Interfaces\LanguageRepositoryInterface;
+use App\Interfaces\MenuRepositoryInterface;
+use App\Interfaces\PersonRepositoryInterface;
+use App\Interfaces\Tax\LocationRepositoryInterface;
+use App\Interfaces\Tax\RateRepositoryInterface;
+use App\Interfaces\User\Password\HistoryRepositoryInterface;
+use App\Interfaces\UserRepositoryInterface;
+use App\Repositories\Address\TypeRepository;
+use App\Repositories\AddressRepository;
+use App\Repositories\BaseRepository;
+use App\Repositories\CountryRepository;
+use App\Repositories\CurrencyRepository;
+use App\Repositories\ExchangeRateRepository;
+use App\Repositories\LanguageRepository;
+use App\Repositories\MenuRepository;
+use App\Repositories\PersonRepository;
+use App\Repositories\Tax\LocationRepository;
+use App\Repositories\Tax\RateRepository;
+use App\Repositories\User\Password\HistoryRepository;
+use App\Repositories\UserRepository;
 use Carbon\Carbon;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
@@ -62,6 +88,21 @@ class CoreServiceProvider extends ServiceProvider
 
         $this->app->bind(Contracts\Colour::class, Helpers\Colour::class);
         $this->app->bind(Contracts\Colour\Converter::class, Helpers\Colour\Converter::class);
+
+        // Bind the interfaces:
+        $this->app->bind(TypeRepositoryInterface::class, TypeRepository::class);
+        $this->app->bind(LocationRepositoryInterface::class, LocationRepository::class);
+        $this->app->bind(RateRepositoryInterface::class, RateRepository::class);
+        $this->app->bind(HistoryRepositoryInterface::class, HistoryRepository::class);
+        $this->app->bind(AddressRepositoryInterface::class, AddressRepository::class);
+        $this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
+        $this->app->bind(CountryRepositoryInterface::class, CountryRepository::class);
+        $this->app->bind(CurrencyRepositoryInterface::class, CurrencyRepository::class);
+        $this->app->bind(ExchangeRateRepositoryInterface::class, ExchangeRateRepository::class);
+        $this->app->bind(LanguageRepositoryInterface::class, LanguageRepository::class);
+        $this->app->bind(MenuRepositoryInterface::class, MenuRepository::class);
+        $this->app->bind(PersonRepositoryInterface::class, PersonRepository::class);
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 
     /**

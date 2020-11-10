@@ -4,6 +4,7 @@ namespace PWWEB\Core\Repositories;
 
 use Illuminate\Container\Container as Application;
 use Illuminate\Database\Eloquent\Model;
+use PWWEB\Core\Interfaces\BaseRepositoryInterface;
 
  /**
   * PWWEB\Core\Repositories\BaseRepository BaseRepository.
@@ -16,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
   * @copyright 2020 pw-websolutions.com
   * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
   */
- abstract class BaseRepository
+ abstract class BaseRepository implements BaseRepositoryInterface
  {
      /**
       * The model instance.
