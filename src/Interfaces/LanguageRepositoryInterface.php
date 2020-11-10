@@ -17,15 +17,12 @@ use PWWEB\Core\Models\Language;
  */
 interface LanguageRepositoryInterface extends BaseRepositoryInterface
 {
-
-
     /**
      * Return searchable fields.
      *
      * @return array
      */
     public function getFieldsSearchable();
-
 
     /**
      * Configure the Model.
@@ -34,14 +31,12 @@ interface LanguageRepositoryInterface extends BaseRepositoryInterface
      **/
     public function model();
 
-
     /**
      * Retrieve all active languages.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getAllActive();
-
 
     /**
      * Retrieve active language based on locale.
@@ -52,7 +47,6 @@ interface LanguageRepositoryInterface extends BaseRepositoryInterface
      */
     public function isLocaleActive(string $locale);
 
-
     /**
      * Retrieve active language based on lang.
      *
@@ -61,7 +55,6 @@ interface LanguageRepositoryInterface extends BaseRepositoryInterface
      * @return \Illuminate\Database\Eloquent\Model|null
      */
     public function isLangActive(string $lang);
-
 
     /**
      * Find a language by its locale, e.g. en-gb.

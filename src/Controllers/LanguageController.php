@@ -5,8 +5,8 @@ namespace PWWEB\Core\Controllers;
 use App\Http\Controllers\Controller;
 use Flash;
 use Illuminate\Http\Request;
-use PWWEB\Core\Middleware\Locale;
 use PWWEB\Core\Interfaces\LanguageRepositoryInterface;
+use PWWEB\Core\Middleware\Locale;
 use PWWEB\Core\Requests\CreateLanguageRequest;
 use PWWEB\Core\Requests\UpdateLanguageRequest;
 
