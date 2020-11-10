@@ -18,15 +18,12 @@ use PWWEB\Core\Models\Tax\Location;
  */
 interface LocationRepositoryInterface extends BaseRepositoryInterface
 {
-
-
     /**
      * Return searchable fields.
      *
      * @return array
      */
     public function getFieldsSearchable();
-
 
     /**
      * Configure the Model.

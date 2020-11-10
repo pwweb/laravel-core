@@ -17,15 +17,12 @@ use PWWEB\Core\Models\Country;
  */
 interface CountryRepositoryInterface extends BaseRepositoryInterface
 {
-
-
     /**
      * Return searchable fields.
      *
      * @return array
      */
     public function getFieldsSearchable();
-
 
     /**
      * Configure the Model.
