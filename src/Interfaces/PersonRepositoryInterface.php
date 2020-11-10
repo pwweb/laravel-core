@@ -15,7 +15,7 @@ use PWWEB\Core\Models\Person;
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-interface AddressRepositoryInterface extends BaseRepositoryInterface
+interface PersonRepositoryInterface extends BaseRepositoryInterface
 {
 
 

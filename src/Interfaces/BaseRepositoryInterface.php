@@ -9,14 +9,14 @@ use Illuminate\Database\Eloquent\Model;
   * PWWEB\Core\Interfaces\BaseRepositoryInterface BaseRepositoryInterface.
   *
   * The base repository all future Interfaces.
-  * interface BaseRepositoryInterfaceInterface
+  * interface BaseRepositoryInterface
   *
   * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
   * @author    Richard Browne <richard.browne@pw-websolutions.com>
   * @copyright 2020 pw-websolutions.com
   * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
   */
- interface BaseRepositoryInterfaceInterface
+ interface BaseRepositoryInterface
  {
 
      /**
@@ -33,14 +33,14 @@ use Illuminate\Database\Eloquent\Model;
       *
       * @return array
       */
-     abstract public function getFieldsSearchable();
+     public function getFieldsSearchable();
 
      /**
       * Configure the Model.
       *
       * @return string
       */
-     abstract public function model();
+     public function model();
 
      /**
       * Make Model instance.
