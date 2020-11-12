@@ -17,15 +17,12 @@ use PWWEB\Core\Models\ExchangeRate;
  */
 interface ExchangeRateRepositoryInterface extends BaseRepositoryInterface
 {
-
-
     /**
      * Return searchable fields.
      *
      * @return array
      */
     public function getFieldsSearchable();
-
 
     /**
      * Configure the Model.

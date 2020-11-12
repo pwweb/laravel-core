@@ -19,8 +19,6 @@ use PWWEB\Core\Models\Menu;
  */
 interface MenuRepositoryInterface extends BaseRepositoryInterface
 {
-
-
     /**
      * Return searchable fields.
      *
@@ -28,14 +26,12 @@ interface MenuRepositoryInterface extends BaseRepositoryInterface
      */
     public function getFieldsSearchable(): array;
 
-
     /**
      * Configure the Model.
      *
      * @return string
      **/
     public function model(): string;
-
 
     /**
      * Retrieve a Node and it's descendants.
@@ -47,7 +43,6 @@ interface MenuRepositoryInterface extends BaseRepositoryInterface
      * @return Collection Menus
      */
     public function retrieve(string $rootNode = 'frontend', int $maxLevels = 10): ?Collection;
-
 
     /**
      * Retrive a specific node within the tree.
@@ -67,7 +62,6 @@ interface MenuRepositoryInterface extends BaseRepositoryInterface
      * @return Menu
      */
     public function create($input);
-
 
     /**
      * Retrive the breadcrumbs for a given node.

@@ -19,8 +19,6 @@ use PWWEB\Core\Models\User\Password\History;
  */
 interface HistoryRepositoryInterface extends BaseRepositoryInterface
 {
-
-
     /**
      * Return searchable fields.
      *
@@ -28,14 +26,12 @@ interface HistoryRepositoryInterface extends BaseRepositoryInterface
      */
     public function getFieldsSearchable(): array;
 
-
     /**
      * Configure the Model.
      *
      * @return string
      **/
     public function model(): string;
-
 
     /**
      * Retrieve the historic passwords for a given user.
@@ -46,7 +42,6 @@ interface HistoryRepositoryInterface extends BaseRepositoryInterface
      * @return History
      */
     public function findByUserId(int $id, array $columns = ['*']): ?History;
-
 
     /**
      * Check the password to be set against the last historic passwords. The amount of passwords
