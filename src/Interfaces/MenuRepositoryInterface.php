@@ -57,7 +57,7 @@ interface MenuRepositoryInterface extends BaseRepositoryInterface
      *
      * @return Menu
      */
-    public function retrieveNode(string $node = ''): ?Menu;=
+    public function retrieveNode(string $node = ''): ?Menu;
 
     /**
      * Create menu item record.
@@ -77,5 +77,4 @@ interface MenuRepositoryInterface extends BaseRepositoryInterface
      * @return array Crumbs
      */
     public function retrieveBreadcrumbs(string $node = '');
-
 }
