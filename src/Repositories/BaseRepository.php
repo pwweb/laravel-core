@@ -209,6 +209,20 @@ use PWWEB\Core\Interfaces\BaseRepositoryInterface;
      }
 
      /**
+      * Create new model record.
+      *
+      * @param array $input Input values to save.
+      *
+      * @return Model
+      */
+     public function new($input)
+     {
+         $model = $this->model->newInstance($input);
+
+         return $model;
+     }
+
+     /**
       * Find model record for given id.
       *
       * @param int   $id            ID of the record.
