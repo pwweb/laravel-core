@@ -17,15 +17,12 @@ use PWWEB\Core\Models\Address;
  */
 interface AddressRepositoryInterface extends BaseRepositoryInterface
 {
-
-
     /**
      * Return searchable fields.
      *
      * @return array
      */
     public function getFieldsSearchable();
-
 
     /**
      * Configure the Model.

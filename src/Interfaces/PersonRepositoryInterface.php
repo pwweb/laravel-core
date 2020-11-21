@@ -17,15 +17,12 @@ use PWWEB\Core\Models\Person;
  */
 interface PersonRepositoryInterface extends BaseRepositoryInterface
 {
-
-
     /**
      * Return searchable fields.
      *
      * @return array
      */
     public function getFieldsSearchable(): array;
-
 
     /**
      * Configure the Model.
