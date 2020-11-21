@@ -42,7 +42,7 @@ class ExchangeRate extends Model implements ExchangeRateContract
      * @var array
      */
     protected $casts = [
-        'rate' => 'decimal',
+        'rate' => 'decimal:4',
     ];
 
     /**
