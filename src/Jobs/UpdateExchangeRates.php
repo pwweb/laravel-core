@@ -14,9 +14,9 @@ use Log;
 use PWWEB\Core\Models\Currency;
 use PWWEB\Core\Models\ExchangeRate;
 
-class UpdateExchangeRates implements ShouldQueue
+class UpdateExchangeRates implements ShouldQueue, ShouldBeUnique
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, ShouldBeUnique;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * Date to run the update for.
