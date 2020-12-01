@@ -10,12 +10,11 @@
     "homepage": "https://github.com/pwweb/core",
     "keywords": ["library", "laravel", "core", "traits"],
     "require": {
-        "php": ">=7.4",
+        "php": ">=7.4 || ~8.0",
         "laravel/framework": "^8.11",
         "laravel/socialite": "^5.0",
         "laracasts/flash": "^3.0",
-        "spatie/enum": "^2.3",
-        "spatie/laravel-enum": "^1.6",
+        "spatie/laravel-enum": "^2.2",
         "spatie/laravel-medialibrary": "^8.0",
         "spatie/laravel-permission": "^3.16",
         "kalnoy/nestedset": "^5.0"
