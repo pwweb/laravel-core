@@ -19,7 +19,6 @@ use PWWEB\Core\Models\User;
  */
 interface UserRepositoryInterface extends BaseRepositoryInterface
 {
-
     /**
      * User Repository constructor.
      *
@@ -30,7 +29,6 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
      */
     public function __construct(Application $app, HistoryRepository $historyRepo);
 
-
     /**
      * Return searchable fields.
      *
@@ -38,14 +36,12 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
      */
     public function getFieldsSearchable(): array;
 
-
     /**
      * Configure the Model.
      *
      * @return string
      **/
     public function model(): string;
-
 
     /**
      * Changes the password for a user.

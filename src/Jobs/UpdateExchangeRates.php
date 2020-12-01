@@ -68,10 +68,10 @@ class UpdateExchangeRates implements ShouldQueue, ShouldBeUnique
     }
 
     /**
-    * The unique ID of the job.
-    *
-    * @return string
-    */
+     * The unique ID of the job.
+     *
+     * @return string
+     */
     public function uniqueId()
     {
         return $this->date;
