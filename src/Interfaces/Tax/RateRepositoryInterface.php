@@ -18,15 +18,12 @@ use PWWEB\Core\Models\Tax\Rate;
  */
 interface RateRepositoryInterface extends BaseRepositoryInterface
 {
-
-
     /**
      * Return searchable fields.
      *
      * @return array
      */
     public function getFieldsSearchable();
-
 
     /**
      * Configure the Model.
