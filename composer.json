@@ -3,10 +3,14 @@
     "description": "Additional core functionalities for Laravel",
     "license": "MIT",
     "authors": [{
-        "name": "Frank Pillukeit",
-        "email": "clients@pw-websolutions.com",
-        "homepage": "https://www.pw-websolutions.com"
-    }],
+            "name": "FP",
+            "homepage": "https://github.com/pwweb/"
+        },
+        {
+            "name": "RAB",
+            "homepage": "https://github.com/rabrowne85"
+        }
+    ],
     "homepage": "https://github.com/pwweb/core",
     "keywords": ["library", "laravel", "core", "traits"],
     "require": {
