@@ -1,5 +1,7 @@
 # Laravel Core Package
 
+![](https://banners.beyondco.de/Core.png?theme=dark&packageName=pwweb%2Flaravel-core&pattern=morphingDiamonds&style=style_1&description=Custom+core+functionality+for+Laravel&md=1&showWatermark=1&fontSize=100px&images=chip)
+
 [![Version](https://poser.pugx.org/pwweb/laravel-core/v/stable.svg)](https://github.com/pwweb/laravel-core/releases)
 [![Downloads](https://poser.pugx.org/pwweb/laravel-core/d/total.svg)](https://github.com/pwweb/laravel-core)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pwweb/laravel-core/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pwweb/core/?branch=master)
