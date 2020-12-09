@@ -2,6 +2,7 @@
 
 namespace PWWEB\Core\Interfaces;
 
+use Illuminate\Container\Container as Application;
 use PWWEB\Core\Models\Person;
 
 /**
@@ -17,6 +18,15 @@ use PWWEB\Core\Models\Person;
  */
 interface PersonRepositoryInterface extends BaseRepositoryInterface
 {
+    /**
+     * Contructor.
+     *
+     * @param Application $app Application instance.
+     *
+     * @throws \Exception
+     */
+    public function __construct(Application $app);
+
     /**
      * Return searchable fields.
      *

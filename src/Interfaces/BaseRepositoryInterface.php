@@ -2,7 +2,6 @@
 
 namespace PWWEB\Core\Interfaces;
 
-use Illuminate\Container\Container as Application;
 use Illuminate\Database\Eloquent\Model;
 
  /**

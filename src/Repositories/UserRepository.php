@@ -8,7 +8,7 @@ use PWWEB\Core\Exceptions\User\Password\HistoricPasswordNotAllowed as HistoricPa
 use PWWEB\Core\Exceptions\User\Password\NotMatching as NotMatchingException;
 use PWWEB\Core\Interfaces\UserRepositoryInterface;
 use PWWEB\Core\Models\User;
-use PWWEB\Core\Repositories\User\Password\HistoryRepository;
+use PWWEB\Core\Interfaces\User\Password\HistoryRepositoryInterface;
 
 /**
  * PWWEB\Core\Repositories\UserRepository UserRepository.
@@ -44,12 +44,12 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     /**
      * User Repository constructor.
      *
-     * @param Application       $app         Application container.
-     * @param HistoryRepository $historyRepo Repository of Historic Passwords.
+     * @param Application                $app         Application container.
+     * @param HistoryRepositoryInterface $historyRepo Repository of Historic Passwords.
      *
      * @return void
      */
-    public function __construct(Application $app, HistoryRepository $historyRepo)
+    public function __construct(Application $app, HistoryRepositoryInterface $historyRepo)
     {
         $this->historyRepository = $historyRepo;
         parent::__construct($app);

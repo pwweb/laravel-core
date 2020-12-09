@@ -2,6 +2,7 @@
 
 namespace PWWEB\Core\Interfaces\Tax;
 
+use Illuminate\Container\Container as Application;
 use PWWEB\Core\Interfaces\BaseRepositoryInterface;
 use PWWEB\Core\Models\Tax\Location;
 
@@ -18,6 +19,15 @@ use PWWEB\Core\Models\Tax\Location;
  */
 interface LocationRepositoryInterface extends BaseRepositoryInterface
 {
+    /**
+     * Contructor.
+     *
+     * @param Application $app Application instance.
+     *
+     * @throws \Exception
+     */
+    public function __construct(Application $app);
+
     /**
      * Return searchable fields.
      *
