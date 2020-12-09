@@ -15,28 +15,28 @@ use PWWEB\Core\Models\ExchangeRate;
   * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
   * @var       \Illuminate\Database\Eloquent\Factory $factory
   */
- class ExchangeRateFactory extends Factory
- {
-     /**
-      * The name of the factory's corresponding model.
-      *
-      * @var string
-      */
-     protected $model = ExchangeRate::class;
+class ExchangeRateFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = ExchangeRate::class;
 
-     /**
-      * Define the model's default state.
-      *
-      * @return array
-      */
-     public function definition()
-     {
-         return [
-             'currency_id' => $this->faker->randomDigitNotNull,
-             'rate' => $this->faker->float,
-             'date' => $this->fake->date('Y-m-d'),
-             'created_at' => $this->faker->date('Y-m-d H:i:s'),
-             'updated_at' => $this->faker->date('Y-m-d H:i:s'),
-         ];
-     }
- }
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'currency_id' => $this->faker->randomDigitNotNull,
+            'rate' => $this->faker->float,
+            'date' => $this->fake->date('Y-m-d'),
+            'created_at' => $this->faker->date('Y-m-d H:i:s'),
+            'updated_at' => $this->faker->date('Y-m-d H:i:s'),
+        ];
+    }
+}

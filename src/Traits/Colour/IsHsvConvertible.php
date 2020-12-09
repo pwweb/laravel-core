@@ -120,14 +120,14 @@ trait IsHsvConvertible
     {
         switch ($minRGB) {
             case $red:
-                return 3 - (($green - $blue) / $chroma);
+                return (3 - (($green - $blue) / $chroma));
 
             case $blue:
-                return 1 - (($red - $green) / $chroma);
+                return (1 - (($red - $green) / $chroma));
 
             case $green:
             default:
-                return 5 - (($blue - $red) / $chroma);
+                return (5 - (($blue - $red) / $chroma));
         }
     }
 
@@ -167,7 +167,7 @@ trait IsHsvConvertible
             $hPrime -= 2.0;
         }
 
-        return $chroma * (1 - abs($hPrime - 1));
+        return ($chroma * (1 - abs($hPrime - 1)));
     }
 
     /**

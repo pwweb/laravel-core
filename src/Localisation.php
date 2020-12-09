@@ -53,7 +53,7 @@ class Localisation
      * Constructor.
      *
      * @param \PWWEB\Core\Repositories\LanguageRepository $languageRepo Repository of Languages
-     * @param \Illuminate\Foundation\Application                  $app          laravel application for further use
+     * @param \Illuminate\Foundation\Application          $app          laravel application for further use
      */
     public function __construct(LanguageRepository $languageRepo, $app = null)
     {
