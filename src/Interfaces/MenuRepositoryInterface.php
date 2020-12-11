@@ -2,8 +2,8 @@
 
 namespace PWWEB\Core\Interfaces;
 
-use Illuminate\Container\Container as Application;
 use App\Interfaces\BaseRepositoryInterface;
+use Illuminate\Container\Container as Application;
 use Kalnoy\Nestedset\Collection;
 use PWWEB\Core\Models\Menu;
 

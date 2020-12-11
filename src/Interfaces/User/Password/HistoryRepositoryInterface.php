@@ -2,8 +2,8 @@
 
 namespace PWWEB\Core\Interfaces\User\Password;
 
-use Illuminate\Container\Container as Application;
 use App\Interfaces\BaseRepositoryInterface;
+use Illuminate\Container\Container as Application;
 use PWWEB\Core\Models\User;
 use PWWEB\Core\Models\User\Password\History;
 
