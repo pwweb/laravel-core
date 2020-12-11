@@ -69,8 +69,8 @@ class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepos
                 function () {
                     $duplicate = $this->getClosestRate($currency_id, $date)->replicate()->fill(
                         [
-                        'currency_id' => $currency_id,
-                        'date' => $date->toDateString(),
+                            'currency_id' => $currency_id,
+                            'date' => $date->toDateString(),
                         ]
                     );
                     $duplicate->save();
@@ -115,7 +115,7 @@ class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepos
                 return $older;
             }
         } else {
-            return ($newer ?? ($older ?? $this->model->newInstance(['rate' => 1])));
+            return $newer ?? ($older ?? $this->model->newInstance(['rate' => 1]));
         }
     }
 }

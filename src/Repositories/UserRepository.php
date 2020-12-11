@@ -6,9 +6,9 @@ use Illuminate\Container\Container as Application;
 use PWWEB\Core\Exceptions\User\NotFound as UserNotFoundException;
 use PWWEB\Core\Exceptions\User\Password\HistoricPasswordNotAllowed as HistoricPasswordNotAllowedException;
 use PWWEB\Core\Exceptions\User\Password\NotMatching as NotMatchingException;
+use PWWEB\Core\Interfaces\User\Password\HistoryRepositoryInterface;
 use PWWEB\Core\Interfaces\UserRepositoryInterface;
 use PWWEB\Core\Models\User;
-use PWWEB\Core\Interfaces\User\Password\HistoryRepositoryInterface;
 
 /**
  * PWWEB\Core\Repositories\UserRepository UserRepository.

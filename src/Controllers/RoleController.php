@@ -5,8 +5,8 @@ namespace PWWEB\Core\Controllers;
 use App\Http\Controllers\Controller;
 use Flash;
 use Illuminate\Http\Request;
-use PWWEB\Core\Interfaces\RoleRepositoryInterface;
 use PWWEB\Core\Interfaces\PermissionRepositoryInterface;
+use PWWEB\Core\Interfaces\RoleRepositoryInterface;
 use PWWEB\Core\Requests\CreateRoleRequest;
 use PWWEB\Core\Requests\UpdateRoleRequest;
 
@@ -30,12 +30,12 @@ class RoleController extends Controller
      */
     private $roleRepository;
 
-        /**
-         * Repository of Permissions to be used throughout the controller.
-         *
-         * @var PermissionRepositoryInterface
-         */
-        private $permissionRepository;
+    /**
+     * Repository of Permissions to be used throughout the controller.
+     *
+     * @var PermissionRepositoryInterface
+     */
+    private $permissionRepository;
 
     /**
      * Constructor for the Role controller.
@@ -154,6 +154,7 @@ class RoleController extends Controller
 
         if ('Admin' === $role->name) {
             $role->syncPermissions($this->permissionRepository->all());
+
             return redirect(route('core.roles.index'));
         }
 
