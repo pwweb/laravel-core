@@ -4,6 +4,7 @@ use PWWEB\Core\Controllers\Address\TypeController;
 use PWWEB\Core\Controllers\AddressController;
 use PWWEB\Core\Controllers\CountryController;
 use PWWEB\Core\Controllers\CurrencyController;
+use PWWEB\Core\Controllers\RoleController;
 use PWWEB\Core\Controllers\LanguageController;
 use PWWEB\Core\Controllers\MenuController;
 use PWWEB\Core\Controllers\PersonController;
@@ -17,6 +18,7 @@ Route::name('core.')
         function () {
             Route::resource('persons', PersonController::class);
             Route::resource('users', UserController::class);
+            Route::resource('roles', RoleController::class)->except(['show','edit']);
             Route::resource('menus', MenuController::class);
             Route::resource('countries', CountryController::class);
             Route::resource('currencies', CurrencyController::class);

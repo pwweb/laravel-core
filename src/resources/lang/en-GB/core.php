@@ -123,6 +123,7 @@ return [
     'Confirm Password' => 'Confirm Password',
     'Confirm your new password' => 'Confirm your new password',
     'Displayed on your public profile, notifications, and other places' => 'Displayed on your public profile, notifications, and other places',
+    'Roles' => 'Roles',
 
     // Countries.
     'Afghanistan'                                  => 'Afghanistan',
