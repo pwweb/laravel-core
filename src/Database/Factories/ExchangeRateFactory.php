@@ -5,16 +5,16 @@ namespace PWWEB\Core\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use PWWEB\Core\Models\ExchangeRate;
 
- /**
-  * The database factory for ExchangeRate.
-  * Class AppBaseController.
-  *
-  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
-  * @author    Richard Browne <richard.browne@pw-websolutions.com
-  * @copyright 2020 pw-websolutions.com
-  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
-  * @var       \Illuminate\Database\Eloquent\Factory $factory
-  */
+/**
+ * The database factory for ExchangeRate.
+ * Class AppBaseController.
+ *
+ * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
+ * @author    Richard Browne <richard.browne@pw-websolutions.com
+ * @copyright 2020 pw-websolutions.com
+ * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @var       \Illuminate\Database\Eloquent\Factory $factory
+ */
 class ExchangeRateFactory extends Factory
 {
     /**
