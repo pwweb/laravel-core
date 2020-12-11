@@ -4,20 +4,19 @@ namespace PWWEB\Core\Interfaces;
 
 use Illuminate\Database\Eloquent\Model;
 
- /**
-  * PWWEB\Core\Interfaces\BaseRepositoryInterface BaseRepositoryInterface.
-  *
-  * The base repository all future Interfaces.
-  * interface BaseRepositoryInterface
-  *
-  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
-  * @author    Richard Browne <richard.browne@pw-websolutions.com>
-  * @copyright 2020 pw-websolutions.com
-  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
-  */
+/**
+ * PWWEB\Core\Interfaces\BaseRepositoryInterface BaseRepositoryInterface.
+ *
+ * The base repository all future Interfaces.
+ * interface BaseRepositoryInterface
+ *
+ * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
+ * @author    Richard Browne <richard.browne@pw-websolutions.com>
+ * @copyright 2020 pw-websolutions.com
+ * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
 interface BaseRepositoryInterface
 {
-
     /**
      * Get searchable fields array.
      *

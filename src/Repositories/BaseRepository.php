@@ -6,17 +6,17 @@ use Illuminate\Container\Container as Application;
 use Illuminate\Database\Eloquent\Model;
 use PWWEB\Core\Interfaces\BaseRepositoryInterface;
 
- /**
-  * PWWEB\Core\Repositories\BaseRepository BaseRepository.
-  *
-  * The base repository all future repositories.
-  * Class BaseRepository
-  *
-  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
-  * @author    Richard Browne <richard.browne@pw-websolutions.com>
-  * @copyright 2020 pw-websolutions.com
-  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
-  */
+/**
+ * PWWEB\Core\Repositories\BaseRepository BaseRepository.
+ *
+ * The base repository all future repositories.
+ * Class BaseRepository
+ *
+ * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
+ * @author    Richard Browne <richard.browne@pw-websolutions.com>
+ * @copyright 2020 pw-websolutions.com
+ * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
 abstract class BaseRepository implements BaseRepositoryInterface
 {
     /**
