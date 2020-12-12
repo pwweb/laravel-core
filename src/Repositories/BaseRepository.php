@@ -276,4 +276,22 @@ abstract class BaseRepository implements BaseRepositoryInterface
 
         return $model->delete();
     }
+
+    /**
+     * Pluck model record.
+     *
+     * @param string[] $columns Columns to pluck.
+     *
+     * @throws \Exception
+     *
+     * @return bool|mixed|null
+     */
+    public function pluck($columns)
+    {
+        $query = $this->model->newQuery();
+
+        $model = $query->pluck(...$columns);
+
+        return $model;
+    }
 }

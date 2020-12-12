@@ -60,10 +60,13 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = $this->roleRepository->all();
+        $roles = $this->roleRepository->all()->filter(function ($value, $key) {
+            return $value->name !== 'Admin';
+        });
         $permissions = $this->permissionRepository->all();
+        $abilities = config('pwweb.core.permission.abilities');
 
-        return view('core::roles.index', compact('roles', 'permissions'));
+        return view('core::roles.index', compact('roles', 'permissions', 'abilities'));
     }
 
     /**

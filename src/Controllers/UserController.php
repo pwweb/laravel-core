@@ -9,6 +9,7 @@ use Illuminate\View\View;
 use Laracasts\Flash\Flash;
 use PWWEB\Core\Interfaces\PersonRepositoryInterface;
 use PWWEB\Core\Interfaces\UserRepositoryInterface;
+use PWWEB\Core\Interfaces\RoleRepositoryInterface;
 use PWWEB\Core\Requests\CreateUserRequest;
 use PWWEB\Core\Requests\UpdateUserRequest;
 
@@ -40,15 +41,27 @@ class UserController extends Controller
     private $personRepository;
 
     /**
+     * Repository of roles to be used throughout the controller.
+     *
+     * @var RoleRepositoryInterface
+     */
+    private $roleRepository;
+
+    /**
      * Constructor for the User controller.
      *
      * @param UserRepositoryInterface   $userRepo   Repository of Users.
      * @param PersonRepositoryInterface $personRepo Repository of Persons.
+     * @param RoleRepositoryInterface $roleRepo Repository of Roles.
      */
-    public function __construct(UserRepositoryInterface $userRepo, PersonRepositoryInterface $personRepo)
-    {
+    public function __construct(
+        UserRepositoryInterface $userRepo,
+        PersonRepositoryInterface $personRepo,
+        roleRepositoryInterface $roleRepo
+    ) {
         $this->userRepository = $userRepo;
         $this->personRepository = $personRepo;
+        $this->roleRepository = $roleRepo;
     }
 
     /**
@@ -73,7 +86,8 @@ class UserController extends Controller
      */
     public function create(): View
     {
-        return view('core::users.create');
+        $roles = $this->roleRepository->pluck(['name', 'id']);
+        return view('core::users.create', compact('roles'));
     }
 
     /**
@@ -85,6 +99,7 @@ class UserController extends Controller
      */
     public function store(CreateUserRequest $request): RedirectResponse
     {
+        $request->merge(['password' => \Hash::make($request->get('password'))]);
         $input = $request->all();
 
         \DB::beginTransaction();
@@ -94,8 +109,11 @@ class UserController extends Controller
         // Then the user is created.
         $user = $this->userRepository->create($input);
 
-        // Lastly the person is assigned to the user.
+        // The person is assigned to the user.
         $assoc = $user->person()->associate($person)->save();
+
+        // The user is associated with the role selected.
+        $user->syncRoles($input['role_id']);
 
         \DB::commit();
 
@@ -139,7 +157,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = $this->userRepository->find($id);
+        $user = $this->userRepository->find($id, ['*'], ['roles']);
+        $roles = $this->roleRepository->pluck(['name', 'id']);
 
         if (true === empty($user)) {
             Flash::error('User not found');
@@ -147,7 +166,9 @@ class UserController extends Controller
             return redirect(route('core.users.index'));
         }
 
-        return view('core::users.edit')->with('user', $user);
+        return view('core::users.edit')
+            ->with('user', $user)
+            ->with('roles', $roles);
     }
 
     /**
@@ -187,6 +208,9 @@ class UserController extends Controller
         } else {
             $this->personRepository->update($data['person'], $user->person->id);
         }
+
+        // The user is associated with the role selected.
+        $user->syncRoles($data['role_id']);
 
         if (true === isset($assoc) && false === $assoc) {
             Flash::warning('User partially updated.');

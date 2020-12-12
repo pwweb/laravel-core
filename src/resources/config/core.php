@@ -7,6 +7,15 @@ return [
 
     'base_currency' => 'GBP',
 
+    'permission' => [
+        'abilities' => [
+            'view',
+            'add',
+            'edit',
+            'delete',
+        ]
+    ],
+
     'models' => [
         /*
          *
