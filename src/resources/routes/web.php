@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use PWWEB\Core\Controllers\Address\TypeController;
 use PWWEB\Core\Controllers\AddressController;
 use PWWEB\Core\Controllers\CountryController;
@@ -11,8 +13,6 @@ use PWWEB\Core\Controllers\RoleController;
 use PWWEB\Core\Controllers\Tax\LocationController;
 use PWWEB\Core\Controllers\Tax\RateController;
 use PWWEB\Core\Controllers\UserController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
 
 Route::name('core.')
     ->middleware(['web', 'auth', 'localisation'])

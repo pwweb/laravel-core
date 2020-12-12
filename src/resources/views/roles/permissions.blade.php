@@ -6,11 +6,11 @@
             <?php
                     $per_found = null;
 
-                    if( isset($role) ) {
+                    if (isset($role)) {
                         $per_found = $role->hasPermissionTo($perm->name);
                     }
 
-                    if( isset($user)) {
+                    if (isset($user)) {
                         $per_found = $user->hasDirectPermission($perm->name);
                     }
                 ?>

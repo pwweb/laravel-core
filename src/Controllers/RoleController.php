@@ -61,7 +61,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $roles = $this->roleRepository->all()->filter(function ($value, $key) {
-            return $value->name !== 'Admin';
+            return 'Admin' !== $value->name;
         });
         $permissions = $this->permissionRepository->all();
         $abilities = config('pwweb.core.permission.abilities');
