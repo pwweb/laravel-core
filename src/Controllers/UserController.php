@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Laracasts\Flash\Flash;
 use PWWEB\Core\Interfaces\PersonRepositoryInterface;
-use PWWEB\Core\Interfaces\UserRepositoryInterface;
 use PWWEB\Core\Interfaces\RoleRepositoryInterface;
+use PWWEB\Core\Interfaces\UserRepositoryInterface;
 use PWWEB\Core\Requests\CreateUserRequest;
 use PWWEB\Core\Requests\UpdateUserRequest;
 
@@ -87,6 +87,7 @@ class UserController extends Controller
     public function create(): View
     {
         $roles = $this->roleRepository->pluck(['name', 'id']);
+
         return view('core::users.create', compact('roles'));
     }
 

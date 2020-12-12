@@ -13,7 +13,7 @@ return [
             'add',
             'edit',
             'delete',
-        ]
+        ],
     ],
 
     'models' => [
