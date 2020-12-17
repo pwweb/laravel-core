@@ -31,7 +31,7 @@ class Menu extends Directive
     /**
      * Constructor for the Date Directive.
      *
-     * @param MenuRepositoryInterface        $menuRepo Repository of Menus.
+     * @param MenuRepositoryInterface $menuRepo Repository of Menus.
      */
     public function __construct(MenuRepositoryInterface $menuRepo)
     {
@@ -117,9 +117,9 @@ class Menu extends Directive
     /**
      * Render separator menu menu.
      *
-     * @param MenuModel   $menu   Menu menu (separator) to display.
-     * @param string $path   Base path for the menu menu.
-     * @param string $output (Optional) Output previously rendered.
+     * @param MenuModel $menu   Menu menu (separator) to display.
+     * @param string    $path   Base path for the menu menu.
+     * @param string    $output (Optional) Output previously rendered.
      *
      * @return string
      */
@@ -136,9 +136,9 @@ class Menu extends Directive
     /**
      * Render dropdown menu menu.
      *
-     * @param MenuModel   $menu   Menu menu (separator) to display.
-     * @param string $path   Base path for the menu menu.
-     * @param string $output (Optional) Output previously rendered.
+     * @param MenuModel $menu   Menu menu (separator) to display.
+     * @param string    $path   Base path for the menu menu.
+     * @param string    $output (Optional) Output previously rendered.
      *
      * @return string
      */
@@ -165,9 +165,9 @@ class Menu extends Directive
     /**
      * Render standard menu menu.
      *
-     * @param MenuModel   $menu   Menu menu (separator) to display.
-     * @param string $path   Base path for the menu menu.
-     * @param string $output (Optional) Output previously rendered.
+     * @param MenuModel $menu   Menu menu (separator) to display.
+     * @param string    $path   Base path for the menu menu.
+     * @param string    $output (Optional) Output previously rendered.
      *
      * @return string
      */

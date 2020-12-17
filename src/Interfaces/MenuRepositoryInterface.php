@@ -3,6 +3,7 @@
 namespace PWWEB\Core\Interfaces;
 
 use App\Interfaces\BaseRepositoryInterface;
+use Illuminate\Container\Container as Application;
 use Kalnoy\Nestedset\Collection;
 use PWWEB\Core\Models\Menu;
 
@@ -19,6 +20,15 @@ use PWWEB\Core\Models\Menu;
  */
 interface MenuRepositoryInterface extends BaseRepositoryInterface
 {
+    /**
+     * Contructor.
+     *
+     * @param Application $app Application instance.
+     *
+     * @throws \Exception
+     */
+    public function __construct(Application $app);
+
     /**
      * Return searchable fields.
      *

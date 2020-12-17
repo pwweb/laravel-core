@@ -3,20 +3,20 @@
 namespace PWWEB\Core\Interfaces;
 
 use Illuminate\Container\Container as Application;
-use PWWEB\Core\Models\Person;
+use PWWEB\Core\Models\Permission;
 
 /**
- * PWWEB\Core\Interfaces\PersonRepository PersonRepository.
+ * PWWEB\Core\Interfaces\PermissionRepository PermissionRepository.
  *
- * The repository for Person.
- * interface AddressRepositoryInterface
+ * The repository for Permission.
+ * interface PermissionRepositoryInterface
  *
  * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
- * @author    Richard Browne <richard.browne@pw-websolutions.com>
+ * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
  */
-interface PersonRepositoryInterface extends BaseRepositoryInterface
+interface PermissionRepositoryInterface extends BaseRepositoryInterface
 {
     /**
      * Contructor.
@@ -32,12 +32,12 @@ interface PersonRepositoryInterface extends BaseRepositoryInterface
      *
      * @return array
      */
-    public function getFieldsSearchable(): array;
+    public function getFieldsSearchable();
 
     /**
      * Configure the Model.
      *
      * @return string
      **/
-    public function model(): string;
+    public function model();
 }

@@ -34,7 +34,7 @@ class MenuController extends Controller
     /**
      *  Constructor for the Menu controller.
      *
-     * @param MenuRepositoryInterface        $menuRepo Repository of Menus.
+     * @param MenuRepositoryInterface $menuRepo Repository of Menus.
      */
     public function __construct(MenuRepositoryInterface $menuRepo)
     {

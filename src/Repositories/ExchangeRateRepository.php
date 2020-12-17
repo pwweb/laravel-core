@@ -53,8 +53,8 @@ class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepos
     /**
      * Get a Rate from the DB based on currency and an optional date.
      *
-     * @param  int $currency_id Currency ID number.
-     * @param  Carbon $date Date to limit the search to.
+     * @param int    $currency_id Currency ID number.
+     * @param Carbon $date        Date to limit the search to.
      *
      * @return Model|null The model to return
      */
@@ -64,25 +64,30 @@ class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepos
 
         return $query->where('currency_id', $currency_id)
             ->where('date', $date->toDateString())
-            ->firstOr(['id', 'rate'], function () {
-                $duplicate = $this->getClosestRate($currency_id, $date)->replicate()->fill([
-                    'currency_id' => $currency_id,
-                    'date' => $date->toDateString(),
-                ]);
-                $duplicate->save();
+            ->firstOr(
+                ['id', 'rate'],
+                function () {
+                    $duplicate = $this->getClosestRate($currency_id, $date)->replicate()->fill(
+                        [
+                            'currency_id' => $currency_id,
+                            'date' => $date->toDateString(),
+                        ]
+                    );
+                    $duplicate->save();
 
-                // Trigger pull and update to ExchangeRates:
-                UpdateExchangeRates::dispatch($date)->onQueue('pw-core');
+                    // Trigger pull and update to ExchangeRates:
+                    UpdateExchangeRates::dispatch($date)->onQueue('pw-core');
 
-                return $duplicate;
-            });
+                    return $duplicate;
+                }
+            );
     }
 
     /**
      * Get the closest rate to the current date.
      *
-     * @param  int $currency_id Currency ID to look for.
-     * @param  Carbon $date Date string in Y-m-d format.
+     * @param int    $currency_id Currency ID to look for.
+     * @param Carbon $date        Date string in Y-m-d format.
      *
      * @return Model Closest Model or new default model.
      */

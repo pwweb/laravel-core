@@ -3,7 +3,7 @@
 namespace PWWEB\Core\Interfaces;
 
 use Illuminate\Container\Container as Application;
-use PWWEB\Core\Interfaces\User\Password\HistoryRepository;
+use PWWEB\Core\Interfaces\User\Password\HistoryRepositoryInterface;
 use PWWEB\Core\Models\User;
 
 /**
@@ -22,12 +22,12 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
     /**
      * User Repository constructor.
      *
-     * @param Application       $app         Application container.
-     * @param HistoryRepository $historyRepo Repository of Historic Passwords.
+     * @param Application                $app         Application container.
+     * @param HistoryRepositoryInterface $historyRepo Repository of Historic Passwords.
      *
      * @return void
      */
-    public function __construct(Application $app, HistoryRepository $historyRepo);
+    public function __construct(Application $app, HistoryRepositoryInterface $historyRepo);
 
     /**
      * Return searchable fields.

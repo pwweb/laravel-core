@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use PWWEB\Core\Controllers\Address\TypeController;
 use PWWEB\Core\Controllers\AddressController;
 use PWWEB\Core\Controllers\CountryController;
@@ -7,6 +9,7 @@ use PWWEB\Core\Controllers\CurrencyController;
 use PWWEB\Core\Controllers\LanguageController;
 use PWWEB\Core\Controllers\MenuController;
 use PWWEB\Core\Controllers\PersonController;
+use PWWEB\Core\Controllers\RoleController;
 use PWWEB\Core\Controllers\Tax\LocationController;
 use PWWEB\Core\Controllers\Tax\RateController;
 use PWWEB\Core\Controllers\UserController;
@@ -17,6 +20,7 @@ Route::name('core.')
         function () {
             Route::resource('persons', PersonController::class);
             Route::resource('users', UserController::class);
+            Route::resource('roles', RoleController::class)->except(['show', 'edit']);
             Route::resource('menus', MenuController::class);
             Route::resource('countries', CountryController::class);
             Route::resource('currencies', CurrencyController::class);
@@ -76,3 +80,19 @@ Route::namespace('PWWEB\Core\Controllers')
             Route::get('/address/store', 'AddressController@store')->name('localisation.address.store');
         }
     );
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
