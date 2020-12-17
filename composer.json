@@ -19,7 +19,7 @@
         "laravel/socialite": "^5.0",
         "laracasts/flash": "^3.0",
         "spatie/laravel-enum": "^2.2",
-        "spatie/laravel-medialibrary": "^8.0",
+        "spatie/laravel-medialibrary": "^9.0",
         "spatie/laravel-permission": "^3.16",
         "kalnoy/nestedset": "^5.0"
     },
