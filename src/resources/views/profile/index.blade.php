@@ -9,7 +9,7 @@
                 <div class="mb-3 mb-sm-0">
                     <!-- Breadcrumb -->
                     <ol class="breadcrumb breadcrumb-white breadcrumb-no-gutter mb-0">
-                        <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('home') }}">{{ __('pwweb::core.Home') }}</a></li>
+                        <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('home.index') }}">{{ __('pwweb::core.Home') }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ __('pwweb::core.Profile') }}</li>
                     </ol>
                     <!-- End Breadcrumb -->
