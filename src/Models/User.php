@@ -79,6 +79,13 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
     ];
 
     /**
+     * Default guard name.
+     *
+     * @var string
+     */
+    protected $guard_name = 'web';
+
+    /**
      * Get the user's preferred locale.
      *
      * @return string
