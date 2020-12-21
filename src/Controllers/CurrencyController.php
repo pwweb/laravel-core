@@ -3,8 +3,8 @@
 namespace PWWEB\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use Flash;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 use PWWEB\Core\Interfaces\CurrencyRepositoryInterface;
 use PWWEB\Core\Requests\CreateCurrencyRequest;
 use PWWEB\Core\Requests\UpdateCurrencyRequest;

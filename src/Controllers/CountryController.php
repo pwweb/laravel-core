@@ -3,8 +3,8 @@
 namespace PWWEB\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use Flash;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 use PWWEB\Core\Interfaces\CountryRepositoryInterface;
 use PWWEB\Core\Requests\CreateCountryRequest;
 use PWWEB\Core\Requests\UpdateCountryRequest;

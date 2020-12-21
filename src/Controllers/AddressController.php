@@ -3,8 +3,8 @@
 namespace PWWEB\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use Flash;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 use PWWEB\Core\Interfaces\Address\TypeRepositoryInterface;
 use PWWEB\Core\Interfaces\AddressRepositoryInterface;
 use PWWEB\Core\Interfaces\CountryRepositoryInterface;
@@ -170,7 +170,7 @@ class AddressController extends Controller
             return redirect(route('core.addresses.index'));
         }
 
-        $address = $this->addressRepository->update($request->all(), $id);
+        $this->addressRepository->update($request->all(), $id);
 
         Flash::success('Address updated successfully.');
 

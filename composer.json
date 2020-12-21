@@ -36,6 +36,11 @@
             "PWWEB\\Core\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "PWWEB\\Core\\Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [

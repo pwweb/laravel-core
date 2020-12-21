@@ -3,8 +3,8 @@
 namespace PWWEB\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use Flash;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 use PWWEB\Core\Interfaces\PermissionRepositoryInterface;
 use PWWEB\Core\Interfaces\RoleRepositoryInterface;
 use PWWEB\Core\Requests\CreateRoleRequest;
