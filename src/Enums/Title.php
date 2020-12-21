@@ -23,6 +23,11 @@ use Spatie\Enum\Enum;
  */
 class Title extends Enum
 {
+    /**
+     * Enum values.
+     *
+     * @return array
+     */
     protected static function values(): array
     {
         return [
@@ -35,6 +40,11 @@ class Title extends Enum
         ];
     }
 
+    /**
+     * Enum labels.
+     *
+     * @return array
+     */
     protected static function labels(): array
     {
         return [

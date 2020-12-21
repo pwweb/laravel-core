@@ -198,7 +198,7 @@ class LanguageController extends Controller
 
         // If a user is logged in and it has a lang_country property, set the new lang_country.
 
-        if (\Auth::user() && array_key_exists('locale', \Auth::user()->getAttributes())) {
+        if (null !== \Auth::user() && true === array_key_exists('locale', \Auth::user()->getAttributes())) {
             try {
                 \Auth::user()->locale = $locale;
                 \Auth::user()->save();

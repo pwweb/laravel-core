@@ -40,7 +40,7 @@ class RoleController extends Controller
     /**
      * Constructor for the Role controller.
      *
-     * @param RoleRepositoryInterface $roleRepo Repository of Roles.
+     * @param RoleRepositoryInterface       $roleRepo       Repository of Roles.
      * @param PermissionRepositoryInterface $permissionRepo Repository of Permissions.
      */
     public function __construct(
@@ -60,9 +60,11 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = $this->roleRepository->all()->filter(function ($value, $key) {
-            return 'Admin' !== $value->name;
-        });
+        $roles = $this->roleRepository->all()->filter(
+            function ($value, $key) {
+                return 'Admin' !== $value->name;
+            }
+        );
         $permissions = $this->permissionRepository->all();
         $abilities = config('pwweb.core.permission.abilities');
 
@@ -140,7 +142,7 @@ class RoleController extends Controller
     /**
      * Update the specified Role in storage.
      *
-     * @param int                  $id      ID of the Role to be updated.
+     * @param int               $id      ID of the Role to be updated.
      * @param UpdateRoleRequest $request Request containing the information to be updated.
      *
      * @return \Illuminate\Http\RedirectResponse

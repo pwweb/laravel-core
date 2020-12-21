@@ -46,9 +46,8 @@ interface MenuRepositoryInterface extends BaseRepositoryInterface
     /**
      * Retrieve a Node and it's descendants.
      *
-     * @param int    $environmentId Environment ID
-     * @param string $rootNode      The root node identifier.
-     * @param int    $maxLevels     The max levels to descend.
+     * @param string $rootNode  The root node identifier.
+     * @param int    $maxLevels The max levels to descend.
      *
      * @return Collection Menus
      */
@@ -57,8 +56,7 @@ interface MenuRepositoryInterface extends BaseRepositoryInterface
     /**
      * Retrive a specific node within the tree.
      *
-     * @param string $node          Node identifier
-     * @param int    $environmentId Environment ID
+     * @param string $node Node identifier
      *
      * @return Menu
      */

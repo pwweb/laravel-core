@@ -21,6 +21,11 @@ use Spatie\Enum\Enum;
  */
 class Type extends Enum
 {
+    /**
+     * Enum values.
+     *
+     * @return array
+     */
     protected static function values(): array
     {
         return [
@@ -31,6 +36,11 @@ class Type extends Enum
         ];
     }
 
+    /**
+     * Enum labels.
+     *
+     * @return array
+     */
     protected static function labels(): array
     {
         return [

@@ -123,7 +123,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
                     }
                 } else {
                     // Array...
-                    if (isset($value[0])) {
+                    if (true === isset($value[0])) {
                         $this->orderBy[$value[0]] = 'asc';
                     } else {
                         $this->orderBy = array_merge($this->orderBy, $value);

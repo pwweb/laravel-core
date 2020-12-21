@@ -6,14 +6,14 @@
             <?php
                     $per_found = null;
 
-                    if (isset($role)) {
-                        $per_found = $role->hasPermissionTo($perm->name);
-                    }
+            if (true === isset($role)) {
+                $per_found = $role->hasPermissionTo($perm->name);
+            }
 
-                    if (isset($user)) {
-                        $per_found = $user->hasDirectPermission($perm->name);
-                    }
-                ?>
+            if (true === isset($user)) {
+                $per_found = $user->hasDirectPermission($perm->name);
+            }
+            ?>
 
             <div class="col-md-1">
                 <label class="c-switch c-switch-3d c-switch-success c-switch-sm">

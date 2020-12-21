@@ -231,8 +231,6 @@ class Person extends Model implements HasMedia
     /**
      * Retrieve the home address for the person.
      *
-     * @param mixed $value Current value
-     *
      * @return AddressContract
      */
     public function getHomeAttribute(): ?AddressContract

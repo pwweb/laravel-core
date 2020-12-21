@@ -52,7 +52,7 @@ class UserController extends Controller
      *
      * @param UserRepositoryInterface   $userRepo   Repository of Users.
      * @param PersonRepositoryInterface $personRepo Repository of Persons.
-     * @param RoleRepositoryInterface $roleRepo Repository of Roles.
+     * @param RoleRepositoryInterface   $roleRepo   Repository of Roles.
      */
     public function __construct(
         UserRepositoryInterface $userRepo,
