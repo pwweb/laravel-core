@@ -13,122 +13,31 @@ use Spatie\Enum\Enum;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @method    static self none()
- * @method    static self male()
- * @method    static self female()
- * @method    static self diverse()
+ *
+ * @method static self none()
+ * @method static self male()
+ * @method static self female()
+ * @method static self diverse()
  */
-abstract class Gender extends Enum
+class Gender extends Enum
 {
-    /**
-     * No Gender.
-     *
-     * @return Gender
-     */
-    public static function none(): self
+    protected static function values(): array
     {
-        return new class() extends Gender {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 0;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('');
-
-                if (true === is_array($value)) {
-                    $value = $value[0];
-                }
-
-                return (string) $value;
-            }
-        };
+        return [
+            'none' => 0,
+            'male' => 1,
+            'female' => 2,
+            'diverse' => 3,
+        ];
     }
 
-    /**
-     * Male Gender.
-     *
-     * @return Gender
-     */
-    public static function male(): self
+    protected static function labels(): array
     {
-        return new class() extends Gender {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 1;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('male');
-
-                if (true === is_array($value)) {
-                    $value = $value[0];
-                }
-
-                return (string) $value;
-            }
-        };
-    }
-
-    /**
-     * Female Gender.
-     *
-     * @return Gender
-     */
-    public static function female(): self
-    {
-        return new class() extends Gender {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 2;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('female');
-
-                if (true === is_array($value)) {
-                    $value = $value[0];
-                }
-
-                return (string) $value;
-            }
-        };
-    }
-
-    /**
-     * Diverse Gender / Prefer not to say.
-     *
-     * @return Gender
-     */
-    public static function diverse(): self
-    {
-        return new class() extends Gender {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 3;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('diverse');
-
-                if (true === is_array($value)) {
-                    $value = $value[0];
-                }
-
-                return (string) $value;
-            }
-        };
+        return [
+            'none' => __(''),
+            'male' => __('male'),
+            'female' => __('female'),
+            'diverse' => __('diverse'),
+        ];
     }
 }

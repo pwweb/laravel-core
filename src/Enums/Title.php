@@ -13,180 +13,37 @@ use Spatie\Enum\Enum;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @method    static self none()
- * @method    static self dr()
- * @method    static self prof()
- * @method    static self profdr()
- * @method    static self eng()
- * @method    static self dipling()
+ *
+ * @method static self none()
+ * @method static self dr()
+ * @method static self prof()
+ * @method static self profdr()
+ * @method static self eng()
+ * @method static self dipling()
  */
-abstract class Title extends Enum
+class Title extends Enum
 {
-    /**
-     * No title for the person.
-     *
-     * @return Title
-     */
-    public static function none(): self
+    protected static function values(): array
     {
-        return new class() extends Title {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 0;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('');
-
-                if (true === is_array($value)) {
-                    $value = $value[0];
-                }
-
-                return (string) $value;
-            }
-        };
+        return [
+            'none' => 0,
+            'dr' => 1,
+            'prof' => 2,
+            'profdr' => 3,
+            'eng' => 4,
+            'dipling' => 5,
+        ];
     }
 
-    /**
-     * Doctor title for the person.
-     *
-     * @return Title
-     */
-    public static function dr(): self
+    protected static function labels(): array
     {
-        return new class() extends Title {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 1;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('Dr.');
-
-                if (true === is_array($value)) {
-                    $value = $value[0];
-                }
-
-                return (string) $value;
-            }
-        };
-    }
-
-    /**
-     * Professor title for the person.
-     *
-     * @return Title
-     */
-    public static function prof(): self
-    {
-        return new class() extends Title {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 2;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('Prof.');
-
-                if (true === is_array($value)) {
-                    $value = $value[0];
-                }
-
-                return (string) $value;
-            }
-        };
-    }
-
-    /**
-     * Professor Doctor title for the person.
-     *
-     * @return Title
-     */
-    public static function profdr(): self
-    {
-        return new class() extends Title {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 3;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('Prof. Dr.');
-
-                if (true === is_array($value)) {
-                    $value = $value[0];
-                }
-
-                return (string) $value;
-            }
-        };
-    }
-
-    /**
-     * Engineer title for the person.
-     *
-     * @return Title
-     */
-    public static function eng(): self
-    {
-        return new class() extends Title {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 4;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('Eng.');
-
-                if (true === is_array($value)) {
-                    $value = $value[0];
-                }
-
-                return (string) $value;
-            }
-        };
-    }
-
-    /**
-     * Diploma Engineer title for the person (Germany-specific).
-     *
-     * @return Title
-     */
-    public static function dipling(): self
-    {
-        return new class() extends Title {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 5;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('Dipl.-Ing.');
-
-                if (true === is_array($value)) {
-                    $value = $value[0];
-                }
-
-                return (string) $value;
-            }
-        };
+        return [
+            'none' => __(''),
+            'dr' => __('Dr.'),
+            'prof' => __('Prof.'),
+            'profdr' => __('Prof. Dr.'),
+            'eng' => __('Eng.'),
+            'dipling' => __('Dipl.-Ing.'),
+        ];
     }
 }

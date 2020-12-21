@@ -5,7 +5,7 @@
                 <div class="d-flex d-lg-inline-block justify-content-between justify-content-lg-end align-items-center align-items-lg-start">
                     <!-- Breadcrumb -->
                     <ol class="breadcrumb breadcrumb-white breadcrumb-no-gutter mb-0">
-                        <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('home')}}">{{ __('pwweb::core.Home') }}</a></li>
+                        <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ route('home.index')}}">{{ __('pwweb::core.Home') }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ __('pwweb::core.Edit profile') }}</li>
                     </ol>
                     <!-- End Breadcrumb -->

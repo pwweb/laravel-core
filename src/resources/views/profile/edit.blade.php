@@ -41,9 +41,9 @@
                         <div class="form-group">
                             <select name="title" class="custom-select" aria-label="" required="" aria-describedby="titleLabel" data-msg="Please choose your title." data-error-class="u-has-error" data-success-class="u-has-success">
                                 <option value="0">{{ __('pwweb::core.Please select') }}</option>
-                                @foreach ($titles as $title)
-                                <option value="{{ $title->getIndex() }}" {{ (int)(old('title') ? old('title') : $profile->person->title->getIndex()) === $title->getIndex() ? ' selected="selected"' : '' }}>
-                                    {{ $title->getValue() }}</option>
+                                @foreach ($titles as $index => $title)
+                                <option value="{{ $index }}" {{ (int)(old('title') ? old('title') : $profile->person->title->value) === $index ? ' selected="selected"' : '' }}>
+                                    {{ $title }}</option>
                                 @endforeach
                             </select>
                             @error('title')
@@ -157,9 +157,9 @@
                         <div class="form-group">
                             <select name="gender" class="custom-select" aria-label="" required="" aria-describedby="genderLabel" data-msg="Please choose your gender." data-error-class="u-has-error" data-success-class="u-has-success">
                                 <option value="0">{{ __('pwweb::core.Please select') }}</option>
-                                @foreach ($genders as $gender)
-                                <option value="{{ $gender->getIndex() }}" {{ (int)(old('gender') ? old('gender') : $profile->person->gender->getIndex()) === $gender->getIndex() ? ' selected="selected"' : '' }}>
-                                    {{ $gender->getValue() }}</option>
+                                @foreach ($genders as $index => $gender)
+                                <option value="{{ $index }}" {{ (int)(old('gender') ? old('gender') : $profile->person->gender->value) === $index ? ' selected="selected"' : '' }}>
+                                    {{ $gender }}</option>
                                 @endforeach
                             </select>
                             @error('gender')

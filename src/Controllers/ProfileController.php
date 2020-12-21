@@ -160,8 +160,8 @@ class ProfileController extends Controller
     {
         if (($user = \Auth::user()) instanceof User) {
             $profile = $this->userRepository->find($user->id);
-            $genders = Gender::getAll();
-            $titles = Title::getAll();
+            $genders = Gender::toArray();
+            $titles = Title::toArray();
 
             return view('core::profile.edit', compact('profile', 'genders', 'titles'));
         }

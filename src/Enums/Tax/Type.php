@@ -13,122 +13,31 @@ use Spatie\Enum\Enum;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @method    static self none()
- * @method    static self standard()
- * @method    static self reduced()
- * @method    static self zero()
+ *
+ * @method static self none()
+ * @method static self standard()
+ * @method static self reduced()
+ * @method static self zero()
  */
-abstract class Type extends Enum
+class Type extends Enum
 {
-    /**
-     * No type for the Tax.
-     *
-     * @return Type
-     */
-    public static function none(): self
+    protected static function values(): array
     {
-        return new class() extends Type {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 0;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('');
-
-                if (true === is_array($value)) {
-                    $value = (string) $value[0];
-                }
-
-                return $value ?: '';
-            }
-        };
+        return [
+            'none' => 0,
+            'standard' => 1,
+            'reduced' => 2,
+            'zero' => 3,
+        ];
     }
 
-    /**
-     * Standard Rate type for the Tax.
-     *
-     * @return Type
-     */
-    public static function standard(): self
+    protected static function labels(): array
     {
-        return new class() extends Type {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 1;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('pwweb::core.tax.rates.standard_rate');
-
-                if (true === is_array($value)) {
-                    $value = (string) $value[0];
-                }
-
-                return $value ?: '';
-            }
-        };
-    }
-
-    /**
-     * Reduced Rate type for the Tax.
-     *
-     * @return Type
-     */
-    public static function reduced(): self
-    {
-        return new class() extends Type {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 2;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('pwweb::core.tax.rates.reduced_rate');
-
-                if (true === is_array($value)) {
-                    $value = (string) $value[0];
-                }
-
-                return $value ?: '';
-            }
-        };
-    }
-
-    /**
-     * Zero Rate type for the Tax.
-     *
-     * @return Type
-     */
-    public static function zero(): self
-    {
-        return new class() extends Type {
-            // phpcs:ignore
-            public function getIndex(): int
-            {
-                return 3;
-            }
-
-            // phpcs:ignore
-            public function getValue(): string
-            {
-                $value = __('pwweb::core.tax.rates.zero_rate');
-
-                if (true === is_array($value)) {
-                    $value = (string) $value[0];
-                }
-
-                return $value ?: '';
-            }
-        };
+        return [
+            'none' => __(''),
+            'standard' => __('pwweb::core.tax.rates.standard_rate'),
+            'reduced' => __('pwweb::core.tax.rates.reduced_rate'),
+            'zero' => __('pwweb::core.tax.rates.zero_rate'),
+        ];
     }
 }
