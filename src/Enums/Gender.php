@@ -24,7 +24,7 @@ class Gender extends Enum
     /**
      * Enum values.
      *
-     * @return array
+     * @return string[]|int[]
      */
     protected static function values(): array
     {
@@ -39,7 +39,7 @@ class Gender extends Enum
     /**
      * Enum labels.
      *
-     * @return array
+     * @return string[]
      */
     protected static function labels(): array
     {

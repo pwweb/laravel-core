@@ -43,7 +43,7 @@ class Title extends Enum
     /**
      * Enum labels.
      *
-     * @return array
+     * @return string[]
      */
     protected static function labels(): array
     {
