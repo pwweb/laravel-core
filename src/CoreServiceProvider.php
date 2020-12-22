@@ -115,7 +115,7 @@ class CoreServiceProvider extends ServiceProvider
      * Boostrap the services of the package.
      *
      * @param LocalisationRegistrar $localisationLoader Loader the localisation registrar
-     * @param Route                 $router             laravel router object for file handling
+     * @param Router                $router             laravel router object for file handling
      *
      * @return void
      */
