@@ -35,13 +35,6 @@ class PermissionSeeder extends Seeder
             ],
         ];
 
-        $abilities = [
-            'view',
-            'edit',
-            'add',
-            'delete',
-        ];
-
         $systems = [
             'users',
             'roles',
