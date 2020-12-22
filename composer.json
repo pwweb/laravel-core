@@ -52,6 +52,10 @@
             }
         }
     },
+    "scripts": {
+        "psalm": "vendor/bin/psalm -c psalm.xml --show-info=true",
+        "test": "vendor/bin/phpunit --colors=always"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
