@@ -320,8 +320,6 @@ class Colour implements ColourContract
      */
     public function checkAlphaValue(float &$alpha): void
     {
-        $alpha = (float) $alpha;
-
         if ($alpha < 0 || $alpha > 1) {
             throw new ColourException(
                 "The alpha value must be between 0 and 1, [$alpha] is given."
