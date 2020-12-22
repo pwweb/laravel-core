@@ -126,8 +126,6 @@ return [
     'Roles' => 'Roles',
     'Role' => 'Role',
 
-
-
     // Countries.
     'Afghanistan'                                  => 'Afghanistan',
     'Albania'                                      => 'Albania',
