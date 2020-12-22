@@ -34,9 +34,11 @@ class UpdateProfileRequest extends FormRequest
      */
     public function rules()
     {
+        $userId = \Auth::id();
         $id = '';
-        if (true === isset($this->user->id)) {
-            $id = ',email,'.$this->user->id;
+
+        if (null !== $userId) {
+            $id = ',email,'.$userId;
         }
 
         $base = [

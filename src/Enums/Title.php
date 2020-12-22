@@ -26,7 +26,7 @@ class Title extends Enum
     /**
      * Enum values.
      *
-     * @return array
+     * @return string[]|int[]
      */
     protected static function values(): array
     {
