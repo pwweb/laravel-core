@@ -35,7 +35,7 @@ class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepos
      *
      * @return array
      */
-    public function getFieldsSearchable()
+    public function getFieldsSearchable(): array
     {
         return $this->fieldSearchable;
     }
@@ -45,7 +45,7 @@ class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepos
      *
      * @return string
      **/
-    public function model()
+    public function model(): string
     {
         return config('pwweb.core.models.exchange_rate');
     }
@@ -56,9 +56,9 @@ class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepos
      * @param int    $currency_id Currency ID number.
      * @param Carbon $date        Date to limit the search to.
      *
-     * @return Model|null The model to return
+     * @return ExchangeRate|null The model to return
      */
-    public function getRate($currency_id, Carbon $date)
+    public function getRate($currency_id, Carbon $date): ?ExchangeRate
     {
         $query = $this->model->newQuery();
 
@@ -89,9 +89,9 @@ class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepos
      * @param int    $currency_id Currency ID to look for.
      * @param Carbon $date        Date string in Y-m-d format.
      *
-     * @return Model Closest Model or new default model.
+     * @return ExchangeRate Closest Model or new default model.
      */
-    public function getClosestRate($currency_id, $date)
+    public function getClosestRate($currency_id, $date): ExchangeRate
     {
         $query = $this->model->newQuery();
 

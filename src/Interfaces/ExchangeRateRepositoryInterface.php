@@ -32,12 +32,12 @@ interface ExchangeRateRepositoryInterface extends BaseRepositoryInterface
      *
      * @return array
      */
-    public function getFieldsSearchable();
+    public function getFieldsSearchable(): array;
 
     /**
      * Configure the Model.
      *
      * @return string
      **/
-    public function model();
+    public function model(): string;
 }
