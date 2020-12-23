@@ -130,8 +130,6 @@ return [
     'Upload new picture' => 'Upload new picture',
     'View my profile' => 'View my profile',
 
-
-
     // Countries.
     'Afghanistan'                                  => 'Afghanistan',
     'Albania'                                      => 'Albania',
