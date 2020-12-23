@@ -56,6 +56,14 @@ class TitleTest extends TestCase
     {
         $drString = (string) Title::dr();
 
-        $this->assertEquals('Dr.', $drString);
+        $this->assertEquals('dr', $drString);
+    }
+
+    /** @test **/
+    public function to_label()
+    {
+        $diplIngString = Title::dipling();
+
+        $this->assertEquals('Dipl-Ing.', $diplIngString->label);
     }
 }

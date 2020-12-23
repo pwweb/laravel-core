@@ -55,7 +55,7 @@ class Title extends Enum
             'prof' => __('Prof.'),
             'profdr' => __('Prof. Dr.'),
             'eng' => __('Eng.'),
-            'dipling' => __('Dipl.-Ing.'),
+            'dipling' => __('Dipl-Ing.'),
         ];
     }
 }
