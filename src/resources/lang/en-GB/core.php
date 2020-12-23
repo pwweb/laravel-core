@@ -130,7 +130,11 @@ return [
     'Upload new picture' => 'Upload new picture',
     'View my profile' => 'View my profile',
 
-
+    // Address types.
+    'Type saved successfully' => 'Type ":type" saved successfully',
+    'Type updated successfully' => 'Type ":type" updated successfully',
+    'Type not found' => 'Type ":type" not found',
+    'Type deleted successfully' => 'Type ":type" deleted successfully',
 
     // Countries.
     'Afghanistan'                                  => 'Afghanistan',

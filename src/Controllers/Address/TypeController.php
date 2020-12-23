@@ -79,7 +79,7 @@ class TypeController extends Controller
 
         $type = $this->typeRepository->create($input);
 
-        Flash::success('Type saved successfully.');
+        Flash::success(__('pwweb::core.Type saved successfully', ['type' => $type->name]));
 
         return redirect(route('core.address.types.index'));
     }
@@ -96,7 +96,7 @@ class TypeController extends Controller
         $type = $this->typeRepository->find($id);
 
         if (true === empty($type)) {
-            Flash::error('Type not found');
+            Flash::error(__('pwweb::core.Type not found', ['type' => $type->name]));
 
             return redirect(route('core.address.types.index'));
         }
@@ -116,7 +116,7 @@ class TypeController extends Controller
         $type = $this->typeRepository->find($id);
 
         if (true === empty($type)) {
-            Flash::error('Type not found');
+            Flash::error(__('pwweb::core.Type not found', ['type' => $type->name]));
 
             return redirect(route('core.address.types.index'));
         }
@@ -137,14 +137,14 @@ class TypeController extends Controller
         $type = $this->typeRepository->find($id);
 
         if (true === empty($type)) {
-            Flash::error('Type not found');
+            Flash::error(__('pwweb::core.Type not found', ['type' => $type->name]));
 
             return redirect(route('core.address.types.index'));
         }
 
         $type = $this->typeRepository->update($request->all(), $id);
 
-        Flash::success('Type updated successfully.');
+        Flash::success(__('pwweb::core.Type updated successfully', ['type' => $type->name]));
 
         return redirect(route('core.address.types.index'));
     }
@@ -163,14 +163,14 @@ class TypeController extends Controller
         $type = $this->typeRepository->find($id);
 
         if (true === empty($type)) {
-            Flash::error('Type not found');
+            Flash::error(__('pwweb::core.Type not found', ['type' => $type->name]));
 
             return redirect(route('core.address.types.index'));
         }
 
         $this->typeRepository->delete($id);
 
-        Flash::success('Type deleted successfully.');
+        Flash::success(__('pwweb::core.Type deleted successfully', ['type' => $type->name]));
 
         return redirect(route('core.address.types.index'));
     }

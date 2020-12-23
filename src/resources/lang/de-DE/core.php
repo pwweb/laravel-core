@@ -94,6 +94,12 @@ return [
     'Upload new picture' => 'Neues Bild hochladen',
     'View my profile' => 'Mein Profil',
 
+    // Address types.
+    'Type saved successfully' => 'Adressart ":type" erfolgreich gespeichert',
+    'Type updated successfully' => 'Adressart ":type" erfolgreich aktualisiert',
+    'Type not found' => 'Adressart ":type" existiert nicht',
+    'Type deleted successfully' => 'Adressart ":type" erfolgreich gelöscht',
+
     // Countries.
     'Afghanistan'                                  => 'Afghanistan',
     'Albania'                                      => 'Albanien',
