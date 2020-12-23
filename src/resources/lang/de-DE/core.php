@@ -20,6 +20,7 @@ return [
     'cancel'              => 'abbrechen',
     'create'              => 'anlegen',
     'Create person'       => 'Person anlegen',
+    'delete'              => 'löschen',
     'detail'              => 'Detail',
     'details'             => 'Details',
     'Dob'                 => 'Geburtsdatum',
@@ -85,6 +86,13 @@ return [
     'Street 2'            => 'Strasse 2',
     'Type'                => 'Adresstyp',
     'work'                => 'Arbeit',
+
+    // Profile.
+    'Displayed on your public profile, notifications and other places' => 'Wird im öffentlichen Profil, Benachrichtigungen und an anderen Stellen genutzt',
+    'Edit profile' => 'Profil bearbeiten',
+    'Save changes' => 'Änderungen speichern',
+    'Upload new picture' => 'Neues Bild hochladen',
+    'View my profile' => 'Mein Profil',
 
     // Countries.
     'Afghanistan'                                  => 'Afghanistan',

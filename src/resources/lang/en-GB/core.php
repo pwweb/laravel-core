@@ -21,12 +21,13 @@ return [
     'create'              => 'create',
     'Create person'       => 'Create person',
     'Create user'         => 'Create user',
+    'delete'              => 'delete',
     'detail'              => 'Detail',
     'details'             => 'Details',
     'Dob'                 => 'Date of Birth',
     'edit'                => 'edit',
-    'Edit person'                => 'Edit person',
-    'Edit user'                => 'Edit user',
+    'Edit person'         => 'Edit person',
+    'Edit user'           => 'Edit user',
     'Email'               => 'Email',
     'Email verified at'   => 'Email verified at',
     'Gender'              => 'Gender',
@@ -111,10 +112,6 @@ return [
     'Birthday' => 'Birthday',
     'Contacts' => 'Contacts',
     'Profile' => 'Profile',
-    'Edit Profile' => 'Edit Profile',
-    'Delete' => 'Delete',
-    'Upload New Picture' => 'Upload New Picture',
-    'Save Changes' => 'Save Changes',
     'Howdy' => 'Howdy, :name',
     'Home' => 'Home',
     'Current Password' => 'Current Password',
@@ -125,6 +122,13 @@ return [
     'Confirm your new password' => 'Confirm your new password',
     'Roles' => 'Roles',
     'Role' => 'Role',
+
+    // Profile.
+    'Displayed on your public profile, notifications and other places' => 'Displayed on your public profile, notifications and other places',
+    'Edit profile' => 'Edit profile',
+    'Save changes' => 'Save changes',
+    'Upload new picture' => 'Upload new picture',
+    'View my profile' => 'View my profile',
 
 
 

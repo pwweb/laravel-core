@@ -115,7 +115,7 @@
 
             <div class="ml-lg-auto">
                 <!-- Button -->
-                <a class="btn btn-sm btn-soft-white transition-3d-hover" href="{{ route('system.profile.index') }}">{{ __('pwweb::core.View My Profile') }}</a>
+                <a class="btn btn-sm btn-soft-white transition-3d-hover" href="{{ route('system.profile.index') }}">{{ __('pwweb::core.View my profile') }}</a>
                 <!-- End Button -->
             </div>
         </div>

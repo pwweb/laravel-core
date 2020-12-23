@@ -22,10 +22,10 @@
             </div>
             <div class="media-body">
                 <label class="btn btn-sm btn-primary transition-3d-hover file-attachment-btn mb-1 mb-sm-0 mr-1" for="fileAttachmentBtn">
-                    {{ __('pwweb::core.Upload New Picture') }}
+                    {{ __('pwweb::core.Upload new picture') }}
                     <input id="fileAttachmentBtn" name="avatar" type="file" class="file-attachment-btn__label">
                 </label>
-                <button type="submit" class="btn btn-sm btn-soft-secondary transition-3d-hover mb-1 mb-sm-0">{{ __('pwweb::core.Delete') }}</button>
+                <button type="submit" class="btn btn-sm btn-soft-secondary transition-3d-hover mb-1 mb-sm-0">{{ __('pwweb::core.delete') }}</button>
             </div>
         </form>
         <form method="post" action="{{ route('system.profile.update') }}" class="js-validate pad-1" novalidate="novalidate">
@@ -191,8 +191,8 @@
                 </div>
             </div>
             <!-- Buttons -->
-            <button type="submit" class="btn btn-sm btn-primary transition-3d-hover mr-1">{{ __('pwweb::core.Save Changes') }}</button>
-            <button type="submit" class="btn btn-sm btn-soft-secondary transition-3d-hover">{{ __('pwweb::core.Cancel') }}</button>
+            <button type="submit" class="btn btn-sm btn-primary transition-3d-hover mr-1">{{ __('pwweb::core.Save changes') }}</button>
+            <button type="submit" class="btn btn-sm btn-soft-secondary transition-3d-hover">{{ __('pwweb::core.cancel') }}</button>
             <!-- End Buttons -->
         </form>
         <!-- End Personal Info Form -->

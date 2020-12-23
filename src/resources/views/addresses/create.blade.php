@@ -18,7 +18,7 @@
                                 <strong>@lang("pwweb::core.Create address")</strong>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['route' => 'localisation.addresses.store']) !!}
+                                {!! Form::open(['route' => 'core.addresses.store']) !!}
 
                                    @include('core::addresses.fields')
 
