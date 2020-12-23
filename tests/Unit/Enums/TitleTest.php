@@ -48,7 +48,7 @@ class TitleTest extends TestCase
     {
         $json = json_encode(Title::eng());
 
-        $this->assertEquals('"Eng."', $json);
+        $this->assertEquals('"eng"', $json);
     }
 
     /** @test */
@@ -56,6 +56,6 @@ class TitleTest extends TestCase
     {
         $drString = (string) Title::dr();
 
-        $this->assertEquals('Dr.', $maleString);
+        $this->assertEquals('Dr.', $drString);
     }
 }
