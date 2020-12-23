@@ -236,7 +236,7 @@ class Person extends Model implements HasMedia
     public function getHomeAttribute(): ?AddressContract
     {
         return $this->addresses->filter(
-            function ($address, $key) {
+            function ($address) {
                 if (true === $address->primary) {
                     return true;
                 }
