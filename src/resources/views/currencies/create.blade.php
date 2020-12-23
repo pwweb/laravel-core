@@ -18,7 +18,7 @@
                                 <strong>@lang("pwweb::core.Create currency")</strong>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['route' => 'localisation.currencies.store']) !!}
+                                {!! Form::open(['route' => 'core.currencies.store']) !!}
 
                                    @include('core::currencies.fields')
 

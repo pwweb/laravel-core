@@ -18,7 +18,7 @@
                         <strong>{{__('pwweb::core.tax.rates.create_rate')}}</strong>
                     </div>
                     <div class="card-body">
-                        {!! Form::open(['route' => 'localisation.tax.rates.store']) !!}
+                        {!! Form::open(['route' => 'core.tax.rates.store']) !!}
 
                         @include('core::tax.rates.fields')
 

@@ -18,7 +18,7 @@
                                 <strong>@lang("pwweb::core.Create country")</strong>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['route' => 'localisation.countries.store']) !!}
+                                {!! Form::open(['route' => 'core.countries.store']) !!}
 
                                    @include('core::countries.fields')
 

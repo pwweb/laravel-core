@@ -18,7 +18,7 @@
                                 <strong>@lang("pwweb::core.Create address type")</strong>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['route' => 'localisation.address.types.store']) !!}
+                                {!! Form::open(['route' => 'core.address.types.store']) !!}
 
                                    @include('core::addresses.types.fields')
 

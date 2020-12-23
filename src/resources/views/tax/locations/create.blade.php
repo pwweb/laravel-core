@@ -18,7 +18,7 @@
                         <strong>{{__('pwweb::core.tax.locations.create_location')}}</strong>
                     </div>
                     <div class="card-body">
-                        {!! Form::open(['route' => 'localisation.tax.locations.store']) !!}
+                        {!! Form::open(['route' => 'core.tax.locations.store']) !!}
 
                         @include('core::tax.locations.fields')
 

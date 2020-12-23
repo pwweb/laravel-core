@@ -42,7 +42,7 @@
                                 <img class="avatar-lg rounded-circle" src="{{ $profile->person->avatar }}" alt="{{ $profile->person->display_name }}" />
                             </div>
                             <div class="mb-3">
-                                <h1 class="h6 font-weight-medium mb-0">{{ $profile->person->title }} {{ $profile->person->display_name }}</h1>
+                                <h1 class="h6 font-weight-medium mb-0">{{ $profile->person->title->label }} {{ $profile->person->display_name }}</h1>
                                 <small class="d-block text-muted">{{ $profile->person->description}}</small>
                             </div>
                         </div>

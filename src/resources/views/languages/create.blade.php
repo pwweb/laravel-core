@@ -18,7 +18,7 @@
                                 <strong>@lang("pwweb::core.Create language")</strong>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['route' => 'localisation.languages.store']) !!}
+                                {!! Form::open(['route' => 'core.languages.store']) !!}
 
                                    @include('core::languages.fields')
 
