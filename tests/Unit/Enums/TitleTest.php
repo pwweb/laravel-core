@@ -12,13 +12,6 @@ class TitleTest extends TestCase
     /** @test */
     public function enums_can_be_constructed()
     {
-        'none' => 0,
-        'dr' => 1,
-        'prof' => 2,
-        'profdr' => 3,
-        'eng' => 4,
-        'dipling' => 5,
-
         $noTitle = Title::none();
         $drTitle = Title::dr();
         $profTitle = Title::prof();
