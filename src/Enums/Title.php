@@ -27,6 +27,7 @@ class Title extends Enum
      * Enum values.
      *
      * @return string[]|int[]
+     * @psalm-return array<string, string|int>
      */
     protected static function values(): array
     {

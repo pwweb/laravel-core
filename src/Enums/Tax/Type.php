@@ -25,6 +25,7 @@ class Type extends Enum
      * Enum values.
      *
      * @return string[]|int[]
+     * @psalm-return array<string, string|int>
      */
     protected static function values(): array
     {
@@ -40,6 +41,7 @@ class Type extends Enum
      * Enum labels.
      *
      * @return string[]
+     * @psalm-return array<string, string>
      */
     protected static function labels(): array
     {
