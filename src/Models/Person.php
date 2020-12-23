@@ -193,12 +193,13 @@ class Person extends Model implements HasMedia
     {
         $mediaObject = $this->getMedia('avatars')->last();
 
-        if (null !== $mediaObject) {
-            return $mediaObject->getUrl('thumb');
+        if (null !== $mediaObject && true === file_exists($mediaObject->getPath('thumb'))) {
+                return $mediaObject->getUrl('thumb');
         }
 
         return '/img/placeholder.png';
     }
+
 
     /**
      * Format the title attribute based on the corresponding enum.
