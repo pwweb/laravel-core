@@ -89,20 +89,4 @@ class Type extends Model implements AddressTypeContract
     {
         return $this->hasMany(config('pwweb.core.models.address'), 'type_id');
     }
-
-    /**
-     * Obtain the localised name of a country.
-     *
-     * @param string $value Original value of the country
-     *
-     * @return string|array|null
-     */
-    public function getNameAttribute($value)
-    {
-        if (null === $value || '' === $value) {
-            return '';
-        }
-
-        return __('pwweb::core.'.$value);
-    }
 }
