@@ -58,7 +58,7 @@ class Menu extends Directive
             $node = $expression->get(0);
 
             if (null !== $expression->get(1)) {
-                $depth = (int)$expression->get(1);
+                $depth = (int) $expression->get(1);
             }
         } else {
             $node = $expression;

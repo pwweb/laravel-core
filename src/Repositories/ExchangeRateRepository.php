@@ -115,7 +115,7 @@ class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepos
                 return $older;
             }
         } else {
-            return $newer ?? ($older ?? $this->model->newInstance(['rate' => 1]));
+            return ($newer ?? ($older ?? $this->model->newInstance(['rate' => 1])));
         }
     }
 }
