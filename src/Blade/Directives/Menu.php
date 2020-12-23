@@ -58,7 +58,7 @@ class Menu extends Directive
             $node = $expression->get(0);
 
             if (null !== $expression->get(1)) {
-                $depth = $expression->get(1);
+                $depth = (int)$expression->get(1);
             }
         } else {
             $node = $expression;
@@ -73,6 +73,10 @@ class Menu extends Directive
         try {
             $menus = $this->menuRepository->retrieve($node, $depth);
         } catch (\Exception $e) {
+            return '';
+        }
+
+        if (null === $menus) {
             return '';
         }
 
