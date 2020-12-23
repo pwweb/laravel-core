@@ -271,16 +271,13 @@ class ProfileController extends Controller
     public function updateAvatar(ValidatedAvatarRequest $request): RedirectResponse
     {
         if (($user = \Auth::user()) instanceof User) {
-            $request->validated();
-
-            $updatedUser = User::where('id', $user->id)->first();
 
             if (true === $request->hasFile('avatar') && true === $request->file('avatar')->isValid()) {
-                $updatedUser->person->addMediaFromRequest('avatar')->toMediaCollection('avatars');
+                $user->person->addMediaFromRequest('avatar')->toMediaCollection('avatars');
             }
 
-            $updatedUser->person->save();
-            $updatedUser->save();
+            $user->person->save();
+            $user->save();
         }
 
         return redirect()->route('system.profile.index');
