@@ -152,9 +152,9 @@ class LanguageRepository extends BaseRepository implements LanguageRepositoryInt
      *
      * @throws \PWWEB\Core\Exceptions\LanguageDoesNotExist
      *
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return LanguageContract
      */
-    public function findByLocale(string $locale)
+    public function findByLocale(string $locale): LanguageContract
     {
         $language = $this->model->where(['locale' => $locale])->first();
 
