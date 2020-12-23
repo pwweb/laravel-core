@@ -200,7 +200,6 @@ class Person extends Model implements HasMedia
         return '/img/placeholder.png';
     }
 
-
     /**
      * Format the title attribute based on the corresponding enum.
      *
