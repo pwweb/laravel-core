@@ -53,23 +53,23 @@ class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepos
     /**
      * Get a Rate from the DB based on currency and an optional date.
      *
-     * @param int    $currency_id Currency ID number.
-     * @param Carbon $date        Date to limit the search to.
+     * @param int    $currencyId Currency ID number.
+     * @param Carbon $date       Date to limit the search to.
      *
      * @return ExchangeRate|null The model to return
      */
-    public function getRate($currency_id, Carbon $date): ?ExchangeRate
+    public function getRate($currencyId, Carbon $date): ?ExchangeRate
     {
         $query = $this->model->newQuery();
 
-        return $query->where('currency_id', $currency_id)
+        return $query->where('currency_id', $currencyId)
             ->where('date', $date->toDateString())
             ->firstOr(
                 ['id', 'rate'],
-                function () {
-                    $duplicate = $this->getClosestRate($currency_id, $date)->replicate()->fill(
+                function () use ($currencyId, $date) {
+                    $duplicate = $this->getClosestRate($currencyId, $date)->replicate()->fill(
                         [
-                            'currency_id' => $currency_id,
+                            'currency_id' => $currencyId,
                             'date' => $date->toDateString(),
                         ]
                     );
