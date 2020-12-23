@@ -27,8 +27,7 @@ Route::name('core.')
             // Route::resource('exchangerates', ExchangeRateController::class);
             Route::resource('languages', LanguageController::class);
             Route::resource('addresses', AddressController::class);
-            Route::namespace('Address')
-                ->prefix('address')
+            Route::prefix('address')
                 ->name('address.')
                 // ->middleware('auth')
                 ->group(
@@ -36,8 +35,7 @@ Route::name('core.')
                         Route::resource('types', TypeController::class);
                     }
                 );
-            Route::namespace('Tax')
-                ->prefix('tax')
+            Route::prefix('tax')
                 ->name('tax.')
                 ->group(
                     function () {
