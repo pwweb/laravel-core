@@ -62,7 +62,7 @@ class TitleTest extends TestCase
     /** @test **/
     public function to_label()
     {
-        $diplIngString = Title::dipling();
+        $diplIngString = Title::make(5);
 
         $this->assertEquals('Dipl-Ing.', $diplIngString->label);
     }
