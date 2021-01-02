@@ -28,7 +28,11 @@
                 </td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->email_verified_at }}</td>
-                <td><span class="badge badge-dark">{{ $user->roles()->first()->name }}</span></td>
+                <td>
+                    @foreach($user->getRoleNames() as $role)
+                        <span class="badge badge-dark">{{ $role }}</span>
+                    @endforeach
+                </td>
                 <td>
                     {!! Form::open(['route' => ['core.users.destroy', $user->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
