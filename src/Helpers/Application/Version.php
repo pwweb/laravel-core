@@ -2,13 +2,28 @@
 
 namespace PWWEB\Core\Helpers\Application;
 
+/**
+ * PWWEB\Core\Helpers\Application\Version Class.
+ *
+ * Helper for retrieving the application version.
+ *
+ * @author    Frank Pillukeit <frank.pillukeit@pw-websolutions.com>
+ * @author    Richard Browne <richard.browne@pw-websolutions.com>
+ * @copyright 2020 pw-websolutions.com
+ * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
 class Version
 {
     const MAJOR = 1;
     const MINOR = 1;
     const PATCH = 1;
 
-    public static function get()
+    /**
+     * Accessor for application version.
+     *
+     * @return string
+     */
+    public static function get(): string
     {
         $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
 
