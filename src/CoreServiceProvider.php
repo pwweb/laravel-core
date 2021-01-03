@@ -178,6 +178,7 @@ class CoreServiceProvider extends ServiceProvider
         $loader = AliasLoader::getInstance();
         $loader->alias('Core', \PWWEB\Core\Facades\Core::class);
         $loader->alias('Localisation', \PWWEB\Core\Facades\Localisation::class);
+        $loader->alias('ApplicationVersion', \PWWEB\Core\Facades\ApplicationVersion::class);
 
         $this->app->singleton(
             LocalisationRegistrar::class,
