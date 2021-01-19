@@ -56,6 +56,7 @@ class Rate extends Model
      */
     protected $casts = [
         'rate' => 'float',
+        'decimal' => 'float',
         'name' => 'string',
         'compound' => 'boolean',
         'shipping' => 'boolean',

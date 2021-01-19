@@ -141,6 +141,7 @@ class CoreServiceProvider extends ServiceProvider
                     __DIR__.'/Database/Migrations/CreatePersonsTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_persons_table.php",
                     __DIR__.'/Database/Migrations/UpdateUsersTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_update_users_table.php",
                     __DIR__.'/Database/Migrations/CreateUserPasswordHistoriesTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_create_user_password_histories_table.php",
+                    __DIR__.'/Database/Migrations/UpdateTaxRatesTable.php' => $this->app->databasePath()."/migrations/{$timestamp}_update_tax_rates_table.php",
                 ],
                 'pwweb.core.migrations'
             );
