@@ -15,7 +15,7 @@
     "keywords": ["library", "laravel", "core", "traits"],
     "require": {
         "php": ">=7.4 || ~8.0",
-        "laravel/framework": "^8.11",
+        "laravel/framework": "^8.22.1",
         "laravel/socialite": "^5.0",
         "laracasts/flash": "^3.0",
         "spatie/laravel-enum": "^2.2",
