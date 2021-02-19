@@ -2,7 +2,7 @@
 
 namespace PWWEB\Core\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model as Model;
 use PWWEB\Core\Contracts\ExchangeRate as ExchangeRateContract;
 use PWWEB\Core\Traits\Migratable;
 

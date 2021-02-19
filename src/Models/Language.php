@@ -2,7 +2,7 @@
 
 namespace PWWEB\Core\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model as Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use PWWEB\Core\Contracts\Language as LanguageContract;
 use PWWEB\Core\Traits\Migratable;

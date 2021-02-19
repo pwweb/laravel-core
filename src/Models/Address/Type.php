@@ -2,7 +2,7 @@
 
 namespace PWWEB\Core\Models\Address;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model as Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PWWEB\Core\Contracts\Address\Type as AddressTypeContract;
