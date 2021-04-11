@@ -53,6 +53,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
      */
     protected $hidden = [
         'remember_token',
+        'password',
     ];
 
     /**
