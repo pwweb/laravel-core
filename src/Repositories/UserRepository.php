@@ -9,6 +9,8 @@ use PWWEB\Core\Exceptions\User\Password\NotMatching as NotMatchingException;
 use PWWEB\Core\Interfaces\User\Password\HistoryRepositoryInterface;
 use PWWEB\Core\Interfaces\UserRepositoryInterface;
 use PWWEB\Core\Models\User;
+use PWWEB\Core\Repositories\BaseRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * PWWEB\Core\Repositories\UserRepository UserRepository.
@@ -130,5 +132,29 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         $query = $this->model->newQuery();
 
         return $query->where('username', $username)->get($columns)->first();
+    }
+
+    /**
+     * Find users that have a certain permission.
+     *
+     * @param string $permission The permission to retrieve users of.
+     *
+     * @return Collection
+     */
+    public function can(string $permission): ?Collection
+    {
+        return $this->model->permission($permission)->get();
+    }
+
+    /**
+     * Find users that have a certain role.
+     *
+     * @param string $role The role to retrieve users of.
+     *
+     * @return Collection
+     */
+    public function memberOf(string $role): ?Collection
+    {
+        return $this->model->role($role)->get();
     }
 }

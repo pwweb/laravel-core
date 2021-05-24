@@ -4,7 +4,9 @@ namespace PWWEB\Core\Interfaces;
 
 use Illuminate\Container\Container as Application;
 use PWWEB\Core\Interfaces\User\Password\HistoryRepositoryInterface;
+use PWWEB\Core\Interfaces\BaseRepositoryInterface;
 use PWWEB\Core\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * PWWEB\Core\Interfaces\UserRepository UserRepository.
@@ -62,4 +64,22 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
      * @return User
      */
     public function findByUsername(string $username, array $columns = ['*']): ?User;
+
+    /**
+     * Find users that have a certain permission.
+     *
+     * @param string $permission The permission to retrieve users of.
+     *
+     * @return Collection
+     */
+    public function can(string $permission): ?Collection;
+
+    /**
+     * Find users that have a certain role.
+     *
+     * @param string $role The role to retrieve users of.
+     *
+     * @return Collection
+     */
+    public function memberOf(string $role): ?Collection;
 }
