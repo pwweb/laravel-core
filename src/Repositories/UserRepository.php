@@ -3,14 +3,13 @@
 namespace PWWEB\Core\Repositories;
 
 use Illuminate\Container\Container as Application;
+use Illuminate\Database\Eloquent\Collection;
 use PWWEB\Core\Exceptions\User\NotFound as UserNotFoundException;
 use PWWEB\Core\Exceptions\User\Password\HistoricPasswordNotAllowed as HistoricPasswordNotAllowedException;
 use PWWEB\Core\Exceptions\User\Password\NotMatching as NotMatchingException;
 use PWWEB\Core\Interfaces\User\Password\HistoryRepositoryInterface;
 use PWWEB\Core\Interfaces\UserRepositoryInterface;
 use PWWEB\Core\Models\User;
-use PWWEB\Core\Repositories\BaseRepository;
-use Illuminate\Database\Eloquent\Collection;
 
 /**
  * PWWEB\Core\Repositories\UserRepository UserRepository.
