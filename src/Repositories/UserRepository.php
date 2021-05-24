@@ -138,23 +138,25 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
      * Find users that have a certain permission.
      *
      * @param string $permission The permission to retrieve users of.
+     * @param array  $columns    Column names to retrieve.
      *
      * @return Collection
      */
-    public function can(string $permission): ?Collection
+    public function can(string $permission, array $columns = ['*']): ?Collection
     {
-        return $this->model->permission($permission)->get();
+        return $this->model->permission($permission)->get($columns);
     }
 
     /**
      * Find users that have a certain role.
      *
-     * @param string $role The role to retrieve users of.
+     * @param string $role    The role to retrieve users of.
+     * @param array  $columns Column names to retrieve.
      *
      * @return Collection
      */
-    public function memberOf(string $role): ?Collection
+    public function memberOf(string $role, array $columns = ['*']): ?Collection
     {
-        return $this->model->role($role)->get();
+        return $this->model->role($role)->get($columns);
     }
 }

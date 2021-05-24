@@ -69,17 +69,19 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
      * Find users that have a certain permission.
      *
      * @param string $permission The permission to retrieve users of.
+     * @param array  $columns    Column names to retrieve.
      *
      * @return Collection
      */
-    public function can(string $permission): ?Collection;
+    public function can(string $permission, array $columns): ?Collection;
 
     /**
      * Find users that have a certain role.
      *
-     * @param string $role The role to retrieve users of.
+     * @param string $role    The role to retrieve users of.
+     * @param array  $columns Column names to retrieve.
      *
      * @return Collection
      */
-    public function memberOf(string $role): ?Collection;
+    public function memberOf(string $role, array $columns): ?Collection;
 }
