@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
 use PWWEB\Core\Controllers\Address\TypeController;
 use PWWEB\Core\Controllers\AddressController;
 use PWWEB\Core\Controllers\CountryController;
