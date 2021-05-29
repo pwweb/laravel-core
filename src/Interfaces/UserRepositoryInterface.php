@@ -3,10 +3,9 @@
 namespace PWWEB\Core\Interfaces;
 
 use Illuminate\Container\Container as Application;
-use PWWEB\Core\Interfaces\User\Password\HistoryRepositoryInterface;
-use PWWEB\Core\Interfaces\BaseRepositoryInterface;
-use PWWEB\Core\Models\User;
 use Illuminate\Database\Eloquent\Collection;
+use PWWEB\Core\Interfaces\User\Password\HistoryRepositoryInterface;
+use PWWEB\Core\Models\User;
 
 /**
  * PWWEB\Core\Interfaces\UserRepository UserRepository.
