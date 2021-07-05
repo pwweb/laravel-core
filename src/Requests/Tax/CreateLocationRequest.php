@@ -35,6 +35,6 @@ class CreateLocationRequest extends FormRequest
      */
     public function rules()
     {
-        return Location::$rules;
+        return (config('pwweb.core.models.tax.location'))::$rules;
     }
 }

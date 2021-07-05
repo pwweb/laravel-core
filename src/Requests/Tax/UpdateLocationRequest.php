@@ -35,8 +35,6 @@ class UpdateLocationRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Location::$rules;
-
-        return $rules;
+        return (config('pwweb.core.models.tax.location'))::$rules;
     }
 }

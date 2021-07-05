@@ -35,6 +35,6 @@ class CreateAddressRequest extends FormRequest
      */
     public function rules()
     {
-        return Address::$rules;
+        return (config('pwweb.core.models.address'))::$rules;
     }
 }

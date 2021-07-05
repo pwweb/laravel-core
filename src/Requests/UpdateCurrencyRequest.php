@@ -35,6 +35,6 @@ class UpdateCurrencyRequest extends FormRequest
      */
     public function rules()
     {
-        return Currency::$rules;
+        return (config('pwweb.core.models.currency'))::$rules;
     }
 }

@@ -35,8 +35,6 @@ class UpdateRateRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Rate::$rules;
-
-        return $rules;
+        return (config('pwweb.core.models.tax.rate'))::$rules;
     }
 }

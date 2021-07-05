@@ -35,6 +35,6 @@ class UpdateExchangeRateRequest extends FormRequest
      */
     public function rules()
     {
-        return ExchangeRate::$rules;
+        return (config('pwweb.core.models.exchange_rate'))::$rules;
     }
 }

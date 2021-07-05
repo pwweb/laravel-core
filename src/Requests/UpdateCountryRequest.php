@@ -35,6 +35,6 @@ class UpdateCountryRequest extends FormRequest
      */
     public function rules()
     {
-        return Country::$rules;
+        return (config('pwweb.core.models.country'))::$rules;
     }
 }

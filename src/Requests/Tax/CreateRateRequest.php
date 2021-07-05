@@ -35,6 +35,6 @@ class CreateRateRequest extends FormRequest
      */
     public function rules()
     {
-        return Rate::$rules;
+        return (config('pwweb.core.models.tax.rate'))::$rules;
     }
 }

@@ -35,6 +35,6 @@ class UpdateLanguageRequest extends FormRequest
      */
     public function rules()
     {
-        return Language::$rules;
+        return (config('pwweb.core.models.language'))::$rules;
     }
 }

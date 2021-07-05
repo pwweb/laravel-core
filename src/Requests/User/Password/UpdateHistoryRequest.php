@@ -35,6 +35,6 @@ class UpdateHistoryRequest extends FormRequest
      */
     public function rules()
     {
-        return History::$rules;
+        return (config('pwweb.core.models.user_password_history'))::$rules;
     }
 }

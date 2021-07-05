@@ -35,6 +35,6 @@ class CreateMenuRequest extends FormRequest
      */
     public function rules()
     {
-        return Menu::$rules;
+        return (config('pwweb.core.models.menu'))::$rules;
     }
 }

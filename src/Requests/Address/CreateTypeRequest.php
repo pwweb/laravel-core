@@ -35,6 +35,6 @@ class CreateTypeRequest extends FormRequest
      */
     public function rules()
     {
-        return Type::$rules;
+        return (config('pwweb.core.models.type'))::$rules;
     }
 }

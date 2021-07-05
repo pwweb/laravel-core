@@ -35,6 +35,6 @@ class CreateUserRequest extends FormRequest
      */
     public function rules()
     {
-        return User::$rules;
+        return (config('pwweb.core.models.user'))::$rules;
     }
 }
