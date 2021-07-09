@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use PWWEB\Core\Interfaces\Address\TypeRepositoryInterface;
 use PWWEB\Core\Interfaces\AddressRepositoryInterface;
@@ -121,7 +122,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot(LocalisationRegistrar $localisationLoader, Router $router)
     {
-        $this->loadRoutesFrom(__DIR__.'/resources/routes/web.php');
+        $this->registerRoutes();
 
         if (true === function_exists('config_path')) {
             $timestamp = date('Y_m_d_His', mktime(0, 0, 0, 1, 1, 2000));
@@ -243,5 +244,24 @@ class CoreServiceProvider extends ServiceProvider
         $this->app->bind(CurrencyContract::class, $config['currency']);
         $this->app->bind(ExchangeRateContract::class, $config['exchange_rate']);
         $this->app->bind(LanguageContract::class, $config['language']);
+    }
+    
+
+    /**
+     * Register the package routes.
+     *
+     * @return void
+     */
+    protected function registerRoutes()
+    {
+        if (Core::$registersRoutes) {
+            Route::group([
+                'prefix' => config('pwweb.core.path'),
+                'namespace' => 'Pwweb\Core\Http\Controllers',
+                'as' => 'pwweb.core.',
+            ], function () {
+                $this->loadRoutesFrom(__DIR__.'/resources/routes/web.php');
+            });
+        }
     }
 }
