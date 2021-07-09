@@ -245,7 +245,6 @@ class CoreServiceProvider extends ServiceProvider
         $this->app->bind(ExchangeRateContract::class, $config['exchange_rate']);
         $this->app->bind(LanguageContract::class, $config['language']);
     }
-    
 
     /**
      * Register the package routes.
