@@ -256,8 +256,6 @@ class CoreServiceProvider extends ServiceProvider
         if (Core::$registersRoutes) {
             Route::group([
                 'prefix' => config('pwweb.core.path'),
-                'namespace' => 'Pwweb\Core\Http\Controllers',
-                'as' => 'pwweb.core.',
             ], function () {
                 $this->loadRoutesFrom(__DIR__.'/resources/routes/web.php');
             });
