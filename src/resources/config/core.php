@@ -7,6 +7,18 @@ return [
 
     'base_currency' => 'GBP',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Core Path
+    |--------------------------------------------------------------------------
+    |
+    | This is the base URI path where the Core's views, such as the user
+    | management screen, will be available from. You're free to tweak
+    | this path according to your preferences and application design.
+    |
+    */
+    'path' => env('PWWEB_CORE_PATH', 'core'),
+
     'permission' => [
         'abilities' => [
             'view',
