@@ -40,8 +40,8 @@ class RoleController extends Controller
     /**
      * Constructor for the Role controller.
      *
-     * @param RoleRepositoryInterface       $roleRepo       Repository of Roles.
-     * @param PermissionRepositoryInterface $permissionRepo Repository of Permissions.
+     * @param  RoleRepositoryInterface  $roleRepo  Repository of Roles.
+     * @param  PermissionRepositoryInterface  $permissionRepo  Repository of Permissions.
      */
     public function __construct(
         RoleRepositoryInterface $roleRepo,
@@ -54,8 +54,7 @@ class RoleController extends Controller
     /**
      * Display a listing of Roles.
      *
-     * @param Request $request Request containing the information for filtering.
-     *
+     * @param  Request  $request  Request containing the information for filtering.
      * @return \Illuminate\View\View
      */
     public function index(Request $request)
@@ -84,8 +83,7 @@ class RoleController extends Controller
     /**
      * Store a newly created Role in storage.
      *
-     * @param CreateRoleRequest $request Request containing the information to be stored.
-     *
+     * @param  CreateRoleRequest  $request  Request containing the information to be stored.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateRoleRequest $request)
@@ -102,8 +100,7 @@ class RoleController extends Controller
     /**
      * Display the specified Role.
      *
-     * @param int $id ID of the Role to be displayed. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Role to be displayed. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     // public function show($id)
@@ -122,8 +119,7 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified Role.
      *
-     * @param int $id ID of the Role to be edited. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Role to be edited. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     // public function edit($id)
@@ -142,9 +138,8 @@ class RoleController extends Controller
     /**
      * Update the specified Role in storage.
      *
-     * @param int               $id      ID of the Role to be updated.
-     * @param UpdateRoleRequest $request Request containing the information to be updated.
-     *
+     * @param  int  $id  ID of the Role to be updated.
+     * @param  UpdateRoleRequest  $request  Request containing the information to be updated.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, UpdateRoleRequest $request)
@@ -175,11 +170,10 @@ class RoleController extends Controller
     /**
      * Remove the specified Role from storage.
      *
-     * @param int $id ID of the Role to be destroyed.
+     * @param  int  $id  ID of the Role to be destroyed.
+     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {

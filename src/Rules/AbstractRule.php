@@ -35,9 +35,8 @@ abstract class AbstractRule implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param string $attribute Attribute.
-     * @param mixed  $value     Value to be tested.
-     *
+     * @param  string  $attribute  Attribute.
+     * @param  mixed  $value  Value to be tested.
      * @return bool
      */
     public function passes($attribute, $value): bool
@@ -58,9 +57,8 @@ abstract class AbstractRule implements Rule
     /**
      * Check if match all.
      *
-     * @param string $pattern Pattern for the check.
-     * @param string $value   Value to be tested.
-     *
+     * @param  string  $pattern  Pattern for the check.
+     * @param  string  $value  Value to be tested.
      * @return bool
      */
     protected function matchAll(string $pattern, string $value): bool

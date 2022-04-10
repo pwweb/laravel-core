@@ -2,7 +2,7 @@
 
 namespace PWWEB\Core\Models;
 
-use Illuminate\Database\Eloquent\Model as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use PWWEB\Core\Contracts\Language as LanguageContract;
 use PWWEB\Core\Traits\Migratable;
@@ -16,6 +16,7 @@ use PWWEB\Core\Traits\Migratable;
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ *
  * @property  \Illuminate\Database\Eloquent\Collection countries
  * @property  string name
  * @property  string locale
@@ -77,8 +78,7 @@ class Language extends Model implements LanguageContract
     /**
      * Constructor.
      *
-     * @param array $attributes additional attributes for model initialisation
-     *
+     * @param  array  $attributes  additional attributes for model initialisation
      * @return void
      */
     public function __construct(array $attributes = [])

@@ -21,7 +21,7 @@ interface LanguageRepositoryInterface extends BaseRepositoryInterface
     /**
      * Contructor.
      *
-     * @param Application $app Application instance.
+     * @param  Application  $app  Application instance.
      *
      * @throws \Exception
      */
@@ -51,8 +51,7 @@ interface LanguageRepositoryInterface extends BaseRepositoryInterface
     /**
      * Retrieve active language based on locale.
      *
-     * @param string $locale The locale to check.
-     *
+     * @param  string  $locale  The locale to check.
      * @return \Illuminate\Database\Eloquent\Model|null
      */
     public function isLocaleActive(string $locale);
@@ -60,8 +59,7 @@ interface LanguageRepositoryInterface extends BaseRepositoryInterface
     /**
      * Retrieve active language based on lang.
      *
-     * @param string $lang The language to check.
-     *
+     * @param  string  $lang  The language to check.
      * @return \Illuminate\Database\Eloquent\Model|null
      */
     public function isLangActive(string $lang);
@@ -69,11 +67,10 @@ interface LanguageRepositoryInterface extends BaseRepositoryInterface
     /**
      * Find a language by its locale, e.g. en-gb.
      *
-     * @param string $locale locale to be used to retrieve the language
+     * @param  string  $locale  locale to be used to retrieve the language
+     * @return \Illuminate\Database\Eloquent\Model
      *
      * @throws \PWWEB\Core\Exceptions\LanguageDoesNotExist
-     *
-     * @return \Illuminate\Database\Eloquent\Model
      */
     public function findByLocale(string $locale);
 }

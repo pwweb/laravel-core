@@ -52,8 +52,8 @@ class Localisation
     /**
      * Constructor.
      *
-     * @param \PWWEB\Core\Repositories\LanguageRepository $languageRepo Repository of Languages
-     * @param \Illuminate\Foundation\Application          $app          laravel application for further use
+     * @param  \PWWEB\Core\Repositories\LanguageRepository  $languageRepo  Repository of Languages
+     * @param  \Illuminate\Foundation\Application  $app  laravel application for further use
      */
     public function __construct(LanguageRepository $languageRepo, $app = null)
     {
@@ -82,8 +82,7 @@ class Localisation
     /**
      * Determines the currently selected locale.
      *
-     * @param string $locale (Optional) Locale to be used for language retrieval
-     *
+     * @param  string  $locale  (Optional) Locale to be used for language retrieval
      * @return LanguageContract A language object
      */
     public function currentLanguage(string $locale = ''): LanguageContract

@@ -50,11 +50,10 @@ class Colour implements ColourContract
     /**
      * Colour constructor.
      *
-     * @param int   $red   Red value for the colour.
-     * @param int   $green Green value for the colour.
-     * @param int   $blue  Blue value for the colour.
-     * @param float $alpha Alpha value for the colour.
-     *
+     * @param  int  $red  Red value for the colour.
+     * @param  int  $green  Green value for the colour.
+     * @param  int  $blue  Blue value for the colour.
+     * @param  float  $alpha  Alpha value for the colour.
      * @return void
      */
     public function __construct(int $red = 0, int $green = 0, int $blue = 0, float $alpha = 1.0)
@@ -65,11 +64,10 @@ class Colour implements ColourContract
     /**
      * Set the RGBA values.
      *
-     * @param int   $red   Red value for the colour.
-     * @param int   $green Green value for the colour.
-     * @param int   $blue  Blue value for the colour.
-     * @param float $alpha Alpha value for the colour.
-     *
+     * @param  int  $red  Red value for the colour.
+     * @param  int  $green  Green value for the colour.
+     * @param  int  $blue  Blue value for the colour.
+     * @param  float  $alpha  Alpha value for the colour.
      * @return self
      */
     public function setRgba(int $red, int $green, int $blue, float $alpha): Colour
@@ -81,10 +79,9 @@ class Colour implements ColourContract
     /**
      * Set the RGB values.
      *
-     * @param int $red   Red value for the colour.
-     * @param int $green Green value for the colour.
-     * @param int $blue  Blue value for the colour.
-     *
+     * @param  int  $red  Red value for the colour.
+     * @param  int  $green  Green value for the colour.
+     * @param  int  $blue  Blue value for the colour.
      * @return self
      */
     public function setRgb(int $red, int $green, int $blue)
@@ -105,8 +102,7 @@ class Colour implements ColourContract
     /**
      * Set the red value.
      *
-     * @param int $red Red value for the colour.
-     *
+     * @param  int  $red  Red value for the colour.
      * @return self
      */
     public function setRed(int $red)
@@ -130,8 +126,7 @@ class Colour implements ColourContract
     /**
      * Set the green value.
      *
-     * @param int $green Green value for the colour.
-     *
+     * @param  int  $green  Green value for the colour.
      * @return self
      */
     public function setGreen(int $green)
@@ -155,8 +150,7 @@ class Colour implements ColourContract
     /**
      * Set the blue value.
      *
-     * @param int $blue Blue value for the colour.
-     *
+     * @param  int  $blue  Blue value for the colour.
      * @return self
      */
     public function setBlue(int $blue)
@@ -180,8 +174,7 @@ class Colour implements ColourContract
     /**
      * Set the alpha value.
      *
-     * @param float $alpha Alpha value for the colour.
-     *
+     * @param  float  $alpha  Alpha value for the colour.
      * @return self
      */
     public function setAlpha(float $alpha)
@@ -195,8 +188,7 @@ class Colour implements ColourContract
     /**
      * Make a Colour instance.
      *
-     * @param string $colour Raw value of the colour.
-     *
+     * @param  string  $colour  Raw value of the colour.
      * @return self
      */
     public static function make(string $colour)
@@ -211,8 +203,7 @@ class Colour implements ColourContract
     /**
      * Convert to hex colour.
      *
-     * @param bool $uppercase Flag for transformation to uppercase.
-     *
+     * @param  bool  $uppercase  Flag for transformation to uppercase.
      * @return string
      */
     public function toHex(bool $uppercase = true): string
@@ -239,8 +230,7 @@ class Colour implements ColourContract
     /**
      * Check if the colour is bright.
      *
-     * @param float $contrast Contrast value of the colour.
-     *
+     * @param  float  $contrast  Contrast value of the colour.
      * @return bool
      */
     public function isBright(float $contrast = 150.0): bool
@@ -253,8 +243,7 @@ class Colour implements ColourContract
     /**
      * Check if the colour is dark.
      *
-     * @param float $contrast Contrast value of the colour.
-     *
+     * @param  float  $contrast  Contrast value of the colour.
      * @return bool
      */
     public function isDark(float $contrast = 150.0): bool
@@ -265,8 +254,7 @@ class Colour implements ColourContract
     /**
      * Check if the colour is valid.
      *
-     * @param string $hex HEX value of the colour.
-     *
+     * @param  string  $hex  HEX value of the colour.
      * @return bool
      */
     public static function isValidHex(string $hex): bool
@@ -277,8 +265,7 @@ class Colour implements ColourContract
     /**
      * Check the colour.
      *
-     * @param string $value Value of the colour.
-     *
+     * @param  string  $value  Value of the colour.
      * @return void
      *
      * @throws \PWWEB\Core\Exceptions\Colour\Exception
@@ -293,9 +280,8 @@ class Colour implements ColourContract
     /**
      * Set colour value.
      *
-     * @param string $name  Colour aspect, e.g. red, green or blue.
-     * @param int    $value Value of the colour aspect.
-     *
+     * @param  string  $name  Colour aspect, e.g. red, green or blue.
+     * @param  int  $value  Value of the colour aspect.
      * @return void
      *
      * @throws \PWWEB\Core\Exceptions\Colour\Exception
@@ -312,8 +298,7 @@ class Colour implements ColourContract
     /**
      * Check the alpha value.
      *
-     * @param float $alpha Alpha value of the colour.
-     *
+     * @param  float  $alpha  Alpha value of the colour.
      * @return void
      *
      * @throws \PWWEB\Core\Exceptions\Colour\Exception

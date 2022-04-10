@@ -49,9 +49,9 @@ class LocationController extends Controller
     /**
      * Constructor for the Location controller.
      *
-     * @param LocationRepositoryInterface $locationRepo Repository of Locations.
-     * @param CountryRepositoryInterface  $countryRepo  Repository of Countries.
-     * @param RateRepositoryInterface     $rateRepo     Repository of Rates.
+     * @param  LocationRepositoryInterface  $locationRepo  Repository of Locations.
+     * @param  CountryRepositoryInterface  $countryRepo  Repository of Countries.
+     * @param  RateRepositoryInterface  $rateRepo  Repository of Rates.
      */
     public function __construct(LocationRepositoryInterface $locationRepo, CountryRepositoryInterface $countryRepo, RateRepositoryInterface $rateRepo)
     {
@@ -63,8 +63,7 @@ class LocationController extends Controller
     /**
      * Display a listing of the Location.
      *
-     * @param Request $request Index Request
-     *
+     * @param  Request  $request  Index Request
      * @return Response
      */
     public function index(Request $request)
@@ -91,8 +90,7 @@ class LocationController extends Controller
     /**
      * Store a newly created Location in storage.
      *
-     * @param CreateLocationRequest $request Create Request
-     *
+     * @param  CreateLocationRequest  $request  Create Request
      * @return Response
      */
     public function store(CreateLocationRequest $request)
@@ -109,8 +107,7 @@ class LocationController extends Controller
     /**
      * Display the specified Location.
      *
-     * @param int $id ID to show
-     *
+     * @param  int  $id  ID to show
      * @return Response
      */
     public function show($id)
@@ -129,8 +126,7 @@ class LocationController extends Controller
     /**
      * Show the form for editing the specified Location.
      *
-     * @param int $id ID to edit
-     *
+     * @param  int  $id  ID to edit
      * @return Response
      */
     public function edit($id)
@@ -151,9 +147,8 @@ class LocationController extends Controller
     /**
      * Update the specified Location in storage.
      *
-     * @param int                   $id      ID to update
-     * @param UpdateLocationRequest $request Update Request
-     *
+     * @param  int  $id  ID to update
+     * @param  UpdateLocationRequest  $request  Update Request
      * @return Response
      */
     public function update($id, UpdateLocationRequest $request)
@@ -176,11 +171,10 @@ class LocationController extends Controller
     /**
      * Remove the specified Location from storage.
      *
-     * @param int $id ID to destroy
+     * @param  int  $id  ID to destroy
+     * @return Response
      *
      * @throws \Exception
-     *
-     * @return Response
      */
     public function destroy($id)
     {

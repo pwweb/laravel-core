@@ -14,7 +14,8 @@ use PWWEB\Core\Blade\Directive;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @method    handle()
+ *
+ * @method handle()
  */
 class Date extends Directive
 {
@@ -30,8 +31,7 @@ class Date extends Directive
     /**
      * Handle the functionality for the blade directive.
      *
-     * @param string $expression List of expressions
-     *
+     * @param  string  $expression  List of expressions
      * @return string
      */
     public function handle(string $expression): string

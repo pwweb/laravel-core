@@ -72,12 +72,11 @@ class ProfileController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @param UserRepositoryInterface    $userRepo    Repository of Users.
-     * @param PersonRepositoryInterface  $personRepo  Repository of Persons.
-     * @param AddressRepositoryInterface $addressRepo Repository of Addresses.
-     * @param CountryRepositoryInterface $countryRepo Repository of Countries.
-     * @param TypeRepositoryInterface    $typeRepo    Repository of Address Types.
-     *
+     * @param  UserRepositoryInterface  $userRepo  Repository of Users.
+     * @param  PersonRepositoryInterface  $personRepo  Repository of Persons.
+     * @param  AddressRepositoryInterface  $addressRepo  Repository of Addresses.
+     * @param  CountryRepositoryInterface  $countryRepo  Repository of Countries.
+     * @param  TypeRepositoryInterface  $typeRepo  Repository of Address Types.
      * @return void
      */
     public function __construct(
@@ -113,8 +112,7 @@ class ProfileController extends Controller
     /**
      * Show a person's profile page.
      *
-     * @param string|int $user The user ID or username.
-     *
+     * @param  string|int  $user  The user ID or username.
      * @return View|RedirectResponse
      */
     public function show($user)
@@ -172,8 +170,7 @@ class ProfileController extends Controller
     /**
      * Show the profile edit form.
      *
-     * @param int|string|User $recipient Recipient of friend request.
-     *
+     * @param  int|string|User  $recipient  Recipient of friend request.
      * @return RedirectResponse
      */
     public function befriend($recipient)
@@ -204,8 +201,7 @@ class ProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param object $request validated data
-     *
+     * @param  object  $request  validated data
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store($request): ?RedirectResponse
@@ -216,8 +212,7 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \PWWEB\Core\Requests\UpdateProfileRequest $request validated changes to apply
-     *
+     * @param  \PWWEB\Core\Requests\UpdateProfileRequest  $request  validated changes to apply
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(ValidatedRequest $request): RedirectResponse
@@ -234,8 +229,7 @@ class ProfileController extends Controller
     /**
      * Update the password for the user.
      *
-     * @param ValidatedPasswordRequest $request Validated changes to apply
-     *
+     * @param  ValidatedPasswordRequest  $request  Validated changes to apply
      * @return \Illuminate\Http\RedirectResponse
      */
     public function updatePassword(ValidatedPasswordRequest $request): RedirectResponse
@@ -264,8 +258,7 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \PWWEB\Core\Requests\Profile\UpdateAvatarRequest $request validated changes to apply
-     *
+     * @param  \PWWEB\Core\Requests\Profile\UpdateAvatarRequest  $request  validated changes to apply
      * @return \Illuminate\Http\RedirectResponse
      */
     public function updateAvatar(ValidatedAvatarRequest $request): RedirectResponse
@@ -300,8 +293,7 @@ class ProfileController extends Controller
     /**
      * Store and assign a newly created Address.
      *
-     * @param CreateAddressRequest $request Request containing the information to be stored.
-     *
+     * @param  CreateAddressRequest  $request  Request containing the information to be stored.
      * @return RedirectResponse
      */
     public function storeAddress(CreateAddressRequest $request): RedirectResponse
@@ -321,9 +313,8 @@ class ProfileController extends Controller
     /**
      * Update the specified Address in storage.
      *
-     * @param int                  $id      ID of the Address to be updated.
-     * @param UpdateAddressRequest $request Request containing the information to be updated.
-     *
+     * @param  int  $id  ID of the Address to be updated.
+     * @param  UpdateAddressRequest  $request  Request containing the information to be updated.
      * @return RedirectResponse
      */
     public function updateAddress($id, UpdateAddressRequest $request)

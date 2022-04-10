@@ -50,9 +50,9 @@ class UserController extends Controller
     /**
      * Constructor for the User controller.
      *
-     * @param UserRepositoryInterface   $userRepo   Repository of Users.
-     * @param PersonRepositoryInterface $personRepo Repository of Persons.
-     * @param RoleRepositoryInterface   $roleRepo   Repository of Roles.
+     * @param  UserRepositoryInterface  $userRepo  Repository of Users.
+     * @param  PersonRepositoryInterface  $personRepo  Repository of Persons.
+     * @param  RoleRepositoryInterface  $roleRepo  Repository of Roles.
      */
     public function __construct(
         UserRepositoryInterface $userRepo,
@@ -67,8 +67,7 @@ class UserController extends Controller
     /**
      * Display a listing of the User.
      *
-     * @param Request $request Request for the user list / index.
-     *
+     * @param  Request  $request  Request for the user list / index.
      * @return \Illuminate\View\View
      */
     public function index(Request $request): View
@@ -94,8 +93,7 @@ class UserController extends Controller
     /**
      * Store a newly created User in storage.
      *
-     * @param CreateUserRequest $request Request for the user creation.
-     *
+     * @param  CreateUserRequest  $request  Request for the user creation.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateUserRequest $request): RedirectResponse
@@ -132,8 +130,7 @@ class UserController extends Controller
     /**
      * Display the specified User.
      *
-     * @param int $id ID of the user to be displayed.
-     *
+     * @param  int  $id  ID of the user to be displayed.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
@@ -152,8 +149,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified User.
      *
-     * @param int $id ID of the user to be edited.
-     *
+     * @param  int  $id  ID of the user to be edited.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function edit($id)
@@ -175,9 +171,8 @@ class UserController extends Controller
     /**
      * Update the specified User in storage.
      *
-     * @param int               $id      ID of the user to be updated.
-     * @param UpdateUserRequest $request Request for the user update.
-     *
+     * @param  int  $id  ID of the user to be updated.
+     * @param  UpdateUserRequest  $request  Request for the user update.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, UpdateUserRequest $request): RedirectResponse
@@ -225,11 +220,10 @@ class UserController extends Controller
     /**
      * Remove the specified User from storage.
      *
-     * @param int $id ID of the user to be deleted.
+     * @param  int  $id  ID of the user to be deleted.
+     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id): RedirectResponse
     {

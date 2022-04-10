@@ -2,7 +2,7 @@
 
 namespace PWWEB\Core\Models;
 
-use Illuminate\Database\Eloquent\Model as Model;
+use Illuminate\Database\Eloquent\Model;
 use PWWEB\Core\Contracts\ExchangeRate as ExchangeRateContract;
 use PWWEB\Core\Traits\Migratable;
 
@@ -15,8 +15,9 @@ use PWWEB\Core\Traits\Migratable;
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @property  \PWWEB\Core\Models\Currency $currency
- * @property  float $rate
+ *
+ * @property \PWWEB\Core\Models\Currency $currency
+ * @property float $rate
  */
 class ExchangeRate extends Model implements ExchangeRateContract
 {
@@ -68,7 +69,7 @@ class ExchangeRate extends Model implements ExchangeRateContract
     /**
      * Constructor.
      *
-     * @param array $attributes additional attributes for model initialisation
+     * @param  array  $attributes  additional attributes for model initialisation
      */
     public function __construct(array $attributes = [])
     {

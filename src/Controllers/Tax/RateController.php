@@ -33,7 +33,7 @@ class RateController extends Controller
     /**
      * Constructor for the Rate controller.
      *
-     * @param RateRepositoryInterface $rateRepo Repository of Rates.
+     * @param  RateRepositoryInterface  $rateRepo  Repository of Rates.
      */
     public function __construct(RateRepositoryInterface $rateRepo)
     {
@@ -43,8 +43,7 @@ class RateController extends Controller
     /**
      * Display a listing of the Rate.
      *
-     * @param Request $request Index request
-     *
+     * @param  Request  $request  Index request
      * @return \Illuminate\View\View
      */
     public function index(Request $request)
@@ -70,8 +69,7 @@ class RateController extends Controller
     /**
      * Store a newly created Rate in storage.
      *
-     * @param CreateRateRequest $request Create Request
-     *
+     * @param  CreateRateRequest  $request  Create Request
      * @return \Illuminate\View\View
      */
     public function store(CreateRateRequest $request)
@@ -88,8 +86,7 @@ class RateController extends Controller
     /**
      * Display the specified Rate.
      *
-     * @param int $id ID to show
-     *
+     * @param  int  $id  ID to show
      * @return \Illuminate\View\View
      */
     public function show($id)
@@ -109,8 +106,7 @@ class RateController extends Controller
     /**
      * Show the form for editing the specified Rate.
      *
-     * @param int $id ID to edit
-     *
+     * @param  int  $id  ID to edit
      * @return \Illuminate\View\View
      */
     public function edit($id)
@@ -130,9 +126,8 @@ class RateController extends Controller
     /**
      * Update the specified Rate in storage.
      *
-     * @param int               $id      ID to update
-     * @param UpdateRateRequest $request Edit Request
-     *
+     * @param  int  $id  ID to update
+     * @param  UpdateRateRequest  $request  Edit Request
      * @return \Illuminate\View\View
      */
     public function update($id, UpdateRateRequest $request)
@@ -155,11 +150,10 @@ class RateController extends Controller
     /**
      * Remove the specified Rate from storage.
      *
-     * @param int $id ID to destroy
+     * @param  int  $id  ID to destroy
+     * @return \Illuminate\View\View
      *
      * @throws \Exception
-     *
-     * @return \Illuminate\View\View
      */
     public function destroy($id)
     {

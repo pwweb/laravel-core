@@ -58,8 +58,7 @@ trait HasAddresses
     /**
      * Assign the given address(es) to the model.
      *
-     * @param array|string|\PWWEB\Core\Contracts\Address ...$addresses One or multiple addresses to be added to the user.
-     *
+     * @param  array|string|\PWWEB\Core\Contracts\Address  ...$addresses  One or multiple addresses to be added to the user.
      * @return mixed
      */
     public function assignAddress(...$addresses)
@@ -112,8 +111,7 @@ trait HasAddresses
     /**
      * Get a stored address from the cache.
      *
-     * @param int|string $address Address to be retrieved from cache
-     *
+     * @param  int|string  $address  Address to be retrieved from cache
      * @return \PWWEB\Core\Models\Address
      */
     protected function getStoredAddress($address): Address

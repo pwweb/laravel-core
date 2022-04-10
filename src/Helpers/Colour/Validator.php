@@ -25,8 +25,7 @@ class Validator implements ColourValidatorContract
     /**
      * Check if the colour is valid HEX Colour.
      *
-     * @param string $value HEX colour value.
-     *
+     * @param  string  $value  HEX colour value.
      * @return bool
      */
     public static function validateHex(string $value): bool
@@ -37,8 +36,7 @@ class Validator implements ColourValidatorContract
     /**
      * Check if the colour is valid RGB Colour.
      *
-     * @param string $value RGB colour value.
-     *
+     * @param  string  $value  RGB colour value.
      * @return bool
      */
     public static function validateRgb(string $value): bool
@@ -49,8 +47,7 @@ class Validator implements ColourValidatorContract
     /**
      * Check if the colour is valid RGBA Colour.
      *
-     * @param string $value RGBA colour value.
-     *
+     * @param  string  $value  RGBA colour value.
      * @return bool
      */
     public static function validateRgba(string $value): bool
@@ -61,8 +58,7 @@ class Validator implements ColourValidatorContract
     /**
      * Check if the colour is valid HSL Colour.
      *
-     * @param string $value HSL colour value.
-     *
+     * @param  string  $value  HSL colour value.
      * @return bool
      */
     public static function validateHsl(string $value): bool
@@ -73,8 +69,7 @@ class Validator implements ColourValidatorContract
     /**
      * Check if the colour is valid HSLA Colour.
      *
-     * @param string $value HSLA colour value.
-     *
+     * @param  string  $value  HSLA colour value.
      * @return bool
      */
     public static function validateHsla(string $value): bool

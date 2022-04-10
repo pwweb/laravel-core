@@ -35,7 +35,7 @@ class PersonController extends Controller
     /**
      * Constructor for the Person controller.
      *
-     * @param PersonRepositoryInterface $personRepository Repository of Persons.
+     * @param  PersonRepositoryInterface  $personRepository  Repository of Persons.
      */
     public function __construct(PersonRepositoryInterface $personRepository)
     {
@@ -45,8 +45,7 @@ class PersonController extends Controller
     /**
      * Display a listing of Persons.
      *
-     * @param Request $request Request containing the information for filtering.
-     *
+     * @param  Request  $request  Request containing the information for filtering.
      * @return \Illuminate\View\View
      */
     public function index(Request $request): View
@@ -77,8 +76,7 @@ class PersonController extends Controller
     /**
      * Store a newly created Persons in storage.
      *
-     * @param CreatePersonRequest $request Request containing the information to be stored.
-     *
+     * @param  CreatePersonRequest  $request  Request containing the information to be stored.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreatePersonRequest $request): RedirectResponse
@@ -99,8 +97,7 @@ class PersonController extends Controller
     /**
      * Display the specified Person.
      *
-     * @param int $id ID of the Person to be displayed. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Person to be displayed. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
@@ -120,8 +117,7 @@ class PersonController extends Controller
     /**
      * Show the form for editing the specified Person.
      *
-     * @param int $id ID of the Person to be edited. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Person to be edited. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function edit($id)
@@ -145,9 +141,8 @@ class PersonController extends Controller
     /**
      * Update the specified Person in storage.
      *
-     * @param int                 $id      ID of the Person to be updated.
-     * @param UpdatePersonRequest $request Request containing the information to be updated.
-     *
+     * @param  int  $id  ID of the Person to be updated.
+     * @param  UpdatePersonRequest  $request  Request containing the information to be updated.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, UpdatePersonRequest $request): RedirectResponse
@@ -174,11 +169,10 @@ class PersonController extends Controller
     /**
      * Remove the specified Person from storage.
      *
-     * @param int $id ID of the Person to be destroyed.
+     * @param  int  $id  ID of the Person to be destroyed.
+     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id): RedirectResponse
     {

@@ -2,7 +2,7 @@
 
 namespace PWWEB\Core\Models\Tax;
 
-use Illuminate\Database\Eloquent\Model as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PWWEB\Core\Traits\Migratable;
@@ -16,6 +16,7 @@ use PWWEB\Core\Traits\Migratable;
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ *
  * @property  number rate
  * @property  string name
  * @property  bool compound
@@ -76,8 +77,7 @@ class Rate extends Model
     /**
      * Constructor.
      *
-     * @param array $attributes additional attributes for model initialisation
-     *
+     * @param  array  $attributes  additional attributes for model initialisation
      * @return void
      */
     public function __construct(array $attributes = [])

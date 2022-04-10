@@ -24,8 +24,7 @@ class Converter implements ColourConverterContract
     /**
      * Convert a HEX colour to an HSV array (alias).
      *
-     * @param string $hex Hex value of the colour.
-     *
+     * @param  string  $hex  Hex value of the colour.
      * @return array
      *
      * @see fromHexToHsv
@@ -38,8 +37,7 @@ class Converter implements ColourConverterContract
     /**
      * Convert a HEX colour to an HSV array.
      *
-     * @param string $hex Hex value of the colour.
-     *
+     * @param  string  $hex  Hex value of the colour.
      * @return array
      */
     public function fromHexToHsv(string $hex): array
@@ -52,10 +50,9 @@ class Converter implements ColourConverterContract
     /**
      * Convert an HSV to HEX colour (alias).
      *
-     * @param float $hue        Hue of the colour.
-     * @param float $saturation Saturation of the colour.
-     * @param float $value      Colour value.
-     *
+     * @param  float  $hue  Hue of the colour.
+     * @param  float  $saturation  Saturation of the colour.
+     * @param  float  $value  Colour value.
      * @return string
      *
      * @see fromHsvToHex
@@ -68,10 +65,9 @@ class Converter implements ColourConverterContract
     /**
      * Convert an HSV to HEX colour.
      *
-     * @param float $hue        Hue of the colour.
-     * @param float $saturation Saturation of the colour.
-     * @param float $value      Colour value.
-     *
+     * @param  float  $hue  Hue of the colour.
+     * @param  float  $saturation  Saturation of the colour.
+     * @param  float  $value  Colour value.
      * @return string
      */
     public function fromHsvToHex(float $hue, float $saturation, float $value): string

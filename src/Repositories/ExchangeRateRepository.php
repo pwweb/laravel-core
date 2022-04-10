@@ -53,9 +53,8 @@ class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepos
     /**
      * Get a Rate from the DB based on currency and an optional date.
      *
-     * @param int    $currencyId Currency ID number.
-     * @param Carbon $date       Date to limit the search to.
-     *
+     * @param  int  $currencyId  Currency ID number.
+     * @param  Carbon  $date  Date to limit the search to.
      * @return ExchangeRate|null The model to return
      */
     public function getRate($currencyId, Carbon $date): ?ExchangeRate
@@ -86,9 +85,8 @@ class ExchangeRateRepository extends BaseRepository implements ExchangeRateRepos
     /**
      * Get the closest rate to the current date.
      *
-     * @param int    $currency_id Currency ID to look for.
-     * @param Carbon $date        Date string in Y-m-d format.
-     *
+     * @param  int  $currency_id  Currency ID to look for.
+     * @param  Carbon  $date  Date string in Y-m-d format.
      * @return ExchangeRate Closest Model or new default model.
      */
     public function getClosestRate($currency_id, $date): ExchangeRate

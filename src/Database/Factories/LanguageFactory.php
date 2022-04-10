@@ -13,7 +13,8 @@ use PWWEB\Core\Models\Language;
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @var       \Illuminate\Database\Eloquent\Factory $factory
+ *
+ * @var \Illuminate\Database\Eloquent\Factory $factory
  */
 class LanguageFactory extends Factory
 {

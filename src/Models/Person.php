@@ -26,6 +26,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ *
  * @property  \PWWEB\Core\Models\Country nationality
  * @property  \Illuminate\Database\Eloquent\Collection users
  * @property  int nationality_id
@@ -111,8 +112,7 @@ class Person extends Model implements HasMedia
     /**
      * Constructor.
      *
-     * @param array $attributes additional attributes for model initialisation
-     *
+     * @param  array  $attributes  additional attributes for model initialisation
      * @return void
      */
     public function __construct(array $attributes = [])
@@ -158,8 +158,7 @@ class Person extends Model implements HasMedia
     /**
      * Register additional media conversions.
      *
-     * @param \Spatie\MediaLibrary\MediaCollections\Models\Media $media Media object
-     *
+     * @param  \Spatie\MediaLibrary\MediaCollections\Models\Media  $media  Media object
      * @return void
      */
     public function registerMediaConversions(Media $media = null): void
@@ -203,8 +202,7 @@ class Person extends Model implements HasMedia
     /**
      * Format the title attribute based on the corresponding enum.
      *
-     * @param int $value Title enum number
-     *
+     * @param  int  $value  Title enum number
      * @return \PWWEB\Core\Enums\Title
      */
     public function getTitleAttribute($value): Title
@@ -217,8 +215,7 @@ class Person extends Model implements HasMedia
     /**
      * Format the gender attribute based on the corresponding enum.
      *
-     * @param int $value Gender enum number
-     *
+     * @param  int  $value  Gender enum number
      * @return \PWWEB\Core\Enums\Gender
      */
     public function getGenderAttribute($value): Gender

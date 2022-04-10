@@ -32,7 +32,7 @@ class CurrencyController extends Controller
     /**
      * Constructor for the Currency controller.
      *
-     * @param CurrencyRepositoryInterface $currencyRepo Repository of Currencies.
+     * @param  CurrencyRepositoryInterface  $currencyRepo  Repository of Currencies.
      */
     public function __construct(CurrencyRepositoryInterface $currencyRepo)
     {
@@ -42,8 +42,7 @@ class CurrencyController extends Controller
     /**
      * Display a listing of the Currency.
      *
-     * @param Request $request Request containing the information for filtering.
-     *
+     * @param  Request  $request  Request containing the information for filtering.
      * @return \Illuminate\View\View
      */
     public function index(Request $request)
@@ -67,8 +66,7 @@ class CurrencyController extends Controller
     /**
      * Store a newly created Currency in storage.
      *
-     * @param CreateCurrencyRequest $request Request containing the information to be stored.
-     *
+     * @param  CreateCurrencyRequest  $request  Request containing the information to be stored.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateCurrencyRequest $request)
@@ -85,8 +83,7 @@ class CurrencyController extends Controller
     /**
      * Display the specified Currency.
      *
-     * @param int $id ID of the Currency to be displayed. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Currency to be displayed. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
@@ -105,8 +102,7 @@ class CurrencyController extends Controller
     /**
      * Show the form for editing the specified Currency.
      *
-     * @param int $id ID of the Currency to be edited. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Currency to be edited. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function edit($id)
@@ -125,9 +121,8 @@ class CurrencyController extends Controller
     /**
      * Update the specified Currency in storage.
      *
-     * @param int                   $id      ID of the Currency to be updated.
-     * @param UpdateCurrencyRequest $request Request containing the information to be updated.
-     *
+     * @param  int  $id  ID of the Currency to be updated.
+     * @param  UpdateCurrencyRequest  $request  Request containing the information to be updated.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, UpdateCurrencyRequest $request)
@@ -150,11 +145,10 @@ class CurrencyController extends Controller
     /**
      * Remove the specified Currency from storage.
      *
-     * @param int $id ID of the Country to be destroyed.
+     * @param  int  $id  ID of the Country to be destroyed.
+     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {

@@ -13,7 +13,8 @@ use PWWEB\Core\Models\Address\Type;
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @var       \Illuminate\Database\Eloquent\Factory $factoryv
+ *
+ * @var \Illuminate\Database\Eloquent\Factory $factoryv
  */
 class TypeFactory extends Factory
 {

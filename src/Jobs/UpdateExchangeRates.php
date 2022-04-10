@@ -28,8 +28,7 @@ class UpdateExchangeRates implements ShouldQueue, ShouldBeUnique
     /**
      * Create a new job instance.
      *
-     * @param Carbon $date [description]
-     *
+     * @param  Carbon  $date  [description]
      * @return void
      */
     public function __construct(Carbon $date)

@@ -33,7 +33,7 @@ class LanguageController extends Controller
     /**
      * Constructor for the Language controller.
      *
-     * @param \PWWEB\Core\Interfaces\LanguageRepositoryInterface $languageRepo Repository of Languages
+     * @param  \PWWEB\Core\Interfaces\LanguageRepositoryInterface  $languageRepo  Repository of Languages
      */
     public function __construct(LanguageRepositoryInterface $languageRepo)
     {
@@ -43,8 +43,7 @@ class LanguageController extends Controller
     /**
      * Display a listing of the Language.
      *
-     * @param Request $request Request containing the information for filtering.
-     *
+     * @param  Request  $request  Request containing the information for filtering.
      * @return \Illuminate\View\View
      */
     public function index(Request $request)
@@ -68,8 +67,7 @@ class LanguageController extends Controller
     /**
      * Store a newly created Language in storage.
      *
-     * @param CreateLanguageRequest $request Request containing the information to be stored.
-     *
+     * @param  CreateLanguageRequest  $request  Request containing the information to be stored.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateLanguageRequest $request)
@@ -86,8 +84,7 @@ class LanguageController extends Controller
     /**
      * Display the specified Language.
      *
-     * @param int $id ID of the Language to be displayed. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Language to be displayed. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
@@ -107,8 +104,7 @@ class LanguageController extends Controller
     /**
      * Show the form for editing the specified Language.
      *
-     * @param int $id ID of the Language to be edited. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Language to be edited. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function edit($id)
@@ -127,9 +123,8 @@ class LanguageController extends Controller
     /**
      * Update the specified Language in storage.
      *
-     * @param int                   $id      ID of the Language to be updated.
-     * @param UpdateLanguageRequest $request Request containing the information to be updated.
-     *
+     * @param  int  $id  ID of the Language to be updated.
+     * @param  UpdateLanguageRequest  $request  Request containing the information to be updated.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, UpdateLanguageRequest $request)
@@ -152,11 +147,10 @@ class LanguageController extends Controller
     /**
      * Remove the specified Language from storage.
      *
-     * @param int $id ID of the Language to be destroyed.
+     * @param  int  $id  ID of the Language to be destroyed.
+     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
@@ -178,9 +172,8 @@ class LanguageController extends Controller
     /**
      * Switch the locale.
      *
-     * @param Request $request Laravel request instance.
-     * @param string  $locale  Locale to change to.
-     *
+     * @param  Request  $request  Laravel request instance.
+     * @param  string  $locale  Locale to change to.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function changeLocale(Request $request, $locale)

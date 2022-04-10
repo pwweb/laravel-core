@@ -19,8 +19,7 @@ class AddressDoesNotExist extends InvalidArgumentException
     /**
      * Creates an exception with an error message based on the address name.
      *
-     * @param string $addressName the address name
-     *
+     * @param  string  $addressName  the address name
      * @return static
      */
     public static function create(string $addressName)
@@ -31,8 +30,7 @@ class AddressDoesNotExist extends InvalidArgumentException
     /**
      * Creates an exception with an error message based on the address ID.
      *
-     * @param int $addressId the address ID which does not exist in the database
-     *
+     * @param  int  $addressId  the address ID which does not exist in the database
      * @return static
      */
     public static function withId(int $addressId)
@@ -43,8 +41,7 @@ class AddressDoesNotExist extends InvalidArgumentException
     /**
      * Creates an exception with an error message based on the address type name.
      *
-     * @param string $addressType The address type name which does not exist in the database
-     *
+     * @param  string  $addressType  The address type name which does not exist in the database
      * @return static
      */
     public static function withType(string $addressType)

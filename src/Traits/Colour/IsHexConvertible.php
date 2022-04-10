@@ -17,8 +17,7 @@ trait IsHexConvertible
     /**
      * Convert a HEX color to an RGB array (alias).
      *
-     * @param string $hex HEX value of the colour.
-     *
+     * @param  string  $hex  HEX value of the colour.
      * @return array
      *
      * @see fromHexToRgb
@@ -31,8 +30,7 @@ trait IsHexConvertible
     /**
      * Convert a HEX color to an RGB array.
      *
-     * @param string $hex HEX value of the colour.
-     *
+     * @param  string  $hex  HEX value of the colour.
      * @return array
      */
     public function fromHexToRgb(string $hex): array
@@ -62,10 +60,9 @@ trait IsHexConvertible
     /**
      * Convert RGB values to a HEX color (alias).
      *
-     * @param int $red   Red value for the colour.
-     * @param int $green Green value for the colour.
-     * @param int $blue  Blue value for the colour.
-     *
+     * @param  int  $red  Red value for the colour.
+     * @param  int  $green  Green value for the colour.
+     * @param  int  $blue  Blue value for the colour.
      * @return string
      *
      * @see fromRgbToHex
@@ -78,10 +75,9 @@ trait IsHexConvertible
     /**
      * Convert RGB values to a HEX color.
      *
-     * @param int $red   Red value for the colour.
-     * @param int $green Green value for the colour.
-     * @param int $blue  Blue value for the colour.
-     *
+     * @param  int  $red  Red value for the colour.
+     * @param  int  $green  Green value for the colour.
+     * @param  int  $blue  Blue value for the colour.
      * @return string
      */
     public function fromRgbToHex(int $red, int $green, int $blue): string

@@ -34,8 +34,7 @@ class HistoryController extends Controller
     /**
      * Constructor for the Historic Password controller.
      *
-     * @param HistoryRepositoryInterface $historyRepo Repository of Historic Passwords.
-     *
+     * @param  HistoryRepositoryInterface  $historyRepo  Repository of Historic Passwords.
      * @return void
      */
     public function __construct(HistoryRepositoryInterface $historyRepo)
@@ -46,8 +45,7 @@ class HistoryController extends Controller
     /**
      * Display a listing of the History.
      *
-     * @param Request $request Request containing the information for filtering.
-     *
+     * @param  Request  $request  Request containing the information for filtering.
      * @return \Illuminate\View\View
      */
     public function index(Request $request): View
@@ -71,8 +69,7 @@ class HistoryController extends Controller
     /**
      * Store a newly created History in storage.
      *
-     * @param CreateHistoryRequest $request Request containing the information to be stored.
-     *
+     * @param  CreateHistoryRequest  $request  Request containing the information to be stored.
      * @return RedirectResponse
      */
     public function store(CreateHistoryRequest $request): RedirectResponse
@@ -93,8 +90,7 @@ class HistoryController extends Controller
     /**
      * Display the specified History.
      *
-     * @param int $id ID of the Historic Password to be displayed. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Historic Password to be displayed. Used for retrieving currently held data.
      * @return View|RedirectResponse
      */
     public function show($id)
@@ -113,8 +109,7 @@ class HistoryController extends Controller
     /**
      * Show the form for editing the specified History.
      *
-     * @param int $id ID of the Historic Password to be edited. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Historic Password to be edited. Used for retrieving currently held data.
      * @return View|RedirectResponse
      */
     public function edit($id)
@@ -133,9 +128,8 @@ class HistoryController extends Controller
     /**
      * Update the specified History in storage.
      *
-     * @param int                  $id      ID of the Historic Password to be updated.
-     * @param UpdateHistoryRequest $request Request containing the information to be updated.
-     *
+     * @param  int  $id  ID of the Historic Password to be updated.
+     * @param  UpdateHistoryRequest  $request  Request containing the information to be updated.
      * @return RedirectResponse
      */
     public function update($id, UpdateHistoryRequest $request): RedirectResponse
@@ -162,11 +156,10 @@ class HistoryController extends Controller
     /**
      * Remove the specified History from storage.
      *
-     * @param int $id ID of the Historic Password to be destroyed.
+     * @param  int  $id  ID of the Historic Password to be destroyed.
+     * @return RedirectResponse
      *
      * @throws \Exception
-     *
-     * @return RedirectResponse
      */
     public function destroy($id): RedirectResponse
     {

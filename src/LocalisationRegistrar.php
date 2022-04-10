@@ -115,7 +115,7 @@ class LocalisationRegistrar
     /**
      * PermissionRegistrar constructor.
      *
-     * @param \Illuminate\Cache\CacheManager $cacheManager The cache manager object
+     * @param  \Illuminate\Cache\CacheManager  $cacheManager  The cache manager object
      */
     public function __construct(CacheManager $cacheManager)
     {
@@ -216,8 +216,7 @@ class LocalisationRegistrar
     /**
      * Get the addresses based on the passed params.
      *
-     * @param array $params additional parameters for query
-     *
+     * @param  array  $params  additional parameters for query
      * @return \Illuminate\Support\Collection
      */
     public function getAddresses(array $params = []): Collection
@@ -247,8 +246,7 @@ class LocalisationRegistrar
     /**
      * Get the languages based on the passed params.
      *
-     * @param array $params additional parameters for query
-     *
+     * @param  array  $params  additional parameters for query
      * @return \Illuminate\Support\Collection
      */
     public function getLanguages(array $params = []): Collection
@@ -357,8 +355,7 @@ class LocalisationRegistrar
     /**
      * Set the instance of the address class.
      *
-     * @param string $addressClass the address class to be used
-     *
+     * @param  string  $addressClass  the address class to be used
      * @return object
      */
     public function setAddressClass(string $addressClass)
@@ -371,8 +368,7 @@ class LocalisationRegistrar
     /**
      * Set the instance of the language class.
      *
-     * @param string $languageClass the language class to be used
-     *
+     * @param  string  $languageClass  the language class to be used
      * @return object
      */
     public function setLanguageClass(string $languageClass)

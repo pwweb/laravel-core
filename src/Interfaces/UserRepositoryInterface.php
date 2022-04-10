@@ -23,9 +23,8 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
     /**
      * User Repository constructor.
      *
-     * @param Application                $app         Application container.
-     * @param HistoryRepositoryInterface $historyRepo Repository of Historic Passwords.
-     *
+     * @param  Application  $app  Application container.
+     * @param  HistoryRepositoryInterface  $historyRepo  Repository of Historic Passwords.
      * @return void
      */
     public function __construct(Application $app, HistoryRepositoryInterface $historyRepo);
@@ -47,9 +46,8 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
     /**
      * Changes the password for a user.
      *
-     * @param int   $id    User ID to change the password for.
-     * @param array $input Request information for password change, including old, new and repeat password.
-     *
+     * @param  int  $id  User ID to change the password for.
+     * @param  array  $input  Request information for password change, including old, new and repeat password.
      * @return bool
      */
     public function changePassword(int $id, array $input): bool;
@@ -57,9 +55,8 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
     /**
      * Find user record for given ID.
      *
-     * @param string $username The username of the record to be retrieved.
-     * @param array  $columns  Column names to retrieve.
-     *
+     * @param  string  $username  The username of the record to be retrieved.
+     * @param  array  $columns  Column names to retrieve.
      * @return User
      */
     public function findByUsername(string $username, array $columns = ['*']): ?User;
@@ -67,9 +64,8 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
     /**
      * Find users that have a certain permission.
      *
-     * @param string $permission The permission to retrieve users of.
-     * @param array  $columns    Column names to retrieve.
-     *
+     * @param  string  $permission  The permission to retrieve users of.
+     * @param  array  $columns  Column names to retrieve.
      * @return Collection
      */
     public function can(string $permission, array $columns): ?Collection;
@@ -77,9 +73,8 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
     /**
      * Find users that have a certain role.
      *
-     * @param string $role    The role to retrieve users of.
-     * @param array  $columns Column names to retrieve.
-     *
+     * @param  string  $role  The role to retrieve users of.
+     * @param  array  $columns  Column names to retrieve.
      * @return Collection
      */
     public function memberOf(string $role, array $columns): ?Collection;

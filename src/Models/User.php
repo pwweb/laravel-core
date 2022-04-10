@@ -20,6 +20,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ *
  * @property  \PWWEB\Core\Models\Person person
  * @property  \PWWEB\Core\Models\User\Password\History passwordHistories
  * @property  int person_id
@@ -108,8 +109,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
     /**
      * Constructor.
      *
-     * @param array $attributes additional attributes for model initialisation
-     *
+     * @param  array  $attributes  additional attributes for model initialisation
      * @return void
      */
     public function __construct(array $attributes = [])

@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Blade;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @method    static self multipleArgs()
- * @method    static self stripQuotes()
+ *
+ * @method static self multipleArgs()
+ * @method static self stripQuotes()
  */
 abstract class Directive
 {
@@ -28,8 +29,7 @@ abstract class Directive
     /**
      * Determine the name of the blade directive and register it.
      *
-     * @param bool $hasEnd Flag to determine if a corresponding end tag is required.
-     *
+     * @param  bool  $hasEnd  Flag to determine if a corresponding end tag is required.
      * @return void
      */
     public function __construct($hasEnd = true)
@@ -47,8 +47,7 @@ abstract class Directive
     /**
      * Handle the functionality for the blade directive.
      *
-     * @param string $expression List of expressions.
-     *
+     * @param  string  $expression  List of expressions.
      * @return string
      */
     abstract protected function handle(string $expression): string;
@@ -56,8 +55,7 @@ abstract class Directive
     /**
      * Default handler for handling ends, usually for if statements.
      *
-     * @param string $expression Expression to be parsed.
-     *
+     * @param  string  $expression  Expression to be parsed.
      * @return string
      */
     public function handleEnd(string $expression)
@@ -68,8 +66,7 @@ abstract class Directive
     /**
      * Parse expression.
      *
-     * @param string $expression Expression to be seperated.
-     *
+     * @param  string  $expression  Expression to be seperated.
      * @return \Illuminate\Support\Collection
      */
     public static function multipleArgs($expression)
@@ -84,8 +81,7 @@ abstract class Directive
     /**
      * Strip quotes.
      *
-     * @param string $expression Expression to strip quotes from.
-     *
+     * @param  string  $expression  Expression to strip quotes from.
      * @return string
      */
     public static function stripQuotes($expression)

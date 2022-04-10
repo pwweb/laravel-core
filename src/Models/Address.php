@@ -20,6 +20,7 @@ use PWWEB\Core\Traits\Migratable;
  * @author    Richard Browne <richard.browne@pw-websolutions.com
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ *
  * @property  \PWWEB\Core\Models\SystemLocalisationCountry country
  * @property  \PWWEB\Core\Models\SystemAddressType type
  * @property  int country_id
@@ -101,8 +102,7 @@ class Address extends Model implements AddressContract
     /**
      * Constructor.
      *
-     * @param array $attributes additional attributes for model initialisation
-     *
+     * @param  array  $attributes  additional attributes for model initialisation
      * @return void
      */
     public function __construct(array $attributes = [])
@@ -134,13 +134,13 @@ class Address extends Model implements AddressContract
     /**
      * Find an address by its id.
      *
-     * @param int $id ID to be used to retrieve the address
+     * @param  int  $id  ID to be used to retrieve the address
      *
      * @todo Refactor. This needs to go into the repository.
      *
-     * @throws \PWWEB\Core\Exceptions\AddressDoesNotExist
-     *
      * @return \Illuminate\Database\Eloquent\Model|null
+     *
+     * @throws \PWWEB\Core\Exceptions\AddressDoesNotExist
      */
     public static function findById(int $id)
     {
@@ -156,13 +156,13 @@ class Address extends Model implements AddressContract
     /**
      * Find an address by its type.
      *
-     * @param string $type Address type to be used to retrieve the address
+     * @param  string  $type  Address type to be used to retrieve the address
      *
      * @todo Refactor. This needs to go into the repository.
      *
-     * @throws \PWWEB\Core\Exceptions\AddressDoesNotExist
-     *
      * @return \Illuminate\Database\Eloquent\Model|null
+     *
+     * @throws \PWWEB\Core\Exceptions\AddressDoesNotExist
      */
     public static function findByType(string $type)
     {
@@ -178,8 +178,7 @@ class Address extends Model implements AddressContract
     /**
      * Get the current cached addresses.
      *
-     * @param array $params additional parameters for the database query
-     *
+     * @param  array  $params  additional parameters for the database query
      * @return Collection collection of addresses
      */
     protected static function getAddresses(array $params = []): Collection

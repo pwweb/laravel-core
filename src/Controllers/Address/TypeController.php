@@ -34,7 +34,7 @@ class TypeController extends Controller
     /**
      * Constructor for the Address type controller.
      *
-     * @param \PWWEB\Core\Interfaces\Address\TypeRepositoryInterface $typeRepo Repository of Address types
+     * @param  \PWWEB\Core\Interfaces\Address\TypeRepositoryInterface  $typeRepo  Repository of Address types
      */
     public function __construct(TypeRepositoryInterface $typeRepo)
     {
@@ -44,8 +44,7 @@ class TypeController extends Controller
     /**
      * Display a listing of the Address type.
      *
-     * @param Request $request Request containing the information for filtering.
-     *
+     * @param  Request  $request  Request containing the information for filtering.
      * @return \Illuminate\View\View
      */
     public function index(Request $request): View
@@ -69,8 +68,7 @@ class TypeController extends Controller
     /**
      * Store a newly created Address type in storage.
      *
-     * @param CreateTypeRequest $request Request containing the information to be stored.
-     *
+     * @param  CreateTypeRequest  $request  Request containing the information to be stored.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateTypeRequest $request): RedirectResponse
@@ -87,8 +85,7 @@ class TypeController extends Controller
     /**
      * Display the specified Address type.
      *
-     * @param int $id ID of the Address type to be displayed. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Address type to be displayed. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
@@ -107,8 +104,7 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified Address type.
      *
-     * @param int $id ID of the Address type to be edited. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Address type to be edited. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function edit($id)
@@ -127,9 +123,8 @@ class TypeController extends Controller
     /**
      * Update the specified Address type in storage.
      *
-     * @param int               $id      ID of the Address type to be updated.
-     * @param UpdateTypeRequest $request Request containing the information to be updated.
-     *
+     * @param  int  $id  ID of the Address type to be updated.
+     * @param  UpdateTypeRequest  $request  Request containing the information to be updated.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, UpdateTypeRequest $request): RedirectResponse
@@ -152,11 +147,10 @@ class TypeController extends Controller
     /**
      * Remove the specified Address type from storage.
      *
-     * @param int $id ID of the Address type to be destroyed.
+     * @param  int  $id  ID of the Address type to be destroyed.
+     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id): RedirectResponse
     {

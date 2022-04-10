@@ -48,9 +48,9 @@ class AddressController extends Controller
     /**
      * Constructor for the Address controller.
      *
-     * @param AddressRepositoryInterface $addressRepo Repository of Addresses.
-     * @param CountryRepositoryInterface $countryRepo Repository of Countries.
-     * @param TypeRepositoryInterface    $typeRepo    Repository of Address types.
+     * @param  AddressRepositoryInterface  $addressRepo  Repository of Addresses.
+     * @param  CountryRepositoryInterface  $countryRepo  Repository of Countries.
+     * @param  TypeRepositoryInterface  $typeRepo  Repository of Address types.
      */
     public function __construct(AddressRepositoryInterface $addressRepo, CountryRepositoryInterface $countryRepo, TypeRepositoryInterface $typeRepo)
     {
@@ -62,8 +62,7 @@ class AddressController extends Controller
     /**
      * Display a listing of the Address.
      *
-     * @param Request $request Request containing the information for filtering.
-     *
+     * @param  Request  $request  Request containing the information for filtering.
      * @return \Illuminate\View\View
      */
     public function index(Request $request)
@@ -92,8 +91,7 @@ class AddressController extends Controller
     /**
      * Store a newly created Address in storage.
      *
-     * @param CreateAddressRequest $request Request containing the information to be stored.
-     *
+     * @param  CreateAddressRequest  $request  Request containing the information to be stored.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateAddressRequest $request)
@@ -110,8 +108,7 @@ class AddressController extends Controller
     /**
      * Display the specified Address.
      *
-     * @param int $id ID of the Address to be displayed. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Address to be displayed. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
@@ -130,8 +127,7 @@ class AddressController extends Controller
     /**
      * Show the form for editing the specified Address.
      *
-     * @param int $id ID of the Address to be edited. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Address to be edited. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function edit($id)
@@ -155,9 +151,8 @@ class AddressController extends Controller
     /**
      * Update the specified Address in storage.
      *
-     * @param int                  $id      ID of the Address to be updated.
-     * @param UpdateAddressRequest $request Request containing the information to be updated.
-     *
+     * @param  int  $id  ID of the Address to be updated.
+     * @param  UpdateAddressRequest  $request  Request containing the information to be updated.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, UpdateAddressRequest $request)
@@ -180,11 +175,10 @@ class AddressController extends Controller
     /**
      * Remove the specified Address from storage.
      *
-     * @param int $id ID of the Address to be destroyed.
+     * @param  int  $id  ID of the Address to be destroyed.
+     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {

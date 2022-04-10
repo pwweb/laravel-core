@@ -23,7 +23,7 @@ interface HistoryRepositoryInterface extends BaseRepositoryInterface
     /**
      * Contructor.
      *
-     * @param Application $app Application instance.
+     * @param  Application  $app  Application instance.
      *
      * @throws \Exception
      */
@@ -46,9 +46,8 @@ interface HistoryRepositoryInterface extends BaseRepositoryInterface
     /**
      * Retrieve the historic passwords for a given user.
      *
-     * @param int   $id      The ID of the user to retrieve historic passwords for.
-     * @param array $columns [optional] The columns to return, defaults to * (all columns).
-     *
+     * @param  int  $id  The ID of the user to retrieve historic passwords for.
+     * @param  array  $columns  [optional] The columns to return, defaults to * (all columns).
      * @return History
      */
     public function findByUserId(int $id, array $columns = ['*']): ?History;
@@ -57,9 +56,8 @@ interface HistoryRepositoryInterface extends BaseRepositoryInterface
      * Check the password to be set against the last historic passwords. The amount of passwords
      * to check against is set per configuration (password_history_num) or .env variable (PASSWORD_HISTORY_NUM).
      *
-     * @param User   $user     The user to be checked.
-     * @param string $password Password to be checked.
-     *
+     * @param  User  $user  The user to be checked.
+     * @param  string  $password  Password to be checked.
      * @return bool
      */
     public function isHistoricPassword(User $user, string $password): bool;

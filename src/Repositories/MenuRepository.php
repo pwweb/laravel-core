@@ -58,9 +58,8 @@ class MenuRepository extends BaseRepository implements MenuRepositoryInterface
     /**
      * Retrieve a Node and it's descendants.
      *
-     * @param string $rootNode  The root node identifier.
-     * @param int    $maxLevels The max levels to descend.
-     *
+     * @param  string  $rootNode  The root node identifier.
+     * @param  int  $maxLevels  The max levels to descend.
      * @return Collection Menus
      */
     public function retrieve(string $rootNode = 'frontend', int $maxLevels = 10): ?Collection
@@ -77,8 +76,7 @@ class MenuRepository extends BaseRepository implements MenuRepositoryInterface
     /**
      * Retrive a specific node within the tree.
      *
-     * @param string $node Node identifier
-     *
+     * @param  string  $node  Node identifier
      * @return Menu
      */
     public function retrieveNode(string $node = ''): ?Menu
@@ -102,8 +100,7 @@ class MenuRepository extends BaseRepository implements MenuRepositoryInterface
     /**
      * Create menu item record.
      *
-     * @param array $input Values for new record creation.
-     *
+     * @param  array  $input  Values for new record creation.
      * @return Menu
      */
     public function create($input)
@@ -118,8 +115,7 @@ class MenuRepository extends BaseRepository implements MenuRepositoryInterface
     /**
      * Retrive the breadcrumbs for a given node.
      *
-     * @param string $node The node to start at.
-     *
+     * @param  string  $node  The node to start at.
      * @return array Crumbs
      */
     public function retrieveBreadcrumbs(string $node = '')

@@ -21,7 +21,7 @@ interface ExchangeRateRepositoryInterface extends BaseRepositoryInterface
     /**
      * Contructor.
      *
-     * @param Application $app Application instance.
+     * @param  Application  $app  Application instance.
      *
      * @throws \Exception
      */

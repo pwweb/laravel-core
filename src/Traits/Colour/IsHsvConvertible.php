@@ -17,10 +17,9 @@ trait IsHsvConvertible
     /**
      * Convert an RGB color to an HSV array (alias).
      *
-     * @param int $red   Red value for the colour.
-     * @param int $green Green value for the colour.
-     * @param int $blue  Blue value for the colour.
-     *
+     * @param  int  $red  Red value for the colour.
+     * @param  int  $green  Green value for the colour.
+     * @param  int  $blue  Blue value for the colour.
      * @return array
      *
      * @see fromRgbToHsv
@@ -33,10 +32,9 @@ trait IsHsvConvertible
     /**
      * Convert an RGB color to an HSV array.
      *
-     * @param int $red   Red value for the colour.
-     * @param int $green Green value for the colour.
-     * @param int $blue  Blue value for the colour.
-     *
+     * @param  int  $red  Red value for the colour.
+     * @param  int  $green  Green value for the colour.
+     * @param  int  $blue  Blue value for the colour.
      * @return array
      */
     public function fromRgbToHsv(int $red, int $green, int $blue): array
@@ -68,10 +66,9 @@ trait IsHsvConvertible
     /**
      * Convert an HSV color to an RGB array (alias).
      *
-     * @param float $hue        Hue of the colour.
-     * @param float $saturation Saturation of the colour.
-     * @param float $value      Value of the colour.
-     *
+     * @param  float  $hue  Hue of the colour.
+     * @param  float  $saturation  Saturation of the colour.
+     * @param  float  $value  Value of the colour.
      * @return array
      *
      * @see fromHsvToRgb
@@ -84,10 +81,9 @@ trait IsHsvConvertible
     /**
      * Convert an HSV color to an RGB array.
      *
-     * @param float $hue        Hue of the colour.
-     * @param float $saturation Saturation of the colour.
-     * @param float $value      Value of the colour.
-     *
+     * @param  float  $hue  Hue of the colour.
+     * @param  float  $saturation  Saturation of the colour.
+     * @param  float  $value  Value of the colour.
      * @return array
      */
     public function fromHsvToRgb(float $hue, float $saturation, float $value): array
@@ -108,12 +104,11 @@ trait IsHsvConvertible
     /**
      * Recalculate the Hue.
      *
-     * @param float $red    Red value for the colour.
-     * @param float $green  Green value for the colour.
-     * @param float $blue   Blue value for the colour.
-     * @param float $minRGB Minimum RGB.
-     * @param float $chroma Chroma of the colour.
-     *
+     * @param  float  $red  Red value for the colour.
+     * @param  float  $green  Green value for the colour.
+     * @param  float  $blue  Blue value for the colour.
+     * @param  float  $minRGB  Minimum RGB.
+     * @param  float  $chroma  Chroma of the colour.
      * @return float
      */
     protected function recalculateHue(float $red, float $green, float $blue, float $minRGB, float $chroma): float
@@ -134,9 +129,8 @@ trait IsHsvConvertible
     /**
      * Calculate RGB with hue and chroma.
      *
-     * @param float $hue    Hue of the colour.
-     * @param float $chroma Chroma of the colour.
-     *
+     * @param  float  $hue  Hue of the colour.
+     * @param  float  $chroma  Chroma of the colour.
      * @return array
      */
     protected function calculateRgbWithHueAndChroma(float $hue, float $chroma): array
@@ -156,9 +150,8 @@ trait IsHsvConvertible
     /**
      * Calculate X-Prime.
      *
-     * @param float $hPrime H Prime of the colour.
-     * @param float $chroma Chroma of the colour.
-     *
+     * @param  float  $hPrime  H Prime of the colour.
+     * @param  float  $chroma  Chroma of the colour.
      * @return float
      */
     protected function calculateXPrime(float $hPrime, float $chroma): float
@@ -173,10 +166,9 @@ trait IsHsvConvertible
     /**
      * Sanitize HSV value.
      *
-     * @param float $value HSV value of the colour.
-     * @param float $min   Minimum.
-     * @param float $max   Maximum.
-     *
+     * @param  float  $value  HSV value of the colour.
+     * @param  float  $min  Minimum.
+     * @param  float  $max  Maximum.
      * @return float
      */
     protected function sanitizeHsvValue(float $value, float $min, float $max): float
@@ -194,9 +186,8 @@ trait IsHsvConvertible
     /**
      * Get the colors range.
      *
-     * @param float $chroma Chroma of the colour.
-     * @param float $xPrime X Prime of the colour.
-     *
+     * @param  float  $chroma  Chroma of the colour.
+     * @param  float  $xPrime  X Prime of the colour.
      * @return array
      */
     protected function getColorsRange(float $chroma, float $xPrime): array

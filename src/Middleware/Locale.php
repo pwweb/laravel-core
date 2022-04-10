@@ -26,7 +26,7 @@ class Locale
     /**
      * Constructor for the middleware ensuring dependencies are injected.
      *
-     * @param \PWWEB\Core\Interfaces\LanguageRepositoryInterface $languageRepo Repository of Languages
+     * @param  \PWWEB\Core\Interfaces\LanguageRepositoryInterface  $languageRepo  Repository of Languages
      */
     public function __construct(LanguageRepositoryInterface $languageRepo)
     {
@@ -36,9 +36,8 @@ class Locale
     /**
      * Locale middleware handler.
      *
-     * @param \Illuminate\Http\Request $request current request
-     * @param Closure                  $next    Next
-     *
+     * @param  \Illuminate\Http\Request  $request  current request
+     * @param  Closure  $next  Next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)

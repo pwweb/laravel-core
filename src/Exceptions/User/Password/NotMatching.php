@@ -14,6 +14,7 @@ use Exception;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ *
  * @property  string message
  */
 class NotMatching extends Exception

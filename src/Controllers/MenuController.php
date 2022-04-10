@@ -34,7 +34,7 @@ class MenuController extends Controller
     /**
      *  Constructor for the Menu controller.
      *
-     * @param MenuRepositoryInterface $menuRepo Repository of Menus.
+     * @param  MenuRepositoryInterface  $menuRepo  Repository of Menus.
      */
     public function __construct(MenuRepositoryInterface $menuRepo)
     {
@@ -44,8 +44,7 @@ class MenuController extends Controller
     /**
      * Display a listing of the Menu.
      *
-     * @param Request $request Request containing the information for filtering.
-     *
+     * @param  Request  $request  Request containing the information for filtering.
      * @return \Illuminate\View\View
      */
     public function index(Request $request): View
@@ -70,8 +69,7 @@ class MenuController extends Controller
     /**
      * Store a newly created Menu in storage.
      *
-     * @param CreateMenuRequest $request Request containing the information to be stored.
-     *
+     * @param  CreateMenuRequest  $request  Request containing the information to be stored.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateMenuRequest $request): RedirectResponse
@@ -92,8 +90,7 @@ class MenuController extends Controller
     /**
      * Display the specified Menu.
      *
-     * @param int $id ID of the Menu to be displayed. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Menu to be displayed. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
@@ -112,8 +109,7 @@ class MenuController extends Controller
     /**
      * Show the form for editing the specified Menu.
      *
-     * @param int $id ID of the Menu to be edited. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Menu to be edited. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function edit($id)
@@ -134,9 +130,8 @@ class MenuController extends Controller
     /**
      * Update the specified Menu in storage.
      *
-     * @param int               $id      ID of the Menu to be updated.
-     * @param UpdateMenuRequest $request Request containing the information to be updated.
-     *
+     * @param  int  $id  ID of the Menu to be updated.
+     * @param  UpdateMenuRequest  $request  Request containing the information to be updated.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, UpdateMenuRequest $request): RedirectResponse
@@ -163,11 +158,10 @@ class MenuController extends Controller
     /**
      * Remove the specified Menu from storage.
      *
-     * @param int $id ID of the Environment to be destroyed.
+     * @param  int  $id  ID of the Environment to be destroyed.
+     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id): RedirectResponse
     {

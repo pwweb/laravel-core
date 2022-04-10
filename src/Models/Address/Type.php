@@ -2,7 +2,7 @@
 
 namespace PWWEB\Core\Models\Address;
 
-use Illuminate\Database\Eloquent\Model as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PWWEB\Core\Contracts\Address\Type as AddressTypeContract;
@@ -17,6 +17,7 @@ use PWWEB\Core\Traits\Migratable;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
+ *
  * @property  \Illuminate\Database\Eloquent\Collection addresses
  * @property  string name
  * @property  bool global
@@ -72,7 +73,7 @@ class Type extends Model implements AddressTypeContract
     /**
      * Constructor.
      *
-     * @param array $attributes additional attributes for model initialisation
+     * @param  array  $attributes  additional attributes for model initialisation
      */
     public function __construct(array $attributes = [])
     {

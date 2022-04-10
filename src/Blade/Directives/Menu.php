@@ -17,7 +17,8 @@ use PWWEB\Core\Models\Menu as MenuModel;
  * @author    Richard Browne <richard.browne@pw-websolutions.com>
  * @copyright 2020 pw-websolutions.com
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
- * @method    handle()
+ *
+ * @method handle()
  */
 class Menu extends Directive
 {
@@ -31,7 +32,7 @@ class Menu extends Directive
     /**
      * Constructor for the Date Directive.
      *
-     * @param MenuRepositoryInterface $menuRepo Repository of Menus.
+     * @param  MenuRepositoryInterface  $menuRepo  Repository of Menus.
      */
     public function __construct(MenuRepositoryInterface $menuRepo)
     {
@@ -44,8 +45,7 @@ class Menu extends Directive
     /**
      * Handle the functionality for the blade directive.
      *
-     * @param string $expression List of expressions.
-     *
+     * @param  string  $expression  List of expressions.
      * @return string
      */
     public function handle(string $expression): string
@@ -86,9 +86,8 @@ class Menu extends Directive
     /**
      * Renders the menu according to bootstrap markup.
      *
-     * @param QueueableCollection $menus Menu menus to be displayed.
-     * @param string              $path  Parent path route.
-     *
+     * @param  QueueableCollection  $menus  Menu menus to be displayed.
+     * @param  string  $path  Parent path route.
      * @return string
      */
     public function render(QueueableCollection $menus, string $path = ''): string
@@ -121,10 +120,9 @@ class Menu extends Directive
     /**
      * Render separator menu menu.
      *
-     * @param MenuModel $menu   Menu menu (separator) to display.
-     * @param string    $path   Base path for the menu menu.
-     * @param string    $output (Optional) Output previously rendered.
-     *
+     * @param  MenuModel  $menu  Menu menu (separator) to display.
+     * @param  string  $path  Base path for the menu menu.
+     * @param  string  $output  (Optional) Output previously rendered.
      * @return string
      */
     private function renderSeparator(MenuModel $menu, string $path, string $output = ''): string
@@ -140,10 +138,9 @@ class Menu extends Directive
     /**
      * Render dropdown menu menu.
      *
-     * @param MenuModel $menu   Menu menu (separator) to display.
-     * @param string    $path   Base path for the menu menu.
-     * @param string    $output (Optional) Output previously rendered.
-     *
+     * @param  MenuModel  $menu  Menu menu (separator) to display.
+     * @param  string  $path  Base path for the menu menu.
+     * @param  string  $output  (Optional) Output previously rendered.
      * @return string
      */
     private function renderDropdownMenu(MenuModel $menu, string $path, string $output = ''): string
@@ -169,10 +166,9 @@ class Menu extends Directive
     /**
      * Render standard menu menu.
      *
-     * @param MenuModel $menu   Menu menu (separator) to display.
-     * @param string    $path   Base path for the menu menu.
-     * @param string    $output (Optional) Output previously rendered.
-     *
+     * @param  MenuModel  $menu  Menu menu (separator) to display.
+     * @param  string  $path  Base path for the menu menu.
+     * @param  string  $output  (Optional) Output previously rendered.
      * @return string
      */
     private function renderMenuMenu(MenuModel $menu, string $path, string $output = ''): string

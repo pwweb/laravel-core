@@ -19,8 +19,7 @@ class LanguageDoesNotExist extends InvalidArgumentException
     /**
      * Creates an exception with an error message based on the language name or locale.
      *
-     * @param string $languageName the language name or locale
-     *
+     * @param  string  $languageName  the language name or locale
      * @return static
      */
     public static function create(string $languageName)
@@ -31,8 +30,7 @@ class LanguageDoesNotExist extends InvalidArgumentException
     /**
      * Creates an exception with an error message based on the language ID.
      *
-     * @param int $languageId the language ID which does not exist in the database
-     *
+     * @param  int  $languageId  the language ID which does not exist in the database
      * @return static
      */
     public static function withId(int $languageId)

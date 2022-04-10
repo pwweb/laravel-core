@@ -82,8 +82,7 @@ class LanguageRepository extends BaseRepository implements LanguageRepositoryInt
     /**
      * Retrieve active language based on locale.
      *
-     * @param string $locale The locale to check.
-     *
+     * @param  string  $locale  The locale to check.
      * @return \Illuminate\Database\Eloquent\Model|null
      */
     public function isLocaleActive(string $locale)
@@ -94,8 +93,7 @@ class LanguageRepository extends BaseRepository implements LanguageRepositoryInt
     /**
      * Retrieve active language based on lang.
      *
-     * @param string $lang The language to check.
-     *
+     * @param  string  $lang  The language to check.
      * @return \Illuminate\Database\Eloquent\Model|null
      */
     public function isLangActive(string $lang)
@@ -148,11 +146,10 @@ class LanguageRepository extends BaseRepository implements LanguageRepositoryInt
     /**
      * Find a language by its locale, e.g. en-gb.
      *
-     * @param string $locale locale to be used to retrieve the language
+     * @param  string  $locale  locale to be used to retrieve the language
+     * @return LanguageContract
      *
      * @throws \PWWEB\Core\Exceptions\LanguageDoesNotExist
-     *
-     * @return LanguageContract
      */
     public function findByLocale(string $locale): LanguageContract
     {

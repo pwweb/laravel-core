@@ -17,10 +17,9 @@ interface Colour
     /**
      * Set the RGB values.
      *
-     * @param int $red   Red value for the colour.
-     * @param int $green Green value for the colour.
-     * @param int $blue  Blue value for the colour.
-     *
+     * @param  int  $red  Red value for the colour.
+     * @param  int  $green  Green value for the colour.
+     * @param  int  $blue  Blue value for the colour.
      * @return self
      */
     public function setRgb(int $red, int $green, int $blue);
@@ -28,11 +27,10 @@ interface Colour
     /**
      * Set the RGBA values.
      *
-     * @param int   $red   Red value for the colour.
-     * @param int   $green Green value for the colour.
-     * @param int   $blue  Blue value for the colour.
-     * @param float $alpha Alpha value for the colour.
-     *
+     * @param  int  $red  Red value for the colour.
+     * @param  int  $green  Green value for the colour.
+     * @param  int  $blue  Blue value for the colour.
+     * @param  float  $alpha  Alpha value for the colour.
      * @return self
      */
     public function setRgba(int $red, int $green, int $blue, float $alpha);
@@ -47,8 +45,7 @@ interface Colour
     /**
      * Set the red value.
      *
-     * @param int $red Red value for the colour.
-     *
+     * @param  int  $red  Red value for the colour.
      * @return self
      */
     public function setRed(int $red);
@@ -63,8 +60,7 @@ interface Colour
     /**
      * Set the green value.
      *
-     * @param int $green Green value for the colour.
-     *
+     * @param  int  $green  Green value for the colour.
      * @return self
      */
     public function setGreen(int $green);
@@ -79,8 +75,7 @@ interface Colour
     /**
      * Set the blue value.
      *
-     * @param int $blue Blue value for the colour.
-     *
+     * @param  int  $blue  Blue value for the colour.
      * @return self
      */
     public function setBlue(int $blue);
@@ -95,8 +90,7 @@ interface Colour
     /**
      * Set the alpha value.
      *
-     * @param float $alpha Alpha value for the colour.
-     *
+     * @param  float  $alpha  Alpha value for the colour.
      * @return self
      */
     public function setAlpha(float $alpha);
@@ -104,8 +98,7 @@ interface Colour
     /**
      * Make a Color instance.
      *
-     * @param string $colour Raw value of the colour.
-     *
+     * @param  string  $colour  Raw value of the colour.
      * @return self
      */
     public static function make(string $colour);
@@ -113,8 +106,7 @@ interface Colour
     /**
      * Convert to hex color.
      *
-     * @param bool $uppercase Flag for transformation to uppercase.
-     *
+     * @param  bool  $uppercase  Flag for transformation to uppercase.
      * @return string
      */
     public function toHex(bool $uppercase = true): string;
@@ -122,8 +114,7 @@ interface Colour
     /**
      * Check if the color is bright.
      *
-     * @param float $contrast Contrast value of the colour.
-     *
+     * @param  float  $contrast  Contrast value of the colour.
      * @return bool
      */
     public function isBright(float $contrast = 150.0): bool;
@@ -131,8 +122,7 @@ interface Colour
     /**
      * Check if the color is dark.
      *
-     * @param float $contrast Contrast value of the colour.
-     *
+     * @param  float  $contrast  Contrast value of the colour.
      * @return bool
      */
     public function isDark(float $contrast = 150.0): bool;
@@ -140,8 +130,7 @@ interface Colour
     /**
      * Check if the color is valid.
      *
-     * @param string $hex HEX value of the colour.
-     *
+     * @param  string  $hex  HEX value of the colour.
      * @return bool
      */
     public static function isValidHex(string $hex): bool;

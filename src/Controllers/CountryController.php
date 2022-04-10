@@ -32,7 +32,7 @@ class CountryController extends Controller
     /**
      * Constructor for the Country controller.
      *
-     * @param CountryRepositoryInterface $countryRepo Repository of Countries.
+     * @param  CountryRepositoryInterface  $countryRepo  Repository of Countries.
      */
     public function __construct(CountryRepositoryInterface $countryRepo)
     {
@@ -42,8 +42,7 @@ class CountryController extends Controller
     /**
      * Display a listing of Countries.
      *
-     * @param Request $request Request containing the information for filtering.
-     *
+     * @param  Request  $request  Request containing the information for filtering.
      * @return \Illuminate\View\View
      */
     public function index(Request $request)
@@ -67,8 +66,7 @@ class CountryController extends Controller
     /**
      * Store a newly created Country in storage.
      *
-     * @param CreateCountryRequest $request Request containing the information to be stored.
-     *
+     * @param  CreateCountryRequest  $request  Request containing the information to be stored.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateCountryRequest $request)
@@ -85,8 +83,7 @@ class CountryController extends Controller
     /**
      * Display the specified Country.
      *
-     * @param int $id ID of the Country to be displayed. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Country to be displayed. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
@@ -105,8 +102,7 @@ class CountryController extends Controller
     /**
      * Show the form for editing the specified Country.
      *
-     * @param int $id ID of the Country to be edited. Used for retrieving currently held data.
-     *
+     * @param  int  $id  ID of the Country to be edited. Used for retrieving currently held data.
      * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function edit($id)
@@ -125,9 +121,8 @@ class CountryController extends Controller
     /**
      * Update the specified Country in storage.
      *
-     * @param int                  $id      ID of the Country to be updated.
-     * @param UpdateCountryRequest $request Request containing the information to be updated.
-     *
+     * @param  int  $id  ID of the Country to be updated.
+     * @param  UpdateCountryRequest  $request  Request containing the information to be updated.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, UpdateCountryRequest $request)
@@ -150,11 +145,10 @@ class CountryController extends Controller
     /**
      * Remove the specified Country from storage.
      *
-     * @param int $id ID of the Country to be destroyed.
+     * @param  int  $id  ID of the Country to be destroyed.
+     * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Exception
-     *
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
