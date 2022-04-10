@@ -2,7 +2,16 @@ name: Run tests
 
 on:
   push:
-  pull_request:
+    branches:
+      - main
+      - master
+      - develop
+    paths:
+      - "**.php"
+      - "phpunit.xml"
+      - ".github/workflows/run-tests.yml"
+      - "composer.lock"
+      - ".env.ci"
 
 jobs:
   php-tests:
