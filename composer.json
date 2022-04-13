@@ -25,7 +25,7 @@
         "laravel/socialite": "^5.0",
         "laracasts/flash": "^3.2.1",
         "spatie/laravel-enum": "^2.2 || ^3.0",
-        "spatie/laravel-medialibrary": "^9.0",
+        "spatie/laravel-medialibrary": "^9.0 || ^10.0",
         "spatie/laravel-permission": "^5.0",
         "kalnoy/nestedset": "^5.0 || ^6.0"
     },
