@@ -109,10 +109,11 @@ interface BaseRepositoryInterface
      * @param int   $id            ID of the record.
      * @param array $columns       Columns to return.
      * @param array $relationships Relationships to eager load.
+     * @param array $counts        Relationships to count.
      *
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|Model|null
      */
-    public function find($id, $columns = ['*'], $relationships = []);
+    public function find($id, $columns = ['*'], $relationships = [], $counts = []);
 
     /**
      * Update model record for given id.
