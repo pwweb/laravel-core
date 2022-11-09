@@ -355,6 +355,7 @@ return [
             'reduced_rate' => 'Reduzierte Steuersatz',
             'zero_rate' => 'Nullrate',
             'standard_rate' => 'Normalsatz',
+            'higher_rate' => 'Höheren Steuersatz',
             'create_rate' => 'Steuersatz erstellen',
             'edit_rate' => 'Bearbeitungsrate',
             'saved' => 'Steuersatz erfolgreich gespeichert',

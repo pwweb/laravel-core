@@ -390,6 +390,7 @@ return [
             'save' => 'Save',
             'reduced_rate' => 'Reduced Rate',
             'zero_rate' => 'Zero Rate',
+            'higher_rate' => 'Higher Rate',
             'standard_rate' => 'Standard Rate',
             'create_rate' => 'Create Rate',
             'edit_rate' => 'Edit Rate',

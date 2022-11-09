@@ -17,6 +17,7 @@ use Spatie\Enum\Enum;
  * @method static self none()
  * @method static self standard()
  * @method static self reduced()
+ * @method static self higher()
  * @method static self zero()
  */
 class Type extends Enum
@@ -34,6 +35,7 @@ class Type extends Enum
             'standard' => 1,
             'reduced' => 2,
             'zero' => 3,
+            'higher' => 4,
         ];
     }
 
@@ -50,6 +52,7 @@ class Type extends Enum
             'standard' => __('pwweb::core.tax.rates.standard_rate'),
             'reduced' => __('pwweb::core.tax.rates.reduced_rate'),
             'zero' => __('pwweb::core.tax.rates.zero_rate'),
+            'higher' => __('pwweb::core.tax.rates.higher_rate'),
         ];
     }
 }
